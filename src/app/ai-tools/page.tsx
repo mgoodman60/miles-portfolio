@@ -1,0 +1,162 @@
+import Image from "next/image"
+import Link from "next/link"
+import { BlurFade } from "@/components/magicui/blur-fade"
+
+export const metadata = {
+  title: "AI Tools — Miles Goodman",
+  description: "AI tools built and actively used in the field — daily reporting, plan review, and bid estimation.",
+}
+
+const tools = [
+  {
+    num: "01",
+    tag: "ForemanOS · Daily Reporting",
+    title: "Site photos → owner-ready reports",
+    body: "I built ForemanOS on the Claude API to turn daily site photos and voice notes into structured daily progress reports. Currently live on One Senior Care in Morehead, KY. Cuts daily admin time by ~80% and keeps owners informed without a single phone call.",
+    stat: "~80% time saved",
+    statLabel: "vs. manual reporting",
+    link: "/my-reports",
+    linkLabel: "See how it works",
+  },
+  {
+    num: "02",
+    tag: "Claude API · Plan Review",
+    title: "Plan review and concrete quantity takeoffs",
+    body: "I use Claude to assist with reading construction drawings and calculating concrete quantities for bid and self-perform scopes. Upload a PDF plan set, describe the scope, and get a structured takeoff to check against manual calculations. Useful for footings, slabs, walls, and pool shells.",
+    stat: "MBA Focus",
+    statLabel: "Project Management & AI — NKU",
+    link: "/about",
+    linkLabel: "About my MBA work",
+  },
+  {
+    num: "03",
+    tag: "Claude API · Submittals",
+    title: "Submittal tracking and shop drawing review",
+    body: "A superintendent manages dozens of active submittals — materials, shop drawings, product data. I use Claude to organize submittal packages, identify missing items, and draft transmittal summaries. Keeps the review log moving without losing track of what's sitting with the engineer or architect.",
+    stat: "Submittal log",
+    statLabel: "No missed items, no delayed reviews",
+    link: "/contact",
+    linkLabel: "Talk shop",
+  },
+]
+
+export default function AIToolsPage() {
+  return (
+    <>
+      {/* Hero */}
+      <section className="pt-40 pb-20 px-6 md:px-12" style={{ background: "var(--paper-warm)" }}>
+        <div className="mx-auto max-w-[1480px] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <p className="text-xs uppercase tracking-[0.22em] text-[var(--muted)] mb-6">
+              MBA Candidate — Project Management &amp; AI · Northern Kentucky University
+            </p>
+            <h1 className="serif font-light tracking-tight mb-6" style={{ fontSize: "clamp(32px,5.5vw,80px)", color: "var(--ink)", maxWidth: 900 }}>
+              AI doesn&rsquo;t replace field judgment.{" "}
+              <em className="not-italic" style={{ color: "var(--accent)", fontStyle: "italic" }}>
+                It removes the paperwork friction
+              </em>{" "}
+              that keeps superintendents out of the field.
+            </h1>
+            <div className="flex flex-wrap gap-6 text-sm" style={{ color: "var(--muted)" }}>
+              <span>3 active tools</span>
+              <span style={{ color: "var(--border)" }}>·</span>
+              <span>Built on Claude API</span>
+              <span style={{ color: "var(--border)" }}>·</span>
+              <span>Used daily in the field</span>
+            </div>
+          </div>
+          <div className="relative rounded overflow-hidden order-first lg:order-last" style={{ aspectRatio: "4/3" }}>
+            <Image
+              src="/projects/camp-taylor/night-pour-hero.jpg"
+              alt="Night concrete pour — Camp Taylor pool"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width:1024px) 100vw, 50vw"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Tools — alternating rows */}
+      <section className="py-16 px-6 md:px-12">
+        <div className="mx-auto max-w-[1480px] space-y-0">
+          {tools.map(({ num, tag, title, body, stat, statLabel, link, linkLabel }, i) => (
+            <BlurFade key={num} inView delay={i * 0.15}>
+            <div
+              className="py-16 border-t grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16"
+              style={{ borderColor: "var(--border)" }}
+            >
+              {/* Number */}
+              <div className="md:col-span-1 flex md:block items-center gap-4">
+                <span className="serif text-5xl font-light leading-none" style={{ color: "var(--accent)" }}>{num}</span>
+              </div>
+
+              {/* Content */}
+              <div className="md:col-span-7">
+                {i === 0 && (
+                  <span className="inline-block text-[9px] uppercase tracking-widest px-2 py-0.5 rounded-full font-medium mb-3" style={{ background: "var(--accent)", color: "var(--paper)" }}>
+                    Live
+                  </span>
+                )}
+                <span className="text-[10px] uppercase tracking-[0.18em] text-[var(--muted)] mb-4 block">{tag}</span>
+                <h2 className="serif font-light text-3xl mb-4 leading-snug" style={{ color: "var(--ink)" }}>{title}</h2>
+                <p className="text-base leading-relaxed mb-6" style={{ color: "var(--muted)" }}>{body}</p>
+                <Link
+                  href={link}
+                  className="inline-block py-2 text-sm font-medium hover:underline underline-offset-4"
+                  style={{ color: "var(--accent)" }}
+                >
+                  {linkLabel} →
+                </Link>
+              </div>
+
+              {/* Stat card */}
+              <div className="md:col-span-4">
+                <div
+                  className="min-h-[120px] rounded p-8 flex flex-col justify-center"
+                  style={{ background: i % 2 === 0 ? "var(--ink)" : "var(--paper-warm)" }}
+                >
+                  <p
+                    className="serif text-3xl font-light mb-2"
+                    style={{ color: i % 2 === 0 ? "var(--paper)" : "var(--ink)" }}
+                  >
+                    {stat}
+                  </p>
+                  <p
+                    className="text-xs uppercase tracking-[0.16em]"
+                    style={{ color: i % 2 === 0 ? "rgba(239,237,230,0.7)" : "var(--muted)" }}
+                  >
+                    {statLabel}
+                  </p>
+                </div>
+              </div>
+            </div>
+            </BlurFade>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section
+        className="border-t py-24 px-6 md:px-12 text-center"
+        style={{ borderColor: "var(--border)", background: "var(--paper-warm)" }}
+      >
+        <div className="mx-auto max-w-2xl">
+          <h2 className="serif font-light text-3xl mb-4" style={{ color: "var(--ink)" }}>
+            Interested in how this works in the field?
+          </h2>
+          <p className="text-base mb-8" style={{ color: "var(--muted)" }}>
+            If you&rsquo;re building something in this space or want to talk through how AI applies to field ops — reach out.
+          </p>
+          <Link
+            href="/contact"
+            className="px-8 py-4 text-sm font-medium rounded transition-colors"
+            style={{ background: "var(--ink)", color: "var(--paper)" }}
+          >
+            Talk shop
+          </Link>
+        </div>
+      </section>
+    </>
+  )
+}
