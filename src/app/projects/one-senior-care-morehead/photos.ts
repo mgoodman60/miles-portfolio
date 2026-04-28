@@ -20,6 +20,15 @@ export const dronePhotos: Photo[] = [
   { src: "/projects/morehead/drone-16.jpg", width: 1920, height: 1080, alt: "One Senior Care Morehead — drone view 16" },
 ]
 
+export const droneHeroSlides: { src: string; alt: string }[] = [
+  { src: "/projects/morehead/drone-01.jpg", alt: "One Senior Care Morehead — drone view 1" },
+  { src: "/projects/morehead/drone-04.jpg", alt: "One Senior Care Morehead — drone view 4" },
+  { src: "/projects/morehead/drone-07.jpg", alt: "One Senior Care Morehead — drone view 7" },
+  { src: "/projects/morehead/drone-10.jpg", alt: "One Senior Care Morehead — drone view 10" },
+  { src: "/projects/morehead/drone-13.jpg", alt: "One Senior Care Morehead — drone view 13" },
+  { src: "/projects/morehead/drone-16.jpg", alt: "One Senior Care Morehead — drone view 16" },
+]
+
 export const progressPhotos: Photo[] = [
   { src: "/projects/morehead/progress-01.jpg", width: 1920, height: 1440, alt: "One Senior Care Morehead — construction progress 1" },
   { src: "/projects/morehead/progress-02.jpg", width: 1920, height: 1440, alt: "One Senior Care Morehead — construction progress 2" },
@@ -50,6 +59,55 @@ export const progressPhotos: Photo[] = [
   { src: "/projects/morehead/progress-27.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 27" },
   { src: "/projects/morehead/progress-28.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 28" },
   { src: "/projects/morehead/progress-29.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 29" },
+  { src: "/projects/morehead/progress-30.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 30" },
+  { src: "/projects/morehead/progress-31.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 31" },
+  { src: "/projects/morehead/progress-32.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 32" },
+  { src: "/projects/morehead/progress-33.jpg", width: 1920, height: 1440, alt: "One Senior Care Morehead — construction progress 33" },
+  { src: "/projects/morehead/progress-34.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 34" },
+  { src: "/projects/morehead/progress-35.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 35" },
+  { src: "/projects/morehead/progress-36.jpg", width: 1920, height: 1080, alt: "One Senior Care Morehead — construction progress 36" },
+  { src: "/projects/morehead/progress-37.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 37" },
+  { src: "/projects/morehead/progress-38.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 38" },
+  { src: "/projects/morehead/progress-39.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 39" },
+  { src: "/projects/morehead/progress-40.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 40" },
+]
+
+export const progressFeb: Photo[] = [
+  { src: "/projects/morehead/progress-01.jpg", width: 1920, height: 1440, alt: "One Senior Care Morehead — construction progress 1" },
+  { src: "/projects/morehead/progress-02.jpg", width: 1920, height: 1440, alt: "One Senior Care Morehead — construction progress 2" },
+  { src: "/projects/morehead/progress-03.jpg", width: 1920, height: 1440, alt: "One Senior Care Morehead — construction progress 3" },
+  { src: "/projects/morehead/progress-04.jpg", width: 1920, height: 1440, alt: "One Senior Care Morehead — construction progress 4" },
+  { src: "/projects/morehead/progress-05.jpg", width: 1920, height: 1440, alt: "One Senior Care Morehead — construction progress 5" },
+  { src: "/projects/morehead/progress-06.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 6" },
+  { src: "/projects/morehead/progress-07.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 7" },
+  { src: "/projects/morehead/progress-08.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 8" },
+  { src: "/projects/morehead/progress-09.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 9" },
+]
+
+export const progressMar: Photo[] = [
+  { src: "/projects/morehead/progress-10.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 10" },
+  { src: "/projects/morehead/progress-11.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 11" },
+  { src: "/projects/morehead/progress-12.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 12" },
+  { src: "/projects/morehead/progress-13.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 13" },
+  { src: "/projects/morehead/progress-14.jpg", width: 1920, height: 1440, alt: "One Senior Care Morehead — construction progress 14" },
+  { src: "/projects/morehead/progress-15.jpg", width: 1920, height: 1440, alt: "One Senior Care Morehead — construction progress 15" },
+  { src: "/projects/morehead/progress-16.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 16" },
+  { src: "/projects/morehead/progress-17.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 17" },
+  { src: "/projects/morehead/progress-18.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 18" },
+  { src: "/projects/morehead/progress-19.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 19" },
+  { src: "/projects/morehead/progress-20.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 20" },
+  { src: "/projects/morehead/progress-21.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 21" },
+  { src: "/projects/morehead/progress-22.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 22" },
+  { src: "/projects/morehead/progress-23.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 23" },
+  { src: "/projects/morehead/progress-24.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 24" },
+  { src: "/projects/morehead/progress-25.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 25" },
+  { src: "/projects/morehead/progress-26.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 26" },
+  { src: "/projects/morehead/progress-27.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 27" },
+  { src: "/projects/morehead/progress-28.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 28" },
+  { src: "/projects/morehead/progress-29.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 29" },
+]
+
+export const progressApr: Photo[] = [
   { src: "/projects/morehead/progress-30.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 30" },
   { src: "/projects/morehead/progress-31.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 31" },
   { src: "/projects/morehead/progress-32.jpg", width: 1440, height: 1920, alt: "One Senior Care Morehead — construction progress 32" },

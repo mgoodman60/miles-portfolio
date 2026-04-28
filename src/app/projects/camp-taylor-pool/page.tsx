@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { CampTaylorGallery } from "@/components/sections/CampTaylorGallery"
 import { BeforeAfterSlider } from "@/components/sections/BeforeAfterSlider"
+import { timelinePhotos } from "./timeline-photos"
 
 const photos = [
   { src: "/projects/camp-taylor/night-pour-hero.jpg", width: 1200, height: 800, alt: "Night concrete pour" },
@@ -194,6 +195,24 @@ export default function CampTaylorPage() {
               <p className="text-xs text-[var(--muted)] mt-4">
                 All photos by Miles Goodman · © 2024–2025
               </p>
+            </div>
+
+            {/* Project timeline */}
+            <div className="mb-16">
+              <h2 className="serif font-light text-3xl mb-2" style={{ color: "var(--ink)" }}>
+                Project Timeline
+              </h2>
+              <p className="text-sm text-[var(--muted)] mb-6">
+                Sep 2024 — Apr 2026 · Groundbreaking through follow-up site visits.
+              </p>
+              <CampTaylorGallery photos={timelinePhotos} />
+              <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1">
+                {timelinePhotos.map((p) => (
+                  <span key={p.src} className="text-[10px] uppercase tracking-[0.12em] text-[var(--muted)]">
+                    {p.caption}
+                  </span>
+                ))}
+              </div>
             </div>
 
             {/* Outcome */}

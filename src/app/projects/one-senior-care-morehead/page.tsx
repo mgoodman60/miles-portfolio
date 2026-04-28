@@ -1,7 +1,7 @@
-import Image from "next/image"
 import Link from "next/link"
 import { CampTaylorGallery } from "@/components/sections/CampTaylorGallery"
-import { dronePhotos, progressPhotos } from "./photos"
+import { ProjectCoverSlideshow } from "@/components/sections/ProjectCoverSlideshow"
+import { dronePhotos, droneHeroSlides, progressFeb, progressMar, progressApr } from "./photos"
 
 export const metadata = {
   title: "One Senior Care — Morehead | Miles Goodman",
@@ -11,17 +11,8 @@ export const metadata = {
 export default function MoreheadPage() {
   return (
     <>
-      {/* Cover */}
-      <div className="relative overflow-hidden" style={{ height: "60vh", minHeight: 400, marginTop: -80 }}>
-        <Image
-          src="/projects/morehead/drone-01.jpg"
-          alt="One Senior Care Morehead — aerial"
-          fill
-          priority
-          className="object-cover object-center"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.6) 100%)" }} />
+      {/* Cover — drone slideshow */}
+      <ProjectCoverSlideshow slides={droneHeroSlides} height="60vh" minHeight={400}>
         <div className="absolute top-24 left-6 md:left-12">
           <span
             className="text-[10px] uppercase tracking-[0.16em] px-3 py-1.5 rounded-full text-white font-medium"
@@ -35,7 +26,7 @@ export default function MoreheadPage() {
             <Link href="/projects" className="text-xs text-white/60 hover:text-white/90 transition-colors px-2 py-2 -mx-2 -my-2 inline-block">← Projects</Link>
           </div>
         </div>
-      </div>
+      </ProjectCoverSlideshow>
 
       {/* Title */}
       <div className="px-6 md:px-12 py-12" style={{ background: "var(--paper-warm)" }}>
@@ -122,14 +113,27 @@ export default function MoreheadPage() {
               </div>
             )}
 
-            {/* Progress photos */}
-            {progressPhotos.length > 0 && (
-              <div className="mb-16">
-                <h2 className="serif font-light text-3xl mb-6" style={{ color: "var(--ink)" }}>Construction Progress</h2>
-                <CampTaylorGallery photos={progressPhotos} />
-                <p className="text-xs text-[var(--muted)] mt-4">All photos by Miles Goodman · © 2026</p>
-              </div>
-            )}
+            {/* Progress photos — split by phase */}
+            <div className="mb-16">
+              <h2 className="serif font-light text-3xl mb-2" style={{ color: "var(--ink)" }}>Construction Progress</h2>
+              <p className="text-sm text-[var(--muted)] mb-10">By phase — foundation through finish.</p>
+
+              {[
+                { label: "Phase 1 · Foundation", sub: "February 2026", photos: progressFeb },
+                { label: "Phase 2 · Framing & PEMB Erection", sub: "March 2026", photos: progressMar },
+                { label: "Phase 3 · Finishes & MEP", sub: "April 2026", photos: progressApr },
+              ].map(({ label, sub, photos }) => photos.length > 0 && (
+                <div key={label} className="mb-12">
+                  <div className="mb-4">
+                    <p className="text-[10px] uppercase tracking-[0.16em] text-[var(--accent)] font-medium">{label}</p>
+                    <p className="text-xs text-[var(--muted)]">{sub} · {photos.length} photos</p>
+                  </div>
+                  <CampTaylorGallery photos={photos} />
+                </div>
+              ))}
+
+              <p className="text-xs text-[var(--muted)] mt-4">All photos by Miles Goodman · © 2026</p>
+            </div>
           </div>
         </div>
       </div>
