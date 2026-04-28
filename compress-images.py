@@ -6,7 +6,7 @@ import sys
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 import os
 from pathlib import Path
-from PIL import Image
+from PIL import Image, ImageOps
 
 PUBLIC = Path("C:/Users/msgoo/Miles Construction Project Folder/portfolio-site/public")
 MAX_DIM = 1920
@@ -27,6 +27,10 @@ for img_path in PUBLIC.rglob("*"):
 
     try:
         with Image.open(img_path) as img:
+            # Bake EXIF orientation into pixels (iPhone portraits ship as
+            # landscape pixels + "rotate 90°" tag — Pillow strips the tag on
+            # save, so we must rotate the buffer before resizing).
+            img = ImageOps.exif_transpose(img)
             w, h = img.size
             if max(w, h) <= MAX_DIM and size_before < 300_000:
                 # Already small enough
