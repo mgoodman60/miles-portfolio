@@ -5,6 +5,7 @@ import { Marquee } from "@/components/magicui/marquee"
 import { HeroSlideshow } from "@/components/sections/HeroSlideshow"
 import { ProjectCard3D } from "@/components/sections/ProjectCard3D"
 import { Stat } from "@/components/ui/Stat"
+import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 
 const stats = [
   { prefix: "$", value: 22, suffix: "M+", label: "Contributed-to Project Value" },
@@ -124,9 +125,9 @@ export default function Home() {
             />
           </div>
           <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-[var(--muted)] mb-5">
+            <SectionEyebrow className="mb-5">
               Site Superintendent · W Principles, LLC
-            </p>
+            </SectionEyebrow>
             <h2
               className="serif font-light leading-snug tracking-tight mb-6"
               style={{ fontSize: "clamp(28px,3.6vw,44px)", color: "var(--ink)" }}
@@ -164,9 +165,9 @@ export default function Home() {
         className="border-t py-8 relative overflow-hidden"
         style={{ borderColor: "var(--border)" }}
       >
-        <p className="text-center text-xs uppercase tracking-[0.22em] text-[var(--muted)] mb-6">
+        <SectionEyebrow className="text-center mb-6">
           Press Coverage
-        </p>
+        </SectionEyebrow>
         <div className="relative">
           <div className="absolute inset-y-0 left-0 w-24 z-10 pointer-events-none" style={{ background: "linear-gradient(to right, var(--paper-warm), transparent)" }} />
           <div className="absolute inset-y-0 right-0 w-24 z-10 pointer-events-none" style={{ background: "linear-gradient(to left, var(--paper-warm), transparent)" }} />

@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { CampTaylorGallery } from "@/components/sections/CampTaylorGallery"
 import { ProjectCoverSlideshow } from "@/components/sections/ProjectCoverSlideshow"
+import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 import { dronePhotos, droneHeroSlides, progressFeb, progressMar, progressApr } from "./photos"
 
 export const metadata = {
@@ -31,7 +32,7 @@ export default function MoreheadPage() {
       {/* Title */}
       <div className="px-6 md:px-12 py-12" style={{ background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px]">
-          <p className="text-xs uppercase tracking-[0.22em] text-[var(--muted)] mb-3">Morehead, KY · Active — Jan 2026 to Aug 2026</p>
+          <SectionEyebrow className="mb-3">Morehead, KY · Active — Jan 2026 to Aug 2026</SectionEyebrow>
           <h1 className="serif font-light tracking-tight mb-2" style={{ fontSize: "clamp(36px,5vw,72px)", color: "var(--ink)" }}>
             One Senior Care — Morehead
           </h1>

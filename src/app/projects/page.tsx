@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 
 const projects = [
   {
@@ -58,9 +59,9 @@ export default function ProjectsPage() {
       {/* Page header */}
       <div className="pt-40 pb-16 px-6 md:px-12" style={{ background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px]">
-          <p className="text-xs uppercase tracking-[0.22em] text-[var(--muted)] mb-4">
+          <SectionEyebrow className="mb-4">
             Site Superintendent · Kentucky · 2022–Present
-          </p>
+          </SectionEyebrow>
           <h1 className="serif font-light tracking-tight" style={{ fontSize: "clamp(40px,5.5vw,80px)", color: "var(--ink)" }}>
             Projects
           </h1>

@@ -1,3 +1,5 @@
+import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
+
 export const metadata = {
   title: "Contact — Miles Goodman",
   description: "Get in touch with Miles Goodman, Site Superintendent at W Principles, LLC.",
@@ -9,7 +11,7 @@ export default function ContactPage() {
       {/* Header */}
       <div className="pt-40 pb-16 px-6 md:px-12" style={{ background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px]">
-          <p className="text-xs uppercase tracking-[0.22em] text-[var(--muted)] mb-4">Direct contact</p>
+          <SectionEyebrow className="mb-4">Direct contact</SectionEyebrow>
           <h1 className="serif font-light tracking-tight" style={{ fontSize: "clamp(40px,5.5vw,80px)", color: "var(--ink)" }}>Contact</h1>
         </div>
       </div>

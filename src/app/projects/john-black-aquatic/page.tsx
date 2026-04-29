@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { CampTaylorGallery } from "@/components/sections/CampTaylorGallery"
 import { BeforeAfterSlider } from "@/components/sections/BeforeAfterSlider"
+import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 
 const photos = Array.from({ length: 14 }, (_, i) => ({
   src: `/projects/john-black/drone-${String(i + 1).padStart(2, "0")}.jpg`,
@@ -39,7 +40,7 @@ export default function JohnBlackPage() {
       {/* Title */}
       <div className="px-6 md:px-12 py-12" style={{ background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px]">
-          <p className="text-xs uppercase tracking-[0.22em] text-[var(--muted)] mb-3">La Grange, KY · 2024</p>
+          <SectionEyebrow className="mb-3">La Grange, KY · 2024</SectionEyebrow>
           <h1 className="serif font-light tracking-tight mb-2" style={{ fontSize: "clamp(36px,5vw,72px)", color: "var(--ink)" }}>
             John W. Black Aquatic Center
           </h1>

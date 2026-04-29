@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { BlurFade } from "@/components/magicui/blur-fade"
+import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 
 export const metadata = {
   title: "About — Miles Goodman",
@@ -22,7 +23,7 @@ export default function AboutPage() {
       {/* Header */}
       <div className="pt-40 pb-16 px-6 md:px-12" style={{ background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px]">
-          <p className="text-xs uppercase tracking-[0.22em] text-[var(--muted)] mb-4">Site Superintendent · MBA Candidate</p>
+          <SectionEyebrow className="mb-4">Site Superintendent · MBA Candidate</SectionEyebrow>
           <h1 className="serif font-light tracking-tight" style={{ fontSize: "clamp(40px,5.5vw,80px)", color: "var(--ink)" }}>About</h1>
         </div>
       </div>

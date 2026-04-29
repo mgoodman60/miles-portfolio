@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { BlurFade } from "@/components/magicui/blur-fade"
 import { Stat } from "@/components/ui/Stat"
+import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 
 export const metadata = {
   title: "AI Tools — Miles Goodman",
@@ -75,9 +76,9 @@ export default function AIToolsPage() {
       <section className="pt-40 pb-24 px-6 md:px-12" style={{ background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-[var(--muted)] mb-6">
+            <SectionEyebrow className="mb-6">
               MBA Candidate — Project Management &amp; AI · Northern Kentucky University
-            </p>
+            </SectionEyebrow>
             <h1 className="serif font-light tracking-tight mb-6" style={{ fontSize: "clamp(40px,5.5vw,80px)", color: "var(--ink)", maxWidth: 900 }}>
               AI doesn&rsquo;t replace field judgment.{" "}
               <em className="not-italic" style={{ color: "var(--accent)", fontStyle: "italic" }}>

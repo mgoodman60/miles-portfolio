@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { CampTaylorGallery } from "@/components/sections/CampTaylorGallery"
 import { BeforeAfterSlider } from "@/components/sections/BeforeAfterSlider"
+import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 import { timelinePhotos } from "./timeline-photos"
 
 const photos = [
@@ -53,7 +54,7 @@ export default function CampTaylorPage() {
       {/* ── Title block ────────────────────────────────── */}
       <div className="px-6 md:px-12 py-12" style={{ background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px]">
-          <p className="text-xs uppercase tracking-[0.22em] text-[var(--muted)] mb-3">Louisville, KY · 2025</p>
+          <SectionEyebrow className="mb-3">Louisville, KY · 2025</SectionEyebrow>
           <h1 className="serif font-light tracking-tight mb-2" style={{ fontSize: "clamp(36px,5vw,72px)", color: "var(--ink)" }}>
             Camp Taylor Memorial Park Pool
           </h1>

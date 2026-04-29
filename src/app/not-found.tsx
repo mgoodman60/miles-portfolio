@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 
 export const metadata = {
   title: "Not found — Miles Goodman",
@@ -11,7 +12,7 @@ export default function NotFound() {
       style={{ background: "var(--paper-warm)" }}
     >
       <div className="mx-auto max-w-[1480px]">
-        <p className="text-xs uppercase tracking-[0.22em] text-[var(--muted)] mb-6">404</p>
+        <SectionEyebrow className="mb-6">404</SectionEyebrow>
         <h1
           className="serif font-light tracking-tight mb-6"
           style={{ fontSize: "clamp(40px,5.5vw,80px)", color: "var(--ink)" }}

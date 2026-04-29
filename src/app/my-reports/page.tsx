@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { BlurFade } from "@/components/magicui/blur-fade"
 import { Stat } from "@/components/ui/Stat"
+import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 
 export const metadata = {
   title: "My Reports — Miles Goodman",
@@ -61,9 +62,9 @@ export default function MyReportsPage() {
       <section className="pt-40 pb-20 px-6 md:px-12" style={{ background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px] grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-[var(--muted)] mb-6">
+            <SectionEyebrow className="mb-6">
               My Reports · Daily Reporting · Built by Miles Goodman
-            </p>
+            </SectionEyebrow>
             <h1 className="serif font-light tracking-tight mb-6" style={{ fontSize: "clamp(40px,5.5vw,80px)", color: "var(--ink)" }}>
               My Reports<br />
               <em className="font-light not-italic" style={{ color: "var(--accent)" }}>knows what happened.</em>
@@ -176,7 +177,7 @@ export default function MyReportsPage() {
         style={{ borderColor: "var(--border)" }}
       >
         <div className="mx-auto w-full max-w-[1480px] flex flex-wrap items-center gap-8 justify-between">
-          <p className="text-xs uppercase tracking-[0.18em]" style={{ color: "var(--muted)" }}>Tech Stack</p>
+          <SectionEyebrow size="section">Tech Stack</SectionEyebrow>
           <div className="flex flex-wrap gap-6 font-mono text-sm" style={{ color: "var(--ink)" }}>
             {["FastAPI", "React 19", "Vite", "Tailwind v4", "Claude API"].map((t, i, arr) => (
               <span key={t} className="flex items-center gap-6">
