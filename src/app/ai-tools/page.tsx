@@ -25,7 +25,7 @@ const tools: Tool[] = [
     num: "01",
     tag: "My Reports · Daily Reporting",
     title: "Site photos → owner-ready reports",
-    body: "I built My Reports on the Claude API to turn daily site photos and voice notes into structured daily progress reports. Live on One Senior Care in Morehead, KY — runs every workday. Roughly 80% faster than writing reports manually, and the owner reads it before 7am.",
+    body: "I built My Reports on the Claude API to turn daily site photos and voice notes into structured daily progress reports. Live on One Senior Care in Morehead, KY — runs every workday. Roughly 80% faster than writing reports manually, and the owner has it before the day starts.",
     stat: "~80% faster",
     statLabel: "vs. manual reporting",
     link: "/my-reports",

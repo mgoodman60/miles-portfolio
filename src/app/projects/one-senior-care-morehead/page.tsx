@@ -94,7 +94,7 @@ export default function MoreheadPage() {
                 My Reports deployed on this project
               </h3>
               <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
-                Daily reports generated from iPhone photos and voice notes via the Claude API. 164 project documents indexed (as of Apr 2026). Owner-ready PDF in the inbox each morning. Roughly 80% faster than writing reports by hand.
+                Daily reports generated from iPhone photos and voice notes via the Claude API. 164 project documents indexed (as of Apr 2026). Owner-ready PDF on workdays. Roughly 80% faster than writing reports by hand.
               </p>
               <Link
                 href="/my-reports"
