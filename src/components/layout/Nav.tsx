@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useId, useState } from "react"
+import { useEffect, useId, useRef, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
@@ -20,6 +20,11 @@ export function Nav() {
   const menuId = useId()
   const isHome = pathname === "/"
 
+  const hamburgerRef = useRef<HTMLButtonElement>(null)
+  const menuRef = useRef<HTMLDivElement>(null)
+  // Track previous open state so we only restore focus on a true close transition
+  const wasOpenRef = useRef(false)
+
   // Initialize from current scroll position + listen for changes
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60)
@@ -32,6 +37,64 @@ export function Nav() {
   useEffect(() => {
     setMenuOpen(false)
   }, [pathname])
+
+  // Body scroll lock + focus return when mobile menu toggles
+  useEffect(() => {
+    if (menuOpen) {
+      const previousOverflow = document.body.style.overflow
+      document.body.style.overflow = "hidden"
+      wasOpenRef.current = true
+      return () => {
+        document.body.style.overflow = previousOverflow
+      }
+    } else if (wasOpenRef.current) {
+      // Menu just closed — return focus to hamburger
+      wasOpenRef.current = false
+      hamburgerRef.current?.focus()
+    }
+  }, [menuOpen])
+
+  // Escape-to-close + focus trap inside the panel
+  useEffect(() => {
+    if (!menuOpen) return
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault()
+        setMenuOpen(false)
+        return
+      }
+
+      if (e.key !== "Tab") return
+
+      const panel = menuRef.current
+      if (!panel) return
+
+      const focusables = panel.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )
+      if (focusables.length === 0) return
+
+      const first = focusables[0]
+      const last = focusables[focusables.length - 1]
+      const active = document.activeElement as HTMLElement | null
+
+      if (e.shiftKey) {
+        if (active === first || !panel.contains(active)) {
+          e.preventDefault()
+          last.focus()
+        }
+      } else {
+        if (active === last) {
+          e.preventDefault()
+          first.focus()
+        }
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown)
+    return () => document.removeEventListener("keydown", handleKeyDown)
+  }, [menuOpen])
 
   const overHero = isHome && !scrolled
 
@@ -46,6 +109,7 @@ export function Nav() {
         {/* Logo */}
         <Link
           href="/"
+          aria-current={pathname === "/" ? "page" : undefined}
           className={cn(
             "serif text-[22px] font-normal tracking-tight transition-colors",
             overHero ? "text-white" : "text-[var(--ink)]"
@@ -62,6 +126,7 @@ export function Nav() {
               <Link
                 key={href}
                 href={href}
+                aria-current={active ? "page" : undefined}
                 className={cn(
                   "text-sm font-medium tracking-wide transition-colors relative pb-0.5",
                   overHero
@@ -79,6 +144,7 @@ export function Nav() {
           })}
           <Link
             href="/resume"
+            aria-current={pathname.startsWith("/resume") ? "page" : undefined}
             className={cn(
               "ml-2 px-4 py-2 text-sm font-medium rounded transition-colors",
               overHero
@@ -92,6 +158,7 @@ export function Nav() {
 
         {/* Mobile hamburger */}
         <button
+          ref={hamburgerRef}
           className="md:hidden flex flex-col gap-1.5 p-3"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
@@ -112,20 +179,29 @@ export function Nav() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div id={menuId} className="md:hidden nav-solid border-t border-[var(--border)]">
+        <div
+          ref={menuRef}
+          id={menuId}
+          className="md:hidden nav-solid border-t border-[var(--border)]"
+        >
           <nav className="flex flex-col px-6 py-4 gap-4">
-            {links.map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
-                className="py-4 text-base font-medium text-[var(--muted)] hover:text-[var(--ink)] transition-colors"
-                onClick={() => setMenuOpen(false)}
-              >
-                {label}
-              </Link>
-            ))}
+            {links.map(({ href, label }) => {
+              const active = pathname.startsWith(href)
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  aria-current={active ? "page" : undefined}
+                  className="py-4 text-base font-medium text-[var(--muted)] hover:text-[var(--ink)] transition-colors"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {label}
+                </Link>
+              )
+            })}
             <Link
               href="/resume"
+              aria-current={pathname.startsWith("/resume") ? "page" : undefined}
               className="mt-2 px-4 py-2.5 text-sm font-medium rounded text-center transition-colors bg-[var(--ink)] text-[var(--paper)] hover:bg-[var(--accent)]"
               onClick={() => setMenuOpen(false)}
             >

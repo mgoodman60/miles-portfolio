@@ -3,10 +3,11 @@
 import { useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { motion, useScroll, useTransform } from "motion/react"
+import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
 
 export function HeroParallax() {
   const ref = useRef<HTMLDivElement>(null)
+  const prefersReduced = useReducedMotion()
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] })
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
 
@@ -16,17 +17,30 @@ export function HeroParallax() {
       className="relative overflow-hidden"
       style={{ height: "100svh", minHeight: 680, marginTop: -80 }}
     >
-      {/* Parallax photo */}
-      <motion.div className="absolute inset-0 scale-110" style={{ y }}>
-        <Image
-          src="/projects/camp-taylor/night-pour-hero.jpg"
-          alt="Night concrete pour — Camp Taylor Memorial Park Pool, Louisville KY"
-          fill
-          priority
-          className="object-cover object-center"
-          sizes="100vw"
-        />
-      </motion.div>
+      {/* Parallax photo (static when reduced motion is preferred) */}
+      {prefersReduced ? (
+        <div className="absolute inset-0">
+          <Image
+            src="/projects/camp-taylor/night-pour-hero.jpg"
+            alt="Night concrete pour — Camp Taylor Memorial Park Pool, Louisville KY"
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+        </div>
+      ) : (
+        <motion.div className="absolute inset-0 scale-110" style={{ y }}>
+          <Image
+            src="/projects/camp-taylor/night-pour-hero.jpg"
+            alt="Night concrete pour — Camp Taylor Memorial Park Pool, Louisville KY"
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+        </motion.div>
+      )}
 
       {/* Gradient overlay */}
       <div

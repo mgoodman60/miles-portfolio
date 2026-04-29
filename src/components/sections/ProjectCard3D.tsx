@@ -3,6 +3,7 @@
 import { useRef, MouseEvent } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { useReducedMotion } from "motion/react"
 
 type Project = {
   slug: string
@@ -17,8 +18,10 @@ type Project = {
 
 export function ProjectCard3D({ project }: { project: Project }) {
   const cardRef = useRef<HTMLDivElement>(null)
+  const prefersReduced = useReducedMotion()
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (prefersReduced) return
     const card = cardRef.current
     if (!card) return
     const { left, top, width, height } = card.getBoundingClientRect()
@@ -29,6 +32,7 @@ export function ProjectCard3D({ project }: { project: Project }) {
   }
 
   const handleMouseLeave = () => {
+    if (prefersReduced) return
     if (cardRef.current) {
       cardRef.current.style.willChange = "auto"
       cardRef.current.style.transform =
@@ -39,9 +43,9 @@ export function ProjectCard3D({ project }: { project: Project }) {
   return (
     <div
       ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ transition: "transform 0.15s ease" }}
+      onMouseMove={prefersReduced ? undefined : handleMouseMove}
+      onMouseLeave={prefersReduced ? undefined : handleMouseLeave}
+      style={prefersReduced ? undefined : { transition: "transform 0.15s ease" }}
       className="group rounded overflow-hidden bg-white shadow-sm hover:shadow-lg"
     >
       <Link href={`/projects/${project.slug}`} className="block">

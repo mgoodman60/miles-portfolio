@@ -19,10 +19,12 @@
   --paper:      #EFEDE6;
   --paper-warm: #E6E3D9;
   --ink:        #1B2026;
-  --muted:      #6B7079;
+  --muted:      #5A5F66;
   --accent:     #2E5266;
   --footer-bg:  #131820;
   --footer-fg:  #CFCDC7;
+  --footer-fg-soft:  #9A9D9A;
+  --footer-fg-faint: #8E9189;
 
   /* shadcn compatibility */
   --background: var(--paper);
@@ -86,6 +88,9 @@ body {
   background: var(--ink);
   color: var(--paper);
 }
+.stat-strip :focus-visible {
+  outline-color: var(--paper);
+}
 
 /* ── Photo placeholder (dev only) ──────────────────── */
 .photo-ph {
@@ -111,6 +116,38 @@ body {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 3px;
+}
+
+/* Focus ring on dark surfaces — accent (#2E5266) is too dark on --footer-bg */
+[data-surface="dark"] :focus-visible {
+  outline-color: var(--paper);
+}
+
+/* Accessibility: skip-to-content link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  transition: top 0.15s ease-in-out;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  top: 1rem;
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Make tabbable main not show a focus ring (programmatic target only) */
+main:focus {
+  outline: none;
 }
 
 /* Accessibility: reduced motion */

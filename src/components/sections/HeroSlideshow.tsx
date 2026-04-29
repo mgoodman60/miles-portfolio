@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { motion, AnimatePresence } from "motion/react"
+import { motion, useReducedMotion } from "motion/react"
 
 const slides = [
   {
@@ -32,27 +32,24 @@ export function HeroSlideshow() {
   const [current, setCurrent] = useState(0)
   const [paused, setPaused] = useState(false)
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const prefersReduced = useReducedMotion()
 
-  const prefersReduced =
-    typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
-
-  const startInterval = () => {
-    if (prefersReduced) return
+  useEffect(() => {
+    if (paused || prefersReduced) {
+      if (intervalRef.current) clearInterval(intervalRef.current)
+      return
+    }
     intervalRef.current = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length)
     }, 5000)
-  }
-
-  useEffect(() => {
-    if (!paused) startInterval()
-    return () => { if (intervalRef.current) clearInterval(intervalRef.current) }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [paused])
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current)
+    }
+  }, [paused, prefersReduced])
 
   const goTo = (i: number) => {
     if (intervalRef.current) clearInterval(intervalRef.current)
     setCurrent(i)
-    if (!paused) startInterval()
   }
 
   return (
@@ -61,6 +58,8 @@ export function HeroSlideshow() {
       style={{ height: "100svh", minHeight: 680, marginTop: -80 }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
+      aria-roledescription="carousel"
+      aria-label="Featured projects"
     >
       {/* All slides rendered simultaneously — no flash on transition */}
       {slides.map((slide, i) => (
@@ -80,6 +79,25 @@ export function HeroSlideshow() {
           />
         </div>
       ))}
+
+      {/* SR-only live region announcing current slide */}
+      <div
+        aria-live="polite"
+        aria-atomic="true"
+        style={{
+          position: "absolute",
+          width: 1,
+          height: 1,
+          padding: 0,
+          margin: -1,
+          overflow: "hidden",
+          clip: "rect(0,0,0,0)",
+          whiteSpace: "nowrap",
+          border: 0,
+        }}
+      >
+        {`Slide ${current + 1} of ${slides.length}: ${slides[current].caption}`}
+      </div>
 
       {/* Gradient — above all slides */}
       <div
@@ -139,8 +157,8 @@ export function HeroSlideshow() {
         </div>
       </div>
 
-      {/* Slide indicators */}
-      <div className="absolute bottom-8 left-6 md:left-12 flex items-center gap-3" style={{ zIndex: 3 }}>
+      {/* Slide indicators + Pause/Play */}
+      <div className="absolute bottom-8 left-6 md:left-12 flex items-center gap-2" style={{ zIndex: 3 }}>
         {slides.map((_, i) => (
           <button
             key={i}
@@ -148,10 +166,15 @@ export function HeroSlideshow() {
             aria-label={`Go to slide ${i + 1}`}
             aria-current={i === current ? "true" : undefined}
             style={{
-              padding: "12px 4px",
+              width: 44,
+              height: 44,
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
               background: "none",
               border: "none",
               cursor: "pointer",
+              padding: 0,
             }}
           >
             <span
@@ -166,6 +189,29 @@ export function HeroSlideshow() {
             />
           </button>
         ))}
+        {!prefersReduced && (
+          <button
+            onClick={() => setPaused((p) => !p)}
+            aria-label={paused ? "Play slideshow" : "Pause slideshow"}
+            aria-pressed={paused}
+            style={{
+              minWidth: 44,
+              minHeight: 44,
+              padding: "0 10px",
+              marginLeft: 4,
+              background: "rgba(0,0,0,0.35)",
+              border: "1px solid rgba(255,255,255,0.4)",
+              borderRadius: 4,
+              color: "rgba(255,255,255,0.9)",
+              fontSize: 11,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              cursor: "pointer",
+            }}
+          >
+            {paused ? "Play" : "Pause"}
+          </button>
+        )}
       </div>
 
       {/* Caption */}

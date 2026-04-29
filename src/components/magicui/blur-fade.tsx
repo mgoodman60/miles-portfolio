@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef } from "react"
-import { motion, useInView, type Variants } from "motion/react"
+import { motion, useInView, useReducedMotion, type Variants } from "motion/react"
 import { cn } from "@/lib/utils"
 
 export function BlurFade({
@@ -24,6 +24,11 @@ export function BlurFade({
   const ref = useRef(null)
   const inViewResult = useInView(ref, { once: true })
   const isVisible = !inViewProp || inViewResult
+  const prefersReduced = useReducedMotion()
+
+  if (prefersReduced) {
+    return <div className={cn(className)}>{children}</div>
+  }
 
   const variants: Variants = {
     hidden: { y: yOffset, opacity: 0, filter: `blur(${blur})` },

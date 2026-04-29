@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function ResumePage() {
   return (
-    <main className="min-h-screen bg-[var(--paper)]">
+    <div className="min-h-screen bg-[var(--paper)]">
       {/* Page header */}
       <section className="bg-[var(--paper-warm)] pt-40 pb-16 border-b border-[var(--border)]">
         <div className="mx-auto max-w-[1480px] px-6 md:px-12">
@@ -240,6 +240,6 @@ export default function ResumePage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   )
 }

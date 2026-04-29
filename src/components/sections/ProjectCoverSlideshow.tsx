@@ -2,8 +2,9 @@
 
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
+import { useReducedMotion } from "motion/react"
 
-type Slide = { src: string; alt: string }
+type Slide = { src: string; alt: string; caption?: string }
 
 export function ProjectCoverSlideshow({
   slides,
@@ -23,21 +24,25 @@ export function ProjectCoverSlideshow({
   const [current, setCurrent] = useState(0)
   const [paused, setPaused] = useState(false)
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const prefersReduced = useReducedMotion()
 
   useEffect(() => {
-    if (paused || slides.length <= 1) return
-    if (typeof window !== "undefined" &&
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+    if (paused || prefersReduced || slides.length <= 1) return
     intervalRef.current = setInterval(() => {
       setCurrent((p) => (p + 1) % slides.length)
     }, intervalMs)
     return () => { if (intervalRef.current) clearInterval(intervalRef.current) }
-  }, [paused, slides.length, intervalMs])
+  }, [paused, prefersReduced, slides.length, intervalMs])
 
   const goTo = (i: number) => {
     if (intervalRef.current) clearInterval(intervalRef.current)
     setCurrent(i)
   }
+
+  const currentSlide = slides[current]
+  const liveText = currentSlide
+    ? `Slide ${current + 1} of ${slides.length}: ${currentSlide.caption ?? currentSlide.alt}`
+    : ""
 
   return (
     <div
@@ -45,6 +50,7 @@ export function ProjectCoverSlideshow({
       style={{ height, minHeight, marginTop: -80 }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
+      aria-roledescription={slides.length > 1 ? "carousel" : undefined}
     >
       {slides.map((slide, i) => (
         <div
@@ -64,6 +70,26 @@ export function ProjectCoverSlideshow({
         </div>
       ))}
 
+      {slides.length > 1 && (
+        <div
+          aria-live="polite"
+          aria-atomic="true"
+          style={{
+            position: "absolute",
+            width: 1,
+            height: 1,
+            padding: 0,
+            margin: -1,
+            overflow: "hidden",
+            clip: "rect(0,0,0,0)",
+            whiteSpace: "nowrap",
+            border: 0,
+          }}
+        >
+          {liveText}
+        </div>
+      )}
+
       <div
         className="absolute inset-0"
         style={{
@@ -76,7 +102,7 @@ export function ProjectCoverSlideshow({
 
       {slides.length > 1 && (
         <div
-          className="absolute bottom-6 left-6 md:left-12 flex items-center gap-3"
+          className="absolute bottom-6 left-6 md:left-12 flex items-center gap-2"
           style={{ zIndex: 4 }}
         >
           {slides.map((_, i) => (
@@ -86,10 +112,15 @@ export function ProjectCoverSlideshow({
               aria-label={`Go to slide ${i + 1}`}
               aria-current={i === current ? "true" : undefined}
               style={{
-                padding: "10px 4px",
+                width: 44,
+                height: 44,
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
                 background: "none",
                 border: "none",
                 cursor: "pointer",
+                padding: 0,
               }}
             >
               <span
@@ -104,6 +135,29 @@ export function ProjectCoverSlideshow({
               />
             </button>
           ))}
+          {!prefersReduced && (
+            <button
+              onClick={() => setPaused((p) => !p)}
+              aria-label={paused ? "Play slideshow" : "Pause slideshow"}
+              aria-pressed={paused}
+              style={{
+                minWidth: 44,
+                minHeight: 44,
+                padding: "0 10px",
+                marginLeft: 4,
+                background: "rgba(0,0,0,0.35)",
+                border: "1px solid rgba(255,255,255,0.4)",
+                borderRadius: 4,
+                color: "rgba(255,255,255,0.9)",
+                fontSize: 11,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                cursor: "pointer",
+              }}
+            >
+              {paused ? "Play" : "Pause"}
+            </button>
+          )}
         </div>
       )}
     </div>
