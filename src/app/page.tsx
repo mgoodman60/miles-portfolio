@@ -4,6 +4,7 @@ import { NumberTicker } from "@/components/magicui/number-ticker"
 import { Marquee } from "@/components/magicui/marquee"
 import { HeroSlideshow } from "@/components/sections/HeroSlideshow"
 import { ProjectCard3D } from "@/components/sections/ProjectCard3D"
+import { Stat } from "@/components/ui/Stat"
 
 const stats = [
   { prefix: "$", value: 22, suffix: "M+", label: "Contributed-to Project Value" },
@@ -62,14 +63,21 @@ export default function Home() {
       <section className="stat-strip py-12 px-6 md:px-12">
         <div className="mx-auto max-w-[1480px] grid grid-cols-3 items-start gap-4 md:gap-8 md:justify-between">
           {stats.map(({ prefix, value, suffix, label }) => (
-            <div key={label} className="flex flex-col items-center md:items-start">
-              <p className="serif text-2xl md:text-4xl font-light tracking-tight text-white leading-none">
-                {prefix}
-                <NumberTicker value={value} className="text-white" />
-                {suffix}
-              </p>
-              <p className="mt-1 text-[10px] md:text-xs uppercase tracking-[0.18em] text-white/50 text-center md:text-left">{label}</p>
-            </div>
+            <Stat
+              key={label}
+              variant="bare"
+              value={
+                <>
+                  {prefix}
+                  <NumberTicker value={value} className="text-white" />
+                  {suffix}
+                </>
+              }
+              label={label}
+              valueClassName="text-2xl md:text-4xl tracking-tight text-white"
+              labelClassName="text-[10px] md:text-xs text-white/50 text-center md:text-left"
+              className="flex flex-col items-center md:items-start"
+            />
           ))}
         </div>
       </section>

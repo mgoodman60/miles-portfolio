@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { BlurFade } from "@/components/magicui/blur-fade"
+import { Stat } from "@/components/ui/Stat"
 
 export const metadata = {
   title: "AI Tools — Miles Goodman",
@@ -18,6 +19,7 @@ type Tool = {
   linkLabel: string
   external?: boolean
   live?: boolean
+  featured?: boolean
 }
 
 const tools: Tool[] = [
@@ -31,6 +33,7 @@ const tools: Tool[] = [
     link: "/my-reports",
     linkLabel: "See how it works",
     live: true,
+    featured: true,
   },
   {
     num: "02",
@@ -105,7 +108,7 @@ export default function AIToolsPage() {
       {/* Tools — alternating rows */}
       <section className="py-24 px-6 md:px-12">
         <div className="mx-auto max-w-[1480px] space-y-0">
-          {tools.map(({ num, tag, title, body, stat, statLabel, link, linkLabel, external, live }, i) => (
+          {tools.map(({ num, tag, title, body, stat, statLabel, link, linkLabel, external, live, featured }, i) => (
             <BlurFade key={num} inView delay={i * 0.15}>
             <div
               className="py-16 border-t grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16"
@@ -149,23 +152,12 @@ export default function AIToolsPage() {
 
               {/* Stat card */}
               <div className="md:col-span-4">
-                <div
-                  className="min-h-[120px] rounded p-8 flex flex-col justify-center"
-                  style={{ background: i % 2 === 0 ? "var(--ink)" : "var(--paper-warm)" }}
-                >
-                  <p
-                    className="serif text-3xl font-light mb-2"
-                    style={{ color: i % 2 === 0 ? "var(--paper)" : "var(--ink)" }}
-                  >
-                    {stat}
-                  </p>
-                  <p
-                    className="text-xs uppercase tracking-[0.18em]"
-                    style={{ color: i % 2 === 0 ? "rgba(239,237,230,0.7)" : "var(--muted)" }}
-                  >
-                    {statLabel}
-                  </p>
-                </div>
+                <Stat
+                  value={stat}
+                  label={statLabel}
+                  variant={featured ? "dark" : "warm"}
+                  className="min-h-[120px] flex flex-col justify-center !p-8"
+                />
               </div>
             </div>
             </BlurFade>

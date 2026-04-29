@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { BlurFade } from "@/components/magicui/blur-fade"
+import { Stat } from "@/components/ui/Stat"
 
 export const metadata = {
   title: "My Reports — Miles Goodman",
@@ -91,14 +92,7 @@ export default function MyReportsPage() {
           {/* Stats */}
           <div className="grid grid-cols-2 gap-6">
             {stats.map(({ value, label }) => (
-              <div
-                key={label}
-                className="rounded p-6 border"
-                style={{ borderColor: "var(--border)", background: "var(--paper)" }}
-              >
-                <p className="serif text-3xl font-light mb-1" style={{ color: "var(--ink)" }}>{value}</p>
-                <p className="text-xs uppercase tracking-[0.14em]" style={{ color: "var(--muted)" }}>{label}</p>
-              </div>
+              <Stat key={label} value={value} label={label} />
             ))}
           </div>
         </div>
@@ -137,16 +131,21 @@ export default function MyReportsPage() {
 
       {/* Dark stat bar */}
       <section className="py-12 px-6 md:px-12 stat-strip">
-        <div className="mx-auto max-w-[1480px] flex flex-wrap gap-8 justify-center md:justify-between items-center">
+        <div className="mx-auto max-w-[1480px] grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {[
-            ["164", "Documents indexed — Morehead"],
-            ["< 5 min", "Capture to owner-ready PDF"],
-            ["Daily", "Compliance log generated for ARPA-funded work"],
-          ].map(([val, label]) => (
-            <div key={label} className="text-center md:text-left">
-              <p className="serif text-2xl font-light text-white">{val}</p>
-              <p className="text-xs uppercase tracking-[0.18em] text-white/50 mt-1">{label}</p>
-            </div>
+            { value: "164", label: "Documents indexed — Morehead" },
+            { value: "< 5 min", label: "Capture to owner-ready PDF" },
+            { value: "Daily", label: "Compliance log generated for ARPA-funded work" },
+          ].map(({ value, label }) => (
+            <Stat
+              key={label}
+              variant="bare"
+              value={value}
+              label={label}
+              valueClassName="text-2xl md:text-3xl text-white"
+              labelClassName="text-white/60"
+              className="text-center md:text-left"
+            />
           ))}
         </div>
       </section>
