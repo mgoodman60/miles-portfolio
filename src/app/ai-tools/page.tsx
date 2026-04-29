@@ -7,22 +7,36 @@ export const metadata = {
   description: "AI tools built and actively used in the field — daily reporting, plan review, and bid estimation.",
 }
 
-const tools = [
+type Tool = {
+  num: string
+  tag: string
+  title: string
+  body: string
+  stat: string
+  statLabel: string
+  link: string
+  linkLabel: string
+  external?: boolean
+  live?: boolean
+}
+
+const tools: Tool[] = [
   {
     num: "01",
-    tag: "ForemanOS · Daily Reporting",
+    tag: "My Reports · Daily Reporting",
     title: "Site photos → owner-ready reports",
-    body: "I built ForemanOS on the Claude API to turn daily site photos and voice notes into structured daily progress reports. Currently live on One Senior Care in Morehead, KY. Cuts daily admin time by ~80% and keeps owners informed without a single phone call.",
-    stat: "~80% time saved",
+    body: "I built My Reports on the Claude API to turn daily site photos and voice notes into structured daily progress reports. Live on One Senior Care in Morehead, KY — runs every workday. Roughly 80% faster than writing reports manually, and the owner reads it before 7am.",
+    stat: "~80% faster",
     statLabel: "vs. manual reporting",
     link: "/my-reports",
     linkLabel: "See how it works",
+    live: true,
   },
   {
     num: "02",
     tag: "Claude API · Plan Review",
     title: "Plan review and concrete quantity takeoffs",
-    body: "I use Claude to assist with reading construction drawings and calculating concrete quantities for bid and self-perform scopes. Upload a PDF plan set, describe the scope, and get a structured takeoff to check against manual calculations. Useful for footings, slabs, walls, and pool shells.",
+    body: "I use Claude to read construction drawings and calculate concrete quantities for bid and self-perform scopes. Upload a PDF plan set, describe the scope, and get a structured takeoff to check against manual calculations. Useful for footings, slabs, walls, and pool shells.",
     stat: "MBA Focus",
     statLabel: "Project Management & AI — NKU",
     link: "/about",
@@ -37,6 +51,17 @@ const tools = [
     statLabel: "No missed items, no delayed reviews",
     link: "/contact",
     linkLabel: "Talk shop",
+  },
+  {
+    num: "04",
+    tag: "ForemanOS · Superintendent Field OS",
+    title: "A working super's operating system, public on GitHub",
+    body: "ForemanOS is a separate platform I'm building — a Claude Code plugin with 42 skills, 37 commands, and 21 field-reference documents covering daily reporting, scheduling, document intelligence, and DWG extraction. The broader toolkit My Reports grew out of. Open source.",
+    stat: "42 skills",
+    statLabel: "Public Claude Code plugin",
+    link: "https://github.com/mgoodman60/foreman-os-plugin",
+    linkLabel: "View on GitHub",
+    external: true,
   },
 ]
 
@@ -58,7 +83,7 @@ export default function AIToolsPage() {
               that keeps superintendents out of the field.
             </h1>
             <div className="flex flex-wrap gap-6 text-sm" style={{ color: "var(--muted)" }}>
-              <span>3 active tools</span>
+              <span>4 tools</span>
               <span style={{ color: "var(--border)" }}>·</span>
               <span>Built on Claude API</span>
               <span style={{ color: "var(--border)" }}>·</span>
@@ -80,7 +105,7 @@ export default function AIToolsPage() {
       {/* Tools — alternating rows */}
       <section className="py-16 px-6 md:px-12">
         <div className="mx-auto max-w-[1480px] space-y-0">
-          {tools.map(({ num, tag, title, body, stat, statLabel, link, linkLabel }, i) => (
+          {tools.map(({ num, tag, title, body, stat, statLabel, link, linkLabel, external, live }, i) => (
             <BlurFade key={num} inView delay={i * 0.15}>
             <div
               className="py-16 border-t grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16"
@@ -93,7 +118,7 @@ export default function AIToolsPage() {
 
               {/* Content */}
               <div className="md:col-span-7">
-                {i === 0 && (
+                {live && (
                   <span className="inline-block text-[9px] uppercase tracking-widest px-2 py-0.5 rounded-full font-medium mb-3" style={{ background: "var(--accent)", color: "var(--paper)" }}>
                     Live
                   </span>
@@ -101,13 +126,25 @@ export default function AIToolsPage() {
                 <span className="text-[10px] uppercase tracking-[0.18em] text-[var(--muted)] mb-4 block">{tag}</span>
                 <h2 className="serif font-light text-3xl mb-4 leading-snug" style={{ color: "var(--ink)" }}>{title}</h2>
                 <p className="text-base leading-relaxed mb-6" style={{ color: "var(--muted)" }}>{body}</p>
-                <Link
-                  href={link}
-                  className="inline-block py-2 text-sm font-medium hover:underline underline-offset-4"
-                  style={{ color: "var(--accent)" }}
-                >
-                  {linkLabel} →
-                </Link>
+                {external ? (
+                  <a
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block py-2 text-sm font-medium hover:underline underline-offset-4"
+                    style={{ color: "var(--accent)" }}
+                  >
+                    {linkLabel} ↗
+                  </a>
+                ) : (
+                  <Link
+                    href={link}
+                    className="inline-block py-2 text-sm font-medium hover:underline underline-offset-4"
+                    style={{ color: "var(--accent)" }}
+                  >
+                    {linkLabel} →
+                  </Link>
+                )}
               </div>
 
               {/* Stat card */}

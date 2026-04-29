@@ -3,7 +3,7 @@ import { BlurFade } from "@/components/magicui/blur-fade"
 
 export const metadata = {
   title: "My Reports — Miles Goodman",
-  description: "ForemanOS: AI-powered daily construction reporting app built by Miles Goodman. iPhone photos → owner-ready PDFs in under 5 minutes.",
+  description: "My Reports: AI daily construction reporting app built by Miles Goodman. iPhone photos and voice notes become owner-ready PDFs in under 5 minutes.",
 }
 
 const steps = [
@@ -17,7 +17,7 @@ const steps = [
     tag: "~30 sec · Claude API",
     num: "02",
     title: "AI compiles the report",
-    body: "ForemanOS sends photos and voice notes to the Claude API. It structures a professional daily progress report — narrative, photo captions, trade log, weather, and open items.",
+    body: "My Reports sends photos and voice notes to the Claude API. It structures the day into a daily progress report — narrative, photo captions, trade log, weather, and open items.",
   },
   {
     tag: "~1 min · PDF + email",
@@ -28,16 +28,16 @@ const steps = [
 ]
 
 const stats = [
-  { value: "~80%", label: "Daily report time saved" },
-  { value: "Active", label: "Live on One Senior Care, Morehead" },
-  { value: "164", label: "Documents AI-indexed on active project" },
+  { value: "~80%", label: "Faster than manual reporting" },
+  { value: "Live", label: "One Senior Care, Morehead" },
+  { value: "164", label: "Documents indexed — Morehead, Apr 2026" },
   { value: "< 5 min", label: "Photo to structured report" },
 ]
 
 const features = [
   {
     title: "Owner visibility",
-    body: "Owners receive a polished PDF report every morning — photos, progress summary, open items — without a single phone call.",
+    body: "Owners get a PDF report every morning — photos, progress summary, open items — without having to call for an update.",
   },
   {
     title: "Sub-contractor tracking",
@@ -49,7 +49,7 @@ const features = [
   },
   {
     title: "Audit-ready documentation",
-    body: "ARPA-funded and government projects require daily compliance documentation. ForemanOS generates it as a byproduct of normal field work.",
+    body: "ARPA-funded and government projects require daily compliance documentation. My Reports generates it as a byproduct of normal field work.",
   },
 ]
 
@@ -61,22 +61,29 @@ export default function MyReportsPage() {
         <div className="mx-auto max-w-[1480px] grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div>
             <p className="text-xs uppercase tracking-[0.22em] text-[var(--muted)] mb-6">
-              ForemanOS · AI Field Tools · Built by Miles Goodman
+              My Reports · Daily Reporting · Built by Miles Goodman
             </p>
             <h1 className="serif font-light tracking-tight mb-6" style={{ fontSize: "clamp(40px,5.5vw,80px)", color: "var(--ink)" }}>
               My Reports<br />
               <em className="font-light not-italic" style={{ color: "var(--accent)" }}>knows what happened.</em>
             </h1>
             <p className="text-lg leading-relaxed mb-8" style={{ color: "var(--muted)" }}>
-              A superintendent takes 20–40 job site photos a day. Most stay on the phone. ForemanOS turns them into structured, owner-ready daily progress reports — automatically, every morning.
+              A superintendent takes 20–40 job site photos a day. Most stay on the phone. My Reports turns them into owner-ready daily progress reports — automatically, every morning.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
-                href="/ai-tools"
+                href="/contact"
                 className="px-6 py-3.5 text-sm font-medium rounded transition-colors"
                 style={{ background: "var(--ink)", color: "var(--paper)" }}
               >
-                All AI Tools →
+                Contact
+              </Link>
+              <Link
+                href="/projects/one-senior-care-morehead"
+                className="px-6 py-3.5 text-sm font-medium rounded border transition-colors hover:bg-black/5"
+                style={{ borderColor: "var(--border)", color: "var(--ink)" }}
+              >
+                See it on the Morehead project →
               </Link>
             </div>
           </div>
@@ -132,9 +139,9 @@ export default function MyReportsPage() {
       <section className="py-12 px-6 md:px-12 stat-strip">
         <div className="mx-auto max-w-[1480px] flex flex-wrap gap-8 justify-center md:justify-between items-center">
           {[
-            ["164", "Documents indexed — active project"],
+            ["164", "Documents indexed — Morehead"],
             ["< 5 min", "Capture to owner-ready PDF"],
-            ["0", "Phone calls to explain progress"],
+            ["Daily", "Compliance log generated for ARPA-funded work"],
           ].map(([val, label]) => (
             <div key={label} className="text-center md:text-left">
               <p className="serif text-2xl font-light text-white">{val}</p>

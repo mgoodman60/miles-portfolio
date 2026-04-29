@@ -197,7 +197,8 @@ export default function ResumePage() {
                   </h3>
                   <ul className="space-y-1.5 text-sm text-[var(--ink)]">
                     <li>Claude API</li>
-                    <li>ForemanOS — custom-built daily reporting system</li>
+                    <li>My Reports — custom-built daily reporting app</li>
+                    <li>ForemanOS — Claude Code plugin (superintendent field OS)</li>
                   </ul>
                 </div>
 

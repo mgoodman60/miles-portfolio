@@ -38,7 +38,7 @@ export default function AboutPage() {
             </BlurFade>
             <BlurFade inView delay={0.1}>
               <p className="text-base leading-relaxed mb-6" style={{ color: "var(--muted)" }}>
-                I&rsquo;m also an MBA candidate at Northern Kentucky University (Project Management &amp; AI, expected 2026), which is where my interest in applying AI tools to field operations took a more deliberate shape. ForemanOS — the daily reporting system I built on the Claude API — grew out of that intersection.
+                I&rsquo;m also an MBA candidate at Northern Kentucky University (Project Management &amp; AI, expected 2026), which is where my interest in applying AI tools to field operations took a more deliberate shape. My Reports — the daily reporting app I built on the Claude API — grew out of that intersection. ForemanOS, a broader Claude Code plugin I&rsquo;m developing alongside it, is where the rest of those tools live.
               </p>
             </BlurFade>
             <BlurFade inView delay={0.2}>

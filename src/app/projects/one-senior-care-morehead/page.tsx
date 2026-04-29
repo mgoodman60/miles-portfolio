@@ -80,21 +80,21 @@ export default function MoreheadPage() {
                 The 10,060 SF facility uses a pre-engineered metal building (PEMB) structure. W Principles, LLC is self-performing the concrete scope under the Walker Company of Kentucky as general contractor. I'm managing daily field operations, trade coordination, and owner reporting on site.
               </p>
               <p className="text-base leading-relaxed" style={{ color: "var(--muted)" }}>
-                This project is also the live deployment environment for my AI-powered daily reporting app — ForemanOS processes site photos and voice notes into structured owner reports each morning.
+                This project is also the live deployment environment for my AI daily reporting app — My Reports processes site photos and voice notes into structured owner reports each morning.
               </p>
             </div>
 
-            {/* ForemanOS callout */}
+            {/* My Reports callout */}
             <div
-              className="rounded p-8 mb-16 border-l-4"
+              className="rounded p-8 mb-16 border-l-2"
               style={{ background: "var(--paper-warm)", borderColor: "var(--accent)" }}
             >
               <p className="text-xs uppercase tracking-[0.16em] text-[var(--accent)] mb-2">AI Field Tools</p>
               <h3 className="serif font-light text-xl mb-3" style={{ color: "var(--ink)" }}>
-                ForemanOS deployed on this project
+                My Reports deployed on this project
               </h3>
               <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
-                Daily reports generated from iPhone photos + voice notes via the Claude API. 164 project documents indexed. Owner-ready PDF in the inbox before 7am — every day. Cuts daily admin time by ~80%.
+                Daily reports generated from iPhone photos and voice notes via the Claude API. 164 project documents indexed (as of Apr 2026). Owner-ready PDF in the inbox each morning. Roughly 80% faster than writing reports by hand.
               </p>
               <Link
                 href="/my-reports"

@@ -128,7 +128,7 @@ export default function Home() {
             <p className="text-base leading-relaxed mb-8" style={{ color: "var(--muted)" }}>
               I manage commercial construction in Kentucky — aquatic facilities, senior care, concrete
               self-perform — and I build AI field tools that run on the same job sites I&apos;m running. Currently active on One Senior Care
-              in Morehead with ForemanOS running daily.
+              in Morehead with My Reports running daily.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link

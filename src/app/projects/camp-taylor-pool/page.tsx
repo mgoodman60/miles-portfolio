@@ -146,7 +146,7 @@ export default function CampTaylorPage() {
                     challenge: "ARPA compliance documentation",
                     headline: "Public funding means every dollar is on record.",
                     body: "ARPA-funded projects carry daily reporting and compliance requirements that go beyond standard commercial work. Owner, city, and federal paperwork ran in parallel throughout the project.",
-                    resolution: "Built ForemanOS, a daily documentation system — photos tagged, narrated, and compiled into owner-ready PDFs each morning.",
+                    resolution: "Built My Reports, a daily documentation system — photos tagged, narrated, and compiled into owner-ready PDFs each morning.",
                   },
                   {
                     num: "03",
