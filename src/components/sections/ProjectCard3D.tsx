@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, MouseEvent } from "react"
+import { useEffect, useRef, useState, MouseEvent } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { useReducedMotion } from "motion/react"
@@ -19,9 +19,20 @@ type Project = {
 export function ProjectCard3D({ project }: { project: Project }) {
   const cardRef = useRef<HTMLDivElement>(null)
   const prefersReduced = useReducedMotion()
+  const [isTouch, setIsTouch] = useState(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia("(hover: none)")
+    setIsTouch(mq.matches)
+    const onChange = (e: MediaQueryListEvent) => setIsTouch(e.matches)
+    mq.addEventListener("change", onChange)
+    return () => mq.removeEventListener("change", onChange)
+  }, [])
+
+  const tiltDisabled = prefersReduced || isTouch
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (prefersReduced) return
+    if (tiltDisabled) return
     const card = cardRef.current
     if (!card) return
     const { left, top, width, height } = card.getBoundingClientRect()
@@ -32,7 +43,7 @@ export function ProjectCard3D({ project }: { project: Project }) {
   }
 
   const handleMouseLeave = () => {
-    if (prefersReduced) return
+    if (tiltDisabled) return
     if (cardRef.current) {
       cardRef.current.style.willChange = "auto"
       cardRef.current.style.transform =
@@ -43,9 +54,9 @@ export function ProjectCard3D({ project }: { project: Project }) {
   return (
     <div
       ref={cardRef}
-      onMouseMove={prefersReduced ? undefined : handleMouseMove}
-      onMouseLeave={prefersReduced ? undefined : handleMouseLeave}
-      style={prefersReduced ? undefined : { transition: "transform 0.15s ease" }}
+      onMouseMove={tiltDisabled ? undefined : handleMouseMove}
+      onMouseLeave={tiltDisabled ? undefined : handleMouseLeave}
+      style={tiltDisabled ? undefined : { transition: "transform 0.15s ease" }}
       className="group rounded overflow-hidden bg-white shadow-sm hover:shadow-lg"
     >
       <Link href={`/projects/${project.slug}`} className="block">

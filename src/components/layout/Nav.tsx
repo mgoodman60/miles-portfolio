@@ -25,9 +25,18 @@ export function Nav() {
   // Track previous open state so we only restore focus on a true close transition
   const wasOpenRef = useRef(false)
 
-  // Initialize from current scroll position + listen for changes
+  // Initialize from current scroll position + listen for changes (rAF-throttled)
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60)
+    let ticking = false
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 60)
+          ticking = false
+        })
+        ticking = true
+      }
+    }
     handleScroll()
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
@@ -159,21 +168,32 @@ export function Nav() {
         {/* Mobile hamburger */}
         <button
           ref={hamburgerRef}
-          className="md:hidden flex flex-col gap-1.5 p-3"
+          className="md:hidden p-3"
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
           aria-controls={menuId}
         >
-          {[0, 1, 2].map((i) => (
+          <span aria-hidden="true" className={cn("relative inline-block w-6 h-4", overHero ? "text-white" : "text-[var(--ink)]")}>
             <span
-              key={i}
               className={cn(
-                "block h-0.5 w-6 transition-all",
-                overHero ? "bg-white" : "bg-[var(--ink)]"
+                "absolute left-0 right-0 h-0.5 bg-current transition-all duration-200",
+                menuOpen ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0"
               )}
             />
-          ))}
+            <span
+              className={cn(
+                "absolute left-0 right-0 h-0.5 bg-current top-1/2 -translate-y-1/2 transition-opacity duration-200",
+                menuOpen ? "opacity-0" : "opacity-100"
+              )}
+            />
+            <span
+              className={cn(
+                "absolute left-0 right-0 h-0.5 bg-current transition-all duration-200",
+                menuOpen ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-0"
+              )}
+            />
+          </span>
         </button>
       </div>
 
