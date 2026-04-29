@@ -12,10 +12,10 @@ export default function MoreheadPage() {
   return (
     <>
       {/* Cover — drone slideshow */}
-      <ProjectCoverSlideshow slides={droneHeroSlides} height="60vh" minHeight={400}>
+      <ProjectCoverSlideshow slides={droneHeroSlides} height="60svh" minHeight={400}>
         <div className="absolute top-24 left-6 md:left-12">
           <span
-            className="text-[10px] uppercase tracking-[0.16em] px-3 py-1.5 rounded-full text-white font-medium"
+            className="text-[10px] uppercase tracking-[0.18em] px-3 py-1.5 rounded-full text-white font-medium"
             style={{ background: "var(--accent)" }}
           >
             Active Project
@@ -31,7 +31,7 @@ export default function MoreheadPage() {
       {/* Title */}
       <div className="px-6 md:px-12 py-12" style={{ background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px]">
-          <p className="text-xs uppercase tracking-[0.2em] text-[var(--muted)] mb-3">Morehead, KY · Active — Jan 2026 to Aug 2026</p>
+          <p className="text-xs uppercase tracking-[0.22em] text-[var(--muted)] mb-3">Morehead, KY · Active — Jan 2026 to Aug 2026</p>
           <h1 className="serif font-light tracking-tight mb-2" style={{ fontSize: "clamp(36px,5vw,72px)", color: "var(--ink)" }}>
             One Senior Care — Morehead
           </h1>
@@ -63,7 +63,7 @@ export default function MoreheadPage() {
                   ["Status", "Active construction"],
                 ].map(([label, value]) => (
                   <div key={label as string} className="border-b pb-4" style={{ borderColor: "var(--border)" }}>
-                    <dt className="text-[10px] uppercase tracking-[0.16em] text-[var(--muted)] mb-1">{label}</dt>
+                    <dt className="text-[10px] uppercase tracking-[0.18em] text-[var(--muted)] mb-1">{label}</dt>
                     <dd className="text-sm font-medium text-[var(--ink)]">{value}</dd>
                   </div>
                 ))}
@@ -89,7 +89,7 @@ export default function MoreheadPage() {
               className="rounded p-8 mb-16 border-l-2"
               style={{ background: "var(--paper-warm)", borderColor: "var(--accent)" }}
             >
-              <p className="text-xs uppercase tracking-[0.16em] text-[var(--accent)] mb-2">AI Field Tools</p>
+              <p className="text-xs uppercase tracking-[0.18em] text-[var(--accent)] mb-2">AI Field Tools</p>
               <h3 className="serif font-light text-xl mb-3" style={{ color: "var(--ink)" }}>
                 My Reports deployed on this project
               </h3>
@@ -125,7 +125,7 @@ export default function MoreheadPage() {
               ].map(({ label, sub, photos }) => photos.length > 0 && (
                 <div key={label} className="mb-12">
                   <div className="mb-4">
-                    <p className="text-[10px] uppercase tracking-[0.16em] text-[var(--accent)] font-medium">{label}</p>
+                    <p className="text-[10px] uppercase tracking-[0.18em] text-[var(--accent)] font-medium">{label}</p>
                     <p className="text-xs text-[var(--muted)]">{sub} · {photos.length} photos</p>
                   </div>
                   <CampTaylorGallery photos={photos} />
@@ -137,6 +137,35 @@ export default function MoreheadPage() {
           </div>
         </div>
       </div>
+
+      {/* ── Bottom CTA ───────────────────────────────────── */}
+      <section
+        className="border-t py-24 px-6 md:px-12 text-center"
+        style={{ borderColor: "var(--border)", background: "var(--paper-warm)" }}
+      >
+        <div className="mx-auto max-w-[800px]">
+          <h2 className="serif font-light text-3xl md:text-4xl tracking-tight mb-6" style={{ color: "var(--ink)" }}>
+            Want to talk about a project?
+          </h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href="/contact"
+              className="px-5 py-2.5 text-sm font-medium rounded transition-colors"
+              style={{ background: "var(--ink)", color: "var(--paper)" }}
+            >
+              Contact
+            </Link>
+            <a
+              href="/Miles_Goodman_Resume.pdf"
+              download
+              className="px-5 py-2.5 text-sm font-medium rounded border transition-colors hover:bg-black/5"
+              style={{ borderColor: "var(--border)", color: "var(--ink)" }}
+            >
+              Download Resume
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* Nav */}
       <div className="border-t px-6 md:px-12 py-12" style={{ borderColor: "var(--border)" }}>

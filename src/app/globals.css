@@ -58,6 +58,18 @@ body {
 }
 
 /* ── Typography helpers ────────────────────────────── */
+/*
+  Canonical type & spacing scale (do not fork):
+    H1 page header        : clamp(40px, 5.5vw, 80px) · serif font-light · tracking-tight
+    H1 case-study header  : clamp(36px, 5vw, 72px)   · serif font-light · tracking-tight
+    H2 section            : clamp(28px, 3.6vw, 44px) · serif font-light
+    H2 sub/inline         : text-2xl serif font-light
+    Resume H3 (exception) : font-semibold — kept for resume scanability
+  Section padding scale (snap to nearest):
+    py-24 = major / hero   |  py-12 = sub-section / strip   |  py-8 = utility
+  Tracking scale (3 values only):
+    0.14em micro-eyebrow   |  0.18em meta / section labels  |  0.22em hero eyebrow
+*/
 .serif {
   font-family: var(--font-fraunces), "Fraunces", Georgia, serif;
 }

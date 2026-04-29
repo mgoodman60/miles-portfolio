@@ -6,7 +6,7 @@ import { HeroSlideshow } from "@/components/sections/HeroSlideshow"
 import { ProjectCard3D } from "@/components/sections/ProjectCard3D"
 
 const stats = [
-  { prefix: "$", value: 22, suffix: "M+", label: "Projects Delivered" },
+  { prefix: "$", value: 22, suffix: "M+", label: "Contributed-to Project Value" },
   { value: 5, suffix: "", label: "Commercial Projects" },
   { value: 3, suffix: " yrs", label: "As Site Superintendent" },
 ]
@@ -59,16 +59,16 @@ export default function Home() {
       <HeroSlideshow />
 
       {/* ── Stat strip ────────────────────────────────── */}
-      <section className="stat-strip py-10 px-6 md:px-12">
-        <div className="mx-auto max-w-[1480px] flex flex-wrap justify-center md:justify-between gap-8 md:gap-4">
+      <section className="stat-strip py-12 px-6 md:px-12">
+        <div className="mx-auto max-w-[1480px] grid grid-cols-3 items-start gap-4 md:gap-8 md:justify-between">
           {stats.map(({ prefix, value, suffix, label }) => (
             <div key={label} className="flex flex-col items-center md:items-start">
-              <p className="serif text-4xl font-light tracking-tight text-white leading-none">
+              <p className="serif text-2xl md:text-4xl font-light tracking-tight text-white leading-none">
                 {prefix}
                 <NumberTicker value={value} className="text-white" />
                 {suffix}
               </p>
-              <p className="mt-1 text-xs uppercase tracking-[0.18em] text-white/50">{label}</p>
+              <p className="mt-1 text-[10px] md:text-xs uppercase tracking-[0.18em] text-white/50 text-center md:text-left">{label}</p>
             </div>
           ))}
         </div>
@@ -89,7 +89,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {projects.map((p) => (
               <ProjectCard3D key={p.slug} project={p} />
             ))}
@@ -144,7 +144,7 @@ export default function Home() {
                 style={{ borderColor: "var(--border)", color: "var(--ink)" }}
                 download
               >
-                Download Resume
+                Download Resume (PDF)
               </a>
             </div>
           </div>
@@ -156,7 +156,7 @@ export default function Home() {
         className="border-t py-8 relative overflow-hidden"
         style={{ borderColor: "var(--border)" }}
       >
-        <p className="text-center text-xs uppercase tracking-[0.2em] text-[var(--muted)] mb-6">
+        <p className="text-center text-xs uppercase tracking-[0.22em] text-[var(--muted)] mb-6">
           Press Coverage
         </p>
         <div className="relative">

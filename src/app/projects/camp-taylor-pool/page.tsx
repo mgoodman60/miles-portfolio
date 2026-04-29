@@ -28,7 +28,7 @@ export default function CampTaylorPage() {
   return (
     <>
       {/* ── Cover ──────────────────────────────────────── */}
-      <div className="relative overflow-hidden" style={{ height: "60vh", minHeight: 400, marginTop: -80 }}>
+      <div className="relative overflow-hidden" style={{ height: "60svh", minHeight: 400, marginTop: -80 }}>
         <Image
           src="/projects/camp-taylor/night-pour-hero.jpg"
           alt="Camp Taylor Memorial Park Pool — night concrete pour"
@@ -53,7 +53,7 @@ export default function CampTaylorPage() {
       {/* ── Title block ────────────────────────────────── */}
       <div className="px-6 md:px-12 py-12" style={{ background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px]">
-          <p className="text-xs uppercase tracking-[0.2em] text-[var(--muted)] mb-3">Louisville, KY · 2025</p>
+          <p className="text-xs uppercase tracking-[0.22em] text-[var(--muted)] mb-3">Louisville, KY · 2025</p>
           <h1 className="serif font-light tracking-tight mb-2" style={{ fontSize: "clamp(36px,5vw,72px)", color: "var(--ink)" }}>
             Camp Taylor Memorial Park Pool
           </h1>
@@ -82,14 +82,14 @@ export default function CampTaylorPage() {
                   ["Scope", "New aquatic facility — zero-depth ramp, lap lanes, waterslide, shaded seating area, site improvements"],
                 ].map(([label, value]) => (
                   <div key={label as string} className="border-b pb-4" style={{ borderColor: "var(--border)" }}>
-                    <dt className="text-[10px] uppercase tracking-[0.16em] text-[var(--muted)] mb-1">{label}</dt>
+                    <dt className="text-[10px] uppercase tracking-[0.18em] text-[var(--muted)] mb-1">{label}</dt>
                     <dd className="text-sm font-medium text-[var(--ink)]">{value}</dd>
                   </div>
                 ))}
               </dl>
 
               <div className="mt-8">
-                <p className="text-[10px] uppercase tracking-[0.16em] text-[var(--muted)] mb-3">Press Coverage</p>
+                <p className="text-[10px] uppercase tracking-[0.18em] text-[var(--muted)] mb-3">Press Coverage</p>
                 <div className="flex flex-col gap-2">
                   {[
                     ["WAVE 3 News", "https://www.wave3.com"],
@@ -146,7 +146,7 @@ export default function CampTaylorPage() {
                     challenge: "ARPA compliance documentation",
                     headline: "Public funding means every dollar is on record.",
                     body: "ARPA-funded projects carry daily reporting and compliance requirements that go beyond standard commercial work. Owner, city, and federal paperwork ran in parallel throughout the project.",
-                    resolution: "Built My Reports, a daily documentation system — photos tagged, narrated, and compiled into owner-ready PDFs each morning.",
+                    resolution: <>Built <Link href="/my-reports" className="underline hover:text-[var(--accent)]">My Reports</Link>, a daily documentation system — photos tagged, narrated, and compiled into owner-ready PDFs each morning.</>,
                   },
                   {
                     num: "03",
@@ -159,7 +159,7 @@ export default function CampTaylorPage() {
                   <div key={num} className="border-l-2 pl-6" style={{ borderColor: "var(--accent)" }}>
                     <div className="flex items-center gap-3 mb-3">
                       <span className="serif text-5xl font-light text-[var(--accent)] leading-none">{num}</span>
-                      <span className="text-xs uppercase tracking-[0.16em] text-[var(--muted)]">
+                      <span className="text-xs uppercase tracking-[0.18em] text-[var(--muted)]">
                         Challenge — {challenge}
                       </span>
                     </div>
@@ -208,7 +208,7 @@ export default function CampTaylorPage() {
               <CampTaylorGallery photos={timelinePhotos} />
               <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1">
                 {timelinePhotos.map((p) => (
-                  <span key={p.src} className="text-[10px] uppercase tracking-[0.12em] text-[var(--muted)]">
+                  <span key={p.src} className="text-[10px] uppercase tracking-[0.14em] text-[var(--muted)]">
                     {p.caption}
                   </span>
                 ))}
@@ -228,6 +228,35 @@ export default function CampTaylorPage() {
           </div>
         </div>
       </div>
+
+      {/* ── Bottom CTA ───────────────────────────────────── */}
+      <section
+        className="border-t py-24 px-6 md:px-12 text-center"
+        style={{ borderColor: "var(--border)", background: "var(--paper-warm)" }}
+      >
+        <div className="mx-auto max-w-[800px]">
+          <h2 className="serif font-light text-3xl md:text-4xl tracking-tight mb-6" style={{ color: "var(--ink)" }}>
+            Want to talk about a project?
+          </h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href="/contact"
+              className="px-5 py-2.5 text-sm font-medium rounded transition-colors"
+              style={{ background: "var(--ink)", color: "var(--paper)" }}
+            >
+              Contact
+            </Link>
+            <a
+              href="/Miles_Goodman_Resume.pdf"
+              download
+              className="px-5 py-2.5 text-sm font-medium rounded border transition-colors hover:bg-black/5"
+              style={{ borderColor: "var(--border)", color: "var(--ink)" }}
+            >
+              Download Resume
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* ── Next project ────────────────────────────────── */}
       <div className="border-t px-6 md:px-12 py-12" style={{ borderColor: "var(--border)" }}>

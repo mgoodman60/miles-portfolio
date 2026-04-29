@@ -67,7 +67,7 @@ export function ProjectCard3D({ project }: { project: Project }) {
           {/* Tag */}
           {project.tag && (
             <span
-              className="absolute top-4 left-4 text-[10px] uppercase tracking-[0.16em] px-2.5 py-1 rounded-full font-medium"
+              className="absolute top-4 left-4 text-[10px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full font-medium"
               style={{ background: "var(--accent)", color: "#fff" }}
             >
               {project.tag}

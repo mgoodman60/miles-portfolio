@@ -61,16 +61,16 @@ export default function ProjectsPage() {
           <p className="text-xs uppercase tracking-[0.22em] text-[var(--muted)] mb-4">
             Site Superintendent · Kentucky · 2022–Present
           </p>
-          <h1 className="serif font-light tracking-tight" style={{ fontSize: "clamp(48px,7vw,96px)", color: "var(--ink)" }}>
+          <h1 className="serif font-light tracking-tight" style={{ fontSize: "clamp(40px,5.5vw,80px)", color: "var(--ink)" }}>
             Projects
           </h1>
         </div>
       </div>
 
       {/* Main grid */}
-      <section className="py-16 px-6 md:px-12">
+      <section className="py-24 px-6 md:px-12">
         <div className="mx-auto max-w-[1480px]">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {projects.map((p) => (
               <Link
                 key={p.slug}
@@ -113,7 +113,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* Also contributed */}
-      <section className="border-t py-16 px-6 md:px-12" style={{ borderColor: "var(--border)" }}>
+      <section className="border-t py-24 px-6 md:px-12" style={{ borderColor: "var(--border)" }}>
         <div className="mx-auto max-w-[1480px]">
           <h2 className="serif font-light text-2xl mb-8" style={{ color: "var(--ink)" }}>
             Also Contributed

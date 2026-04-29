@@ -69,13 +69,13 @@ export default function AIToolsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-40 pb-20 px-6 md:px-12" style={{ background: "var(--paper-warm)" }}>
+      <section className="pt-40 pb-24 px-6 md:px-12" style={{ background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <p className="text-xs uppercase tracking-[0.22em] text-[var(--muted)] mb-6">
               MBA Candidate — Project Management &amp; AI · Northern Kentucky University
             </p>
-            <h1 className="serif font-light tracking-tight mb-6" style={{ fontSize: "clamp(32px,5.5vw,80px)", color: "var(--ink)", maxWidth: 900 }}>
+            <h1 className="serif font-light tracking-tight mb-6" style={{ fontSize: "clamp(40px,5.5vw,80px)", color: "var(--ink)", maxWidth: 900 }}>
               AI doesn&rsquo;t replace field judgment.{" "}
               <em className="not-italic" style={{ color: "var(--accent)", fontStyle: "italic" }}>
                 It removes the paperwork friction
@@ -103,7 +103,7 @@ export default function AIToolsPage() {
       </section>
 
       {/* Tools — alternating rows */}
-      <section className="py-16 px-6 md:px-12">
+      <section className="py-24 px-6 md:px-12">
         <div className="mx-auto max-w-[1480px] space-y-0">
           {tools.map(({ num, tag, title, body, stat, statLabel, link, linkLabel, external, live }, i) => (
             <BlurFade key={num} inView delay={i * 0.15}>
@@ -119,7 +119,7 @@ export default function AIToolsPage() {
               {/* Content */}
               <div className="md:col-span-7">
                 {live && (
-                  <span className="inline-block text-[9px] uppercase tracking-widest px-2 py-0.5 rounded-full font-medium mb-3" style={{ background: "var(--accent)", color: "var(--paper)" }}>
+                  <span className="inline-block text-[9px] uppercase tracking-[0.18em] px-2 py-0.5 rounded-full font-medium mb-3" style={{ background: "var(--accent)", color: "var(--paper)" }}>
                     Live
                   </span>
                 )}
@@ -160,7 +160,7 @@ export default function AIToolsPage() {
                     {stat}
                   </p>
                   <p
-                    className="text-xs uppercase tracking-[0.16em]"
+                    className="text-xs uppercase tracking-[0.18em]"
                     style={{ color: i % 2 === 0 ? "rgba(239,237,230,0.7)" : "var(--muted)" }}
                   >
                     {statLabel}
@@ -190,7 +190,7 @@ export default function AIToolsPage() {
             className="px-8 py-4 text-sm font-medium rounded transition-colors"
             style={{ background: "var(--ink)", color: "var(--paper)" }}
           >
-            Talk shop
+            Contact
           </Link>
         </div>
       </section>

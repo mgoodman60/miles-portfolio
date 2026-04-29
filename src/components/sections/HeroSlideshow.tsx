@@ -54,8 +54,8 @@ export function HeroSlideshow() {
 
   return (
     <section
-      className="relative overflow-hidden"
-      style={{ height: "100svh", minHeight: 680, marginTop: -80 }}
+      className="relative overflow-hidden min-h-[520px] md:min-h-[680px]"
+      style={{ height: "100svh", marginTop: -80 }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       aria-roledescription="carousel"
@@ -126,7 +126,7 @@ export function HeroSlideshow() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
             className="serif font-light text-white leading-none tracking-tight mb-8"
-            style={{ fontSize: "clamp(44px, 10vw, 160px)" }}
+            style={{ fontSize: "clamp(40px, 5.5vw, 80px)" }}
           >
             Miles
             <br />
@@ -151,7 +151,7 @@ export function HeroSlideshow() {
               download
               className="px-6 py-3 text-sm font-medium rounded border border-white/70 text-white hover:bg-white/10 transition-colors"
             >
-              Download Resume
+              Download Resume (PDF)
             </a>
           </motion.div>
         </div>

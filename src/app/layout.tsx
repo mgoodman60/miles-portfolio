@@ -21,10 +21,10 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://miles-goodman.vercel.app"),
   title: "Miles Goodman — Site Superintendent",
   description:
-    "Portfolio of Miles Goodman, Site Superintendent at W Principles, LLC. Commercial construction in Kentucky — $22M+ delivered.",
+    "Portfolio of Miles Goodman, Site Superintendent at W Principles, LLC. Commercial construction in Kentucky — $13M directly managed, ~$22M contributed-to.",
   openGraph: {
     title: "Miles Goodman — Site Superintendent",
-    description: "Commercial construction portfolio — $22M+ delivered across Kentucky.",
+    description: "Commercial construction portfolio — $13M directly managed, ~$22M contributed-to across Kentucky.",
     images: ["/projects/camp-taylor/night-pour-hero.jpg"],
   },
 }

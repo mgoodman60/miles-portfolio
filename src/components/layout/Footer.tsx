@@ -19,7 +19,7 @@ export function Footer() {
           <p className="text-xs uppercase tracking-[0.18em] mb-4" style={{ color: "var(--footer-fg-soft)" }}>
             Pages
           </p>
-          <nav className="flex flex-col gap-2">
+          <nav className="flex flex-col gap-0">
             {[
               ["Projects", "/projects"],
               ["My Reports", "/my-reports"],
@@ -30,7 +30,7 @@ export function Footer() {
               <Link
                 key={href}
                 href={href}
-                className="text-sm transition-colors hover:text-white"
+                className="text-sm py-2 transition-colors hover:text-white"
                 style={{ color: "var(--footer-fg)" }}
               >
                 {label}
@@ -44,11 +44,11 @@ export function Footer() {
           <p className="text-xs uppercase tracking-[0.18em] mb-4" style={{ color: "var(--footer-fg-soft)" }}>
             Contact
           </p>
-          <div className="text-sm flex flex-col gap-2" style={{ color: "var(--footer-fg)" }}>
-            <a href="mailto:msgoodman1997@gmail.com" className="hover:text-white transition-colors">
+          <div className="text-sm flex flex-col gap-0" style={{ color: "var(--footer-fg)" }}>
+            <a href="mailto:msgoodman1997@gmail.com" className="py-2 hover:text-white transition-colors">
               msgoodman1997@gmail.com
             </a>
-            <span>Lexington, KY</span>
+            <span className="py-2">Lexington, KY</span>
           </div>
         </div>
       </div>

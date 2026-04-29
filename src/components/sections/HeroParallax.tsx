@@ -14,8 +14,8 @@ export function HeroParallax() {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden"
-      style={{ height: "100svh", minHeight: 680, marginTop: -80 }}
+      className="relative overflow-hidden min-h-[520px] md:min-h-[680px]"
+      style={{ height: "100svh", marginTop: -80 }}
     >
       {/* Parallax photo (static when reduced motion is preferred) */}
       {prefersReduced ? (
@@ -68,7 +68,7 @@ export function HeroParallax() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
             className="serif font-light text-white leading-none tracking-tight mb-8"
-            style={{ fontSize: "clamp(64px, 10vw, 160px)" }}
+            style={{ fontSize: "clamp(40px, 5.5vw, 80px)" }}
           >
             Miles
             <br />
@@ -92,9 +92,10 @@ export function HeroParallax() {
             </Link>
             <a
               href="/Miles_Goodman_Resume.pdf"
+              download
               className="px-6 py-3 text-sm font-medium rounded border border-white/40 text-white hover:bg-white/10 transition-colors"
             >
-              Download Resume
+              Download Resume (PDF)
             </a>
           </motion.div>
         </div>
@@ -107,7 +108,7 @@ export function HeroParallax() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
       >
-        <span className="text-[10px] uppercase tracking-[0.2em] text-white/50 rotate-90 origin-center">
+        <span className="text-[10px] uppercase tracking-[0.22em] text-white/50 rotate-90 origin-center">
           Scroll
         </span>
         <div className="w-px h-12 bg-white/25 mt-2" />

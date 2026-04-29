@@ -121,7 +121,7 @@ export default function MyReportsPage() {
                 style={{ borderColor: "var(--border)" }}
               >
                 <span
-                  className="inline-block text-[10px] uppercase tracking-[0.16em] px-2 py-0.5 rounded mb-4 font-mono"
+                  className="inline-block text-[10px] uppercase tracking-[0.18em] px-2 py-0.5 rounded mb-4 font-mono"
                   style={{ background: "var(--paper-warm)", color: "var(--muted)" }}
                 >
                   {tag}
@@ -145,7 +145,7 @@ export default function MyReportsPage() {
           ].map(([val, label]) => (
             <div key={label} className="text-center md:text-left">
               <p className="serif text-2xl font-light text-white">{val}</p>
-              <p className="text-xs uppercase tracking-[0.16em] text-white/50 mt-1">{label}</p>
+              <p className="text-xs uppercase tracking-[0.18em] text-white/50 mt-1">{label}</p>
             </div>
           ))}
         </div>

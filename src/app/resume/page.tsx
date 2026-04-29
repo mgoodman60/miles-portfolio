@@ -5,6 +5,12 @@ export const metadata = {
   description: "Site Superintendent · MBA Candidate. Resume of Miles Goodman.",
 }
 
+/*
+  Resume typography:
+  - H1 / H2s follow site editorial system (clamp + serif font-light)
+  - H3 job/school titles intentionally kept `font-semibold` for resume scanability —
+    documented exception to the site-wide `font-light/font-medium` rule.
+*/
 export default function ResumePage() {
   return (
     <div className="min-h-screen bg-[var(--paper)]">
@@ -13,7 +19,10 @@ export default function ResumePage() {
         <div className="mx-auto max-w-[1480px] px-6 md:px-12">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <div>
-              <h1 className="serif text-5xl md:text-6xl font-normal text-[var(--ink)] mb-3">
+              <h1
+                className="serif font-light tracking-tight text-[var(--ink)] mb-3"
+                style={{ fontSize: "clamp(40px,5.5vw,80px)" }}
+              >
                 Miles Goodman
               </h1>
               <p className="text-lg text-[var(--muted)] font-medium tracking-wide mb-2">
@@ -58,11 +67,16 @@ export default function ResumePage() {
 
       {/* Experience */}
       <section className="border-b border-[var(--border)]">
-        <div className="mx-auto max-w-[1480px] px-6 md:px-12 py-16">
+        <div className="mx-auto max-w-[1480px] px-6 md:px-12 py-24">
           <div className="flex flex-col lg:flex-row gap-12">
             {/* Sidebar label */}
             <div className="lg:w-80 shrink-0">
-              <h2 className="serif text-2xl font-normal text-[var(--ink)]">Experience</h2>
+              <h2
+                className="serif font-light text-[var(--ink)]"
+                style={{ fontSize: "clamp(28px,3.6vw,44px)" }}
+              >
+                Experience
+              </h2>
             </div>
 
             {/* Content */}
@@ -141,10 +155,15 @@ export default function ResumePage() {
 
       {/* Education */}
       <section className="border-b border-[var(--border)]">
-        <div className="mx-auto max-w-[1480px] px-6 md:px-12 py-16">
+        <div className="mx-auto max-w-[1480px] px-6 md:px-12 py-24">
           <div className="flex flex-col lg:flex-row gap-12">
             <div className="lg:w-80 shrink-0">
-              <h2 className="serif text-2xl font-normal text-[var(--ink)]">Education</h2>
+              <h2
+                className="serif font-light text-[var(--ink)]"
+                style={{ fontSize: "clamp(28px,3.6vw,44px)" }}
+              >
+                Education
+              </h2>
             </div>
             <div className="flex-1 space-y-10">
 
@@ -171,17 +190,22 @@ export default function ResumePage() {
 
       {/* Skills & Credentials */}
       <section>
-        <div className="mx-auto max-w-[1480px] px-6 md:px-12 py-16">
+        <div className="mx-auto max-w-[1480px] px-6 md:px-12 py-24">
           <div className="flex flex-col lg:flex-row gap-12">
             <div className="lg:w-80 shrink-0">
-              <h2 className="serif text-2xl font-normal text-[var(--ink)]">Skills &amp; Credentials</h2>
+              <h2
+                className="serif font-light text-[var(--ink)]"
+                style={{ fontSize: "clamp(28px,3.6vw,44px)" }}
+              >
+                Skills &amp; Credentials
+              </h2>
             </div>
             <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-10">
 
               {/* Skills */}
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-3">
+                  <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)] mb-3">
                     Field Tools
                   </h3>
                   <ul className="space-y-1.5 text-sm text-[var(--ink)]">
@@ -192,7 +216,7 @@ export default function ResumePage() {
                 </div>
 
                 <div>
-                  <h3 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-3">
+                  <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)] mb-3">
                     AI &amp; Technology
                   </h3>
                   <ul className="space-y-1.5 text-sm text-[var(--ink)]">
@@ -203,7 +227,7 @@ export default function ResumePage() {
                 </div>
 
                 <div>
-                  <h3 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-3">
+                  <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)] mb-3">
                     Construction
                   </h3>
                   <ul className="space-y-1.5 text-sm text-[var(--ink)]">
@@ -217,7 +241,7 @@ export default function ResumePage() {
 
               {/* Credentials */}
               <div>
-                <h3 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-3">
+                <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)] mb-3">
                   Credentials
                 </h3>
                 <ul className="space-y-3 text-sm text-[var(--ink)]">

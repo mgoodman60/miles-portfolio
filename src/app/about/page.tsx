@@ -23,12 +23,12 @@ export default function AboutPage() {
       <div className="pt-40 pb-16 px-6 md:px-12" style={{ background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px]">
           <p className="text-xs uppercase tracking-[0.22em] text-[var(--muted)] mb-4">Site Superintendent · MBA Candidate</p>
-          <h1 className="serif font-light tracking-tight" style={{ fontSize: "clamp(48px,7vw,96px)", color: "var(--ink)" }}>About</h1>
+          <h1 className="serif font-light tracking-tight" style={{ fontSize: "clamp(40px,5.5vw,80px)", color: "var(--ink)" }}>About</h1>
         </div>
       </div>
 
       {/* Bio + headshot */}
-      <section className="border-t py-20 px-6 md:px-12" style={{ borderColor: "var(--border)" }}>
+      <section className="border-t py-24 px-6 md:px-12" style={{ borderColor: "var(--border)" }}>
         <div className="mx-auto max-w-[1480px] grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
           <div>
             <BlurFade inView delay={0}>
@@ -50,17 +50,18 @@ export default function AboutPage() {
               <div className="flex flex-wrap gap-4">
                 <a
                   href="/Miles_Goodman_Resume.pdf"
+                  download
                   className="px-6 py-3 text-sm font-medium rounded transition-colors"
                   style={{ background: "var(--ink)", color: "var(--paper)" }}
                 >
-                  Download Resume
+                  Download Resume (PDF)
                 </a>
                 <Link
                   href="/contact"
                   className="px-6 py-3 text-sm font-medium rounded border transition-colors hover:bg-black/5"
                   style={{ borderColor: "var(--border)", color: "var(--ink)" }}
                 >
-                  Get in Touch
+                  Contact
                 </Link>
               </div>
             </BlurFade>
@@ -79,7 +80,7 @@ export default function AboutPage() {
       </section>
 
       {/* Credentials */}
-      <section className="border-t py-16 px-6 md:px-12" style={{ borderColor: "var(--border)", background: "var(--paper-warm)" }}>
+      <section className="border-t py-24 px-6 md:px-12" style={{ borderColor: "var(--border)", background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px]">
           <h2 className="serif font-light text-2xl mb-10" style={{ color: "var(--ink)" }}>Credentials</h2>
           <BlurFade inView delay={0.1}>
@@ -101,7 +102,7 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline */}
-      <section className="border-t py-16 px-6 md:px-12" style={{ borderColor: "var(--border)" }}>
+      <section className="border-t py-24 px-6 md:px-12" style={{ borderColor: "var(--border)" }}>
         <div className="mx-auto max-w-[1480px]">
           <h2 className="serif font-light text-2xl mb-10" style={{ color: "var(--ink)" }}>Timeline</h2>
           <BlurFade inView delay={0.1}>

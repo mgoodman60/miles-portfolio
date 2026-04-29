@@ -10,11 +10,11 @@ export default function ContactPage() {
       <div className="pt-40 pb-16 px-6 md:px-12" style={{ background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px]">
           <p className="text-xs uppercase tracking-[0.22em] text-[var(--muted)] mb-4">Direct contact</p>
-          <h1 className="serif font-light tracking-tight" style={{ fontSize: "clamp(48px,7vw,96px)", color: "var(--ink)" }}>Contact</h1>
+          <h1 className="serif font-light tracking-tight" style={{ fontSize: "clamp(40px,5.5vw,80px)", color: "var(--ink)" }}>Contact</h1>
         </div>
       </div>
 
-      <section className="border-t py-20 px-6 md:px-12" style={{ borderColor: "var(--border)" }}>
+      <section className="border-t py-24 px-6 md:px-12" style={{ borderColor: "var(--border)" }}>
         <div className="mx-auto max-w-[1480px] grid grid-cols-1 md:grid-cols-2 gap-16">
 
           {/* Form */}
@@ -31,7 +31,7 @@ export default function ContactPage() {
               <input type="text" name="_honey" style={{ display: "none" }} />
 
               <div>
-                <label className="block text-xs uppercase tracking-[0.16em] text-[var(--muted)] mb-2" htmlFor="name">
+                <label className="block text-xs uppercase tracking-[0.18em] text-[var(--muted)] mb-2" htmlFor="name">
                   Name
                 </label>
                 <input
@@ -49,7 +49,7 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label className="block text-xs uppercase tracking-[0.16em] text-[var(--muted)] mb-2" htmlFor="email">
+                <label className="block text-xs uppercase tracking-[0.18em] text-[var(--muted)] mb-2" htmlFor="email">
                   Email
                 </label>
                 <input
@@ -63,7 +63,7 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label className="block text-xs uppercase tracking-[0.16em] text-[var(--muted)] mb-2" htmlFor="message">
+                <label className="block text-xs uppercase tracking-[0.18em] text-[var(--muted)] mb-2" htmlFor="message">
                   Message
                 </label>
                 <textarea
@@ -98,7 +98,7 @@ export default function ContactPage() {
                 { label: "MBA", value: "Northern Kentucky University · Expected 2026", href: null },
               ].map(({ label, value, href }) => (
                 <div key={label} className="border-b pb-4" style={{ borderColor: "var(--border)" }}>
-                  <p className="text-[10px] uppercase tracking-[0.16em] text-[var(--muted)] mb-1">{label}</p>
+                  <p className="text-[10px] uppercase tracking-[0.18em] text-[var(--muted)] mb-1">{label}</p>
                   {href ? (
                     <a href={href} className="text-sm font-medium hover:underline" style={{ color: "var(--accent)" }}>
                       {value}
