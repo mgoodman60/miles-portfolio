@@ -43,13 +43,13 @@ const projects = [
   },
   {
     slug: "one-senior-care-morehead",
-    name: "One Senior Care — Morehead",
+    name: "One Senior Care - Morehead",
     location: "Morehead, KY",
-    year: "Active",
+    year: "2026",
     cost: "$3M",
     scope: "10,060 SF PACE senior care facility — PEMB + concrete",
     cover: "/projects/morehead/drone-01.jpg",
-    tag: "Active",
+    tag: "Complete",
   },
 ]
 
@@ -143,8 +143,8 @@ export default function Home() {
             </h2>
             <p className="text-base leading-relaxed mb-8" style={{ color: "var(--muted)" }}>
               I manage commercial construction in Kentucky — aquatic facilities, senior care, concrete
-              self-perform — and I build AI field tools that run on the same job sites I&apos;m running. Currently active on One Senior Care
-              in Morehead with My Reports running daily.
+              self-perform — and I build AI field tools that run on the same job sites I&apos;m running. One Senior Care - Morehead
+              is complete, with My Reports running daily.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
