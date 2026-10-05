@@ -170,7 +170,7 @@ function DesktopMenu({
         id={panelId}
         hidden={!open}
         className={cn(
-          "absolute top-full z-20 mt-4 w-80 rounded border border-[var(--border)] bg-[var(--paper)] text-[var(--ink)] shadow-[0_16px_40px_rgba(27,32,38,0.12)] py-2",
+          "absolute top-full z-20 mt-7 w-80 max-w-[calc(100vw-2rem)] rounded border border-[var(--border)] bg-[var(--paper)] text-[var(--ink)] shadow-[0_16px_40px_rgba(27,32,38,0.12)] py-2",
           align === "right" ? "right-0" : "left-0"
         )}
       >
@@ -294,7 +294,7 @@ function AboutCluster({
         ref={panelRef}
         id={panelId}
         hidden={!open}
-        className="absolute left-0 top-full z-20 mt-4 min-w-44 rounded border border-[var(--border)] bg-[var(--paper)] text-[var(--ink)] shadow-[0_16px_40px_rgba(27,32,38,0.12)] py-2"
+        className="absolute left-0 top-full z-20 mt-7 min-w-44 rounded border border-[var(--border)] bg-[var(--paper)] text-[var(--ink)] shadow-[0_16px_40px_rgba(27,32,38,0.12)] py-2"
       >
         <Link
           href="/resume"
@@ -517,7 +517,12 @@ export function Nav() {
         </button>
       </div>
 
-      <div ref={menuRef} id={menuId} hidden={!menuOpen} className="md:hidden nav-solid border-t border-[var(--border)]">
+      <div
+        ref={menuRef}
+        id={menuId}
+        hidden={!menuOpen}
+        className="md:hidden nav-solid max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-[var(--border)]"
+      >
           <nav aria-label="Primary" className="flex flex-col px-6 py-4">
             <Link href="/ai-tools" aria-current={aiActive ? "page" : undefined} className={mobileLinkClass(aiActive)} onClick={() => setMenuOpen(false)}>
               AI
