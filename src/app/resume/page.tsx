@@ -97,8 +97,8 @@ export default function ResumePage() {
                   {/* One Senior Care */}
                   <div className="pl-4 border-l-2 border-[var(--border)]">
                     <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
-                      <p className="font-medium text-[var(--ink)]">One Senior Care — Morehead, KY</p>
-                      <span className="text-xs text-[var(--muted)] shrink-0">Active Jan – Aug 2026</span>
+                      <p className="font-medium text-[var(--ink)]">One Senior Care - Morehead, KY</p>
+                      <span className="text-xs text-[var(--muted)] shrink-0">Completed Aug 2026</span>
                     </div>
                     <ul className="space-y-1.5 text-sm text-[var(--muted)]">
                       <li>$3M PACE facility · 10,060 SF PEMB</li>

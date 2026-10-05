@@ -33,13 +33,13 @@ const projects = [
   },
   {
     slug: "one-senior-care-morehead",
-    name: "One Senior Care — Morehead",
+    name: "One Senior Care - Morehead",
     location: "Morehead, KY",
-    year: "2026 (Active)",
+    year: "2026",
     cost: "$3M",
     scope: "10,060 SF PACE senior care facility — Pre-engineered metal building + concrete self-perform",
     cover: "/projects/morehead/aerial-2026-07-14-overhead.jpg",
-    tag: "Active",
+    tag: "Complete",
     role: "Site Superintendent",
   },
 ]

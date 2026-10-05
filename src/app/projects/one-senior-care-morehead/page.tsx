@@ -7,15 +7,14 @@ import { withCanonical } from "@/lib/site"
 import {
   dronePhotos,
   droneHeroSlides,
-  facilityPhotos,
   progressEnclosure,
   progressFoundation,
   progressInterior,
 } from "./photos"
 
 export const metadata = withCanonical("/projects/one-senior-care-morehead", {
-  title: "One Senior Care — Morehead | Miles Goodman",
-  description: "$3M PACE senior care facility in Morehead, KY. Active project. Site Superintendent: Miles Goodman.",
+  title: "One Senior Care - Morehead | Miles Goodman",
+  description: "$3M PACE senior care facility in Morehead, KY. Complete. Site Superintendent: Miles Goodman.",
 })
 
 export default function MoreheadPage() {
@@ -28,7 +27,7 @@ export default function MoreheadPage() {
             className="text-[10px] uppercase tracking-[0.18em] px-3 py-1.5 rounded-full text-white font-medium"
             style={{ background: "var(--accent)" }}
           >
-            Active Project
+            Complete
           </span>
         </div>
       </ProjectCoverSlideshow>
@@ -37,9 +36,9 @@ export default function MoreheadPage() {
       <div className="px-6 md:px-12 py-12" style={{ background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px]">
           <ProjectBackLink />
-          <SectionEyebrow className="mb-3">Morehead, KY · Active — Jan 2026 to Aug 2026</SectionEyebrow>
+          <SectionEyebrow className="mb-3">Morehead, KY · Complete · Jan 2026 to Aug 2026</SectionEyebrow>
           <h1 className="serif font-light tracking-tight mb-2" style={{ fontSize: "clamp(36px,5vw,72px)", color: "var(--ink)" }}>
-            One Senior Care — Morehead
+            One Senior Care - Morehead
           </h1>
           <p className="text-lg text-[var(--muted)] italic">$3M PACE senior care facility — 10,060 SF new construction</p>
         </div>
@@ -53,7 +52,7 @@ export default function MoreheadPage() {
             <div className="lg:sticky lg:top-28">
               <dl className="space-y-5">
                 {[
-                  ["Project", "One Senior Care — Morehead"],
+                  ["Project", "One Senior Care - Morehead"],
                   ["Program", "PACE (Program of All-Inclusive Care for the Elderly)"],
                   ["Owner", "One Senior Care"],
                   ["General Contractor", "Walker Company of Kentucky"],
@@ -66,7 +65,7 @@ export default function MoreheadPage() {
                   ["Building Size", "10,060 SF"],
                   ["Structure", "Pre-Engineered Metal Building (PEMB)"],
                   ["Timeline", "Jan 21, 2026 — Aug 27, 2026"],
-                  ["Status", "Active construction"],
+                  ["Status", "Complete"],
                 ].map(([label, value]) => (
                   <div key={label as string} className="border-b pb-4" style={{ borderColor: "var(--border)" }}>
                     <dt className="text-[10px] uppercase tracking-[0.18em] text-[var(--muted)] mb-1">{label}</dt>
@@ -80,16 +79,16 @@ export default function MoreheadPage() {
           <div className="flex-1 min-w-0">
             <div className="mb-12">
               <p className="text-lg leading-relaxed mb-4" style={{ color: "var(--ink)" }}>
-                Morehead One Senior Care — the One Senior Care center in Morehead — is a PACE (Program of All-Inclusive Care for the Elderly) facility serving Medicare and Medicaid participants in Rowan County. PACE centers provide integrated health, social, and long-term care services as an alternative to nursing home placement — this building is the physical hub for that model.
+                One Senior Care - Morehead is a PACE (Program of All-Inclusive Care for the Elderly) facility serving Medicare and Medicaid participants in Rowan County. PACE centers provide integrated health, social, and long-term care services as an alternative to nursing home placement, and this building is the hub for that care.
               </p>
               <p className="text-base leading-relaxed mb-4" style={{ color: "var(--muted)" }}>
-                The 10,060 SF facility uses a pre-engineered metal building (PEMB) structure. W Principles, LLC is self-performing the concrete scope under the Walker Company of Kentucky as general contractor. I'm managing daily field operations, trade coordination, and owner reporting on site.
+                The 10,060 SF facility uses a pre-engineered metal building (PEMB) structure. W Principles, LLC self-performed the concrete scope under the Walker Company of Kentucky as general contractor. I managed daily field operations, trade coordination, and owner reporting on site.
               </p>
               <p className="text-base leading-relaxed mb-4" style={{ color: "var(--muted)" }}>
-                The photographs follow the work from the slab and anchor bolts through steel, sheathing, and roof, then interior framing and the clinic, activity, and corridor spaces.
+                The photographs follow the work from the slab and anchor bolts through steel, sheathing, and roof, then interior framing and rough-in.
               </p>
               <p className="text-base leading-relaxed" style={{ color: "var(--muted)" }}>
-                This project is also the live deployment environment for my AI daily reporting app — My Reports processes site photos and voice notes into structured owner reports each morning.
+                This project is also the live deployment environment for my AI daily reporting app — My Reports processes site photos and voice notes into structured owner reports around 6pm ET.
               </p>
             </div>
 
@@ -103,7 +102,7 @@ export default function MoreheadPage() {
                 My Reports deployed on this project
               </h2>
               <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
-                Daily reports generated from iPhone photos and voice notes via the Claude API. 164 project documents indexed (as of Apr 2026). Owner-ready PDF on workdays. Roughly 80% faster than writing reports by hand.
+                Daily reports generated from iPhone photos and voice notes via the Claude API. 164 project documents indexed. Owner-ready PDF on workdays, around 6pm ET. Roughly 80% faster than writing reports by hand.
               </p>
               <Link
                 href="/my-reports"
@@ -141,14 +140,6 @@ export default function MoreheadPage() {
                 </div>
               ))}
             </div>
-
-            {facilityPhotos.length > 0 && (
-              <div className="mb-16">
-                <h2 className="serif font-light text-3xl mb-2" style={{ color: "var(--ink)" }}>Facility</h2>
-                <p className="text-sm text-[var(--muted)] mb-6">Clinic, activity, and corridor spaces.</p>
-                <CampTaylorGallery photos={facilityPhotos} />
-              </div>
-            )}
 
             <p className="text-xs text-[var(--muted)]">All photos by Miles Goodman · © 2026</p>
           </div>

@@ -10,7 +10,7 @@ export const metadata = withCanonical("/about", {
 })
 
 const timeline = [
-  { year: "2026", event: "One Senior Care — Morehead (Active)", detail: "Site Superintendent · $3M PACE facility" },
+  { year: "2026", event: "One Senior Care - Morehead — Complete", detail: "Site Superintendent · $3M PACE facility" },
   { year: "2025", event: "Camp Taylor Memorial Park Pool — Complete", detail: "Site Superintendent · $6.2M ARPA-funded" },
   { year: "2024", event: "John W. Black Aquatic Center — Complete", detail: "Site Superintendent · $3.7M renovation" },
   { year: "2024", event: "MBA — Northern Kentucky University (Active)", detail: "Project Management & AI · Expected 2026" },
