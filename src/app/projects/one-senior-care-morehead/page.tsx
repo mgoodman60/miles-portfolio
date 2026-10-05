@@ -23,10 +23,9 @@ export default function MoreheadPage() {
     <>
       {/* Cover — drone slideshow */}
       <ProjectCoverSlideshow slides={droneHeroSlides} height="60svh" minHeight={400}>
-        {/* Cover is pulled up 80px under the fixed nav, so top-24 lands inside the bar. */}
-        <div className="absolute top-[176px] left-6 md:left-12">
+        <div className="absolute top-6 left-6 md:left-12">
           <span
-            className="text-[10px] uppercase tracking-[0.18em] px-3 py-1.5 rounded-full text-white font-medium"
+            className="text-xs uppercase tracking-[0.18em] px-3 py-1.5 rounded-full text-white font-medium"
             style={{ background: "var(--accent)" }}
           >
             Complete
@@ -70,7 +69,7 @@ export default function MoreheadPage() {
                   ["Status", "Complete"],
                 ].map(([label, value]) => (
                   <div key={label as string} className="border-b pb-4" style={{ borderColor: "var(--border)" }}>
-                    <dt className="text-[10px] uppercase tracking-[0.18em] text-[var(--muted)] mb-1">{label}</dt>
+                    <dt className="text-xs uppercase tracking-[0.18em] text-[var(--muted)] mb-1">{label}</dt>
                     <dd className="text-sm font-medium text-[var(--ink)]">{value}</dd>
                   </div>
                 ))}
@@ -135,7 +134,7 @@ export default function MoreheadPage() {
               ].map(({ label, sub, photos }) => photos.length > 0 && (
                 <div key={label} className="mb-12">
                   <div className="mb-4">
-                    <p className="text-[10px] uppercase tracking-[0.18em] text-[var(--accent)] font-medium">{label}</p>
+                    <p className="text-xs uppercase tracking-[0.18em] text-[var(--accent)] font-medium">{label}</p>
                     <p className="text-xs text-[var(--muted)]">{sub} · {photos.length} photos</p>
                   </div>
                   <CampTaylorGallery photos={photos} captions />

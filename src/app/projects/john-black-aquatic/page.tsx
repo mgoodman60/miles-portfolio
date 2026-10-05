@@ -120,7 +120,7 @@ export default function JohnBlackPage() {
                   ["Scope", "Renovation after a 2022 closure — lap pool and recreation pool, water slide, splash pad, climbing wall, deck, locker rooms, and mechanical and piping work"],
                 ].map(([label, value]) => (
                   <div key={label} className="border-b pb-4" style={{ borderColor: "var(--border)" }}>
-                    <dt className="text-[10px] uppercase tracking-[0.18em] text-[var(--muted)] mb-1">{label}</dt>
+                    <dt className="text-xs uppercase tracking-[0.18em] text-[var(--muted)] mb-1">{label}</dt>
                     <dd className="text-sm font-medium text-[var(--ink)]">{value}</dd>
                   </div>
                 ))}

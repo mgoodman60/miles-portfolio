@@ -26,21 +26,21 @@ const steps = [
     tag: "~1 min · PDF + email",
     num: "03",
     title: "Owner receives the PDF",
-    body: "A formatted, owner-ready PDF lands in the owner's inbox each morning. Photos embedded, signed off. No editing required.",
+    body: "A formatted, owner-ready PDF goes out around 6pm ET on workdays, with the day's photos embedded.",
   },
 ]
 
 const stats = [
   { value: "~80%", label: "Faster than manual reporting" },
-  { value: "Live", label: "One Senior Care, Morehead" },
-  { value: "164", label: "Morehead docs, Apr 2026" },
+  { value: "Live", label: "One Senior Care - Morehead" },
+  { value: "164", label: "Project documents indexed" },
   { value: "< 5 min", label: "Photo to structured report" },
 ]
 
 const features = [
   {
     title: "Owner visibility",
-    body: "Owners get a PDF report every morning — photos, progress summary, open items — without having to call for an update.",
+    body: "Owners get a PDF around 6pm ET on workdays — photos, progress summary, open items — without having to call for an update.",
   },
   {
     title: "Subcontractor tracking",
@@ -60,7 +60,7 @@ export default function MyReportsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-28 pb-12 px-6 md:px-12" style={{ background: "var(--paper-warm)" }}>
+      <section className="pt-40 pb-12 px-6 md:px-12" style={{ background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px] grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
           <div>
             <SectionEyebrow className="mb-4">
@@ -71,7 +71,7 @@ export default function MyReportsPage() {
               <em className="font-light" style={{ color: "var(--accent)", fontStyle: "italic" }}>knows what happened.</em>
             </h1>
             <p className="text-base leading-relaxed mb-6" style={{ color: "var(--muted)" }}>
-              A superintendent takes 20–40 job site photos a day. Most stay on the phone. My Reports turns them into owner-ready daily progress reports — automatically, every morning.
+              A superintendent takes 20–40 job site photos a day. Most stay on the phone. My Reports turns them into owner-ready daily progress reports around 6pm ET on workdays.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
@@ -135,7 +135,7 @@ export default function MyReportsPage() {
       <section className="py-12 px-6 md:px-12 stat-strip">
         <div className="mx-auto max-w-[1480px] grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {[
-            { value: "Morning", label: "Owner PDF by email" },
+            { value: "6pm ET", label: "Owner PDF on workdays" },
             { value: "iPhone", label: "Photos and a voice note" },
             { value: "Daily", label: "ARPA compliance log" },
           ].map(({ value, label }) => (

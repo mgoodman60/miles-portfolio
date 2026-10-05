@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import { useReducedMotion } from "motion/react"
 
@@ -24,21 +24,21 @@ export function ProjectCoverSlideshow({
   const [current, setCurrent] = useState(0)
   const [userPaused, setUserPaused] = useState(false)
   const [holdPaused, setHoldPaused] = useState(false)
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const [cycle, setCycle] = useState(0)
   const prefersReduced = useReducedMotion()
   const paused = userPaused || holdPaused
 
   useEffect(() => {
     if (paused || prefersReduced || slides.length <= 1) return
-    intervalRef.current = setInterval(() => {
+    const intervalId = setInterval(() => {
       setCurrent((p) => (p + 1) % slides.length)
     }, intervalMs)
-    return () => { if (intervalRef.current) clearInterval(intervalRef.current) }
-  }, [paused, prefersReduced, slides.length, intervalMs])
+    return () => clearInterval(intervalId)
+  }, [paused, prefersReduced, slides.length, intervalMs, cycle])
 
   const goTo = (i: number) => {
-    if (intervalRef.current) clearInterval(intervalRef.current)
     setCurrent(i)
+    setCycle((n) => n + 1)
   }
 
   const currentSlide = slides[current]
@@ -48,8 +48,8 @@ export function ProjectCoverSlideshow({
 
   return (
     <div
-      className={`relative overflow-hidden ${className}`}
-      style={{ height, minHeight, marginTop: -80 }}
+      className={`relative mt-20 overflow-hidden ${className}`}
+      style={{ height, minHeight }}
       onMouseEnter={() => setHoldPaused(true)}
       onMouseLeave={() => setHoldPaused(false)}
       onFocus={() => setHoldPaused(true)}
@@ -98,7 +98,14 @@ export function ProjectCoverSlideshow({
         </div>
       )}
 
-      <div className="photo-scrim absolute inset-0" style={{ zIndex: 2 }} />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-36"
+        style={{
+          zIndex: 2,
+          background: "linear-gradient(180deg, rgba(12,16,22,0) 0%, rgba(12,16,22,0.72) 100%)",
+        }}
+      />
 
       <div className="on-photo absolute inset-0" style={{ zIndex: 3 }}>{children}</div>
 
@@ -169,7 +176,7 @@ export function ProjectCoverSlideshow({
                 border: "1px solid rgba(255,255,255,0.7)",
                 borderRadius: 4,
                 color: "#fff",
-                fontSize: 11,
+                fontSize: 12,
                 letterSpacing: "0.08em",
                 textTransform: "uppercase",
                 cursor: "pointer",
