@@ -147,9 +147,11 @@ function DesktopMenu({
         aria-controls={panelId}
         onClick={() => onOpenChange(!open)}
         onKeyDown={onButtonKeyDown}
+        aria-haspopup="true"
         className={cn(
-          "inline-flex items-center gap-1.5 text-sm font-medium tracking-wide transition-colors relative pb-0.5",
-          overHero ? "text-white hover:text-white" : "text-[var(--muted)] hover:text-[var(--ink)]",
+          "inline-flex items-center gap-1.5 py-2 text-sm font-medium tracking-wide transition-colors relative",
+          overHero ? "text-white" : "text-[var(--muted)] hover:text-[var(--ink)]",
+          overHero && !sectionActive && "hover:underline hover:underline-offset-4",
           sectionActive && !overHero && "text-[var(--ink)]",
           sectionActive && overHero && "text-white"
         )}
@@ -260,8 +262,9 @@ function AboutCluster({
         href="/about"
         aria-current={aboutCurrent ? "page" : undefined}
         className={cn(
-          "text-sm font-medium tracking-wide transition-colors relative pb-0.5",
-          overHero ? "text-white hover:text-white" : "text-[var(--muted)] hover:text-[var(--ink)]",
+          "py-2 text-sm font-medium tracking-wide transition-colors relative",
+          overHero ? "text-white" : "text-[var(--muted)] hover:text-[var(--ink)]",
+          overHero && !aboutCurrent && "hover:underline hover:underline-offset-4",
           aboutCurrent && (overHero ? "text-white" : "text-[var(--ink)]")
         )}
       >
@@ -280,11 +283,12 @@ function AboutCluster({
         type="button"
         aria-expanded={open}
         aria-controls={panelId}
+        aria-haspopup="true"
         aria-label={open ? "Hide resume" : "Show resume"}
         onClick={() => onOpenChange(!open)}
         className={cn(
-          "ml-0.5 inline-flex h-8 w-8 items-center justify-center rounded-full transition-colors",
-          overHero ? "text-white hover:text-white" : "text-[var(--muted)] hover:text-[var(--ink)]",
+          "ml-0.5 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full transition-colors",
+          overHero ? "text-white hover:bg-white/15" : "text-[var(--muted)] hover:bg-black/5 hover:text-[var(--ink)]",
           resumeCurrent && (overHero ? "text-white" : "text-[var(--accent)]")
         )}
       >
@@ -377,6 +381,8 @@ export function Nav() {
       const previousOverflow = document.body.style.overflow
       document.body.style.overflow = "hidden"
       wasOpenRef.current = true
+      const first = menuRef.current ? visibleFocusables(menuRef.current)[0] : null
+      first?.focus()
       return () => {
         document.body.style.overflow = previousOverflow
       }
@@ -428,8 +434,9 @@ export function Nav() {
 
   const primaryClass = (active: boolean) =>
     cn(
-      "text-sm font-medium tracking-wide transition-colors relative pb-0.5",
-      overHero ? "text-white hover:text-white" : "text-[var(--muted)] hover:text-[var(--ink)]",
+      "px-2 py-2 text-sm font-medium tracking-wide transition-colors relative",
+      overHero ? "text-white" : "text-[var(--muted)] hover:text-[var(--ink)]",
+      overHero && !active && "hover:underline hover:underline-offset-4",
       active && !overHero && "text-[var(--ink)]",
       active && overHero && "text-white"
     )
@@ -456,7 +463,7 @@ export function Nav() {
             aria-current={pathname === "/" ? "page" : undefined}
             className={cn(
               "serif text-[22px] font-normal tracking-tight transition-colors whitespace-nowrap",
-              overHero ? "text-white" : "text-[var(--ink)]"
+              overHero ? "text-white hover:underline hover:underline-offset-4" : "text-[var(--ink)] hover:text-[var(--accent)]"
             )}
           >
             Miles Goodman
@@ -566,11 +573,16 @@ export function Nav() {
                           aria-current={current ? "page" : undefined}
                           onClick={() => setMenuOpen(false)}
                           className={cn(
-                            "block py-3 text-sm font-medium transition-colors",
-                            current ? "text-[var(--accent)]" : "text-[var(--muted)] hover:text-[var(--ink)]"
+                            "block py-3 text-sm transition-colors",
+                            current ? "text-[var(--accent)]" : "text-[var(--ink)]"
                           )}
                         >
-                          {link.label}
+                          <span className="block font-medium leading-snug">{link.label}</span>
+                          {link.meta && (
+                            <span className="mt-0.5 block text-xs font-normal" style={{ color: "var(--muted)" }}>
+                              {link.meta}
+                            </span>
+                          )}
                         </Link>
                       </li>
                     )

@@ -57,28 +57,32 @@ export function ProjectCard3D({ project }: { project: Project }) {
       onMouseMove={tiltDisabled ? undefined : handleMouseMove}
       onMouseLeave={tiltDisabled ? undefined : handleMouseLeave}
       style={tiltDisabled ? undefined : { transition: "transform 0.15s ease" }}
-      className="group rounded overflow-hidden bg-white shadow-sm hover:shadow-lg"
+      className="group overflow-hidden rounded bg-white shadow-sm hover:shadow-lg"
     >
-      <Link href={`/projects/${project.slug}`} className="block">
-        {/* Cover image */}
+      <Link
+        href={`/projects/${project.slug}`}
+        className="card-link block"
+      >
         <div className="relative overflow-hidden" style={{ aspectRatio: "4/3" }}>
           <Image
             src={project.cover}
-            alt={project.name}
+            alt=""
             fill
-            className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+            className="object-cover object-center transition-transform duration-500 group-hover:scale-105 group-focus-within:scale-105 motion-reduce:transform-none"
             sizes="(max-width:768px) 100vw, (max-width:1480px) 33vw, 472px"
           />
-          {/* Hover overlay */}
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-end justify-end p-4">
-            <span className="opacity-0 group-hover:opacity-100 transition-opacity text-xs text-white font-medium tracking-wide">
+          <div className="absolute inset-0 flex items-end justify-end bg-black/0 p-4 transition-colors duration-300 group-hover:bg-black/35 group-focus-within:bg-black/35">
+            <span
+              aria-hidden="true"
+              className="rounded px-2.5 py-1 text-xs font-medium tracking-wide text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100"
+              style={{ background: "#131820" }}
+            >
               View project →
             </span>
           </div>
-          {/* Tag */}
           {project.tag && (
             <span
-              className="absolute top-4 left-4 text-[10px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full font-medium"
+              className="absolute top-4 left-4 text-xs uppercase tracking-[0.14em] px-2.5 py-1 rounded-full font-medium"
               style={{ background: "var(--accent)", color: "#fff" }}
             >
               {project.tag}
@@ -86,10 +90,9 @@ export function ProjectCard3D({ project }: { project: Project }) {
           )}
         </div>
 
-        {/* Meta */}
         <div className="p-6">
           <p
-            className="text-[10px] uppercase tracking-[0.18em] mb-2"
+            className="text-xs uppercase tracking-[0.14em] mb-2"
             style={{ color: "var(--muted)" }}
           >
             {project.location} · {project.year} · {project.cost}

@@ -165,9 +165,47 @@ body {
   outline-color: #fff;
 }
 
-/* Accessibility: skip-to-content link */
+/* Shared action styles. Inline background colors block Tailwind hovers. */
+.btn-solid {
+  background: var(--ink);
+  color: var(--paper);
+}
+.btn-solid:hover {
+  background: #2a3138;
+}
+.btn-line {
+  border-color: var(--border);
+  color: var(--ink);
+  background: transparent;
+}
+.btn-line:hover {
+  background: rgba(27, 32, 38, 0.06);
+}
+.btn-on-photo {
+  background: #131820;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+.btn-on-photo:hover {
+  background: #1c2430;
+}
+
+/* Card links sit inside overflow:hidden, so the default ring is clipped.
+   Unlayered so it wins over the global outline-offset. */
+.card-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-pause {
+    display: none;
+  }
+}
+
+/* Accessibility: skip-to-content link. Fixed so it stays in the viewport. */
 .skip-link {
-  position: absolute;
+  position: fixed;
   top: -100px;
   left: 1rem;
   z-index: 100;
@@ -239,9 +277,17 @@ main:focus {
 
 /* Accessibility: reduced motion */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+  .animate-marquee,
+  .animate-marquee-vertical {
+    animation: none !important;
+    transform: none !important;
   }
 }

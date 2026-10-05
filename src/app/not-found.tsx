@@ -23,39 +23,19 @@ export default function NotFound() {
           That link doesn&rsquo;t match a page on this site. The work is still here.
         </p>
         <div className="flex flex-wrap gap-4">
-          <Link
-            href="/"
-            className="inline-flex min-h-11 items-center rounded px-6 py-3 text-sm font-medium"
-            style={{ background: "var(--ink)", color: "var(--paper)" }}
-          >
+          <Link href="/" className="btn-solid inline-flex min-h-11 items-center px-6 py-3 text-sm font-medium rounded transition-colors">
             Home
           </Link>
-          <Link
-            href="/projects"
-            className="inline-flex min-h-11 items-center rounded border px-6 py-3 text-sm font-medium hover:bg-black/5"
-            style={{ borderColor: "var(--border)", color: "var(--ink)" }}
-          >
+          <Link href="/projects" className="btn-line inline-flex min-h-11 items-center px-6 py-3 text-sm font-medium rounded border transition-colors">
             Projects
           </Link>
-          <Link
-            href="/about"
-            className="inline-flex min-h-11 items-center rounded border px-6 py-3 text-sm font-medium hover:bg-black/5"
-            style={{ borderColor: "var(--border)", color: "var(--ink)" }}
-          >
+          <Link href="/about" className="btn-line inline-flex min-h-11 items-center px-6 py-3 text-sm font-medium rounded border transition-colors">
             About
           </Link>
-          <Link
-            href="/ai-tools"
-            className="inline-flex min-h-11 items-center rounded border px-6 py-3 text-sm font-medium hover:bg-black/5"
-            style={{ borderColor: "var(--border)", color: "var(--ink)" }}
-          >
+          <Link href="/ai-tools" className="btn-line inline-flex min-h-11 items-center px-6 py-3 text-sm font-medium rounded border transition-colors">
             AI
           </Link>
-          <Link
-            href="/contact"
-            className="inline-flex min-h-11 items-center rounded border px-6 py-3 text-sm font-medium hover:bg-black/5"
-            style={{ borderColor: "var(--border)", color: "var(--ink)" }}
-          >
+          <Link href="/contact" className="btn-line inline-flex min-h-11 items-center px-6 py-3 text-sm font-medium rounded border transition-colors">
             Contact
           </Link>
         </div>
