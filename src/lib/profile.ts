@@ -1,6 +1,6 @@
 /**
  * Facts for About, Resume, and Contact.
- * Education, dates, and the Top 5% line match public/Miles_Goodman_Resume.pdf.
+ * Education, dates, the firm name, and the Top 5% line match public/Miles_Goodman_Resume.pdf.
  * Job-search lines from that file (relocation) stay off the site.
  */
 
@@ -19,7 +19,7 @@ export const profile = {
   bsDegree: "BS, Engineering Technology Management",
   bsYear: "2022",
   ctm: "Certified Technology Manager (CTM)",
-  realtorOrg: "Keller Williams Realty",
+  realtorOrg: "Keller Williams / National Real Estate",
   realtorTitle: "Realtor",
   realtorDates: "Oct 2021 – Nov 2025",
   realtorHighlight: "Top 5% nationwide producer, 2022",
@@ -56,10 +56,10 @@ export const fieldProjects = [
     name: "John W. Black Aquatic Center — La Grange, KY",
     timeline: "John W. Black Aquatic Center — Reopened May 2024",
     year: "2024",
-    timelineDetail: "Site Superintendent · $3.7M renovation",
+    timelineDetail: "Site Superintendent · Reopened May 25, 2024",
     when: "Reopened May 25, 2024",
     points: [
-      "$3.7M renovation at Wendell Moore Park",
+      "Renovation at Wendell Moore Park",
       "Lap pool, recreation pool, water slide, and mechanical systems",
     ],
   },

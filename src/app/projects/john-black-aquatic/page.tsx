@@ -114,8 +114,6 @@ export default function JohnBlackPage() {
                   ["General Contractor", "W Principles, LLC"],
                   ["My Role", "Site Superintendent"],
                   ["Location", "1551 N. Highway 393, La Grange, KY"],
-                  // HOLD: WDRB reported $3.7M. W Principles lists $4M. Brandstetter Carroll lists a $4.2M budget.
-                  ["Cost", "$3.7 million"],
                   ["Reopened", "May 25, 2024"],
                   ["Scope", "Renovation after a 2022 closure — lap pool and recreation pool, water slide, splash pad, climbing wall, deck, locker rooms, and mechanical and piping work"],
                 ].map(([label, value]) => (
