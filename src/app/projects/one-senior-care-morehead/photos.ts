@@ -43,12 +43,12 @@ export const dronePhotos: Photo[] = [
   },
 ]
 
-export const droneHeroSlides: { src: string; alt: string }[] = [
-  dronePhotos[3],
-  dronePhotos[4],
-  dronePhotos[5],
-  dronePhotos[0],
-].map(({ src, alt }) => ({ src, alt }))
+export const droneHeroSlides: { src: string; alt: string; caption: string }[] = [
+  { ...dronePhotos[3], caption: "July 2026 · Enclosed building" },
+  { ...dronePhotos[4], caption: "July 2026 · Front of the site" },
+  { ...dronePhotos[5], caption: "July 2026 · Corner" },
+  { ...dronePhotos[0], caption: "March 2026 · Steel erection" },
+].map(({ src, alt, caption }) => ({ src, alt, caption }))
 
 export const progressFoundation: Photo[] = [
   {
@@ -82,7 +82,7 @@ export const progressEnclosure: Photo[] = [
     src: `${morehead}/build-2026-04-15-sheathing.jpg`,
     width: 1800,
     height: 1012,
-    alt: "Sheathing on the exterior walls, April 2026",
+    alt: "Aerial of exterior wall sheathing on the steel frame, April 2026",
   },
   {
     src: `${morehead}/build-2026-04-30-roof.jpg`,
@@ -103,13 +103,13 @@ export const progressInterior: Photo[] = [
     src: `${morehead}/build-2026-05-27-drywall.jpg`,
     width: 1350,
     height: 1800,
-    alt: "Drywall hung on interior partitions, May 2026",
+    alt: "Drywall on the partitions and ceiling, with stacked sheets below, May 2026",
   },
   {
     src: `${morehead}/build-2026-06-18-mep.jpg`,
     width: 1800,
     height: 1013,
-    alt: "MEP rough-in in metal stud walls, June 2026",
+    alt: "Overhead ductwork and electrical rough-in, June 2026",
   },
 ]
 
@@ -118,18 +118,18 @@ export const facilityPhotos: Photo[] = [
     src: `${morehead}/facility-interior.jpg`,
     width: 1800,
     height: 1013,
-    alt: "Interior finishes with painted walls, exposed steel, and ductwork, August 2026",
+    alt: "Painted room with exposed steel and ductwork",
   },
   {
     src: `${morehead}/facility-therapy.jpg`,
     width: 1800,
     height: 1013,
-    alt: "Therapy space with parallel bars and a ceiling grid, September 2026",
+    alt: "Therapy space with parallel bars and a wood handrail",
   },
   {
     src: `${morehead}/facility-restroom.jpg`,
     width: 1350,
     height: 1800,
-    alt: "Accessible restroom finishes, September 2026",
+    alt: "Accessible restroom with grab bars",
   },
 ]

@@ -95,6 +95,22 @@ export function ProjectCoverSlideshow({
 
       <div className="on-photo absolute inset-0" style={{ zIndex: 3 }}>{children}</div>
 
+      {currentSlide?.caption && (
+        <p
+          aria-hidden="true"
+          className="absolute left-6 md:left-12 max-w-[min(36rem,calc(100%-3rem))] text-sm leading-snug text-white"
+          style={{
+            bottom: 92,
+            zIndex: 4,
+            background: "rgba(12,16,22,0.88)",
+            padding: "6px 10px",
+            borderRadius: 4,
+          }}
+        >
+          {currentSlide.caption}
+        </p>
+      )}
+
       {slides.length > 1 && (
         <div
           className="on-photo absolute bottom-6 left-6 md:left-12 flex items-center gap-2"

@@ -23,7 +23,8 @@ export default function MoreheadPage() {
     <>
       {/* Cover — drone slideshow */}
       <ProjectCoverSlideshow slides={droneHeroSlides} height="60svh" minHeight={400}>
-        <div className="absolute top-24 left-6 md:left-12">
+        {/* Cover is pulled up 80px under the fixed nav, so top-24 lands inside the bar. */}
+        <div className="absolute top-[176px] left-6 md:left-12">
           <span
             className="text-[10px] uppercase tracking-[0.18em] px-3 py-1.5 rounded-full text-white font-medium"
             style={{ background: "var(--accent)" }}
@@ -83,7 +84,7 @@ export default function MoreheadPage() {
                 One Senior Care - Morehead is a PACE (Program of All-Inclusive Care for the Elderly) facility serving Medicare and Medicaid participants in Rowan County. PACE centers provide integrated health, social, and long-term care services as an alternative to nursing home placement, and this building is the hub for that care.
               </p>
               <p className="text-base leading-relaxed mb-4" style={{ color: "var(--muted)" }}>
-                The 10,060 SF facility uses a pre-engineered metal building (PEMB) structure. W Principles, LLC self-performed the concrete scope under the Walker Company of Kentucky as general contractor. I managed daily field operations, trade coordination, and owner reporting on site.
+                The 10,060 SF facility uses a pre-engineered metal building (PEMB) structure. Walker Company of Kentucky was the general contractor, and W Principles, LLC self-performed the concrete. I managed daily field operations, trade coordination, and owner reporting on site.
               </p>
               <p className="text-base leading-relaxed mb-4" style={{ color: "var(--muted)" }}>
                 The photographs follow the work from the slab and anchor bolts through steel, sheathing, and roof, then interior framing, MEP rough-in, and finishes.
@@ -118,7 +119,7 @@ export default function MoreheadPage() {
             {dronePhotos.length > 0 && (
               <div className="mb-16">
                 <h2 className="serif font-light text-3xl mb-6" style={{ color: "var(--ink)" }}>Drone Photography</h2>
-                <CampTaylorGallery photos={dronePhotos} eager />
+                <CampTaylorGallery photos={dronePhotos} eager captions />
               </div>
             )}
 
@@ -137,7 +138,7 @@ export default function MoreheadPage() {
                     <p className="text-[10px] uppercase tracking-[0.18em] text-[var(--accent)] font-medium">{label}</p>
                     <p className="text-xs text-[var(--muted)]">{sub} · {photos.length} photos</p>
                   </div>
-                  <CampTaylorGallery photos={photos} />
+                  <CampTaylorGallery photos={photos} captions />
                 </div>
               ))}
             </div>
@@ -145,8 +146,8 @@ export default function MoreheadPage() {
             {facilityPhotos.length > 0 && (
               <div className="mb-16">
                 <h2 className="serif font-light text-3xl mb-2" style={{ color: "var(--ink)" }}>Facility</h2>
-                <p className="text-sm text-[var(--muted)] mb-6">Interior finishes, from rough-in through painted rooms.</p>
-                <CampTaylorGallery photos={facilityPhotos} />
+                <p className="text-sm text-[var(--muted)] mb-6">Painted room, therapy space, and accessible restroom.</p>
+                <CampTaylorGallery photos={facilityPhotos} captions />
               </div>
             )}
 
