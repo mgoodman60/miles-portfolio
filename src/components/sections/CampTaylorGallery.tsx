@@ -4,6 +4,8 @@ import { RowsPhotoAlbum } from "react-photo-album"
 import "react-photo-album/rows.css"
 import Lightbox from "yet-another-react-lightbox"
 import "yet-another-react-lightbox/styles.css"
+import Captions from "yet-another-react-lightbox/plugins/captions"
+import "yet-another-react-lightbox/plugins/captions.css"
 import Zoom from "yet-another-react-lightbox/plugins/zoom"
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
@@ -16,11 +18,13 @@ export function CampTaylorGallery({
   photos,
   eager = false,
   variant = "album",
+  captions = false,
 }: {
   photos: Photo[]
   eager?: boolean
   /** "stack" is a dated list. The row album is unchanged for other pages. */
   variant?: "album" | "stack"
+  captions?: boolean
 }) {
   const [index, setIndex] = useState(-1)
   const [albumReady, setAlbumReady] = useState(false)
@@ -126,8 +130,23 @@ export function CampTaylorGallery({
         open={index >= 0}
         index={index}
         close={() => setIndex(-1)}
-        slides={photos.map((p) => ({ src: p.src, alt: p.alt, width: p.width, height: p.height }))}
-        plugins={[Zoom]}
+        slides={photos.map((p) => ({
+          src: p.src,
+          alt: p.alt,
+          width: p.width,
+          height: p.height,
+          description: captions ? p.alt : undefined,
+        }))}
+        plugins={captions ? [Zoom, Captions] : [Zoom]}
+        captions={captions ? { descriptionTextAlign: "start", descriptionMaxLines: 3, showToggle: false } : undefined}
+        styles={
+          captions
+            ? {
+                captionsDescription: { color: "#fff", fontSize: "15px", lineHeight: 1.45 },
+                captionsDescriptionContainer: { background: "rgba(12,16,22,0.92)" },
+              }
+            : undefined
+        }
       />
     </div>
   )
