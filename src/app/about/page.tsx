@@ -125,7 +125,7 @@ export default function AboutPage() {
           <div className="mx-auto w-full max-w-[400px] lg:mx-0 lg:justify-self-end">
             <Image
               src="/headshot.jpg"
-              alt="Miles Goodman, Site Superintendent at W Principles"
+              alt="Miles Goodman"
               width={400}
               height={400}
               priority
