@@ -29,7 +29,7 @@ const tools: Tool[] = [
     num: "01",
     tag: "My Reports · Daily Reporting",
     title: "Site photos → owner-ready reports",
-    body: "I built My Reports on the Claude API to turn daily site photos and voice notes into structured daily progress reports. Live on One Senior Care in Morehead, KY — runs every workday. Roughly 80% faster than writing reports manually, and the owner has it before the day starts.",
+    body: "I built My Reports on the Claude API to turn daily site photos and voice notes into structured daily progress reports. Live on One Senior Care - Morehead — runs every workday. Roughly 80% faster than writing reports manually. The owner-ready PDF goes out around 6pm ET.",
     stat: "~80% faster",
     statLabel: "vs. manual reporting",
     link: "/my-reports",
@@ -53,7 +53,7 @@ const tools: Tool[] = [
     title: "Submittal tracking and shop drawing review",
     body: "A superintendent manages dozens of active submittals — materials, shop drawings, product data. I use Claude to organize submittal packages, identify missing items, and draft transmittal summaries. Keeps the review log moving without losing track of what's sitting with the engineer or architect.",
     stat: "Submittal log",
-    statLabel: "No missed items, no delayed reviews",
+    statLabel: "Shop drawings and product data",
     link: "/contact",
     linkLabel: "Contact",
   },
@@ -61,9 +61,9 @@ const tools: Tool[] = [
     num: "04",
     tag: "ForemanOS · Superintendent Field OS",
     title: "A working super's operating system, public on GitHub",
-    body: "ForemanOS is a separate platform I'm building — a Claude Code plugin with 42 skills, 37 commands, and 21 field-reference documents covering daily reporting, scheduling, document intelligence, and DWG extraction. The broader toolkit My Reports grew out of. Open source.",
+    body: "ForemanOS is a separate platform I'm building, public on GitHub as seven construction plugins with 42 skills and 39 commands. It covers daily reporting, scheduling, and document work. The broader toolkit My Reports grew out of.",
     stat: "42 skills",
-    statLabel: "Public Claude Code plugin",
+    statLabel: "39 commands · public on GitHub",
     link: "https://github.com/mgoodman60/foreman-os-plugin",
     linkLabel: "View on GitHub",
     external: true,
@@ -74,7 +74,7 @@ export default function AIToolsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-28 pb-12 px-6 md:px-12" style={{ background: "var(--paper-warm)" }}>
+      <section className="pt-40 pb-12 px-6 md:px-12" style={{ background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px] grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
           <div>
             <SectionEyebrow className="mb-4">
@@ -92,7 +92,7 @@ export default function AIToolsPage() {
               <span aria-hidden="true" style={{ color: "var(--muted)" }}>·</span>
               <span>Built on Claude API</span>
               <span aria-hidden="true" style={{ color: "var(--muted)" }}>·</span>
-              <span>Used daily in the field</span>
+              <span>My Reports runs on workdays</span>
             </div>
             <div className="flex flex-wrap gap-4">
               <Link

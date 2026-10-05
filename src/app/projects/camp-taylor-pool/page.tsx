@@ -119,14 +119,14 @@ export default function CampTaylorPage() {
                   ["Scope", "New waterpark — ADA zero-depth entry, lap lanes, water slide, children’s play area, shaded seating, and a pool house"],
                 ].map(([label, value]) => (
                   <div key={label} className="border-b pb-4" style={{ borderColor: "var(--border)" }}>
-                    <dt className="text-[10px] uppercase tracking-[0.18em] text-[var(--muted)] mb-1">{label}</dt>
+                    <dt className="text-xs uppercase tracking-[0.18em] text-[var(--muted)] mb-1">{label}</dt>
                     <dd className="text-sm font-medium text-[var(--ink)]">{value}</dd>
                   </div>
                 ))}
               </dl>
 
               <div className="mt-8">
-                <p className="text-[10px] uppercase tracking-[0.18em] text-[var(--muted)] mb-3">Coverage</p>
+                <p className="text-xs uppercase tracking-[0.18em] text-[var(--muted)] mb-3">Coverage</p>
                 <div className="flex flex-col gap-2">
                   {press.map((item) => (
                     <a

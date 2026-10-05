@@ -53,19 +53,21 @@ export function CampTaylorGallery({
               <figure>
                 <button
                   type="button"
-                  className="block w-full overflow-hidden rounded text-left"
+                  className="block w-full rounded text-left"
                   onClick={() => setIndex(photoIndex)}
                 >
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt}
-                    width={photo.width}
-                    height={photo.height}
-                    loading={eager && photoIndex === 0 ? "eager" : "lazy"}
-                    sizes="(max-width: 1024px) 100vw, 960px"
-                    className="h-auto w-full"
-                    style={{ background: "var(--paper-warm)" }}
-                  />
+                  <span className="block overflow-hidden rounded">
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      width={photo.width}
+                      height={photo.height}
+                      loading={eager && photoIndex === 0 ? "eager" : "lazy"}
+                      sizes="(max-width: 1024px) 100vw, 960px"
+                      className="h-auto w-full"
+                      style={{ background: "var(--paper-warm)" }}
+                    />
+                  </span>
                 </button>
                 {photo.caption ? (
                   <figcaption className="mt-2 text-sm" style={{ color: "var(--muted)" }}>
@@ -94,19 +96,21 @@ export function CampTaylorGallery({
           <button
             key={photo.src}
             type="button"
-            className="block w-full overflow-hidden rounded text-left"
+            className="block w-full rounded text-left"
             onClick={() => setIndex(photos.findIndex((item) => item.src === photo.src))}
           >
-            <Image
-              src={photo.src}
-              alt={photo.alt}
-              width={photo.width}
-              height={photo.height}
-              loading={eager ? "eager" : "lazy"}
-              sizes="(max-width: 640px) 50vw, 25vw"
-              className="h-auto w-full object-cover"
-              style={{ background: "var(--paper-warm)", aspectRatio: `${photo.width} / ${photo.height}` }}
-            />
+            <span className="block overflow-hidden rounded">
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                width={photo.width}
+                height={photo.height}
+                loading={eager ? "eager" : "lazy"}
+                sizes="(max-width: 640px) 50vw, 25vw"
+                className="h-auto w-full object-cover"
+                style={{ background: "var(--paper-warm)", aspectRatio: `${photo.width} / ${photo.height}` }}
+              />
+            </span>
           </button>
         ))}
       </div>

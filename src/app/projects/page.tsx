@@ -43,7 +43,7 @@ const projects = [
     cost: "$3M",
     scope: "10,060 SF PACE senior care facility — Pre-engineered metal building + concrete self-perform",
     cover: "/projects/morehead/aerial-2026-07-14-overhead.jpg",
-    coverAlt: "One Senior Care - Morehead",
+    coverAlt: "Overhead aerial of the enclosed One Senior Care - Morehead building",
     tag: "Complete",
     role: "Site Superintendent",
   },
@@ -88,7 +88,7 @@ export default function ProjectsPage() {
               <Link
                 key={p.slug}
                 href={`/projects/${p.slug}`}
-                className="group block rounded overflow-hidden bg-white shadow-sm hover:shadow-lg transition-shadow"
+                className="card-link group block rounded overflow-hidden bg-white shadow-sm hover:shadow-lg transition-shadow"
               >
                 <div className="relative overflow-hidden" style={{ aspectRatio: "4/3" }}>
                   <Image
@@ -99,14 +99,14 @@ export default function ProjectsPage() {
                     sizes="(max-width:768px) 100vw, 33vw"
                   />
                   <span
-                    className="absolute top-4 left-4 text-[10px] uppercase tracking-[0.14em] px-2.5 py-1 rounded-full font-medium text-white"
+                    className="absolute top-4 left-4 text-xs uppercase tracking-[0.14em] px-2.5 py-1 rounded-full font-medium text-white"
                     style={{ background: "var(--accent)" }}
                   >
                     {p.tag}
                   </span>
                 </div>
                 <div className="p-6">
-                  <p className="text-[10px] uppercase tracking-[0.18em] mb-2" style={{ color: "var(--muted)" }}>
+                  <p className="text-xs uppercase tracking-[0.18em] mb-2" style={{ color: "var(--muted)" }}>
                     {p.location} · {p.year} · {p.cost} · {p.role}
                   </p>
                   <h2 className="serif font-light text-xl leading-snug mb-2" style={{ color: "var(--ink)" }}>
@@ -135,7 +135,7 @@ export default function ProjectsPage() {
                 className="rounded p-6 border"
                 style={{ borderColor: "var(--border)", background: "var(--paper-warm)" }}
               >
-                <p className="text-[10px] uppercase tracking-[0.18em] mb-2" style={{ color: "var(--muted)" }}>
+                <p className="text-xs uppercase tracking-[0.18em] mb-2" style={{ color: "var(--muted)" }}>
                   {p.location} · {p.value}
                 </p>
                 <h3 className="serif font-light text-lg" style={{ color: "var(--ink)" }}>{p.name}</h3>
