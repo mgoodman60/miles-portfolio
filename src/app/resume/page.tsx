@@ -1,9 +1,10 @@
 import Link from "next/link"
+import { withCanonical } from "@/lib/site"
 
-export const metadata = {
+export const metadata = withCanonical("/resume", {
   title: "Resume — Miles Goodman",
-  description: "Site Superintendent · MBA Candidate. Resume of Miles Goodman.",
-}
+  description: "Site Superintendent in Mount Sterling, KY. MBA candidate. Resume of Miles Goodman.",
+})
 
 /*
   Resume typography:
@@ -29,7 +30,7 @@ export default function ResumePage() {
                 Site Superintendent · MBA Candidate
               </p>
               <p className="text-sm text-[var(--muted)]">
-                Lexington, KY &nbsp;·&nbsp;{" "}
+                Mount Sterling, KY &nbsp;·&nbsp;{" "}
                 <a
                   href="mailto:msgoodman1997@gmail.com"
                   className="hover:text-[var(--accent)] transition-colors"

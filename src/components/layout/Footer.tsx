@@ -43,7 +43,7 @@ export function Footer() {
             <a href="mailto:msgoodman1997@gmail.com" className="py-2 hover:text-white transition-colors">
               msgoodman1997@gmail.com
             </a>
-            <span className="py-2">Lexington, KY</span>
+            <span className="py-2">Mount Sterling, KY</span>
           </div>
         </div>
       </div>

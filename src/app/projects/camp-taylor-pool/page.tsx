@@ -3,6 +3,8 @@ import Link from "next/link"
 import { CampTaylorGallery } from "@/components/sections/CampTaylorGallery"
 import { BeforeAfterSlider } from "@/components/sections/BeforeAfterSlider"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
+import { ProjectBackLink, ProjectPager } from "@/components/sections/ProjectChrome"
+import { withCanonical } from "@/lib/site"
 import { timelinePhotos } from "./timeline-photos"
 
 const photos = [
@@ -20,10 +22,10 @@ const photos = [
   { src: "/projects/camp-taylor/finished-pool.jpg", width: 1200, height: 800, alt: "Completed pool" },
 ]
 
-export const metadata = {
+export const metadata = withCanonical("/projects/camp-taylor-pool", {
   title: "Camp Taylor Memorial Park Pool — Miles Goodman",
   description: "$6.2M ARPA-funded aquatic facility in Louisville, KY. Site Superintendent: Miles Goodman, W Principles, LLC.",
-}
+})
 
 export default function CampTaylorPage() {
   return (
@@ -35,25 +37,17 @@ export default function CampTaylorPage() {
           alt="Camp Taylor Memorial Park Pool — night concrete pour"
           fill
           priority
+          quality={60}
           className="object-cover object-center"
           sizes="100vw"
         />
-        <div
-          className="absolute inset-0"
-          style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.55) 100%)" }}
-        />
-        <div className="absolute bottom-0 left-0 right-0 px-6 md:px-12 pb-10">
-          <div className="mx-auto max-w-[1480px]">
-            <Link href="/projects" className="text-xs text-white/60 hover:text-white/90 transition-colors mb-4 inline-block px-2 py-2 -mx-2 -my-2">
-              ← Projects
-            </Link>
-          </div>
-        </div>
+        <div className="photo-scrim absolute inset-0" />
       </div>
 
       {/* ── Title block ────────────────────────────────── */}
       <div className="px-6 md:px-12 py-12" style={{ background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px]">
+          <ProjectBackLink />
           <SectionEyebrow className="mb-3">Louisville, KY · 2025</SectionEyebrow>
           <h1 className="serif font-light tracking-tight mb-2" style={{ fontSize: "clamp(36px,5vw,72px)", color: "var(--ink)" }}>
             Camp Taylor Memorial Park Pool
@@ -192,7 +186,7 @@ export default function CampTaylorPage() {
               <h2 className="serif font-light text-3xl mb-6" style={{ color: "var(--ink)" }}>
                 Site Photography
               </h2>
-              <CampTaylorGallery photos={photos} />
+              <CampTaylorGallery photos={photos} eager />
               <p className="text-xs text-[var(--muted)] mt-4">
                 All photos by Miles Goodman · © 2024–2025
               </p>
@@ -232,6 +226,7 @@ export default function CampTaylorPage() {
 
       {/* ── Bottom CTA ───────────────────────────────────── */}
       <section
+        data-footer-cta=""
         className="border-t py-24 px-6 md:px-12 text-center"
         style={{ borderColor: "var(--border)", background: "var(--paper-warm)" }}
       >
@@ -259,21 +254,7 @@ export default function CampTaylorPage() {
         </div>
       </section>
 
-      {/* ── Next project ────────────────────────────────── */}
-      <div className="border-t px-6 md:px-12 py-12" style={{ borderColor: "var(--border)" }}>
-        <div className="mx-auto max-w-[1480px] flex justify-between items-center">
-          <Link href="/projects" className="text-sm text-[var(--muted)] hover:text-[var(--ink)] transition-colors">
-            ← All Projects
-          </Link>
-          <Link
-            href="/projects/john-black-aquatic"
-            className="text-sm font-medium hover:text-[var(--accent)] transition-colors"
-            style={{ color: "var(--ink)" }}
-          >
-            Next: John W. Black Aquatic Center →
-          </Link>
-        </div>
-      </div>
+      <ProjectPager next={{ href: "/projects/john-black-aquatic", label: "John W. Black" }} />
     </>
   )
 }

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { motion, useReducedMotion } from "motion/react"
+import { useReducedMotion } from "motion/react"
 
 const slides = [
   {
@@ -74,6 +74,7 @@ export function HeroSlideshow() {
             alt={slide.alt}
             fill
             priority={i === 0}
+            quality={i === 0 ? 60 : 75}
             className="object-cover object-center"
             sizes="100vw"
           />
@@ -100,45 +101,25 @@ export function HeroSlideshow() {
       </div>
 
       {/* Gradient — above all slides */}
-      <div
-        className="absolute inset-0"
-        style={{
-          zIndex: 2,
-          background:
-            "linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.72) 100%)",
-        }}
-      />
+      <div className="photo-scrim absolute inset-0" style={{ zIndex: 2 }} />
 
-      {/* Content */}
+      {/* Content — visible without JS. Motion is a CSS enhancement only. */}
       <div className="absolute inset-0 flex flex-col justify-end px-6 md:px-12 pb-20" style={{ zIndex: 3 }}>
         <div className="mx-auto w-full max-w-[1480px]">
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-xs uppercase tracking-[0.22em] text-white/70 mb-4"
-          >
+          <p className="hero-rise hero-rise-1 text-xs uppercase tracking-[0.22em] text-white mb-4">
             Site Superintendent · MBA Candidate, Project Management &amp; AI
-          </motion.p>
+          </p>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="serif font-light text-white leading-none tracking-tight mb-8"
-            style={{ fontSize: "clamp(40px, 5.5vw, 80px)" }}
+          <h1
+            className="hero-rise hero-rise-2 serif font-light text-white leading-none tracking-tight mb-8"
+            style={{ fontSize: "clamp(40px, 5.5vw, 80px)", textShadow: "0 2px 16px rgba(0,0,0,0.45)" }}
           >
             Miles
             <br />
             Goodman
-          </motion.h1>
+          </h1>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-wrap gap-4"
-          >
+          <div className="hero-rise hero-rise-3 flex flex-wrap gap-4">
             <Link
               href="/projects"
               className="px-6 py-3 text-sm font-medium rounded transition-colors"
@@ -153,7 +134,7 @@ export function HeroSlideshow() {
             >
               Download Resume (PDF)
             </a>
-          </motion.div>
+          </div>
         </div>
       </div>
 
@@ -180,9 +161,9 @@ export function HeroSlideshow() {
             <span
               style={{
                 display: "block",
-                width: i === current ? 28 : 8,
-                height: 2,
-                background: i === current ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.35)",
+                width: i === current ? 28 : 10,
+                height: 4,
+                background: i === current ? "#fff" : "rgba(255,255,255,0.85)",
                 borderRadius: 2,
                 transition: "all 0.3s",
               }}
@@ -199,10 +180,10 @@ export function HeroSlideshow() {
               minHeight: 44,
               padding: "0 10px",
               marginLeft: 4,
-              background: "rgba(0,0,0,0.35)",
-              border: "1px solid rgba(255,255,255,0.4)",
+              background: "rgba(12,16,22,0.8)",
+              border: "1px solid rgba(255,255,255,0.7)",
               borderRadius: 4,
-              color: "rgba(255,255,255,0.9)",
+              color: "#fff",
               fontSize: 11,
               letterSpacing: "0.08em",
               textTransform: "uppercase",
@@ -216,8 +197,8 @@ export function HeroSlideshow() {
 
       {/* Caption */}
       <p
-        className="absolute bottom-4 right-6 md:right-12 text-[10px] text-white/35 tracking-wide text-right"
-        style={{ zIndex: 3 }}
+        className="absolute bottom-4 right-6 md:right-12 text-xs text-white tracking-wide text-right rounded px-2.5 py-1"
+        style={{ zIndex: 3, background: "rgba(12,16,22,0.8)" }}
       >
         {slides[current].caption}
       </p>

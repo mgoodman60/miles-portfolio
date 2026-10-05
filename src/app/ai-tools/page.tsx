@@ -3,11 +3,12 @@ import Link from "next/link"
 import { BlurFade } from "@/components/magicui/blur-fade"
 import { Stat } from "@/components/ui/Stat"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
+import { withCanonical } from "@/lib/site"
 
-export const metadata = {
+export const metadata = withCanonical("/ai-tools", {
   title: "AI Tools — Miles Goodman",
   description: "AI tools built and actively used in the field — daily reporting, plan review, and bid estimation.",
-}
+})
 
 type Tool = {
   num: string
@@ -73,28 +74,44 @@ export default function AIToolsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-40 pb-24 px-6 md:px-12" style={{ background: "var(--paper-warm)" }}>
-        <div className="mx-auto max-w-[1480px] grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <section className="pt-28 pb-12 px-6 md:px-12" style={{ background: "var(--paper-warm)" }}>
+        <div className="mx-auto max-w-[1480px] grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
           <div>
-            <SectionEyebrow className="mb-6">
+            <SectionEyebrow className="mb-4">
               MBA Candidate — Project Management &amp; AI · Northern Kentucky University
             </SectionEyebrow>
-            <h1 className="serif font-light tracking-tight mb-6" style={{ fontSize: "clamp(40px,5.5vw,80px)", color: "var(--ink)", maxWidth: 900 }}>
+            <h1 className="serif font-light tracking-tight mb-5" style={{ fontSize: "clamp(32px, 4vw, 56px)", lineHeight: 1.12, color: "var(--ink)" }}>
               AI doesn&rsquo;t replace field judgment.{" "}
               <em className="not-italic" style={{ color: "var(--accent)", fontStyle: "italic" }}>
                 It removes the paperwork friction
               </em>{" "}
               that keeps superintendents out of the field.
             </h1>
-            <div className="flex flex-wrap gap-6 text-sm" style={{ color: "var(--muted)" }}>
+            <div className="flex flex-wrap gap-4 mb-6 text-sm" style={{ color: "var(--muted)" }}>
               <span>4 tools</span>
               <span style={{ color: "var(--border)" }}>·</span>
               <span>Built on Claude API</span>
               <span style={{ color: "var(--border)" }}>·</span>
               <span>Used daily in the field</span>
             </div>
+            <div className="flex flex-wrap gap-4">
+              <Link
+                href="/my-reports"
+                className="px-6 py-3 text-sm font-medium rounded transition-colors"
+                style={{ background: "var(--ink)", color: "var(--paper)" }}
+              >
+                See My Reports
+              </Link>
+              <Link
+                href="/contact"
+                className="px-6 py-3 text-sm font-medium rounded border transition-colors hover:bg-black/5"
+                style={{ borderColor: "var(--border)", color: "var(--ink)" }}
+              >
+                Contact
+              </Link>
+            </div>
           </div>
-          <div className="relative rounded overflow-hidden order-first lg:order-last" style={{ aspectRatio: "4/3" }}>
+          <div className="relative rounded overflow-hidden order-last" style={{ aspectRatio: "4/3" }}>
             <Image
               src="/projects/camp-taylor/night-pour-hero.jpg"
               alt="Night concrete pour — Camp Taylor pool"

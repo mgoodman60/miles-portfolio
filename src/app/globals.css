@@ -61,6 +61,7 @@ body {
 /*
   Canonical type & spacing scale (do not fork):
     H1 page header        : clamp(40px, 5.5vw, 80px) · serif font-light · tracking-tight
+    H1 tool / product     : clamp(32px, 4vw, 56px)   · serif font-light · line-height 1.12
     H1 case-study header  : clamp(36px, 5vw, 72px)   · serif font-light · tracking-tight
     H2 section            : clamp(28px, 3.6vw, 44px) · serif font-light
     H2 sub/inline         : text-2xl serif font-light
@@ -83,8 +84,24 @@ body {
 
 /* ── Nav states ────────────────────────────────────── */
 .nav-over-hero {
-  background: transparent;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 16, 22, 0.9) 0%,
+    rgba(12, 16, 22, 0.78) 100%
+  );
   color: #fff;
+}
+
+/* Dark scrim for type sitting on photography. Stays opaque through the
+   title band so a slideshow crossfade cannot wash the text out. */
+.photo-scrim {
+  background: linear-gradient(
+    180deg,
+    rgba(12, 16, 22, 0.62) 0%,
+    rgba(12, 16, 22, 0.28) 28%,
+    rgba(12, 16, 22, 0.34) 48%,
+    rgba(12, 16, 22, 0.9) 100%
+  );
 }
 
 .nav-solid {
@@ -160,6 +177,28 @@ body {
 /* Make tabbable main not show a focus ring (programmatic target only) */
 main:focus {
   outline: none;
+}
+
+/* Hero entrance. Runs only when scripting is available so no-JS
+   visitors still see the headline. Reduced motion snaps it shut. */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .hero-rise {
+    animation: hero-rise 0.7s ease both;
+  }
+  .hero-rise-1 { animation-delay: 0.08s; }
+  .hero-rise-2 { animation-delay: 0.16s; }
+  .hero-rise-3 { animation-delay: 0.28s; }
 }
 
 /* Accessibility: reduced motion */

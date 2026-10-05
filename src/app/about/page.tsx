@@ -2,11 +2,12 @@ import Image from "next/image"
 import Link from "next/link"
 import { BlurFade } from "@/components/magicui/blur-fade"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
+import { withCanonical } from "@/lib/site"
 
-export const metadata = {
+export const metadata = withCanonical("/about", {
   title: "About — Miles Goodman",
-  description: "Site Superintendent at W Principles, LLC. MBA candidate at NKU. Commercial construction in Kentucky.",
-}
+  description: "Site Superintendent at W Principles, LLC in Mount Sterling, KY. MBA candidate at NKU. Commercial construction in Kentucky.",
+})
 
 const timeline = [
   { year: "2026", event: "One Senior Care — Morehead (Active)", detail: "Site Superintendent · $3M PACE facility" },
@@ -30,7 +31,7 @@ export default function AboutPage() {
 
       {/* Bio + headshot */}
       <section className="border-t py-24 px-6 md:px-12" style={{ borderColor: "var(--border)" }}>
-        <div className="mx-auto max-w-[1480px] grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+        <div className="mx-auto max-w-[1480px] grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_minmax(0,535px)] gap-12 md:gap-16 items-start">
           <div>
             <BlurFade inView delay={0}>
               <p className="text-lg leading-relaxed mb-6" style={{ color: "var(--ink)" }}>
@@ -75,13 +76,13 @@ export default function AboutPage() {
             </BlurFade>
           </div>
 
-          <div className="relative rounded overflow-hidden" style={{ aspectRatio: "3/4", maxWidth: 480 }}>
+          <div className="relative w-full rounded overflow-hidden md:justify-self-end" style={{ aspectRatio: "3/4" }}>
             <Image
               src="/headshot.jpg"
               alt="Miles Goodman, Site Superintendent"
               fill
               className="object-cover object-center"
-              sizes="(max-width:768px) 100vw, 480px"
+              sizes="(max-width:768px) 100vw, 535px"
             />
           </div>
         </div>

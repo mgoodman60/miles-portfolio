@@ -3,6 +3,8 @@ import Link from "next/link"
 import { CampTaylorGallery } from "@/components/sections/CampTaylorGallery"
 import { BeforeAfterSlider } from "@/components/sections/BeforeAfterSlider"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
+import { ProjectBackLink, ProjectPager } from "@/components/sections/ProjectChrome"
+import { withCanonical } from "@/lib/site"
 
 const photos = Array.from({ length: 14 }, (_, i) => ({
   src: `/projects/john-black/drone-${String(i + 1).padStart(2, "0")}.jpg`,
@@ -11,10 +13,10 @@ const photos = Array.from({ length: 14 }, (_, i) => ({
   alt: `John W. Black Aquatic Center — aerial view ${i + 1}`,
 }))
 
-export const metadata = {
+export const metadata = withCanonical("/projects/john-black-aquatic", {
   title: "John W. Black Aquatic Center — Miles Goodman",
   description: "$3.7M aquatic center renovation in La Grange, KY. Site Superintendent: Miles Goodman, W Principles, LLC.",
-}
+})
 
 export default function JohnBlackPage() {
   return (
@@ -26,20 +28,17 @@ export default function JohnBlackPage() {
           alt="John W. Black Aquatic Center — aerial"
           fill
           priority
+          quality={60}
           className="object-cover object-center"
           sizes="100vw"
         />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(180deg,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.55) 100%)" }} />
-        <div className="absolute bottom-0 left-0 right-0 px-6 md:px-12 pb-10">
-          <div className="mx-auto max-w-[1480px]">
-            <Link href="/projects" className="text-xs text-white/60 hover:text-white/90 transition-colors px-2 py-2 -mx-2 -my-2 inline-block">← Projects</Link>
-          </div>
-        </div>
+        <div className="photo-scrim absolute inset-0" />
       </div>
 
       {/* Title */}
       <div className="px-6 md:px-12 py-12" style={{ background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px]">
+          <ProjectBackLink />
           <SectionEyebrow className="mb-3">La Grange, KY · 2024</SectionEyebrow>
           <h1 className="serif font-light tracking-tight mb-2" style={{ fontSize: "clamp(36px,5vw,72px)", color: "var(--ink)" }}>
             John W. Black Aquatic Center
@@ -136,7 +135,7 @@ export default function JohnBlackPage() {
 
             <div className="mb-16">
               <h2 className="serif font-light text-3xl mb-6" style={{ color: "var(--ink)" }}>Drone Photography</h2>
-              <CampTaylorGallery photos={photos} />
+              <CampTaylorGallery photos={photos} eager />
               <p className="text-xs text-[var(--muted)] mt-4">Drone photography by Miles Goodman · © 2024</p>
             </div>
 
@@ -153,6 +152,7 @@ export default function JohnBlackPage() {
 
       {/* ── Bottom CTA ───────────────────────────────────── */}
       <section
+        data-footer-cta=""
         className="border-t py-24 px-6 md:px-12 text-center"
         style={{ borderColor: "var(--border)", background: "var(--paper-warm)" }}
       >
@@ -180,15 +180,10 @@ export default function JohnBlackPage() {
         </div>
       </section>
 
-      {/* Nav */}
-      <div className="border-t px-6 md:px-12 py-12" style={{ borderColor: "var(--border)" }}>
-        <div className="mx-auto max-w-[1480px] flex justify-between items-center">
-          <Link href="/projects/camp-taylor-pool" className="text-sm text-[var(--muted)] hover:text-[var(--ink)] transition-colors">← Camp Taylor Pool</Link>
-          <Link href="/projects/one-senior-care-morehead" className="text-sm font-medium hover:text-[var(--accent)] transition-colors" style={{ color: "var(--ink)" }}>
-            Next: One Senior Care →
-          </Link>
-        </div>
-      </div>
+      <ProjectPager
+        previous={{ href: "/projects/camp-taylor-pool", label: "Camp Taylor" }}
+        next={{ href: "/projects/one-senior-care-morehead", label: "One Senior Care" }}
+      />
     </>
   )
 }
