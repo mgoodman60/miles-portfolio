@@ -152,7 +152,7 @@ export default function CampTaylorPage() {
                 Camp Taylor Memorial Park’s pool had been closed since 2019. Louisville replaced it with a new waterpark at 4201 Lee Avenue: an ADA zero-depth entry, lap lanes, a water slide, a children’s play area, shaded seating, and a pool house with restrooms, showers, and lockers. The project was funded with $6.2 million in ARPA money.
               </p>
               <p className="text-base leading-relaxed" style={{ color: "var(--muted)" }}>
-                I was the site superintendent for W Principles, LLC. The city had planned a summer 2025 opening. Severe weather delayed the work, and the waterpark opened to the public on May 23, 2026. W Principles lists construction complete in November 2025.
+                I was the site superintendent for W Principles, LLC. The city had planned to open for the 2025 season. Severe weather delayed the work, and the waterpark opened to the public on May 23, 2026. W Principles lists construction complete in November 2025.
               </p>
             </div>
 
