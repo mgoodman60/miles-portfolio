@@ -5,7 +5,8 @@ import { withCanonical } from "@/lib/site"
 
 export const metadata = withCanonical("/projects", {
   title: "Projects — Miles Goodman",
-  description: "Commercial construction projects led by Miles Goodman, Site Superintendent at W Principles, LLC.",
+  description:
+    "Commercial projects Miles Goodman worked as site superintendent for W Principles, LLC, in Kentucky.",
 })
 
 const projects = [
@@ -13,11 +14,12 @@ const projects = [
     slug: "camp-taylor-pool",
     name: "Camp Taylor Memorial Park Pool",
     location: "Louisville, KY",
-    year: "2025",
+    year: "2026",
     cost: "$6.2M",
-    scope: "New aquatic facility — zero-depth ramp, lap lanes, waterslide, shaded areas, site improvements",
-    cover: "/projects/camp-taylor/night-pour-hero.jpg",
-    tag: "ARPA-Funded · Complete",
+    scope: "New waterpark — zero-depth entry, lap lanes, slide, and play area",
+    cover: "/projects/camp-taylor/drone-wide.jpg",
+    coverAlt: "Aerial of the finished Camp Taylor Memorial Park waterpark in Louisville",
+    tag: "Opened 2026",
     role: "Site Superintendent",
   },
   {
@@ -25,10 +27,12 @@ const projects = [
     name: "John W. Black Aquatic Center",
     location: "La Grange, KY",
     year: "2024",
+    // HOLD: WDRB reported $3.7M. W Principles lists $4M. Engineer budget listed at $4.2M.
     cost: "$3.7M",
-    scope: "Complete renovation — structural repairs, pool shell replacement, full mechanical & electrical systems",
+    scope: "Renovation — lap pool, recreation pool, slide, and mechanical systems",
     cover: "/projects/john-black/drone-01.jpg",
-    tag: "Renovation · Complete",
+    coverAlt: "Aerial of the finished John W. Black Aquatic Center in La Grange",
+    tag: "Reopened 2024",
     role: "Site Superintendent",
   },
   {
@@ -39,6 +43,7 @@ const projects = [
     cost: "$3M",
     scope: "10,060 SF PACE senior care facility — Pre-engineered metal building + concrete self-perform",
     cover: "/projects/morehead/aerial-2026-07-14-overhead.jpg",
+    coverAlt: "One Senior Care - Morehead",
     tag: "Complete",
     role: "Site Superintendent",
   },
@@ -46,15 +51,18 @@ const projects = [
 
 const contributedProjects = [
   {
-    name: "Glasgow American Legion Swimming Pool",
+    // W Principles lists American Legion Park, Glasgow, at $9M (October 2025), including the pool.
+    // The Joyce Driver Aquatic Center name is from the Glasgow council resolution. Role stays punch list.
+    name: "American Legion Park",
     location: "Glasgow, KY",
-    scope: "Aquatic facility — punch list & close-out",
-    value: "~$10M",
+    scope: "Park and pool redevelopment — punch list and close-out",
+    value: "$9M",
   },
   {
+    // Owensboro awarded the Cravens Pool renovation to W Principles for $1,985,000.
     name: "Cravens Pool",
     location: "Owensboro, KY",
-    scope: "Community pool renovation — punch list & close-out",
+    scope: "Community pool renovation — punch list and close-out",
     value: "~$2M",
   },
 ]
@@ -62,7 +70,6 @@ const contributedProjects = [
 export default function ProjectsPage() {
   return (
     <>
-      {/* Page header */}
       <div className="pt-40 pb-16 px-6 md:px-12" style={{ background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px]">
           <SectionEyebrow className="mb-4">
@@ -74,7 +81,6 @@ export default function ProjectsPage() {
         </div>
       </div>
 
-      {/* Main grid */}
       <section className="py-24 px-6 md:px-12">
         <div className="mx-auto max-w-[1480px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -87,16 +93,11 @@ export default function ProjectsPage() {
                 <div className="relative overflow-hidden" style={{ aspectRatio: "4/3" }}>
                   <Image
                     src={p.cover}
-                    alt={p.name}
+                    alt={p.coverAlt}
                     fill
                     className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width:768px) 100vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-end justify-end p-4">
-                    <span className="opacity-0 group-hover:opacity-100 transition-opacity text-xs text-white font-medium tracking-wide">
-                      View project →
-                    </span>
-                  </div>
                   <span
                     className="absolute top-4 left-4 text-[10px] uppercase tracking-[0.14em] px-2.5 py-1 rounded-full font-medium text-white"
                     style={{ background: "var(--accent)" }}
@@ -112,6 +113,9 @@ export default function ProjectsPage() {
                     {p.name}
                   </h2>
                   <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>{p.scope}</p>
+                  <p className="mt-4 text-sm font-medium" style={{ color: "var(--accent)" }}>
+                    View project
+                  </p>
                 </div>
               </Link>
             ))}
@@ -119,7 +123,6 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* Also contributed */}
       <section className="border-t py-24 px-6 md:px-12" style={{ borderColor: "var(--border)" }}>
         <div className="mx-auto max-w-[1480px]">
           <h2 className="serif font-light text-2xl mb-8" style={{ color: "var(--ink)" }}>
@@ -133,7 +136,7 @@ export default function ProjectsPage() {
                 style={{ borderColor: "var(--border)", background: "var(--paper-warm)" }}
               >
                 <p className="text-[10px] uppercase tracking-[0.18em] mb-2" style={{ color: "var(--muted)" }}>
-                  {p.location} · {p.value} · Punch list &amp; close-out
+                  {p.location} · {p.value}
                 </p>
                 <h3 className="serif font-light text-lg" style={{ color: "var(--ink)" }}>{p.name}</h3>
                 <p className="text-sm mt-1" style={{ color: "var(--muted)" }}>{p.scope}</p>
