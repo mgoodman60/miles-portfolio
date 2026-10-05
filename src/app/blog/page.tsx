@@ -1,11 +1,11 @@
-import type { Metadata } from "next"
 import Link from "next/link"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
+import { withCanonical } from "@/lib/site"
 
-export const metadata: Metadata = {
+export const metadata = withCanonical("/blog", {
   title: "Blog — Miles Goodman",
   description: "Writing from Miles Goodman. No posts yet.",
-}
+})
 
 export default function BlogPage() {
   return (
