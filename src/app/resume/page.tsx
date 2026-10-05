@@ -1,9 +1,12 @@
 import Link from "next/link"
+import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
+import { fieldProjects, profile } from "@/lib/profile"
 import { withCanonical } from "@/lib/site"
 
 export const metadata = withCanonical("/resume", {
   title: "Resume — Miles Goodman",
-  description: "Site Superintendent in Mount Sterling, KY. MBA candidate. Resume of Miles Goodman.",
+  description:
+    "Site Superintendent at W Principles, LLC. BS, Engineering Technology Management, Morehead State. MBA candidate at Northern Kentucky University.",
 })
 
 /*
@@ -12,37 +15,41 @@ export const metadata = withCanonical("/resume", {
   - H3 job/school titles intentionally kept `font-semibold` for resume scanability —
     documented exception to the site-wide `font-light/font-medium` rule.
 */
+
+const listClass = "list-disc space-y-1.5 pl-5 text-sm text-[var(--muted)] marker:text-[var(--muted)]"
+const contactLinkClass = "underline underline-offset-2 hover:text-[var(--accent)] transition-colors"
+
 export default function ResumePage() {
   return (
     <div className="min-h-screen bg-[var(--paper)]">
-      {/* Page header */}
       <section className="bg-[var(--paper-warm)] pt-40 pb-16 border-b border-[var(--border)]">
         <div className="mx-auto max-w-[1480px] px-6 md:px-12">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <div>
+              <SectionEyebrow className="mb-4">Resume</SectionEyebrow>
               <h1
                 className="serif font-light tracking-tight text-[var(--ink)] mb-3"
                 style={{ fontSize: "clamp(40px,5.5vw,80px)" }}
               >
-                Miles Goodman
+                {profile.name}
               </h1>
               <p className="text-lg text-[var(--muted)] font-medium tracking-wide mb-2">
                 Site Superintendent · MBA Candidate
               </p>
-              <p className="text-sm text-[var(--muted)]">
-                Mount Sterling, KY &nbsp;·&nbsp;{" "}
-                <a
-                  href="mailto:msgoodman1997@gmail.com"
-                  className="hover:text-[var(--accent)] transition-colors"
-                >
-                  msgoodman1997@gmail.com
+              <p className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-[var(--muted)]">
+                <span>{profile.location}</span>
+                <a href={profile.phoneHref} className={contactLinkClass}>
+                  {profile.phoneDisplay}
+                </a>
+                <a href={`mailto:${profile.email}`} className={contactLinkClass}>
+                  {profile.email}
                 </a>
               </p>
             </div>
             <a
               href="/Miles_Goodman_Resume.pdf"
               download
-              className="inline-flex items-center gap-2 px-5 py-3 bg-[var(--ink)] text-[var(--paper)] text-sm font-medium rounded hover:bg-[var(--accent)] transition-colors self-start md:self-auto"
+              className="inline-flex min-h-11 items-center gap-2 self-start px-5 py-3 bg-[var(--ink)] text-[var(--paper)] text-sm font-medium rounded hover:bg-[var(--accent)] transition-colors md:self-auto"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -66,11 +73,9 @@ export default function ResumePage() {
         </div>
       </section>
 
-      {/* Experience */}
       <section className="border-b border-[var(--border)]">
         <div className="mx-auto max-w-[1480px] px-6 md:px-12 py-24">
           <div className="flex flex-col lg:flex-row gap-12">
-            {/* Sidebar label */}
             <div className="lg:w-80 shrink-0">
               <h2
                 className="serif font-light text-[var(--ink)]"
@@ -80,81 +85,57 @@ export default function ResumePage() {
               </h2>
             </div>
 
-            {/* Content */}
             <div className="flex-1 space-y-14">
-
-              {/* W Principles */}
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-6">
                   <div>
-                    <h3 className="text-lg font-semibold text-[var(--ink)]">W Principles, LLC</h3>
-                    <p className="text-sm text-[var(--muted)] mt-0.5">Site Superintendent · Mount Sterling, KY</p>
+                    <h3 className="text-lg font-semibold text-[var(--ink)]">{profile.company}</h3>
+                    <p className="text-sm text-[var(--muted)] mt-0.5">Site Superintendent · {profile.location}</p>
                   </div>
                   <span className="text-sm text-[var(--muted)] shrink-0">2023 – Present</span>
                 </div>
 
                 <div className="space-y-8">
-                  {/* One Senior Care */}
-                  <div className="pl-4 border-l-2 border-[var(--border)]">
-                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
-                      <p className="font-medium text-[var(--ink)]">One Senior Care - Morehead, KY</p>
-                      <span className="text-xs text-[var(--muted)] shrink-0">Completed Aug 2026</span>
+                  {fieldProjects.map((project) => (
+                    <div key={project.href} className="pl-4 border-l-2 border-[var(--border)]">
+                      <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+                        <h4 className="font-medium text-[var(--ink)]">
+                          <Link href={project.href} className="underline underline-offset-2 hover:text-[var(--accent)]">
+                            {project.name}
+                          </Link>
+                        </h4>
+                        <span className="text-xs text-[var(--muted)] shrink-0">{project.when}</span>
+                      </div>
+                      <ul className={listClass}>
+                        {project.points.map((point) => (
+                          <li key={point}>{point}</li>
+                        ))}
+                      </ul>
                     </div>
-                    <ul className="space-y-1.5 text-sm text-[var(--muted)]">
-                      <li>$3M PACE facility · 10,060 SF PEMB</li>
-                      <li>Concrete self-perform under Walker Company of Kentucky</li>
-                    </ul>
-                  </div>
-
-                  {/* Camp Taylor */}
-                  <div className="pl-4 border-l-2 border-[var(--border)]">
-                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
-                      <p className="font-medium text-[var(--ink)]">Camp Taylor Memorial Park Pool — Louisville, KY</p>
-                      <span className="text-xs text-[var(--muted)] shrink-0">Completed Nov 2025</span>
-                    </div>
-                    <ul className="space-y-1.5 text-sm text-[var(--muted)]">
-                      <li>$6.2M ARPA-funded new construction</li>
-                      <li>Zero-depth entry, lap lanes, waterslide</li>
-                      <li>Press: WAVE 3, WHAS 11, WDRB</li>
-                    </ul>
-                  </div>
-
-                  {/* John W. Black */}
-                  <div className="pl-4 border-l-2 border-[var(--border)]">
-                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
-                      <p className="font-medium text-[var(--ink)]">John W. Black Aquatic Center — La Grange, KY</p>
-                      <span className="text-xs text-[var(--muted)] shrink-0">Completed 2024</span>
-                    </div>
-                    <ul className="space-y-1.5 text-sm text-[var(--muted)]">
-                      <li>$3.7M complete renovation</li>
-                      <li>Structural demo, pool shell replacement, MEP, site improvements</li>
-                      <li>Delivered on schedule for 2024 swim season</li>
-                    </ul>
-                  </div>
+                  ))}
                 </div>
               </div>
 
-              {/* Keller Williams */}
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-4">
                   <div>
-                    <h3 className="text-lg font-semibold text-[var(--ink)]">Keller Williams Realty</h3>
-                    <p className="text-sm text-[var(--muted)] mt-0.5">Real Estate Agent</p>
+                    <h3 className="text-lg font-semibold text-[var(--ink)]">{profile.realtorOrg}</h3>
+                    <p className="text-sm text-[var(--muted)] mt-0.5">{profile.realtorTitle}</p>
                   </div>
-                  <span className="text-sm text-[var(--muted)] shrink-0">2022</span>
+                  <span className="text-sm text-[var(--muted)] shrink-0">{profile.realtorDates}</span>
                 </div>
-                <ul className="space-y-1.5 text-sm text-[var(--muted)] pl-4 border-l-2 border-[var(--border)]">
-                  <li>Top 5% agent by production in market area</li>
-                  <li>Licensed sales, negotiation, client communication</li>
-                </ul>
+                <div className="pl-4 border-l-2 border-[var(--border)]">
+                  <ul className={listClass}>
+                    <li>{profile.realtorHighlight}</li>
+                    <li>Licensed sales, negotiation, and client communication</li>
+                  </ul>
+                </div>
               </div>
-
             </div>
           </div>
         </div>
       </section>
 
-      {/* Education */}
       <section className="border-b border-[var(--border)]">
         <div className="mx-auto max-w-[1480px] px-6 md:px-12 py-24">
           <div className="flex flex-col lg:flex-row gap-12">
@@ -167,29 +148,26 @@ export default function ResumePage() {
               </h2>
             </div>
             <div className="flex-1 space-y-10">
-
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
-                  <h3 className="text-lg font-semibold text-[var(--ink)]">Northern Kentucky University</h3>
-                  <span className="text-sm text-[var(--muted)] shrink-0">Expected 2026</span>
+                  <h3 className="text-lg font-semibold text-[var(--ink)]">{profile.mbaSchool}</h3>
+                  <span className="text-sm text-[var(--muted)] shrink-0">{profile.mbaExpected}</span>
                 </div>
-                <p className="text-sm text-[var(--muted)]">MBA, Project Management &amp; AI · In Progress</p>
+                <p className="text-sm text-[var(--muted)]">MBA, {profile.mbaProgram} · In progress</p>
               </div>
 
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
-                  <h3 className="text-lg font-semibold text-[var(--ink)]">Morehead State University</h3>
-                  <span className="text-sm text-[var(--muted)] shrink-0">2022</span>
+                  <h3 className="text-lg font-semibold text-[var(--ink)]">{profile.bsSchool}</h3>
+                  <span className="text-sm text-[var(--muted)] shrink-0">{profile.bsYear}</span>
                 </div>
-                <p className="text-sm text-[var(--muted)]">BS, Construction Technology &amp; Management · CTM Designation</p>
+                <p className="text-sm text-[var(--muted)]">{profile.bsDegree}</p>
               </div>
-
             </div>
           </div>
         </div>
       </section>
 
-      {/* Skills & Credentials */}
       <section>
         <div className="mx-auto max-w-[1480px] px-6 md:px-12 py-24">
           <div className="flex flex-col lg:flex-row gap-12">
@@ -202,14 +180,12 @@ export default function ResumePage() {
               </h2>
             </div>
             <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-10">
-
-              {/* Skills */}
               <div className="space-y-6">
                 <div>
                   <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)] mb-3">
                     Field Tools
                   </h3>
-                  <ul className="space-y-1.5 text-sm text-[var(--ink)]">
+                  <ul className="list-disc space-y-1.5 pl-5 text-sm text-[var(--ink)] marker:text-[var(--muted)]">
                     <li>Bluebeam</li>
                     <li>AutoCAD</li>
                     <li>Microsoft Excel</li>
@@ -220,10 +196,26 @@ export default function ResumePage() {
                   <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)] mb-3">
                     AI &amp; Technology
                   </h3>
-                  <ul className="space-y-1.5 text-sm text-[var(--ink)]">
+                  <ul className="list-disc space-y-1.5 pl-5 text-sm text-[var(--ink)] marker:text-[var(--muted)]">
                     <li>Claude API</li>
-                    <li>My Reports — custom-built daily reporting app</li>
-                    <li>ForemanOS — Claude Code plugin (superintendent field OS)</li>
+                    <li>
+                      <Link href="/my-reports" className="underline underline-offset-2 hover:text-[var(--accent)]">
+                        My Reports
+                      </Link>
+                      {" "}— custom-built daily reporting app
+                    </li>
+                    <li>
+                      <a
+                        href="https://github.com/mgoodman60/foreman-os-plugin"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline underline-offset-2 hover:text-[var(--accent)]"
+                      >
+                        ForemanOS
+                        <span className="sr-only"> (opens in a new tab)</span>
+                      </a>
+                      {" "}— Claude Code plugin for superintendent field work
+                    </li>
                   </ul>
                 </div>
 
@@ -231,7 +223,7 @@ export default function ResumePage() {
                   <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)] mb-3">
                     Construction
                   </h3>
-                  <ul className="space-y-1.5 text-sm text-[var(--ink)]">
+                  <ul className="list-disc space-y-1.5 pl-5 text-sm text-[var(--ink)] marker:text-[var(--muted)]">
                     <li>Concrete self-perform</li>
                     <li>PEMB structures</li>
                     <li>Aquatic facility construction</li>
@@ -240,27 +232,25 @@ export default function ResumePage() {
                 </div>
               </div>
 
-              {/* Credentials */}
               <div>
                 <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)] mb-3">
                   Credentials
                 </h3>
                 <ul className="space-y-3 text-sm text-[var(--ink)]">
                   <li className="flex items-start gap-3">
-                    <span className="mt-1 block w-1.5 h-1.5 rounded-full bg-[var(--accent)] shrink-0" />
-                    <span>CTM — Certified in Construction Technology &amp; Management</span>
+                    <span aria-hidden="true" className="mt-1.5 block w-1.5 h-1.5 rounded-full bg-[var(--accent)] shrink-0" />
+                    <span>{profile.ctm}</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="mt-1 block w-1.5 h-1.5 rounded-full bg-[var(--accent)] shrink-0" />
-                    <span>MBA Candidate — Northern Kentucky University, 2026</span>
+                    <span aria-hidden="true" className="mt-1.5 block w-1.5 h-1.5 rounded-full bg-[var(--accent)] shrink-0" />
+                    <span>MBA candidate — {profile.mbaSchool}, expected 2026</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="mt-1 block w-1.5 h-1.5 rounded-full bg-[var(--accent)] shrink-0" />
-                    <span>AGC Member company (W Principles, LLC, est. 1933)</span>
+                    <span aria-hidden="true" className="mt-1.5 block w-1.5 h-1.5 rounded-full bg-[var(--accent)] shrink-0" />
+                    <span>AGC member company ({profile.company}, est. 1933)</span>
                   </li>
                 </ul>
               </div>
-
             </div>
           </div>
         </div>
