@@ -23,8 +23,8 @@ const slides = [
   },
   {
     src: "/projects/morehead/drone-01.jpg",
-    alt: "One Senior Care Morehead — aerial view",
-    caption: "One Senior Care · Morehead, KY — Active",
+    alt: "One Senior Care - Morehead — aerial view",
+    caption: "One Senior Care - Morehead — Complete",
   },
 ]
 
