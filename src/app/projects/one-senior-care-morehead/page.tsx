@@ -7,6 +7,7 @@ import { withCanonical } from "@/lib/site"
 import {
   dronePhotos,
   droneHeroSlides,
+  facilityPhotos,
   progressEnclosure,
   progressFoundation,
   progressInterior,
@@ -85,7 +86,7 @@ export default function MoreheadPage() {
                 The 10,060 SF facility uses a pre-engineered metal building (PEMB) structure. W Principles, LLC self-performed the concrete scope under the Walker Company of Kentucky as general contractor. I managed daily field operations, trade coordination, and owner reporting on site.
               </p>
               <p className="text-base leading-relaxed mb-4" style={{ color: "var(--muted)" }}>
-                The photographs follow the work from the slab and anchor bolts through steel, sheathing, and roof, then interior framing and rough-in.
+                The photographs follow the work from the slab and anchor bolts through steel, sheathing, and roof, then interior framing, MEP rough-in, and finishes.
               </p>
               <p className="text-base leading-relaxed" style={{ color: "var(--muted)" }}>
                 This project is also the live deployment environment for my AI daily reporting app — My Reports processes site photos and voice notes into structured owner reports around 6pm ET.
@@ -129,7 +130,7 @@ export default function MoreheadPage() {
               {[
                 { label: "Foundation", sub: "February–March 2026", photos: progressFoundation },
                 { label: "Structure and enclosure", sub: "March–April 2026", photos: progressEnclosure },
-                { label: "Interior rough-in", sub: "May 2026", photos: progressInterior },
+                { label: "Interior rough-in", sub: "May–June 2026", photos: progressInterior },
               ].map(({ label, sub, photos }) => photos.length > 0 && (
                 <div key={label} className="mb-12">
                   <div className="mb-4">
@@ -140,6 +141,14 @@ export default function MoreheadPage() {
                 </div>
               ))}
             </div>
+
+            {facilityPhotos.length > 0 && (
+              <div className="mb-16">
+                <h2 className="serif font-light text-3xl mb-2" style={{ color: "var(--ink)" }}>Facility</h2>
+                <p className="text-sm text-[var(--muted)] mb-6">Interior finishes, from rough-in through painted rooms.</p>
+                <CampTaylorGallery photos={facilityPhotos} />
+              </div>
+            )}
 
             <p className="text-xs text-[var(--muted)]">All photos by Miles Goodman · © 2026</p>
           </div>

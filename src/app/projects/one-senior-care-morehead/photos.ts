@@ -59,29 +59,23 @@ export const progressFoundation: Photo[] = [
   },
   {
     src: `${morehead}/build-2026-03-04-footing.jpg`,
-    width: 1800,
-    height: 1350,
+    width: 1350,
+    height: 1800,
     alt: "Excavated footing with a rebar cage, March 2026",
-  },
-  {
-    src: `${morehead}/build-2026-03-10-anchors.jpg`,
-    width: 1800,
-    height: 1350,
-    alt: "Anchor bolts set along the slab edge, March 2026",
   },
 ]
 
 export const progressEnclosure: Photo[] = [
   {
     src: `${morehead}/build-2026-03-18-steel.jpg`,
-    width: 1800,
-    height: 1350,
+    width: 1350,
+    height: 1800,
     alt: "Red iron columns and beams going up over the slab, March 2026",
   },
   {
     src: `${morehead}/build-2026-04-01-framing.jpg`,
-    width: 1800,
-    height: 1350,
+    width: 1350,
+    height: 1800,
     alt: "Metal stud framing inside the steel structure, April 2026",
   },
   {
@@ -92,8 +86,8 @@ export const progressEnclosure: Photo[] = [
   },
   {
     src: `${morehead}/build-2026-04-30-roof.jpg`,
-    width: 1800,
-    height: 1350,
+    width: 1350,
+    height: 1800,
     alt: "Roof panels on the pre-engineered metal building, April 2026",
   },
 ]
@@ -101,35 +95,41 @@ export const progressEnclosure: Photo[] = [
 export const progressInterior: Photo[] = [
   {
     src: `${morehead}/build-2026-05-20-interior.jpg`,
-    width: 1800,
-    height: 1350,
+    width: 1350,
+    height: 1800,
     alt: "Interior metal stud walls and ceiling framing, May 2026",
   },
   {
     src: `${morehead}/build-2026-05-27-drywall.jpg`,
-    width: 1800,
-    height: 1350,
+    width: 1350,
+    height: 1800,
     alt: "Drywall hung on interior partitions, May 2026",
+  },
+  {
+    src: `${morehead}/build-2026-06-18-mep.jpg`,
+    width: 1800,
+    height: 1013,
+    alt: "MEP rough-in in metal stud walls, June 2026",
   },
 ]
 
 export const facilityPhotos: Photo[] = [
   {
-    src: `${morehead}/facility-clinic.jpg`,
+    src: `${morehead}/facility-interior.jpg`,
     width: 1800,
-    height: 1350,
-    alt: "Clinic room with a handwashing station, mirror, and base cabinets",
+    height: 1013,
+    alt: "Interior finishes with painted walls, exposed steel, and ductwork, August 2026",
   },
   {
-    src: `${morehead}/facility-activity.jpg`,
+    src: `${morehead}/facility-therapy.jpg`,
     width: 1800,
-    height: 1350,
-    alt: "Activity room with tables, chairs, and a wall-mounted screen",
+    height: 1013,
+    alt: "Therapy space with parallel bars and a ceiling grid, September 2026",
   },
   {
-    src: `${morehead}/facility-corridor.jpg`,
-    width: 1800,
-    height: 1350,
-    alt: "Corridor with wood doors, a handrail, and a nurses' station",
+    src: `${morehead}/facility-restroom.jpg`,
+    width: 1350,
+    height: 1800,
+    alt: "Accessible restroom finishes, September 2026",
   },
 ]
