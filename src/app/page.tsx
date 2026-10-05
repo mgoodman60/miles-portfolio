@@ -1,7 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
 import { NumberTicker } from "@/components/magicui/number-ticker"
-import { Marquee } from "@/components/magicui/marquee"
 import { HeroSlideshow } from "@/components/sections/HeroSlideshow"
 import { ProjectCard3D } from "@/components/sections/ProjectCard3D"
 import { Stat } from "@/components/ui/Stat"
@@ -29,7 +28,7 @@ const projects = [
     cost: "$6.2M",
     scope: "New aquatic facility — zero-depth ramp, lap lanes, waterslide",
     cover: "/projects/camp-taylor/night-pour-hero.jpg",
-    tag: "ARPA-Funded",
+    tag: "ARPA-Funded · Complete",
   },
   {
     slug: "john-black-aquatic",
@@ -39,7 +38,7 @@ const projects = [
     cost: "$3.7M",
     scope: "Complete renovation — structural, pool shell, mechanical systems",
     cover: "/projects/john-black/drone-01.jpg",
-    tag: "Renovation",
+    tag: "Renovation · Complete",
   },
   {
     slug: "one-senior-care-morehead",
@@ -68,8 +67,11 @@ export default function Home() {
       <HeroSlideshow />
 
       {/* ── Stat strip ────────────────────────────────── */}
-      <section className="stat-strip py-12 px-6 md:px-12">
-        <div className="mx-auto max-w-[1480px] grid grid-cols-3 items-start gap-4 md:gap-8 md:justify-between">
+      <section aria-labelledby="home-stats" className="stat-strip py-12 px-6 md:px-12">
+        <h2 id="home-stats" className="sr-only">
+          Experience
+        </h2>
+        <div className="mx-auto grid max-w-[1480px] grid-cols-1 gap-8 md:grid-cols-3 md:gap-8">
           {stats.map(({ prefix, value, suffix, label }) => (
             <Stat
               key={label}
@@ -82,8 +84,8 @@ export default function Home() {
                 </>
               }
               label={label}
-              valueClassName="text-2xl md:text-4xl tracking-tight text-white"
-              labelClassName="text-[10px] md:text-xs text-white text-center md:text-left"
+              valueClassName="text-3xl md:text-4xl tracking-tight text-white"
+              labelClassName="text-xs text-white text-center md:text-left"
               className="flex flex-col items-center md:items-start"
             />
           ))}
@@ -91,15 +93,19 @@ export default function Home() {
       </section>
 
       {/* ── Featured Projects ─────────────────────────── */}
-      <section className="py-24 px-6 md:px-12">
+      <section aria-labelledby="featured-heading" className="py-24 px-6 md:px-12">
         <div className="mx-auto max-w-[1480px]">
-          <div className="flex items-baseline justify-between mb-12">
-            <h2 className="serif text-4xl font-light tracking-tight text-[var(--ink)]">
+          <div className="mb-12 flex flex-col items-start gap-3 sm:flex-row sm:items-baseline sm:justify-between">
+            <h2
+              id="featured-heading"
+              className="serif font-light tracking-tight text-[var(--ink)]"
+              style={{ fontSize: "clamp(28px, 3.6vw, 44px)" }}
+            >
               Featured Projects
             </h2>
             <Link
               href="/projects"
-              className="text-sm font-medium text-[var(--accent)] hover:underline underline-offset-4"
+              className="inline-flex min-h-11 items-center text-sm font-medium text-[var(--accent)] underline-offset-4 hover:underline"
             >
               All projects →
             </Link>
@@ -115,6 +121,7 @@ export default function Home() {
 
       {/* ── About strip ───────────────────────────────── */}
       <section
+        aria-labelledby="home-about-heading"
         className="border-t px-6 md:px-12 py-24"
         style={{ borderColor: "var(--border)" }}
       >
@@ -132,32 +139,35 @@ export default function Home() {
             />
           </div>
           <div>
-            <SectionEyebrow className="mb-5">
+            <SectionEyebrow size="section" className="mb-5">
               Site Superintendent · W Principles, LLC
             </SectionEyebrow>
             <h2
+              id="home-about-heading"
               className="serif font-light leading-snug tracking-tight mb-6"
               style={{ fontSize: "clamp(28px,3.6vw,44px)", color: "var(--ink)" }}
             >
-              Field superintendent. MBA candidate. Building the tools that cut daily admin time so the field gets more of it.
+              Site superintendent in Kentucky. MBA candidate at Northern Kentucky University.
             </h2>
             <p className="text-base leading-relaxed mb-8" style={{ color: "var(--muted)" }}>
               I manage commercial construction in Kentucky — aquatic facilities, senior care, concrete
-              self-perform — and I build AI field tools that run on the same job sites I&apos;m running. One Senior Care - Morehead
-              is complete, with My Reports running daily.
+              self-perform — and I build AI field tools on the same jobs I run.{" "}
+              <Link href="/projects/one-senior-care-morehead" className="font-medium text-[var(--ink)] underline underline-offset-4">
+                One Senior Care - Morehead
+              </Link>{" "}
+              is complete, with{" "}
+              <Link href="/my-reports" className="font-medium text-[var(--ink)] underline underline-offset-4">
+                My Reports
+              </Link>{" "}
+              running daily.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link
-                href="/about"
-                className="px-5 py-2.5 text-sm font-medium rounded transition-colors"
-                style={{ background: "var(--ink)", color: "var(--paper)" }}
-              >
+              <Link href="/about" className="btn-solid inline-flex min-h-11 items-center px-5 py-3 text-sm font-medium rounded transition-colors">
                 About me
               </Link>
               <a
                 href="/Miles_Goodman_Resume.pdf"
-                className="px-5 py-2.5 text-sm font-medium rounded border transition-colors hover:bg-black/5"
-                style={{ borderColor: "var(--border)", color: "var(--ink)" }}
+                className="btn-line inline-flex min-h-11 items-center px-5 py-3 text-sm font-medium rounded border transition-colors"
                 download
               >
                 Download Resume (PDF)
@@ -167,29 +177,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Press Marquee ─────────────────────────────── */}
+      {/* ── Press ─────────────────────────────────────── */}
       <section
-        className="border-t py-8 relative overflow-hidden"
+        aria-labelledby="press-heading"
+        className="border-t py-8 px-6 md:px-12"
         style={{ borderColor: "var(--border)" }}
       >
-        <SectionEyebrow className="text-center mb-6">
-          Press Coverage
-        </SectionEyebrow>
-        <div className="relative">
-          <div className="absolute inset-y-0 left-0 w-24 z-10 pointer-events-none" style={{ background: "linear-gradient(to right, var(--paper-warm), transparent)" }} />
-          <div className="absolute inset-y-0 right-0 w-24 z-10 pointer-events-none" style={{ background: "linear-gradient(to left, var(--paper-warm), transparent)" }} />
-          <Marquee pauseOnHover className="[--duration:30s]">
+        <div className="mx-auto max-w-[1480px]">
+          <h2 id="press-heading" className="mb-6 text-center text-xs uppercase tracking-[0.18em] text-[var(--muted)]">
+            Press coverage
+          </h2>
+          <ul className="flex flex-wrap justify-center gap-3">
             {pressItems.map((item) => (
-              <span
+              <li
                 key={item}
-                className="inline-flex items-center gap-2 px-5 py-2 rounded-full border text-sm font-medium whitespace-nowrap shrink-0 mx-3"
+                className="inline-flex items-center gap-2 rounded-full border px-5 py-2 text-sm font-medium"
                 style={{ borderColor: "var(--border)", color: "var(--muted)", background: "var(--paper)" }}
               >
-                <span aria-hidden="true" className="w-2 h-2 rounded-full shrink-0" style={{ background: "var(--accent)" }} />
+                <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full" style={{ background: "var(--accent)" }} />
                 {item}
-              </span>
+              </li>
             ))}
-          </Marquee>
+          </ul>
         </div>
       </section>
     </>
