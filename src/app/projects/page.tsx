@@ -38,7 +38,7 @@ const projects = [
     year: "2026 (Active)",
     cost: "$3M",
     scope: "10,060 SF PACE senior care facility — Pre-engineered metal building + concrete self-perform",
-    cover: "/projects/morehead/drone-01.jpg",
+    cover: "/projects/morehead/aerial-2026-07-14-overhead.jpg",
     tag: "Active",
     role: "Site Superintendent",
   },
