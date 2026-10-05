@@ -61,7 +61,7 @@ export function ProjectCard3D({ project }: { project: Project }) {
     >
       <Link
         href={`/projects/${project.slug}`}
-        className="block focus-visible:outline-offset-[-3px]"
+        className="card-link block"
       >
         <div className="relative overflow-hidden" style={{ aspectRatio: "4/3" }}>
           <Image

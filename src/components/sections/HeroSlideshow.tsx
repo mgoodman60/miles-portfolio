@@ -179,18 +179,16 @@ export function HeroSlideshow() {
                   />
                 </button>
               ))}
-              {prefersReduced !== true && (
-                <button
-                  type="button"
-                  onClick={() => setUserPaused((p) => !p)}
-                  aria-controls="hero-photos"
-                  aria-label={userPaused ? "Play slideshow" : "Pause slideshow"}
-                  aria-pressed={userPaused}
-                  className="btn-on-photo ml-1 inline-flex min-h-11 items-center rounded border px-3 text-xs font-medium uppercase tracking-[0.08em]"
-                >
-                  {userPaused ? "Play" : "Pause"}
-                </button>
-              )}
+              <button
+                type="button"
+                onClick={() => setUserPaused((p) => !p)}
+                aria-controls="hero-photos"
+                aria-label={userPaused ? "Play slideshow" : "Pause slideshow"}
+                aria-pressed={userPaused}
+                className="hero-pause btn-on-photo ml-1 inline-flex min-h-11 items-center rounded border px-3 text-xs font-medium uppercase tracking-[0.08em]"
+              >
+                {userPaused ? "Play" : "Pause"}
+              </button>
             </div>
             <p
               className="max-w-full text-xs text-white tracking-wide rounded px-2.5 py-1 sm:text-right"

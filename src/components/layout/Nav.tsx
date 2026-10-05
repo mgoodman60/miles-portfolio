@@ -434,7 +434,7 @@ export function Nav() {
 
   const primaryClass = (active: boolean) =>
     cn(
-      "py-2 text-sm font-medium tracking-wide transition-colors relative",
+      "px-2 py-2 text-sm font-medium tracking-wide transition-colors relative",
       overHero ? "text-white" : "text-[var(--muted)] hover:text-[var(--ink)]",
       overHero && !active && "hover:underline hover:underline-offset-4",
       active && !overHero && "text-[var(--ink)]",

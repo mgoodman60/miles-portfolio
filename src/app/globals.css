@@ -190,6 +190,19 @@ body {
   background: #1c2430;
 }
 
+/* Card links sit inside overflow:hidden, so the default ring is clipped.
+   Unlayered so it wins over the global outline-offset. */
+.card-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-pause {
+    display: none;
+  }
+}
+
 /* Accessibility: skip-to-content link. Fixed so it stays in the viewport. */
 .skip-link {
   position: fixed;
