@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { footerLinks } from "@/lib/site-nav"
 
 export function Footer() {
   return (
@@ -19,14 +20,8 @@ export function Footer() {
           <p className="text-xs uppercase tracking-[0.18em] mb-4" style={{ color: "var(--footer-fg-soft)" }}>
             Pages
           </p>
-          <nav className="flex flex-col gap-0">
-            {[
-              ["Projects", "/projects"],
-              ["My Reports", "/my-reports"],
-              ["AI Tools", "/ai-tools"],
-              ["About", "/about"],
-              ["Contact", "/contact"],
-            ].map(([label, href]) => (
+          <nav aria-label="Footer" className="flex flex-col gap-0">
+            {footerLinks.map(({ label, href }) => (
               <Link
                 key={href}
                 href={href}

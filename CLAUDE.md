@@ -35,7 +35,7 @@ Single Next.js App Router project. There is no API layer, no database, and no au
 - `src/app/page.tsx` — landing page; composes hero + section components.
 - Routes are file-based under `src/app/`:
   - `/projects` (index) and `/projects/{camp-taylor-pool,john-black-aquatic,one-senior-care-morehead}` — case studies
-  - `/about`, `/contact`, `/my-reports`, `/ai-tools`, `/resume`
+  - `/about`, `/contact`, `/blog`, `/my-reports`, `/ai-tools`, `/resume`
 
 ### Component layers
 
