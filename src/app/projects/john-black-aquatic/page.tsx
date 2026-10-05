@@ -1,70 +1,125 @@
 import Image from "next/image"
 import Link from "next/link"
 import { CampTaylorGallery } from "@/components/sections/CampTaylorGallery"
-import { BeforeAfterSlider } from "@/components/sections/BeforeAfterSlider"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 import { ProjectBackLink, ProjectPager } from "@/components/sections/ProjectChrome"
 import { withCanonical } from "@/lib/site"
 
-const photos = Array.from({ length: 14 }, (_, i) => ({
-  src: `/projects/john-black/drone-${String(i + 1).padStart(2, "0")}.jpg`,
-  width: 1200,
-  height: 800,
-  alt: `John W. Black Aquatic Center — aerial view ${i + 1}`,
-}))
+const photos = [
+  {
+    src: "/projects/john-black/drone-01.jpg",
+    alt: "Wide aerial of the finished John W. Black Aquatic Center, main pool, and parking lot",
+  },
+  {
+    src: "/projects/john-black/drone-02.jpg",
+    alt: "Aerial of the finished John W. Black Aquatic Center, 2 of 15",
+  },
+  {
+    src: "/projects/john-black/drone-03.jpg",
+    alt: "Aerial of the finished John W. Black Aquatic Center, 3 of 15",
+  },
+  {
+    src: "/projects/john-black/drone-04.jpg",
+    alt: "Aerial of the finished John W. Black Aquatic Center, 4 of 15",
+  },
+  {
+    src: "/projects/john-black/drone-05.jpg",
+    alt: "Aerial of the John W. Black main pool and a separate play pool",
+  },
+  {
+    src: "/projects/john-black/drone-06.jpg",
+    alt: "Aerial of the finished John W. Black Aquatic Center, 6 of 15",
+  },
+  {
+    src: "/projects/john-black/drone-07.jpg",
+    alt: "Aerial of the finished John W. Black Aquatic Center, 7 of 15",
+  },
+  {
+    src: "/projects/john-black/drone-08.jpg",
+    alt: "Aerial along the main pool and concrete deck at John W. Black Aquatic Center",
+  },
+  {
+    src: "/projects/john-black/drone-09.jpg",
+    alt: "Aerial of the finished John W. Black Aquatic Center, 9 of 15",
+  },
+  {
+    src: "/projects/john-black/drone-10.jpg",
+    alt: "Aerial of the finished John W. Black Aquatic Center, 10 of 15",
+  },
+  {
+    src: "/projects/john-black/drone-11.jpg",
+    alt: "Aerial of the finished John W. Black Aquatic Center, 11 of 15",
+  },
+  {
+    src: "/projects/john-black/drone-12.jpg",
+    alt: "Aerial of the finished John W. Black Aquatic Center, 12 of 15",
+  },
+  {
+    src: "/projects/john-black/drone-13.jpg",
+    alt: "Aerial of the finished John W. Black Aquatic Center, 13 of 15",
+  },
+  {
+    src: "/projects/john-black/drone-14.jpg",
+    alt: "Aerial of the John W. Black play area, water slide, and main pool",
+  },
+  {
+    src: "/projects/john-black/drone-15.jpg",
+    alt: "Closer aerial of the John W. Black main pool, water slide, and shade structures",
+  },
+].map((photo) => ({ ...photo, width: 1920, height: 1080 }))
 
 export const metadata = withCanonical("/projects/john-black-aquatic", {
   title: "John W. Black Aquatic Center — Miles Goodman",
-  description: "$3.7M aquatic center renovation in La Grange, KY. Site Superintendent: Miles Goodman, W Principles, LLC.",
+  description:
+    "Renovation of the John W. Black Aquatic Center at Wendell Moore Park in La Grange, Kentucky. Reopened May 25, 2024. Site superintendent: Miles Goodman, W Principles.",
 })
 
 export default function JohnBlackPage() {
   return (
     <>
-      {/* Cover */}
       <div className="relative overflow-hidden" style={{ height: "60svh", minHeight: 400, marginTop: -80 }}>
         <Image
           src="/projects/john-black/drone-01.jpg"
-          alt="John W. Black Aquatic Center — aerial"
+          alt="Wide aerial of the finished John W. Black Aquatic Center"
           fill
           priority
           quality={60}
           className="object-cover object-center"
           sizes="100vw"
         />
-        <div className="photo-scrim absolute inset-0" />
       </div>
 
-      {/* Title */}
       <div className="px-6 md:px-12 py-12" style={{ background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px]">
           <ProjectBackLink />
-          <SectionEyebrow className="mb-3">La Grange, KY · 2024</SectionEyebrow>
+          <SectionEyebrow className="mb-3">La Grange, KY · Reopened May 2024</SectionEyebrow>
           <h1 className="serif font-light tracking-tight mb-2" style={{ fontSize: "clamp(36px,5vw,72px)", color: "var(--ink)" }}>
             John W. Black Aquatic Center
           </h1>
-          <p className="text-lg text-[var(--muted)] italic">$3.7M complete aquatic renovation</p>
+          <p className="text-lg text-[var(--muted)]">
+            Renovation at Wendell Moore Park. The center reopened May 25, 2024.
+          </p>
         </div>
       </div>
 
-      {/* Two-column body */}
       <div className="mx-auto max-w-[1480px] px-6 md:px-12 py-16">
         <div className="flex flex-col lg:flex-row gap-16">
-
           <aside className="lg:w-80 shrink-0 order-last lg:order-first">
             <div className="lg:sticky lg:top-28">
               <dl className="space-y-5">
                 {[
                   ["Project", "John W. Black Aquatic Center"],
-                  ["Owner", "Oldham County"],
+                  ["Park", "Wendell Moore Park"],
+                  ["Owner", "Oldham County Parks and Recreation"],
                   ["General Contractor", "W Principles, LLC"],
                   ["My Role", "Site Superintendent"],
-                  ["Location", "La Grange, KY"],
-                  ["Cost", "$3.7M"],
-                  ["Completed", "2024"],
-                  ["Scope", "Complete renovation — structural repairs, pool shell replacement, mechanical & electrical systems, site improvements"],
+                  ["Location", "1551 N. Highway 393, La Grange, KY"],
+                  // HOLD: WDRB reported $3.7M. W Principles lists $4M. Brandstetter Carroll lists a $4.2M budget.
+                  ["Cost", "$3.7 million"],
+                  ["Reopened", "May 25, 2024"],
+                  ["Scope", "Renovation after a 2022 closure — lap pool and recreation pool, water slide, splash pad, climbing wall, deck, locker rooms, and mechanical and piping work"],
                 ].map(([label, value]) => (
-                  <div key={label as string} className="border-b pb-4" style={{ borderColor: "var(--border)" }}>
+                  <div key={label} className="border-b pb-4" style={{ borderColor: "var(--border)" }}>
                     <dt className="text-[10px] uppercase tracking-[0.18em] text-[var(--muted)] mb-1">{label}</dt>
                     <dd className="text-sm font-medium text-[var(--ink)]">{value}</dd>
                   </div>
@@ -76,81 +131,59 @@ export default function JohnBlackPage() {
           <div className="flex-1 min-w-0">
             <div className="mb-12">
               <p className="text-lg leading-relaxed mb-4" style={{ color: "var(--ink)" }}>
-                The John W. Black Aquatic Center in La Grange required a complete ground-up renovation. The existing facility had reached end of life — structural issues in the pool shell, failed mechanical systems, and aging site infrastructure all addressed in a single project scope.
+                The John W. Black Aquatic Center at Wendell Moore Park closed in 2022 after structural and mechanical problems. Oldham County reopened it on May 25, 2024, the Saturday before Memorial Day weekend.
               </p>
               <p className="text-base leading-relaxed" style={{ color: "var(--muted)" }}>
-                As Site Superintendent, I managed field operations across the full scope: structural demo and rebuild, new pool shell, mechanical and electrical replacement, and final site improvements — delivering the facility on schedule for the 2024 swim season.
+                I was the site superintendent for W Principles, LLC. Published descriptions of the renovation include two pools — one for laps and one for recreation — plus a water slide, splash pad, climbing wall, new deck, updated locker rooms, and new piping and mechanical systems. W Principles also lists diving boards. The photos below are aerials of the finished center. This set does not include a before view.
               </p>
             </div>
 
-            {/* What it took */}
             <div className="mb-16">
               <h2 className="serif font-light text-3xl mb-10" style={{ color: "var(--ink)" }}>
-                What it took
+                What the job involved
               </h2>
               <div className="space-y-10">
-                {[
-                  {
-                    num: "01",
-                    challenge: "Memorial Day deadline",
-                    headline: "The pool had to open Memorial Day weekend. No flexibility.",
-                    body: "Oldham County's swim season is fixed. A missed opening means a missed year. Every trade sequence — structural demo, pool shell, MEP rough-in, deck, finishes — was built backward from the opening date. Float existed on paper only.",
-                    resolution: "Six-week lookahead updated daily. Trade foremen confirmed milestone dates each Friday. Delivered on schedule.",
-                  },
-                  {
-                    num: "02",
-                    challenge: "MEP in an existing concrete deck",
-                    headline: "Mechanical and electrical runs buried in concrete that was already poured.",
-                    body: "The existing facility had failed mechanical systems embedded in the pool deck — drains, conduit, recirculation lines. Removing and rerouting without compromising the new shell required careful coordination between demo, concrete, and mechanical trades. One wrong sequence and the pour window was gone.",
-                    resolution: "Full MEP coordination drawings reviewed before demo began. Marked invert elevations on site before any concrete was placed.",
-                  },
-                ].map(({ num, challenge, headline, body, resolution }) => (
-                  <div key={num} className="border-l-2 pl-6" style={{ borderColor: "var(--accent)" }}>
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="serif text-5xl font-light text-[var(--accent)] leading-none">{num}</span>
-                      <span className="text-xs uppercase tracking-[0.18em] text-[var(--muted)]">
-                        Challenge — {challenge}
-                      </span>
-                    </div>
-                    <h3 className="serif font-light text-xl mb-3" style={{ color: "var(--ink)" }}>{headline}</h3>
-                    <p className="text-sm leading-relaxed mb-3" style={{ color: "var(--muted)" }}>{body}</p>
-                    <p className="text-sm font-medium" style={{ color: "var(--ink)" }}>
-                      <span style={{ color: "var(--accent)" }}>Resolution — </span>{resolution}
-                    </p>
+                <div className="border-l-2 pl-6" style={{ borderColor: "var(--accent)" }}>
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="serif text-5xl font-light text-[var(--accent)] leading-none">01</span>
                   </div>
-                ))}
+                  <h3 className="serif font-light text-xl mb-3" style={{ color: "var(--ink)" }}>
+                    Closed in 2022, open again in May 2024
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
+                    WDRB reported that the center reopened briefly in 2021, closed again in 2022, and was expected back for Memorial Day weekend 2024. WLKY covered the grand reopening on Saturday, May 25. W Principles lists completion in May 2024.
+                  </p>
+                </div>
+                <div className="border-l-2 pl-6" style={{ borderColor: "var(--accent)" }}>
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="serif text-5xl font-light text-[var(--accent)] leading-none">02</span>
+                  </div>
+                  <h3 className="serif font-light text-xl mb-3" style={{ color: "var(--ink)" }}>
+                    Two pools and new mechanical systems
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
+                    The engineer, Brandstetter Carroll, described splitting the old pool into a lap pool and a recreation pool, with upgrades to the mechanical systems and pool piping. County coverage added the slide, splash pad, climbing wall, deck, and locker rooms.
+                  </p>
+                </div>
               </div>
-            </div>
-
-            {/* Before / After */}
-            <div className="mb-16">
-              <h2 className="serif font-light text-3xl mb-6" style={{ color: "var(--ink)" }}>Aerial Documentation</h2>
-              <BeforeAfterSlider
-                beforeSrc="/projects/john-black/drone-01.jpg"
-                beforeAlt="Aerial — mid-renovation"
-                afterSrc="/projects/john-black/drone-14.jpg"
-                afterAlt="Aerial — completed"
-              />
             </div>
 
             <div className="mb-16">
               <h2 className="serif font-light text-3xl mb-6" style={{ color: "var(--ink)" }}>Drone Photography</h2>
-              <CampTaylorGallery photos={photos} eager />
-              <p className="text-xs text-[var(--muted)] mt-4">Drone photography by Miles Goodman · © 2024</p>
+              <CampTaylorGallery photos={photos} />
+              <p className="text-xs text-[var(--muted)] mt-4">Drone photography by Miles Goodman · 2024</p>
             </div>
 
-            {/* Outcome */}
             <div className="rounded p-8 md:p-12" style={{ background: "var(--paper-warm)" }}>
               <h2 className="serif font-light text-2xl mb-4" style={{ color: "var(--ink)" }}>Outcome</h2>
               <p className="text-base leading-relaxed" style={{ color: "var(--ink)" }}>
-                The facility reopened on schedule for the 2024 swim season. For Oldham County, that meant a fully rebuilt aquatic center — new pool shell, new mechanical, new site — delivered without a season lost.
+                The center reopened for the 2024 swim season on May 25. Oldham County Parks lists the address as 1551 N. Highway 393, La Grange.
               </p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* ── Bottom CTA ───────────────────────────────────── */}
       <section
         data-footer-cta=""
         className="border-t py-24 px-6 md:px-12 text-center"
