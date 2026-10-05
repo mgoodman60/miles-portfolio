@@ -24,11 +24,11 @@ const projects = [
     slug: "camp-taylor-pool",
     name: "Camp Taylor Memorial Park Pool",
     location: "Louisville, KY",
-    year: "2025",
+    year: "2026",
     cost: "$6.2M",
     scope: "New aquatic facility — zero-depth ramp, lap lanes, waterslide",
     cover: "/projects/camp-taylor/night-pour-hero.jpg",
-    tag: "ARPA-Funded · Complete",
+    tag: "Opened 2026",
   },
   {
     slug: "john-black-aquatic",

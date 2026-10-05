@@ -13,8 +13,8 @@ const slides = [
   },
   {
     src: "/projects/camp-taylor/finished-pool.jpg",
-    alt: "Completed Camp Taylor Memorial Park Pool",
-    caption: "Camp Taylor Memorial Park Pool · Completed Nov 2025",
+    alt: "Camp Taylor Memorial Park Pool, opened to the public May 23, 2026",
+    caption: "Camp Taylor Memorial Park Pool · Opened May 23, 2026",
   },
   {
     src: "/projects/john-black/drone-01.jpg",
