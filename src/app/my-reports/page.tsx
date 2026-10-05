@@ -33,7 +33,7 @@ const steps = [
 const stats = [
   { value: "~80%", label: "Faster than manual reporting" },
   { value: "Live", label: "One Senior Care, Morehead" },
-  { value: "164", label: "Documents indexed — Morehead, Apr 2026" },
+  { value: "164", label: "Morehead docs, Apr 2026" },
   { value: "< 5 min", label: "Photo to structured report" },
 ]
 
@@ -43,7 +43,7 @@ const features = [
     body: "Owners get a PDF report every morning — photos, progress summary, open items — without having to call for an update.",
   },
   {
-    title: "Sub-contractor tracking",
+    title: "Subcontractor tracking",
     body: "Trade log captures who was on site, what they completed, and what's pending — referenced automatically in each report.",
   },
   {
@@ -68,7 +68,7 @@ export default function MyReportsPage() {
             </SectionEyebrow>
             <h1 className="serif font-light tracking-tight mb-4" style={{ fontSize: "clamp(32px, 4vw, 56px)", lineHeight: 1.08, color: "var(--ink)" }}>
               My Reports<br />
-              <em className="font-light not-italic" style={{ color: "var(--accent)" }}>knows what happened.</em>
+              <em className="font-light" style={{ color: "var(--accent)", fontStyle: "italic" }}>knows what happened.</em>
             </h1>
             <p className="text-base leading-relaxed mb-6" style={{ color: "var(--muted)" }}>
               A superintendent takes 20–40 job site photos a day. Most stay on the phone. My Reports turns them into owner-ready daily progress reports — automatically, every morning.
@@ -76,14 +76,14 @@ export default function MyReportsPage() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/contact"
-                className="px-6 py-3.5 text-sm font-medium rounded transition-colors"
+                className="inline-flex min-h-11 items-center rounded px-6 py-3.5 text-sm font-medium"
                 style={{ background: "var(--ink)", color: "var(--paper)" }}
               >
                 Contact
               </Link>
               <Link
                 href="/projects/one-senior-care-morehead"
-                className="px-6 py-3.5 text-sm font-medium rounded border transition-colors hover:bg-black/5"
+                className="inline-flex min-h-11 items-center rounded border px-6 py-3.5 text-sm font-medium hover:bg-black/5"
                 style={{ borderColor: "var(--border)", color: "var(--ink)" }}
               >
                 See it on the Morehead project →
@@ -103,7 +103,7 @@ export default function MyReportsPage() {
       {/* How it works */}
       <section className="py-24 px-6 md:px-12">
         <div className="mx-auto max-w-[1480px]">
-          <h2 className="serif font-light mb-16" style={{ fontSize: "clamp(32px,4vw,56px)", color: "var(--ink)" }}>
+          <h2 className="serif font-light mb-16" style={{ fontSize: "clamp(28px,3.6vw,44px)", color: "var(--ink)" }}>
             How it <em style={{ color: "var(--accent)", fontStyle: "italic" }}>works</em>
           </h2>
           <div
@@ -117,7 +117,7 @@ export default function MyReportsPage() {
                 style={{ borderColor: "var(--border)" }}
               >
                 <span
-                  className="inline-block text-[10px] uppercase tracking-[0.18em] px-2 py-0.5 rounded mb-4 font-mono"
+                  className="mb-4 inline-block rounded px-2.5 py-1 font-mono text-xs uppercase tracking-[0.18em]"
                   style={{ background: "var(--paper-warm)", color: "var(--muted)" }}
                 >
                   {tag}
@@ -135,9 +135,9 @@ export default function MyReportsPage() {
       <section className="py-12 px-6 md:px-12 stat-strip">
         <div className="mx-auto max-w-[1480px] grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {[
-            { value: "164", label: "Documents indexed — Morehead" },
-            { value: "< 5 min", label: "Capture to owner-ready PDF" },
-            { value: "Daily", label: "Compliance log generated for ARPA-funded work" },
+            { value: "Morning", label: "Owner PDF by email" },
+            { value: "iPhone", label: "Photos and a voice note" },
+            { value: "Daily", label: "ARPA compliance log" },
           ].map(({ value, label }) => (
             <Stat
               key={label}
@@ -155,7 +155,7 @@ export default function MyReportsPage() {
       {/* Features */}
       <section className="py-24 px-6 md:px-12">
         <div className="mx-auto max-w-[1480px]">
-          <h2 className="serif font-light mb-12" style={{ fontSize: "clamp(32px,4vw,56px)", color: "var(--ink)" }}>What it delivers</h2>
+          <h2 className="serif font-light mb-12" style={{ fontSize: "clamp(28px,3.6vw,44px)", color: "var(--ink)" }}>What it delivers</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {features.map(({ title, body }, i) => (
               <BlurFade key={title} inView delay={i * 0.1}>

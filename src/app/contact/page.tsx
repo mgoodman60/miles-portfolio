@@ -31,7 +31,7 @@ export default function ContactPage() {
       <div className="pt-40 pb-16 px-6 md:px-12" style={{ background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px]">
           <SectionEyebrow className="mb-4">Direct contact</SectionEyebrow>
-          <h1 className="serif font-light tracking-tight" style={{ fontSize: "clamp(40px,5.5vw,80px)", color: "var(--ink)" }}>Contact</h1>
+          <h1 className="serif font-light leading-[0.95] tracking-tight" style={{ fontSize: "clamp(40px,5.5vw,80px)", color: "var(--ink)" }}>Contact</h1>
           <ContactSentNotice />
         </div>
       </div>

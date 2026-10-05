@@ -28,7 +28,7 @@ export default function ResumePage() {
             <div>
               <SectionEyebrow className="mb-4">Resume</SectionEyebrow>
               <h1
-                className="serif font-light tracking-tight text-[var(--ink)] mb-3"
+                className="serif font-light leading-[0.95] tracking-tight text-[var(--ink)] mb-3"
                 style={{ fontSize: "clamp(40px,5.5vw,80px)" }}
               >
                 {profile.name}

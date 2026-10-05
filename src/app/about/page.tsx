@@ -61,7 +61,7 @@ export default function AboutPage() {
       <div className="pt-40 pb-16 px-6 md:px-12" style={{ background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px]">
           <SectionEyebrow className="mb-4">Site Superintendent · MBA Candidate</SectionEyebrow>
-          <h1 className="serif font-light tracking-tight" style={{ fontSize: "clamp(40px,5.5vw,80px)", color: "var(--ink)" }}>About</h1>
+          <h1 className="serif font-light leading-[0.95] tracking-tight" style={{ fontSize: "clamp(40px,5.5vw,80px)", color: "var(--ink)" }}>About</h1>
         </div>
       </div>
 
@@ -129,6 +129,7 @@ export default function AboutPage() {
               width={400}
               height={400}
               priority
+              unoptimized
               className="h-auto w-full rounded border object-cover"
               style={{ borderColor: "var(--border)" }}
               sizes="(max-width: 1024px) 100vw, 400px"

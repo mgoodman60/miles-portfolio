@@ -55,7 +55,7 @@ const tools: Tool[] = [
     stat: "Submittal log",
     statLabel: "No missed items, no delayed reviews",
     link: "/contact",
-    linkLabel: "Talk shop",
+    linkLabel: "Contact",
   },
   {
     num: "04",
@@ -97,29 +97,35 @@ export default function AIToolsPage() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/my-reports"
-                className="px-6 py-3 text-sm font-medium rounded transition-colors"
+                className="inline-flex min-h-11 items-center rounded px-6 py-3 text-sm font-medium"
                 style={{ background: "var(--ink)", color: "var(--paper)" }}
               >
                 See My Reports
               </Link>
               <Link
                 href="/contact"
-                className="px-6 py-3 text-sm font-medium rounded border transition-colors hover:bg-black/5"
+                className="inline-flex min-h-11 items-center rounded border px-6 py-3 text-sm font-medium hover:bg-black/5"
                 style={{ borderColor: "var(--border)", color: "var(--ink)" }}
               >
                 Contact
               </Link>
             </div>
           </div>
-          <div className="relative rounded overflow-hidden order-last" style={{ aspectRatio: "4/3" }}>
-            <Image
-              src="/projects/camp-taylor/night-pour-hero.jpg"
-              alt="Night concrete pour — Camp Taylor pool"
-              fill
-              className="object-cover object-center"
-              sizes="(max-width:1024px) 100vw, 50vw"
-            />
-          </div>
+          <figure className="order-last">
+            <div className="relative aspect-video overflow-hidden rounded">
+              <Image
+                src="/projects/camp-taylor/night-pour-hero.jpg"
+                alt="Night concrete pour at Camp Taylor Memorial Park Pool"
+                fill
+                priority
+                className="object-cover object-center"
+                sizes="(max-width:1024px) 100vw, 50vw"
+              />
+            </div>
+            <figcaption className="mt-3 text-sm" style={{ color: "var(--muted)" }}>
+              Camp Taylor Memorial Park Pool, Louisville — night concrete pour.
+            </figcaption>
+          </figure>
         </div>
       </section>
 
@@ -140,11 +146,11 @@ export default function AIToolsPage() {
               {/* Content */}
               <div className="md:col-span-7">
                 {live && (
-                  <span className="inline-block text-[9px] uppercase tracking-[0.18em] px-2 py-0.5 rounded-full font-medium mb-3" style={{ background: "var(--accent)", color: "var(--paper)" }}>
+                  <span className="mb-3 inline-block rounded-full px-2.5 py-1 text-xs font-medium uppercase tracking-[0.18em]" style={{ background: "var(--accent)", color: "var(--paper)" }}>
                     Live
                   </span>
                 )}
-                <span className="text-[10px] uppercase tracking-[0.18em] text-[var(--muted)] mb-4 block">{tag}</span>
+                <span className="mb-4 block text-xs uppercase tracking-[0.18em] text-[var(--muted)]">{tag}</span>
                 <h2 className="serif font-light text-3xl mb-4 leading-snug" style={{ color: "var(--ink)" }}>{title}</h2>
                 <p className="text-base leading-relaxed mb-6" style={{ color: "var(--muted)" }}>{body}</p>
                 {external ? (
@@ -152,15 +158,17 @@ export default function AIToolsPage() {
                     href={link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block py-2 text-sm font-medium hover:underline underline-offset-4"
+                    className="inline-flex min-h-11 items-center py-2 text-sm font-medium underline underline-offset-4"
                     style={{ color: "var(--accent)" }}
                   >
-                    {linkLabel} ↗
+                    {linkLabel}
+                    <span aria-hidden="true"> ↗</span>
+                    <span className="sr-only"> (opens in a new tab)</span>
                   </a>
                 ) : (
                   <Link
                     href={link}
-                    className="inline-block py-2 text-sm font-medium hover:underline underline-offset-4"
+                    className="inline-flex min-h-11 items-center py-2 text-sm font-medium underline underline-offset-4"
                     style={{ color: "var(--accent)" }}
                   >
                     {linkLabel} →
@@ -197,7 +205,7 @@ export default function AIToolsPage() {
           </p>
           <Link
             href="/contact"
-            className="px-8 py-4 text-sm font-medium rounded transition-colors"
+            className="inline-flex min-h-11 items-center rounded px-8 py-4 text-sm font-medium"
             style={{ background: "var(--ink)", color: "var(--paper)" }}
           >
             Contact
