@@ -6,6 +6,13 @@ import { HeroSlideshow } from "@/components/sections/HeroSlideshow"
 import { ProjectCard3D } from "@/components/sections/ProjectCard3D"
 import { Stat } from "@/components/ui/Stat"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
+import { withCanonical } from "@/lib/site"
+
+export const metadata = withCanonical("/", {
+  title: "Miles Goodman — Site Superintendent",
+  description:
+    "Portfolio of Miles Goodman, Site Superintendent at W Principles, LLC. Commercial construction in Kentucky — $13M directly managed, ~$22M contributed-to.",
+})
 
 const stats = [
   { prefix: "$", value: 22, suffix: "M+", label: "Contributed-to Project Value" },
@@ -76,7 +83,7 @@ export default function Home() {
               }
               label={label}
               valueClassName="text-2xl md:text-4xl tracking-tight text-white"
-              labelClassName="text-[10px] md:text-xs text-white/50 text-center md:text-left"
+              labelClassName="text-[10px] md:text-xs text-white text-center md:text-left"
               className="flex flex-col items-center md:items-start"
             />
           ))}
@@ -178,7 +185,7 @@ export default function Home() {
                 className="inline-flex items-center gap-2 px-5 py-2 rounded-full border text-sm font-medium whitespace-nowrap shrink-0 mx-3"
                 style={{ borderColor: "var(--border)", color: "var(--muted)", background: "var(--paper)" }}
               >
-                <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "var(--accent)" }} />
+                <span aria-hidden="true" className="w-2 h-2 rounded-full shrink-0" style={{ background: "var(--accent)" }} />
                 {item}
               </span>
             ))}

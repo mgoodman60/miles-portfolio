@@ -64,6 +64,7 @@ export function ProjectCoverSlideshow({
             alt={slide.alt}
             fill
             priority={i === 0}
+            quality={i === 0 ? 60 : 75}
             className="object-cover object-center"
             sizes="100vw"
           />
@@ -90,19 +91,13 @@ export function ProjectCoverSlideshow({
         </div>
       )}
 
-      <div
-        className="absolute inset-0"
-        style={{
-          zIndex: 2,
-          background: "linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%)",
-        }}
-      />
+      <div className="photo-scrim absolute inset-0" style={{ zIndex: 2 }} />
 
-      <div className="absolute inset-0" style={{ zIndex: 3 }}>{children}</div>
+      <div className="on-photo absolute inset-0" style={{ zIndex: 3 }}>{children}</div>
 
       {slides.length > 1 && (
         <div
-          className="absolute bottom-6 left-6 md:left-12 flex items-center gap-2"
+          className="on-photo absolute bottom-6 left-6 md:left-12 flex items-center gap-2"
           style={{ zIndex: 4 }}
         >
           {slides.map((_, i) => (
@@ -126,9 +121,9 @@ export function ProjectCoverSlideshow({
               <span
                 style={{
                   display: "block",
-                  width: i === current ? 24 : 6,
-                  height: 2,
-                  background: i === current ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.35)",
+                  width: i === current ? 28 : 10,
+                  height: 4,
+                  background: i === current ? "#fff" : "rgba(255,255,255,0.85)",
                   borderRadius: 2,
                   transition: "all 0.3s",
                 }}
@@ -145,10 +140,10 @@ export function ProjectCoverSlideshow({
                 minHeight: 44,
                 padding: "0 10px",
                 marginLeft: 4,
-                background: "rgba(0,0,0,0.35)",
-                border: "1px solid rgba(255,255,255,0.4)",
+                background: "rgba(12,16,22,0.8)",
+                border: "1px solid rgba(255,255,255,0.7)",
                 borderRadius: 4,
-                color: "rgba(255,255,255,0.9)",
+                color: "#fff",
                 fontSize: 11,
                 letterSpacing: "0.08em",
                 textTransform: "uppercase",

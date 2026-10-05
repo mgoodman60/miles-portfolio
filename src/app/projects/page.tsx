@@ -1,6 +1,12 @@
 import Image from "next/image"
 import Link from "next/link"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
+import { withCanonical } from "@/lib/site"
+
+export const metadata = withCanonical("/projects", {
+  title: "Projects — Miles Goodman",
+  description: "Commercial construction projects led by Miles Goodman, Site Superintendent at W Principles, LLC.",
+})
 
 const projects = [
   {

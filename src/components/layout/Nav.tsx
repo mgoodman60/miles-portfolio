@@ -149,7 +149,7 @@ function DesktopMenu({
         onKeyDown={onButtonKeyDown}
         className={cn(
           "inline-flex items-center gap-1.5 text-sm font-medium tracking-wide transition-colors relative pb-0.5",
-          overHero ? "text-white/90 hover:text-white" : "text-[var(--muted)] hover:text-[var(--ink)]",
+          overHero ? "text-white hover:text-white" : "text-[var(--muted)] hover:text-[var(--ink)]",
           sectionActive && !overHero && "text-[var(--ink)]",
           sectionActive && overHero && "text-white"
         )}
@@ -170,7 +170,7 @@ function DesktopMenu({
         id={panelId}
         hidden={!open}
         className={cn(
-          "absolute top-full z-20 mt-7 w-80 max-w-[calc(100vw-2rem)] rounded border border-[var(--border)] bg-[var(--paper)] text-[var(--ink)] shadow-[0_16px_40px_rgba(27,32,38,0.12)] py-2",
+          "nav-panel absolute top-full z-20 mt-7 w-80 max-w-[calc(100vw-2rem)] rounded border border-[var(--border)] bg-[var(--paper)] text-[var(--ink)] shadow-[0_16px_40px_rgba(27,32,38,0.12)] py-2",
           align === "right" ? "right-0" : "left-0"
         )}
       >
@@ -261,7 +261,7 @@ function AboutCluster({
         aria-current={aboutCurrent ? "page" : undefined}
         className={cn(
           "text-sm font-medium tracking-wide transition-colors relative pb-0.5",
-          overHero ? "text-white/75 hover:text-white" : "text-[var(--muted)] hover:text-[var(--ink)]",
+          overHero ? "text-white hover:text-white" : "text-[var(--muted)] hover:text-[var(--ink)]",
           aboutCurrent && (overHero ? "text-white" : "text-[var(--ink)]")
         )}
       >
@@ -284,7 +284,7 @@ function AboutCluster({
         onClick={() => onOpenChange(!open)}
         className={cn(
           "ml-0.5 inline-flex h-8 w-8 items-center justify-center rounded-full transition-colors",
-          overHero ? "text-white/75 hover:text-white" : "text-[var(--muted)] hover:text-[var(--ink)]",
+          overHero ? "text-white hover:text-white" : "text-[var(--muted)] hover:text-[var(--ink)]",
           resumeCurrent && (overHero ? "text-white" : "text-[var(--accent)]")
         )}
       >
@@ -294,7 +294,7 @@ function AboutCluster({
         ref={panelRef}
         id={panelId}
         hidden={!open}
-        className="absolute left-0 top-full z-20 mt-7 min-w-44 rounded border border-[var(--border)] bg-[var(--paper)] text-[var(--ink)] shadow-[0_16px_40px_rgba(27,32,38,0.12)] py-2"
+        className="nav-panel absolute left-0 top-full z-20 mt-7 min-w-44 rounded border border-[var(--border)] bg-[var(--paper)] text-[var(--ink)] shadow-[0_16px_40px_rgba(27,32,38,0.12)] py-2"
       >
         <Link
           href="/resume"
@@ -321,6 +321,7 @@ function AboutCluster({
 export function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [navClear, setNavClear] = useState(false)
   const [constructionOpen, setConstructionOpen] = useState(false)
   const [desktopMenu, setDesktopMenu] = useState<"construction" | "about" | null>(null)
   const pathname = usePathname()
@@ -337,21 +338,33 @@ export function Nav() {
   const blogActive = pathname === "/blog" || pathname.startsWith("/blog/")
   const contactActive = pathname === "/contact" || pathname.startsWith("/contact/")
 
+  // Scroll state + hide the bar when a footer CTA slides under it.
   useEffect(() => {
     let ticking = false
+    const update = () => {
+      setScrolled(window.scrollY > 60)
+      const targets = document.querySelectorAll<HTMLElement>("[data-footer-cta], footer")
+      const cover = Array.from(targets).some((el) => {
+        const rect = el.getBoundingClientRect()
+        return rect.top < 80 && rect.bottom > 0
+      })
+      setNavClear(cover)
+      ticking = false
+    }
     const handleScroll = () => {
       if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setScrolled(window.scrollY > 60)
-          ticking = false
-        })
         ticking = true
+        window.requestAnimationFrame(update)
       }
     }
-    handleScroll()
+    update()
     window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("resize", handleScroll)
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      window.removeEventListener("resize", handleScroll)
+    }
+  }, [pathname])
 
   useEffect(() => {
     setMenuOpen(false)
@@ -411,11 +424,12 @@ export function Nav() {
   }, [menuOpen])
 
   const overHero = isHome && !scrolled
+  const conceal = navClear && !menuOpen
 
   const primaryClass = (active: boolean) =>
     cn(
       "text-sm font-medium tracking-wide transition-colors relative pb-0.5",
-      overHero ? "text-white/90 hover:text-white" : "text-[var(--muted)] hover:text-[var(--ink)]",
+      overHero ? "text-white hover:text-white" : "text-[var(--muted)] hover:text-[var(--ink)]",
       active && !overHero && "text-[var(--ink)]",
       active && overHero && "text-white"
     )
@@ -428,12 +442,14 @@ export function Nav() {
 
   return (
     <header
+      inert={conceal ? true : undefined}
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        overHero ? "nav-over-hero" : "nav-solid"
+        overHero ? "nav-over-hero" : "nav-solid",
+        conceal && "-translate-y-full"
       )}
     >
-      <div className="mx-auto max-w-[1480px] px-6 md:px-12 h-20 flex items-center justify-between gap-6">
+      <div className="nav-bar mx-auto max-w-[1480px] px-6 md:px-12 h-20 flex items-center justify-between gap-6">
         <div className="flex items-center gap-6 min-w-0">
           <Link
             href="/"

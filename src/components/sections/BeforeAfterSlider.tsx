@@ -15,9 +15,14 @@ export function BeforeAfterSlider({
 }) {
   return (
     <>
-      <div className="rounded overflow-hidden relative" style={{ aspectRatio: "16/9" }} aria-label={`Before and after comparison. Before: ${beforeAlt}. After: ${afterAlt}.`}>
-        <span className="absolute top-3 left-3 z-10 text-[9px] uppercase tracking-widest text-white bg-black/50 px-2 py-1 rounded pointer-events-none select-none">Before</span>
-        <span className="absolute top-3 right-3 z-10 text-[9px] uppercase tracking-widest text-white bg-black/50 px-2 py-1 rounded pointer-events-none select-none">After</span>
+      <div
+        className="rounded overflow-hidden relative"
+        style={{ aspectRatio: "16/9" }}
+        role="group"
+        aria-label={`Before and after. Before: ${beforeAlt}. After: ${afterAlt}.`}
+      >
+        <span className="absolute top-3 left-3 z-10 text-xs uppercase tracking-widest text-white px-2.5 py-1 rounded pointer-events-none select-none" style={{ background: "#131820" }}>Before</span>
+        <span className="absolute top-3 right-3 z-10 text-xs uppercase tracking-widest text-white px-2.5 py-1 rounded pointer-events-none select-none" style={{ background: "#131820" }}>After</span>
         <ReactCompareSlider
           style={{ width: "100%", height: "100%" }}
           itemOne={

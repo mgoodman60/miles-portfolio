@@ -17,7 +17,6 @@ export function HeroParallax() {
       className="relative overflow-hidden min-h-[520px] md:min-h-[680px]"
       style={{ height: "100svh", marginTop: -80 }}
     >
-      {/* Parallax photo (static when reduced motion is preferred) */}
       {prefersReduced ? (
         <div className="absolute inset-0">
           <Image
@@ -25,6 +24,7 @@ export function HeroParallax() {
             alt="Night concrete pour — Camp Taylor Memorial Park Pool, Louisville KY"
             fill
             priority
+            quality={60}
             className="object-cover object-center"
             sizes="100vw"
           />
@@ -36,86 +36,53 @@ export function HeroParallax() {
             alt="Night concrete pour — Camp Taylor Memorial Park Pool, Louisville KY"
             fill
             priority
+            quality={60}
             className="object-cover object-center"
             sizes="100vw"
           />
         </motion.div>
       )}
 
-      {/* Gradient overlay */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.72) 100%)",
-        }}
-      />
+      <div className="photo-scrim absolute inset-0" />
 
-      {/* Content */}
       <div className="absolute inset-0 flex flex-col justify-end px-6 md:px-12 pb-20">
         <div className="mx-auto w-full max-w-[1480px]">
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-xs uppercase tracking-[0.22em] text-white/70 mb-4"
-          >
+          <p className="hero-rise hero-rise-1 text-xs uppercase tracking-[0.22em] text-white mb-4">
             Site Superintendent · MBA Candidate, Project Management &amp; AI
-          </motion.p>
+          </p>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="serif font-light text-white leading-none tracking-tight mb-8"
-            style={{ fontSize: "clamp(40px, 5.5vw, 80px)" }}
+          <h1
+            className="hero-rise hero-rise-2 serif font-light text-white leading-none tracking-tight mb-8"
+            style={{ fontSize: "clamp(40px, 5.5vw, 80px)", textShadow: "0 2px 16px rgba(0,0,0,0.45)" }}
           >
             Miles
             <br />
             Goodman
-          </motion.h1>
+          </h1>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-wrap gap-4"
-          >
+          <div className="hero-rise hero-rise-3 flex flex-wrap gap-4">
             <Link
               href="/projects"
               className="px-6 py-3 text-sm font-medium rounded transition-colors"
               style={{ background: "var(--ink)", color: "var(--paper)" }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = "var(--accent)")}
-              onMouseLeave={(e) => (e.currentTarget.style.background = "var(--ink)")}
             >
               View Projects
             </Link>
             <a
               href="/Miles_Goodman_Resume.pdf"
               download
-              className="px-6 py-3 text-sm font-medium rounded border border-white/40 text-white hover:bg-white/10 transition-colors"
+              className="px-6 py-3 text-sm font-medium rounded border border-white/80 text-white hover:bg-white/10 transition-colors"
             >
               Download Resume (PDF)
             </a>
-          </motion.div>
+          </div>
         </div>
       </div>
 
-      {/* Scroll cue */}
-      <motion.div
-        className="absolute bottom-8 right-12 hidden md:flex flex-col items-center gap-2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
+      <p
+        className="absolute bottom-4 left-6 md:left-12 text-xs text-white tracking-wide rounded px-2.5 py-1"
+        style={{ background: "rgba(12,16,22,0.8)" }}
       >
-        <span className="text-[10px] uppercase tracking-[0.22em] text-white/50 rotate-90 origin-center">
-          Scroll
-        </span>
-        <div className="w-px h-12 bg-white/25 mt-2" />
-      </motion.div>
-
-      {/* Photo credit */}
-      <p className="absolute bottom-4 left-6 md:left-12 text-[10px] text-white/30 tracking-wide">
         Camp Taylor Memorial Park Pool · Louisville, KY · W Principles, LLC
       </p>
     </section>

@@ -17,7 +17,6 @@ export function Marquee({
 }) {
   return (
     <div
-      tabIndex={pauseOnHover ? 0 : -1}
       className={cn(
         "group flex overflow-hidden p-2 [--duration:40s] [--gap:1rem] [gap:var(--gap)]",
         vertical ? "flex-col" : "flex-row",
@@ -27,6 +26,7 @@ export function Marquee({
       {Array.from({ length: repeat }).map((_, i) => (
         <div
           key={i}
+          aria-hidden={i > 0 ? true : undefined}
           className={cn(
             "flex shrink-0 justify-around [gap:var(--gap)]",
             vertical ? "animate-marquee-vertical flex-col" : "animate-marquee flex-row",

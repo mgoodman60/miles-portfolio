@@ -2,12 +2,14 @@ import Link from "next/link"
 import { CampTaylorGallery } from "@/components/sections/CampTaylorGallery"
 import { ProjectCoverSlideshow } from "@/components/sections/ProjectCoverSlideshow"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
+import { ProjectBackLink, ProjectPager } from "@/components/sections/ProjectChrome"
+import { withCanonical } from "@/lib/site"
 import { dronePhotos, droneHeroSlides, progressFeb, progressMar, progressApr } from "./photos"
 
-export const metadata = {
+export const metadata = withCanonical("/projects/one-senior-care-morehead", {
   title: "One Senior Care — Morehead | Miles Goodman",
   description: "$3M PACE senior care facility in Morehead, KY. Active project. Site Superintendent: Miles Goodman.",
-}
+})
 
 export default function MoreheadPage() {
   return (
@@ -22,16 +24,12 @@ export default function MoreheadPage() {
             Active Project
           </span>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 px-6 md:px-12 pb-10">
-          <div className="mx-auto max-w-[1480px]">
-            <Link href="/projects" className="text-xs text-white/60 hover:text-white/90 transition-colors px-2 py-2 -mx-2 -my-2 inline-block">← Projects</Link>
-          </div>
-        </div>
       </ProjectCoverSlideshow>
 
       {/* Title */}
       <div className="px-6 md:px-12 py-12" style={{ background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px]">
+          <ProjectBackLink />
           <SectionEyebrow className="mb-3">Morehead, KY · Active — Jan 2026 to Aug 2026</SectionEyebrow>
           <h1 className="serif font-light tracking-tight mb-2" style={{ fontSize: "clamp(36px,5vw,72px)", color: "var(--ink)" }}>
             One Senior Care — Morehead
@@ -91,9 +89,9 @@ export default function MoreheadPage() {
               style={{ background: "var(--paper-warm)", borderColor: "var(--accent)" }}
             >
               <p className="text-xs uppercase tracking-[0.18em] text-[var(--accent)] mb-2">AI Field Tools</p>
-              <h3 className="serif font-light text-xl mb-3" style={{ color: "var(--ink)" }}>
+              <h2 className="serif font-light text-xl mb-3" style={{ color: "var(--ink)" }}>
                 My Reports deployed on this project
-              </h3>
+              </h2>
               <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
                 Daily reports generated from iPhone photos and voice notes via the Claude API. 164 project documents indexed (as of Apr 2026). Owner-ready PDF on workdays. Roughly 80% faster than writing reports by hand.
               </p>
@@ -110,7 +108,7 @@ export default function MoreheadPage() {
             {dronePhotos.length > 0 && (
               <div className="mb-16">
                 <h2 className="serif font-light text-3xl mb-6" style={{ color: "var(--ink)" }}>Drone Photography</h2>
-                <CampTaylorGallery photos={dronePhotos} />
+                <CampTaylorGallery photos={dronePhotos} eager />
               </div>
             )}
 
@@ -141,6 +139,7 @@ export default function MoreheadPage() {
 
       {/* ── Bottom CTA ───────────────────────────────────── */}
       <section
+        data-footer-cta=""
         className="border-t py-24 px-6 md:px-12 text-center"
         style={{ borderColor: "var(--border)", background: "var(--paper-warm)" }}
       >
@@ -168,13 +167,7 @@ export default function MoreheadPage() {
         </div>
       </section>
 
-      {/* Nav */}
-      <div className="border-t px-6 md:px-12 py-12" style={{ borderColor: "var(--border)" }}>
-        <div className="mx-auto max-w-[1480px] flex justify-between items-center">
-          <Link href="/projects/john-black-aquatic" className="text-sm text-[var(--muted)] hover:text-[var(--ink)] transition-colors">← John W. Black</Link>
-          <Link href="/projects" className="text-sm font-medium hover:text-[var(--accent)] transition-colors" style={{ color: "var(--ink)" }}>All Projects</Link>
-        </div>
-      </div>
+      <ProjectPager previous={{ href: "/projects/john-black-aquatic", label: "John W. Black" }} />
     </>
   )
 }

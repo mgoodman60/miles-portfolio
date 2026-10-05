@@ -1,10 +1,12 @@
 import Link from "next/link"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
+import { ContactSentNotice } from "@/components/sections/ContactSentNotice"
+import { LIVE_ORIGIN, withCanonical } from "@/lib/site"
 
-export const metadata = {
+export const metadata = withCanonical("/contact", {
   title: "Contact — Miles Goodman",
-  description: "Get in touch with Miles Goodman, Site Superintendent at W Principles, LLC.",
-}
+  description: "Get in touch with Miles Goodman, Site Superintendent at W Principles, LLC in Mount Sterling, KY.",
+})
 
 export default function ContactPage() {
   return (
@@ -23,13 +25,14 @@ export default function ContactPage() {
           {/* Form */}
           <div>
             <h2 className="serif font-light text-2xl mb-8" style={{ color: "var(--ink)" }}>Send a message</h2>
+            <ContactSentNotice />
             <form
               action="https://formsubmit.co/msgoodman1997@gmail.com"
               method="POST"
               className="space-y-6"
             >
               <input type="hidden" name="_subject" value="Portfolio Contact — Miles Goodman" />
-              <input type="hidden" name="_next" value="https://milesgoodman.com/contact?sent=true" />
+              <input type="hidden" name="_next" value={`${LIVE_ORIGIN}/contact?sent=true`} />
               {/* Honeypot — leave empty, bots fill it */}
               <input type="text" name="_honey" style={{ display: "none" }} />
 
@@ -95,7 +98,7 @@ export default function ContactPage() {
             <div className="space-y-6">
               {[
                 { label: "Email", value: "msgoodman1997@gmail.com", href: "mailto:msgoodman1997@gmail.com" },
-                { label: "Location", value: "Lexington, KY", href: null },
+                { label: "Location", value: "Mount Sterling, KY", href: null },
                 { label: "Company", value: "W Principles, LLC · Mount Sterling, KY", href: null },
                 { label: "Role", value: "Site Superintendent", href: null },
                 { label: "MBA", value: "Northern Kentucky University · Expected 2026", href: null },

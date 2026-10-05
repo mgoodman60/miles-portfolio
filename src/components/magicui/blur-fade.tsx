@@ -1,7 +1,7 @@
 "use client"
 
-import { useRef } from "react"
-import { motion, useInView, useReducedMotion, type Variants } from "motion/react"
+import { useEffect, useRef, useState, type CSSProperties } from "react"
+import { useInView, useReducedMotion } from "motion/react"
 import { cn } from "@/lib/utils"
 
 export function BlurFade({
@@ -21,30 +21,36 @@ export function BlurFade({
   inView?: boolean
   blur?: string
 }) {
-  const ref = useRef(null)
-  const inViewResult = useInView(ref, { once: true })
-  const isVisible = !inViewProp || inViewResult
+  const ref = useRef<HTMLDivElement>(null)
+  const seen = useInView(ref, { once: true })
   const prefersReduced = useReducedMotion()
+  const startedOffscreen = useRef(false)
+  const recorded = useRef(false)
+  const [play, setPlay] = useState(false)
 
-  if (prefersReduced) {
-    return <div className={cn(className)}>{children}</div>
-  }
+  useEffect(() => {
+    if (recorded.current || !ref.current) return
+    recorded.current = true
+    startedOffscreen.current = ref.current.getBoundingClientRect().top > window.innerHeight * 0.92
+  }, [])
 
-  const variants: Variants = {
-    hidden: { y: yOffset, opacity: 0, filter: `blur(${blur})` },
-    visible: { y: 0, opacity: 1, filter: "blur(0px)" },
-  }
+  useEffect(() => {
+    if (prefersReduced || !startedOffscreen.current) return
+    if (!inViewProp || seen) setPlay(true)
+  }, [inViewProp, seen, prefersReduced])
+
+  const style = play
+    ? ({
+        animationDelay: `${delay}s`,
+        animationDuration: `${duration}s`,
+        "--blur-fade-y": `${yOffset}px`,
+        "--blur-fade-blur": blur,
+      } as CSSProperties)
+    : undefined
 
   return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={isVisible ? "visible" : "hidden"}
-      variants={variants}
-      transition={{ delay: 0.04 + delay, duration, ease: [0.21, 0.47, 0.32, 0.98] }}
-      className={cn(className)}
-    >
+    <div ref={ref} className={cn(className, play && "blur-fade-play")} style={style}>
       {children}
-    </motion.div>
+    </div>
   )
 }

@@ -2,11 +2,12 @@ import Link from "next/link"
 import { BlurFade } from "@/components/magicui/blur-fade"
 import { Stat } from "@/components/ui/Stat"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
+import { withCanonical } from "@/lib/site"
 
-export const metadata = {
+export const metadata = withCanonical("/my-reports", {
   title: "My Reports — Miles Goodman",
   description: "My Reports: AI daily construction reporting app built by Miles Goodman. iPhone photos and voice notes become owner-ready PDFs in under 5 minutes.",
-}
+})
 
 const steps = [
   {
@@ -59,17 +60,17 @@ export default function MyReportsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-40 pb-20 px-6 md:px-12" style={{ background: "var(--paper-warm)" }}>
-        <div className="mx-auto max-w-[1480px] grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <section className="pt-28 pb-12 px-6 md:px-12" style={{ background: "var(--paper-warm)" }}>
+        <div className="mx-auto max-w-[1480px] grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
           <div>
-            <SectionEyebrow className="mb-6">
+            <SectionEyebrow className="mb-4">
               My Reports · Daily Reporting · Built by Miles Goodman
             </SectionEyebrow>
-            <h1 className="serif font-light tracking-tight mb-6" style={{ fontSize: "clamp(40px,5.5vw,80px)", color: "var(--ink)" }}>
+            <h1 className="serif font-light tracking-tight mb-4" style={{ fontSize: "clamp(32px, 4vw, 56px)", lineHeight: 1.08, color: "var(--ink)" }}>
               My Reports<br />
               <em className="font-light not-italic" style={{ color: "var(--accent)" }}>knows what happened.</em>
             </h1>
-            <p className="text-lg leading-relaxed mb-8" style={{ color: "var(--muted)" }}>
+            <p className="text-base leading-relaxed mb-6" style={{ color: "var(--muted)" }}>
               A superintendent takes 20–40 job site photos a day. Most stay on the phone. My Reports turns them into owner-ready daily progress reports — automatically, every morning.
             </p>
             <div className="flex flex-wrap gap-4">
@@ -144,7 +145,7 @@ export default function MyReportsPage() {
               value={value}
               label={label}
               valueClassName="text-2xl md:text-3xl text-white"
-              labelClassName="text-white/60"
+              labelClassName="text-white"
               className="text-center md:text-left"
             />
           ))}
