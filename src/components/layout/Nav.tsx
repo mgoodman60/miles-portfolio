@@ -573,11 +573,16 @@ export function Nav() {
                           aria-current={current ? "page" : undefined}
                           onClick={() => setMenuOpen(false)}
                           className={cn(
-                            "block py-3 text-sm font-medium transition-colors",
-                            current ? "text-[var(--accent)]" : "text-[var(--muted)] hover:text-[var(--ink)]"
+                            "block py-3 text-sm transition-colors",
+                            current ? "text-[var(--accent)]" : "text-[var(--ink)]"
                           )}
                         >
-                          {link.label}
+                          <span className="block font-medium leading-snug">{link.label}</span>
+                          {link.meta && (
+                            <span className="mt-0.5 block text-xs font-normal" style={{ color: "var(--muted)" }}>
+                              {link.meta}
+                            </span>
+                          )}
                         </Link>
                       </li>
                     )

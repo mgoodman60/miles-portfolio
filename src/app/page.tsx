@@ -127,8 +127,8 @@ export default function Home() {
       >
         <div className="mx-auto max-w-[1480px] grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div
-            className="relative rounded overflow-hidden order-last md:order-first"
-            style={{ aspectRatio: "3/4", maxWidth: 420 }}
+            className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded order-last md:order-first md:mx-0"
+            style={{ aspectRatio: "3/4" }}
           >
             <Image
               src="/headshot.jpg"
