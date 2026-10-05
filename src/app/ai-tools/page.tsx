@@ -89,9 +89,9 @@ export default function AIToolsPage() {
             </h1>
             <div className="flex flex-wrap gap-4 mb-6 text-sm" style={{ color: "var(--muted)" }}>
               <span>4 tools</span>
-              <span style={{ color: "var(--border)" }}>·</span>
+              <span aria-hidden="true" style={{ color: "var(--muted)" }}>·</span>
               <span>Built on Claude API</span>
-              <span style={{ color: "var(--border)" }}>·</span>
+              <span aria-hidden="true" style={{ color: "var(--muted)" }}>·</span>
               <span>Used daily in the field</span>
             </div>
             <div className="flex flex-wrap gap-4">

@@ -170,7 +170,7 @@ function DesktopMenu({
         id={panelId}
         hidden={!open}
         className={cn(
-          "absolute top-full z-20 mt-7 w-80 max-w-[calc(100vw-2rem)] rounded border border-[var(--border)] bg-[var(--paper)] text-[var(--ink)] shadow-[0_16px_40px_rgba(27,32,38,0.12)] py-2",
+          "nav-panel absolute top-full z-20 mt-7 w-80 max-w-[calc(100vw-2rem)] rounded border border-[var(--border)] bg-[var(--paper)] text-[var(--ink)] shadow-[0_16px_40px_rgba(27,32,38,0.12)] py-2",
           align === "right" ? "right-0" : "left-0"
         )}
       >
@@ -294,7 +294,7 @@ function AboutCluster({
         ref={panelRef}
         id={panelId}
         hidden={!open}
-        className="absolute left-0 top-full z-20 mt-7 min-w-44 rounded border border-[var(--border)] bg-[var(--paper)] text-[var(--ink)] shadow-[0_16px_40px_rgba(27,32,38,0.12)] py-2"
+        className="nav-panel absolute left-0 top-full z-20 mt-7 min-w-44 rounded border border-[var(--border)] bg-[var(--paper)] text-[var(--ink)] shadow-[0_16px_40px_rgba(27,32,38,0.12)] py-2"
       >
         <Link
           href="/resume"
@@ -449,7 +449,7 @@ export function Nav() {
         conceal && "-translate-y-full"
       )}
     >
-      <div className="mx-auto max-w-[1480px] px-6 md:px-12 h-20 flex items-center justify-between gap-6">
+      <div className="nav-bar mx-auto max-w-[1480px] px-6 md:px-12 h-20 flex items-center justify-between gap-6">
         <div className="flex items-center gap-6 min-w-0">
           <Link
             href="/"

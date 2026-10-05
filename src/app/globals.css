@@ -152,6 +152,19 @@ body {
   outline-color: var(--paper);
 }
 
+/* The hero bar sits on a near-black scrim. Accent blue disappears there.
+   Dropdown panels stay on paper, so they keep the accent ring. */
+.nav-over-hero .nav-bar :focus-visible {
+  outline-color: #fff;
+}
+.nav-over-hero .nav-panel :focus-visible {
+  outline-color: var(--accent);
+}
+
+.on-photo :focus-visible {
+  outline-color: #fff;
+}
+
 /* Accessibility: skip-to-content link */
 .skip-link {
   position: absolute;
@@ -199,6 +212,29 @@ main:focus {
   .hero-rise-1 { animation-delay: 0.08s; }
   .hero-rise-2 { animation-delay: 0.16s; }
   .hero-rise-3 { animation-delay: 0.28s; }
+}
+
+@keyframes blur-fade-in {
+  from {
+    opacity: 0;
+    filter: blur(var(--blur-fade-blur, 6px));
+    transform: translateY(var(--blur-fade-y, 6px));
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: none;
+  }
+}
+
+/* Plays only after the client decides an off-screen block should enter.
+   The element itself stays visible in server HTML. */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .blur-fade-play {
+    animation-name: blur-fade-in;
+    animation-timing-function: cubic-bezier(0.21, 0.47, 0.32, 0.98);
+    animation-fill-mode: both;
+  }
 }
 
 /* Accessibility: reduced motion */

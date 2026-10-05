@@ -185,7 +185,7 @@ export default function Home() {
                 className="inline-flex items-center gap-2 px-5 py-2 rounded-full border text-sm font-medium whitespace-nowrap shrink-0 mx-3"
                 style={{ borderColor: "var(--border)", color: "var(--muted)", background: "var(--paper)" }}
               >
-                <span className="w-2 h-2 rounded-full shrink-0" style={{ background: "var(--accent)" }} />
+                <span aria-hidden="true" className="w-2 h-2 rounded-full shrink-0" style={{ background: "var(--accent)" }} />
                 {item}
               </span>
             ))}

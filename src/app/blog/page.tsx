@@ -2,9 +2,15 @@ import Link from "next/link"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 import { withCanonical } from "@/lib/site"
 
+/**
+ * Public Substack URL. Leave null until Miles creates the publication.
+ * Do not guess a URL or embed a feed here.
+ */
+const SUBSTACK_URL: string | null = null
+
 export const metadata = withCanonical("/blog", {
   title: "Blog — Miles Goodman",
-  description: "Writing from Miles Goodman. No posts yet.",
+  description: "Writing from Miles Goodman. Posts will be published on Substack.",
 })
 
 export default function BlogPage() {
@@ -25,18 +31,31 @@ export default function BlogPage() {
       <section className="border-t py-24 px-6 md:px-12" style={{ borderColor: "var(--border)" }}>
         <div className="mx-auto max-w-[1480px]">
           <h2 className="serif font-light text-2xl mb-4" style={{ color: "var(--ink)" }}>
-            Coming soon
+            On Substack
           </h2>
           <p className="text-base leading-relaxed max-w-xl mb-8" style={{ color: "var(--muted)" }}>
-            No posts yet. This page will hold writing when there is something to publish.
+            No posts yet. Writing will be published on Substack, and the link will go here once that publication exists.
           </p>
-          <Link
-            href="/contact"
-            className="inline-block px-6 py-3 text-sm font-medium rounded transition-colors"
-            style={{ background: "var(--ink)", color: "var(--paper)" }}
-          >
-            Contact
-          </Link>
+          {SUBSTACK_URL ? (
+            <a
+              href={SUBSTACK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-6 py-3 text-sm font-medium rounded transition-colors mb-8"
+              style={{ background: "var(--ink)", color: "var(--paper)" }}
+            >
+              Read on Substack
+            </a>
+          ) : null}
+          <p>
+            <Link
+              href="/contact"
+              className="inline-block text-sm font-medium hover:underline underline-offset-4"
+              style={{ color: "var(--accent)" }}
+            >
+              Contact
+            </Link>
+          </p>
         </div>
       </section>
     </>

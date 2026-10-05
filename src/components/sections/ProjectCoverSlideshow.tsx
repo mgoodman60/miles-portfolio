@@ -93,11 +93,11 @@ export function ProjectCoverSlideshow({
 
       <div className="photo-scrim absolute inset-0" style={{ zIndex: 2 }} />
 
-      <div className="absolute inset-0" style={{ zIndex: 3 }}>{children}</div>
+      <div className="on-photo absolute inset-0" style={{ zIndex: 3 }}>{children}</div>
 
       {slides.length > 1 && (
         <div
-          className="absolute bottom-6 left-6 md:left-12 flex items-center gap-2"
+          className="on-photo absolute bottom-6 left-6 md:left-12 flex items-center gap-2"
           style={{ zIndex: 4 }}
         >
           {slides.map((_, i) => (
