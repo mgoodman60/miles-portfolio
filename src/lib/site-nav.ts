@@ -24,7 +24,7 @@ export const constructionProjects: readonly NavLink[] = [
   },
   {
     href: "/projects/one-senior-care-morehead",
-    label: "One Senior Care — Morehead",
+    label: "One Senior Care - Morehead",
     meta: "Morehead, KY",
   },
 ]
