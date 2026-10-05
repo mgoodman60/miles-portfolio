@@ -35,7 +35,6 @@ const projects = [
     name: "John W. Black Aquatic Center",
     location: "La Grange, KY",
     year: "2024",
-    cost: "$3.7M",
     scope: "Renovation — lap pool, recreation pool, slide, and mechanical systems",
     cover: "/projects/john-black/drone-01.jpg",
     tag: "Reopened 2024",

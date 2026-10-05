@@ -92,7 +92,7 @@ export default function AboutPage() {
             </BlurFade>
             <BlurFade inView delay={0.2}>
               <p className="text-base leading-relaxed mb-8" style={{ color: "var(--muted)" }}>
-                I also worked as a realtor with Keller Williams. That&rsquo;s where I learned to read owners and communicate clearly. I use those skills every day on site.
+                I also worked as a realtor with {profile.realtorOrg}. That&rsquo;s where I learned to read owners and communicate clearly. I use those skills every day on site.
               </p>
             </BlurFade>
             <BlurFade inView delay={0.3}>

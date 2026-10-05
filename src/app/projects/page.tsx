@@ -9,7 +9,20 @@ export const metadata = withCanonical("/projects", {
     "Commercial projects Miles Goodman worked as site superintendent for W Principles, LLC, in Kentucky.",
 })
 
-const projects = [
+type ProjectCard = {
+  slug: string
+  name: string
+  location: string
+  year: string
+  cost?: string
+  scope: string
+  cover: string
+  coverAlt: string
+  tag: string
+  role: string
+}
+
+const projects: ProjectCard[] = [
   {
     slug: "camp-taylor-pool",
     name: "Camp Taylor Memorial Park Pool",
@@ -27,8 +40,6 @@ const projects = [
     name: "John W. Black Aquatic Center",
     location: "La Grange, KY",
     year: "2024",
-    // HOLD: WDRB reported $3.7M. W Principles lists $4M. Engineer budget listed at $4.2M.
-    cost: "$3.7M",
     scope: "Renovation — lap pool, recreation pool, slide, and mechanical systems",
     cover: "/projects/john-black/drone-01.jpg",
     coverAlt: "Aerial of the finished John W. Black Aquatic Center in La Grange",
@@ -107,7 +118,7 @@ export default function ProjectsPage() {
                 </div>
                 <div className="p-6">
                   <p className="text-xs uppercase tracking-[0.18em] mb-2" style={{ color: "var(--muted)" }}>
-                    {p.location} · {p.year} · {p.cost} · {p.role}
+                    {[p.location, p.year, p.cost, p.role].filter(Boolean).join(" · ")}
                   </p>
                   <h2 className="serif font-light text-xl leading-snug mb-2" style={{ color: "var(--ink)" }}>
                     {p.name}

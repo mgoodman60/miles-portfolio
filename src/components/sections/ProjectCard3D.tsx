@@ -10,7 +10,7 @@ type Project = {
   name: string
   location: string
   year: string
-  cost: string
+  cost?: string
   scope: string
   cover: string
   tag?: string
@@ -95,7 +95,7 @@ export function ProjectCard3D({ project }: { project: Project }) {
             className="text-xs uppercase tracking-[0.14em] mb-2"
             style={{ color: "var(--muted)" }}
           >
-            {project.location} · {project.year} · {project.cost}
+            {[project.location, project.year, project.cost].filter(Boolean).join(" · ")}
           </p>
           <h3
             className="serif font-light text-xl leading-snug mb-2"
