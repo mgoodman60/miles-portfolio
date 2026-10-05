@@ -27,7 +27,7 @@ export default function NotFound() {
             Home
           </Link>
           <Link href="/projects" className="btn-line inline-flex min-h-11 items-center px-6 py-3 text-sm font-medium rounded border transition-colors">
-            Projects
+            Construction
           </Link>
           <Link href="/about" className="btn-line inline-flex min-h-11 items-center px-6 py-3 text-sm font-medium rounded border transition-colors">
             About

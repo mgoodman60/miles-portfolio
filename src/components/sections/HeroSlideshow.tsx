@@ -12,18 +12,18 @@ const slides = [
     caption: "Camp Taylor Memorial Park Pool · Louisville, KY",
   },
   {
-    src: "/projects/camp-taylor/finished-pool.jpg",
-    alt: "Camp Taylor Memorial Park Pool, opened to the public May 23, 2026",
+    src: "/projects/camp-taylor/drone-wide.jpg",
+    alt: "Aerial of the finished Camp Taylor Memorial Park waterpark in Louisville",
     caption: "Camp Taylor Memorial Park Pool · Opened May 23, 2026",
   },
   {
     src: "/projects/john-black/drone-01.jpg",
-    alt: "John W. Black Aquatic Center — aerial view",
+    alt: "Aerial of the finished John W. Black Aquatic Center in La Grange",
     caption: "John W. Black Aquatic Center · La Grange, KY",
   },
   {
-    src: "/projects/morehead/drone-01.jpg",
-    alt: "One Senior Care - Morehead — aerial view",
+    src: "/projects/morehead/aerial-2026-07-14-overhead.jpg",
+    alt: "Overhead aerial of the enclosed One Senior Care - Morehead building",
     caption: "One Senior Care - Morehead — Complete",
   },
 ]
@@ -134,7 +134,7 @@ export function HeroSlideshow() {
 
             <div className="hero-rise hero-rise-3 flex flex-wrap gap-4">
               <Link href="/projects" className="btn-solid inline-flex min-h-11 items-center px-6 py-3 text-sm font-medium rounded transition-colors">
-                View Projects
+                Construction
               </Link>
               <a
                 href="/Miles_Goodman_Resume.pdf"
@@ -147,7 +147,7 @@ export function HeroSlideshow() {
           </div>
 
           <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-1">
               {slides.map((_, i) => (
                 <button
                   key={i}
@@ -191,7 +191,7 @@ export function HeroSlideshow() {
               </button>
             </div>
             <p
-              className="max-w-full text-xs text-white tracking-wide rounded px-2.5 py-1 sm:text-right"
+              className="min-w-0 max-w-full text-xs text-white tracking-wide rounded px-2.5 py-1 sm:text-right"
               style={{ background: "#131820" }}
             >
               {slides[current].caption}

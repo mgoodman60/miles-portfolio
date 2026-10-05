@@ -26,8 +26,8 @@ const projects = [
     location: "Louisville, KY",
     year: "2026",
     cost: "$6.2M",
-    scope: "New aquatic facility — zero-depth ramp, lap lanes, waterslide",
-    cover: "/projects/camp-taylor/night-pour-hero.jpg",
+    scope: "New waterpark — zero-depth entry, lap lanes, slide, and play area",
+    cover: "/projects/camp-taylor/drone-wide.jpg",
     tag: "Opened 2026",
   },
   {
@@ -36,9 +36,9 @@ const projects = [
     location: "La Grange, KY",
     year: "2024",
     cost: "$3.7M",
-    scope: "Complete renovation — structural, pool shell, mechanical systems",
+    scope: "Renovation — lap pool, recreation pool, slide, and mechanical systems",
     cover: "/projects/john-black/drone-01.jpg",
-    tag: "Renovation · Complete",
+    tag: "Reopened 2024",
   },
   {
     slug: "one-senior-care-morehead",
@@ -47,17 +47,26 @@ const projects = [
     year: "2026",
     cost: "$3M",
     scope: "10,060 SF PACE senior care facility — PEMB + concrete",
-    cover: "/projects/morehead/drone-01.jpg",
+    cover: "/projects/morehead/aerial-2026-07-14-overhead.jpg",
     tag: "Complete",
   },
 ]
 
-const pressItems = [
-  "WAVE 3 News — Louisville",
-  "WHAS 11 — ABC Louisville",
-  "WDRB — Fox Louisville",
-  "Glasgow News 1",
-  "Owensboro Times",
+// WDRB's Camp Taylor story URL now redirects to the station homepage, so that name stays text.
+const pressItems: { label: string; href?: string }[] = [
+  {
+    label: "WAVE 3 News — Louisville",
+    href: "https://www.wave3.com/video/2025/04/22/camp-taylor-pool-wont-reopen-till-summer-2026-mayor-greenberg-says/",
+  },
+  { label: "WDRB — Fox Louisville" },
+  {
+    label: "Glasgow News 1",
+    href: "https://glasgownews1.com/2025/02/04/american-legion-overhaul-progresses/",
+  },
+  {
+    label: "Owensboro Times",
+    href: "https://www.owensborotimes.com/news/2024/05/cravens-pool-not-opening-next-weekend-due-to-construction-delays/",
+  },
 ]
 
 export default function Home() {
@@ -107,7 +116,7 @@ export default function Home() {
               href="/projects"
               className="inline-flex min-h-11 items-center text-sm font-medium text-[var(--accent)] underline-offset-4 hover:underline"
             >
-              All projects →
+              Construction →
             </Link>
           </div>
 
@@ -188,16 +197,39 @@ export default function Home() {
             Press coverage
           </h2>
           <ul className="flex flex-wrap justify-center gap-3">
-            {pressItems.map((item) => (
-              <li
-                key={item}
-                className="inline-flex items-center gap-2 rounded-full border px-5 py-2 text-sm font-medium"
-                style={{ borderColor: "var(--border)", color: "var(--muted)", background: "var(--paper)" }}
-              >
+            {pressItems.map((item) => {
+              const chip = "inline-flex min-h-11 items-center gap-2 rounded-full border px-5 py-2 text-sm font-medium"
+              const mark = (
                 <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full" style={{ background: "var(--accent)" }} />
-                {item}
-              </li>
-            ))}
+              )
+              if (!item.href) {
+                return (
+                  <li
+                    key={item.label}
+                    className={chip}
+                    style={{ borderColor: "var(--border)", color: "var(--muted)", background: "var(--paper)" }}
+                  >
+                    {mark}
+                    {item.label}
+                  </li>
+                )
+              }
+              return (
+                <li key={item.label}>
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${chip} underline decoration-[var(--border)] underline-offset-4 hover:decoration-[var(--ink)] focus-visible:decoration-[var(--ink)]`}
+                    style={{ borderColor: "var(--border)", color: "var(--ink)", background: "var(--paper)" }}
+                  >
+                    {mark}
+                    {item.label}
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                </li>
+              )
+            })}
           </ul>
         </div>
       </section>
