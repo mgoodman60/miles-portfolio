@@ -77,7 +77,7 @@ export const metadata = withCanonical("/projects/camp-taylor-pool", {
 export default function CampTaylorPage() {
   return (
     <>
-      <div className="relative overflow-hidden" style={{ height: "60svh", minHeight: 400, marginTop: -80 }}>
+      <div className="relative mt-20 overflow-hidden" style={{ height: "60svh", minHeight: 400 }}>
         <Image
           src="/projects/camp-taylor/drone-wide.jpg"
           alt="Aerial of the finished Camp Taylor Memorial Park waterpark"
