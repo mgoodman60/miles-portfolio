@@ -4,7 +4,14 @@ import { ProjectCoverSlideshow } from "@/components/sections/ProjectCoverSlidesh
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 import { ProjectBackLink, ProjectPager } from "@/components/sections/ProjectChrome"
 import { withCanonical } from "@/lib/site"
-import { dronePhotos, droneHeroSlides, progressFeb, progressMar, progressApr } from "./photos"
+import {
+  dronePhotos,
+  droneHeroSlides,
+  facilityPhotos,
+  progressEnclosure,
+  progressFoundation,
+  progressInterior,
+} from "./photos"
 
 export const metadata = withCanonical("/projects/one-senior-care-morehead", {
   title: "One Senior Care — Morehead | Miles Goodman",
@@ -73,10 +80,13 @@ export default function MoreheadPage() {
           <div className="flex-1 min-w-0">
             <div className="mb-12">
               <p className="text-lg leading-relaxed mb-4" style={{ color: "var(--ink)" }}>
-                One Senior Care — Morehead is a PACE (Program of All-Inclusive Care for the Elderly) facility serving Medicare and Medicaid participants in Rowan County. PACE centers provide integrated health, social, and long-term care services as an alternative to nursing home placement — this building is the physical hub for that model.
+                Morehead One Senior Care — the One Senior Care center in Morehead — is a PACE (Program of All-Inclusive Care for the Elderly) facility serving Medicare and Medicaid participants in Rowan County. PACE centers provide integrated health, social, and long-term care services as an alternative to nursing home placement — this building is the physical hub for that model.
               </p>
               <p className="text-base leading-relaxed mb-4" style={{ color: "var(--muted)" }}>
                 The 10,060 SF facility uses a pre-engineered metal building (PEMB) structure. W Principles, LLC is self-performing the concrete scope under the Walker Company of Kentucky as general contractor. I'm managing daily field operations, trade coordination, and owner reporting on site.
+              </p>
+              <p className="text-base leading-relaxed mb-4" style={{ color: "var(--muted)" }}>
+                The photographs follow the work from the slab and anchor bolts through steel, sheathing, and roof, then interior framing and the clinic, activity, and corridor spaces.
               </p>
               <p className="text-base leading-relaxed" style={{ color: "var(--muted)" }}>
                 This project is also the live deployment environment for my AI daily reporting app — My Reports processes site photos and voice notes into structured owner reports each morning.
@@ -115,12 +125,12 @@ export default function MoreheadPage() {
             {/* Progress photos — split by phase */}
             <div className="mb-16">
               <h2 className="serif font-light text-3xl mb-2" style={{ color: "var(--ink)" }}>Construction Progress</h2>
-              <p className="text-sm text-[var(--muted)] mb-10">By phase — foundation through finish.</p>
+              <p className="text-sm text-[var(--muted)] mb-10">Foundation, enclosure, and interior rough-in.</p>
 
               {[
-                { label: "Phase 1 · Foundation", sub: "February 2026", photos: progressFeb },
-                { label: "Phase 2 · Framing & PEMB Erection", sub: "March 2026", photos: progressMar },
-                { label: "Phase 3 · Finishes & MEP", sub: "April 2026", photos: progressApr },
+                { label: "Foundation", sub: "February–March 2026", photos: progressFoundation },
+                { label: "Structure and enclosure", sub: "March–April 2026", photos: progressEnclosure },
+                { label: "Interior rough-in", sub: "May 2026", photos: progressInterior },
               ].map(({ label, sub, photos }) => photos.length > 0 && (
                 <div key={label} className="mb-12">
                   <div className="mb-4">
@@ -130,9 +140,17 @@ export default function MoreheadPage() {
                   <CampTaylorGallery photos={photos} />
                 </div>
               ))}
-
-              <p className="text-xs text-[var(--muted)] mt-4">All photos by Miles Goodman · © 2026</p>
             </div>
+
+            {facilityPhotos.length > 0 && (
+              <div className="mb-16">
+                <h2 className="serif font-light text-3xl mb-2" style={{ color: "var(--ink)" }}>Facility</h2>
+                <p className="text-sm text-[var(--muted)] mb-6">Clinic, activity, and corridor spaces.</p>
+                <CampTaylorGallery photos={facilityPhotos} />
+              </div>
+            )}
+
+            <p className="text-xs text-[var(--muted)]">All photos by Miles Goodman · © 2026</p>
           </div>
         </div>
       </div>
