@@ -22,9 +22,11 @@ export function ProjectCoverSlideshow({
   children?: React.ReactNode
 }) {
   const [current, setCurrent] = useState(0)
-  const [paused, setPaused] = useState(false)
+  const [userPaused, setUserPaused] = useState(false)
+  const [holdPaused, setHoldPaused] = useState(false)
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const prefersReduced = useReducedMotion()
+  const paused = userPaused || holdPaused
 
   useEffect(() => {
     if (paused || prefersReduced || slides.length <= 1) return
@@ -48,8 +50,13 @@ export function ProjectCoverSlideshow({
     <div
       className={`relative overflow-hidden ${className}`}
       style={{ height, minHeight, marginTop: -80 }}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      onMouseEnter={() => setHoldPaused(true)}
+      onMouseLeave={() => setHoldPaused(false)}
+      onFocus={() => setHoldPaused(true)}
+      onBlur={(event) => {
+        const next = event.relatedTarget
+        if (!(next instanceof Node) || !event.currentTarget.contains(next)) setHoldPaused(false)
+      }}
       aria-roledescription={slides.length > 1 ? "carousel" : undefined}
     >
       {slides.map((slide, i) => (
@@ -113,12 +120,13 @@ export function ProjectCoverSlideshow({
 
       {slides.length > 1 && (
         <div
-          className="on-photo absolute bottom-6 left-6 md:left-12 flex items-center gap-2"
+          className="on-photo absolute bottom-4 left-4 right-4 flex flex-wrap items-center gap-1 md:left-12 md:right-auto"
           style={{ zIndex: 4 }}
         >
           {slides.map((_, i) => (
             <button
               key={i}
+              type="button"
               onClick={() => goTo(i)}
               aria-label={`Go to slide ${i + 1}`}
               aria-current={i === current ? "true" : undefined}
@@ -148,9 +156,10 @@ export function ProjectCoverSlideshow({
           ))}
           {!prefersReduced && (
             <button
-              onClick={() => setPaused((p) => !p)}
-              aria-label={paused ? "Play slideshow" : "Pause slideshow"}
-              aria-pressed={paused}
+              type="button"
+              onClick={() => setUserPaused((p) => !p)}
+              aria-label={userPaused ? "Play slideshow" : "Pause slideshow"}
+              aria-pressed={userPaused}
               style={{
                 minWidth: 44,
                 minHeight: 44,
@@ -166,7 +175,7 @@ export function ProjectCoverSlideshow({
                 cursor: "pointer",
               }}
             >
-              {paused ? "Play" : "Pause"}
+              {userPaused ? "Play" : "Pause"}
             </button>
           )}
         </div>

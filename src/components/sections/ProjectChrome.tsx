@@ -22,7 +22,7 @@ export function ProjectPager({
 }) {
   return (
     <nav
-      aria-label="Project"
+      aria-label="More projects"
       className="border-t px-6 md:px-12 py-8"
       style={{ borderColor: "var(--border)" }}
     >

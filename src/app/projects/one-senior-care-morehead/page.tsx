@@ -61,7 +61,7 @@ export default function MoreheadPage() {
                   ["Concrete Sub (Self-Perform)", "W Principles, LLC"],
                   ["My Role", "Site Superintendent"],
                   ["Architect", "Jon Cheatham"],
-                  ["PM", "Andrew Eberle"],
+                  ["Project Manager", "Andrew Eberle"],
                   ["Location", "Morehead, KY"],
                   ["Contract Value", "$2,985,000"],
                   ["Building Size", "10,060 SF"],

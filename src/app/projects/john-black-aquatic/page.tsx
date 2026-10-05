@@ -77,7 +77,7 @@ export const metadata = withCanonical("/projects/john-black-aquatic", {
 export default function JohnBlackPage() {
   return (
     <>
-      <div className="relative overflow-hidden" style={{ height: "60svh", minHeight: 400, marginTop: -80 }}>
+      <div className="relative mt-20 overflow-hidden" style={{ height: "60svh", minHeight: 400 }}>
         <Image
           src="/projects/john-black/drone-01.jpg"
           alt="Wide aerial of the finished John W. Black Aquatic Center"
@@ -215,7 +215,7 @@ export default function JohnBlackPage() {
 
       <ProjectPager
         previous={{ href: "/projects/camp-taylor-pool", label: "Camp Taylor" }}
-        next={{ href: "/projects/one-senior-care-morehead", label: "One Senior Care" }}
+        next={{ href: "/projects/one-senior-care-morehead", label: "One Senior Care - Morehead" }}
       />
     </>
   )
