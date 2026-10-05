@@ -141,7 +141,7 @@ export default function Home() {
           >
             <Image
               src="/headshot.jpg"
-              alt="Miles Goodman, Site Superintendent"
+              alt="Miles Goodman"
               fill
               className="object-cover object-center"
               sizes="(max-width:768px) 100vw, 420px"
