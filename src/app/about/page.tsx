@@ -49,13 +49,20 @@ export default function AboutPage() {
             </BlurFade>
             <BlurFade inView delay={0.3}>
               <div className="flex flex-wrap gap-4">
-                <a
-                  href="/Miles_Goodman_Resume.pdf"
-                  download
+                <Link
+                  href="/resume"
                   className="px-6 py-3 text-sm font-medium rounded transition-colors"
                   style={{ background: "var(--ink)", color: "var(--paper)" }}
                 >
-                  Download Resume (PDF)
+                  Resume
+                </Link>
+                <a
+                  href="/Miles_Goodman_Resume.pdf"
+                  download
+                  className="px-6 py-3 text-sm font-medium rounded border transition-colors hover:bg-black/5"
+                  style={{ borderColor: "var(--border)", color: "var(--ink)" }}
+                >
+                  Download PDF
                 </a>
                 <Link
                   href="/contact"

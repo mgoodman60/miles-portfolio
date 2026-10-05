@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 
 export const metadata = {
@@ -110,6 +111,23 @@ export default function ContactPage() {
                   )}
                 </div>
               ))}
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="/about"
+                className="px-4 py-2.5 text-sm font-medium rounded border transition-colors hover:bg-black/5"
+                style={{ borderColor: "var(--border)", color: "var(--ink)" }}
+              >
+                About
+              </Link>
+              <Link
+                href="/resume"
+                className="px-4 py-2.5 text-sm font-medium rounded transition-colors"
+                style={{ background: "var(--ink)", color: "var(--paper)" }}
+              >
+                Resume
+              </Link>
             </div>
 
             <div className="mt-12 rounded p-8" style={{ background: "var(--paper-warm)" }}>
