@@ -8,7 +8,7 @@ export function Footer() {
   const pathname = usePathname()
 
   return (
-    <footer data-surface="dark" style={{ background: "var(--footer-bg)", color: "var(--footer-fg)" }}>
+    <footer data-surface="dark" className="border-t" style={{ background: "var(--footer-bg)", color: "var(--footer-fg)", borderColor: "var(--border)" }}>
       <div className="mx-auto max-w-[1480px] px-6 md:px-12 py-16 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
         <div>
           <p className="serif text-xl font-light text-white mb-3">Miles Goodman</p>
@@ -31,8 +31,8 @@ export function Footer() {
                   key={link.href}
                   href={link.href}
                   aria-current={current ? "page" : undefined}
-                  className="text-sm py-2 transition-colors hover:text-white hover:underline underline-offset-4"
-                  style={{ color: current ? "#fff" : "var(--footer-fg)" }}
+                  className="text-sm font-medium py-2 transition-colors hover:underline underline-offset-4"
+                  style={{ color: current ? "var(--text)" : "var(--accent)" }}
                 >
                   {link.label}
                 </Link>
@@ -48,7 +48,8 @@ export function Footer() {
           <div className="text-sm flex flex-col gap-0" style={{ color: "var(--footer-fg)" }}>
             <a
               href="mailto:msgoodman1997@gmail.com"
-              className="py-2 hover:text-white hover:underline underline-offset-4 transition-colors break-all"
+              className="py-2 font-medium underline underline-offset-4 transition-colors break-all"
+              style={{ color: "var(--accent)" }}
             >
               msgoodman1997@gmail.com
             </a>
@@ -59,7 +60,7 @@ export function Footer() {
 
       <div
         className="border-t mx-auto max-w-[1480px] px-6 md:px-12 py-6 flex flex-col md:flex-row justify-between gap-4 text-xs"
-        style={{ borderColor: "rgba(207,205,199,0.12)", color: "var(--footer-fg-faint)" }}
+        style={{ borderColor: "var(--border)", color: "var(--footer-fg-faint)" }}
       >
         <span>© {new Date().getFullYear()} Miles Goodman. All rights reserved.</span>
         <span>Site Superintendent · W Principles, LLC · Mount Sterling, KY</span>

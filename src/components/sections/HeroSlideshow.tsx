@@ -62,7 +62,7 @@ export function HeroSlideshow() {
   return (
     <section
       id="hero-photos"
-      className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden bg-[#131820]"
+      className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden bg-[var(--bg)]"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onFocusCapture={() => setFocused(true)}
@@ -192,7 +192,7 @@ export function HeroSlideshow() {
             </div>
             <p
               className="min-w-0 max-w-full text-xs text-white tracking-wide rounded px-2.5 py-1 sm:text-right"
-              style={{ background: "#131820" }}
+              style={{ background: "var(--surface)", color: "var(--text)", border: "1px solid var(--border)" }}
             >
               {slides[current].caption}
             </p>

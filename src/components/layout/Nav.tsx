@@ -172,7 +172,7 @@ function DesktopMenu({
         id={panelId}
         hidden={!open}
         className={cn(
-          "nav-panel absolute top-full z-20 mt-7 w-80 max-w-[calc(100vw-2rem)] rounded border border-[var(--border)] bg-[var(--paper)] text-[var(--ink)] shadow-[0_16px_40px_rgba(27,32,38,0.12)] py-2",
+          "nav-panel absolute top-full z-20 mt-7 w-80 max-w-[calc(100vw-2rem)] rounded border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] shadow-[0_16px_40px_rgba(0,0,0,0.45)] py-2",
           align === "right" ? "right-0" : "left-0"
         )}
       >
@@ -288,7 +288,7 @@ function AboutCluster({
         onClick={() => onOpenChange(!open)}
         className={cn(
           "ml-0.5 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full transition-colors",
-          overHero ? "text-white hover:bg-white/15" : "text-[var(--muted)] hover:bg-black/5 hover:text-[var(--ink)]",
+          overHero ? "text-white hover:bg-white/15" : "text-[var(--muted)] hover:bg-white/5 hover:text-[var(--text)]",
           resumeCurrent && (overHero ? "text-white" : "text-[var(--accent)]")
         )}
       >
@@ -298,7 +298,7 @@ function AboutCluster({
         ref={panelRef}
         id={panelId}
         hidden={!open}
-        className="nav-panel absolute left-0 top-full z-20 mt-7 min-w-44 rounded border border-[var(--border)] bg-[var(--paper)] text-[var(--ink)] shadow-[0_16px_40px_rgba(27,32,38,0.12)] py-2"
+        className="nav-panel absolute left-0 top-full z-20 mt-7 min-w-44 rounded border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] shadow-[0_16px_40px_rgba(0,0,0,0.45)] py-2"
       >
         <Link
           href="/resume"

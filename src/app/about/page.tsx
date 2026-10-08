@@ -53,7 +53,7 @@ const timeline: { year: string; event: string; detail: string; href?: string }[]
 ]
 
 const linkClass =
-  "font-medium text-[var(--ink)] underline underline-offset-2 hover:text-[var(--accent)]"
+  "font-medium text-[var(--accent)] underline underline-offset-2"
 
 export default function AboutPage() {
   return (
@@ -99,22 +99,20 @@ export default function AboutPage() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/resume"
-                  className="inline-flex min-h-11 items-center px-6 py-3 text-sm font-medium rounded bg-[var(--ink)] text-[var(--paper)] transition-colors hover:bg-[var(--accent)]"
+                  className="btn-solid inline-flex min-h-11 items-center px-6 py-3 text-sm font-medium rounded transition-colors"
                 >
                   Resume
                 </Link>
                 <a
                   href="/Miles_Goodman_Resume.pdf"
                   download
-                  className="inline-flex min-h-11 items-center px-6 py-3 text-sm font-medium rounded border transition-colors hover:bg-black/5"
-                  style={{ borderColor: "var(--border)", color: "var(--ink)" }}
+                  className="btn-line inline-flex min-h-11 items-center px-6 py-3 text-sm font-medium rounded border transition-colors"
                 >
                   Download resume PDF
                 </a>
                 <Link
                   href="/contact"
-                  className="inline-flex min-h-11 items-center px-6 py-3 text-sm font-medium rounded border transition-colors hover:bg-black/5"
-                  style={{ borderColor: "var(--border)", color: "var(--ink)" }}
+                  className="btn-line inline-flex min-h-11 items-center px-6 py-3 text-sm font-medium rounded border transition-colors"
                 >
                   Contact
                 </Link>
@@ -130,7 +128,7 @@ export default function AboutPage() {
               height={400}
               priority
               unoptimized
-              className="h-auto w-full rounded border object-cover"
+              className="photo-frame h-auto w-full rounded object-cover"
               style={{ borderColor: "var(--border)" }}
               sizes="(max-width: 1024px) 100vw, 400px"
             />
@@ -149,7 +147,7 @@ export default function AboutPage() {
               { label: "CTM", detail: "Certified Technology Manager" },
               { label: "Bluebeam · AutoCAD · Excel", detail: "Field takeoffs, plan review,\nbid estimation" },
             ].map(({ label, detail }) => (
-              <div key={label} className="p-6 rounded border bg-[var(--paper)]" style={{ borderColor: "var(--border)" }}>
+              <div key={label} className="p-6 rounded border bg-[var(--surface)]" style={{ borderColor: "var(--border)" }}>
                 <p className="serif font-light text-lg mb-1" style={{ color: "var(--ink)" }}>{label}</p>
                 <p className="text-xs leading-relaxed whitespace-pre-line" style={{ color: "var(--muted)" }}>{detail}</p>
               </div>

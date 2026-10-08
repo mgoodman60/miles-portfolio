@@ -16,31 +16,42 @@
 
 /* ── Design tokens ─────────────────────────────────── */
 :root {
-  --paper:      #EFEDE6;
-  --paper-warm: #E6E3D9;
-  --ink:        #1B2026;
-  --muted:      #5A5F66;
-  --accent:     #2E5266;
-  --footer-bg:  #131820;
-  --footer-fg:  #CFCDC7;
-  --footer-fg-soft:  #9A9D9A;
-  --footer-fg-faint: #8E9189;
+  --bg:      #0F1114;
+  --surface: #1E2227;
+  --band:    #161A1F;
+  --text:    #F5F7FA;
+  --muted:   #AEB7C4;
+  --accent:  #2563FF;
+  --cta:     #0A0C0F;
+  --border:  #2C333C;
+
+  /* Legacy names kept so existing layout classes follow the palette. */
+  --paper:      var(--bg);
+  --paper-warm: var(--band);
+  --ink:        var(--text);
+  --footer-bg:  var(--surface);
+  --footer-fg:  var(--text);
+  --footer-fg-soft:  var(--muted);
+  --footer-fg-faint: var(--muted);
 
   /* shadcn compatibility */
-  --background: var(--paper);
-  --foreground: var(--ink);
-  --border:     rgba(27,32,38,0.14);
+  --background: var(--bg);
+  --foreground: var(--text);
   --ring:       var(--accent);
   --radius:     0.375rem;
 }
 
 @theme inline {
-  --color-background:  var(--paper);
-  --color-foreground:  var(--ink);
+  --color-background:  var(--bg);
+  --color-foreground:  var(--text);
+  --color-surface:     var(--surface);
+  --color-band:        var(--band);
+  --color-cta:         var(--cta);
+  --color-text:        var(--text);
   --color-muted:       var(--muted);
   --color-accent:      var(--accent);
-  --color-paper-warm:  var(--paper-warm);
-  --color-border:      rgba(27,32,38,0.14);
+  --color-paper-warm:  var(--band);
+  --color-border:      var(--border);
   --font-serif:        var(--font-fraunces);
   --font-sans:         var(--font-inter);
 }
@@ -48,13 +59,32 @@
 /* ── Base ──────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
-  background-color: var(--paper);
-  color: var(--ink);
+  background-color: var(--bg);
+  color: var(--text);
   font-family: var(--font-inter), Inter, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+  -webkit-text-fill-color: var(--text);
+  caret-color: var(--text);
+  box-shadow: 0 0 0 1000px var(--surface) inset;
+  transition: background-color 9999s ease-out;
 }
 
 /* ── Typography helpers ────────────────────────────── */
@@ -86,8 +116,8 @@ body {
 .nav-over-hero {
   background: linear-gradient(
     180deg,
-    rgba(12, 16, 22, 0.9) 0%,
-    rgba(12, 16, 22, 0.78) 100%
+    rgba(10, 12, 15, 0.92) 0%,
+    rgba(10, 12, 15, 0.78) 100%
   );
   color: #fff;
 }
@@ -97,28 +127,47 @@ body {
 .photo-scrim {
   background: linear-gradient(
     180deg,
-    rgba(12, 16, 22, 0.62) 0%,
-    rgba(12, 16, 22, 0.28) 28%,
-    rgba(12, 16, 22, 0.34) 48%,
-    rgba(12, 16, 22, 0.9) 100%
+    rgba(10, 12, 15, 0.62) 0%,
+    rgba(10, 12, 15, 0.28) 28%,
+    rgba(10, 12, 15, 0.34) 48%,
+    rgba(10, 12, 15, 0.9) 100%
   );
 }
 
 .nav-solid {
-  background: rgba(239,237,230,0.95);
+  background: var(--surface);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  color: var(--ink);
-  border-bottom: 1px solid rgba(27,32,38,0.10);
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Contained photos pick up a hairline so a bright edge does not bloom
+   into the page. Full-bleed heroes stay unframed. */
+.photo-frame {
+  border: 1px solid var(--border);
+  background-color: var(--cta);
+}
+
+.react-photo-album img {
+  outline: 1px solid var(--border);
+  outline-offset: -1px;
 }
 
 /* ── Stat strip ────────────────────────────────────── */
 .stat-strip {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--band);
+  color: var(--text);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 .stat-strip :focus-visible {
-  outline-color: var(--paper);
+  outline-color: var(--accent);
+}
+
+[data-footer-cta] {
+  background: var(--cta);
+  border-top: 1px solid var(--accent);
 }
 
 /* ── Photo placeholder (dev only) ──────────────────── */
@@ -147,13 +196,12 @@ body {
   border-radius: 3px;
 }
 
-/* Focus ring on dark surfaces — accent (#2E5266) is too dark on --footer-bg */
 [data-surface="dark"] :focus-visible {
-  outline-color: var(--paper);
+  outline-color: #fff;
 }
 
-/* The hero bar sits on a near-black scrim. Accent blue disappears there.
-   Dropdown panels stay on paper, so they keep the accent ring. */
+/* White ring on the photo scrim. Dropdown panels sit on the surface color
+   and keep the accent ring. */
 .nav-over-hero .nav-bar :focus-visible {
   outline-color: #fff;
 }
@@ -167,27 +215,30 @@ body {
 
 /* Shared action styles. Inline background colors block Tailwind hovers. */
 .btn-solid {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--accent);
+  color: #fff;
 }
 .btn-solid:hover {
-  background: #2a3138;
+  background: color-mix(in srgb, var(--accent) 86%, white);
+}
+.btn-solid:focus-visible {
+  outline-color: #fff;
 }
 .btn-line {
   border-color: var(--border);
-  color: var(--ink);
+  color: var(--text);
   background: transparent;
 }
 .btn-line:hover {
-  background: rgba(27, 32, 38, 0.06);
+  background: rgba(245, 247, 250, 0.06);
 }
 .btn-on-photo {
-  background: #131820;
+  background: var(--surface);
   color: #fff;
-  border-color: rgba(255, 255, 255, 0.7);
+  border-color: rgba(245, 247, 250, 0.45);
 }
 .btn-on-photo:hover {
-  background: #1c2430;
+  background: #2a313a;
 }
 
 /* Card links sit inside overflow:hidden, so the default ring is clipped.
@@ -210,8 +261,8 @@ body {
   left: 1rem;
   z-index: 100;
   padding: 0.75rem 1rem;
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--accent);
+  color: #fff;
   font-size: 0.875rem;
   font-weight: 500;
   border-radius: 0.375rem;
@@ -221,7 +272,7 @@ body {
 .skip-link:focus,
 .skip-link:focus-visible {
   top: 1rem;
-  outline: 2px solid var(--accent);
+  outline: 2px solid #fff;
   outline-offset: 3px;
 }
 

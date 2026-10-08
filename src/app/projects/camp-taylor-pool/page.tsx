@@ -200,7 +200,7 @@ export default function CampTaylorPage() {
                     alt="Early excavation and pool layout at Camp Taylor Memorial Park"
                     width={1920}
                     height={1080}
-                    className="h-auto w-full rounded"
+                    className="photo-frame h-auto w-full rounded"
                     sizes="(max-width: 768px) 100vw, 480px"
                   />
                   <figcaption className="mt-2 text-sm" style={{ color: "var(--muted)" }}>
@@ -213,7 +213,7 @@ export default function CampTaylorPage() {
                     alt="Finished Camp Taylor waterpark with slide, lap lanes, and zero-depth entry"
                     width={1920}
                     height={1080}
-                    className="h-auto w-full rounded"
+                    className="photo-frame h-auto w-full rounded"
                     sizes="(max-width: 768px) 100vw, 480px"
                   />
                   <figcaption className="mt-2 text-sm" style={{ color: "var(--muted)" }}>
@@ -246,7 +246,7 @@ export default function CampTaylorPage() {
               <CampTaylorGallery photos={timelinePhotos} variant="stack" />
             </div>
 
-            <div className="rounded p-8 md:p-12" style={{ background: "var(--paper-warm)" }}>
+            <div className="rounded border p-8 md:p-12" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
               <h2 className="serif font-light text-2xl mb-4" style={{ color: "var(--ink)" }}>Outcome</h2>
               <p className="text-base leading-relaxed" style={{ color: "var(--ink)" }}>
                 Louisville Metro, the Courier Journal, and WLKY covered the May 2026 opening. The neighborhood had been without this pool since 2019. Admission at opening was $3 for ages 13 and older and $2 for ages 12 and under, noon to 5 p.m. except Thursdays.
@@ -258,8 +258,8 @@ export default function CampTaylorPage() {
 
       <section
         data-footer-cta=""
-        className="border-t py-24 px-6 md:px-12 text-center"
-        style={{ borderColor: "var(--border)", background: "var(--paper-warm)" }}
+        className="py-24 px-6 md:px-12 text-center"
+        style={{ background: "var(--cta)", borderTop: "1px solid var(--accent)" }}
       >
         <div className="mx-auto max-w-[800px]">
           <h2 className="serif font-light text-3xl md:text-4xl tracking-tight mb-6" style={{ color: "var(--ink)" }}>
@@ -268,16 +268,14 @@ export default function CampTaylorPage() {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/contact"
-              className="px-5 py-2.5 text-sm font-medium rounded transition-colors"
-              style={{ background: "var(--ink)", color: "var(--paper)" }}
+              className="btn-solid px-5 py-2.5 text-sm font-medium rounded transition-colors"
             >
               Contact
             </Link>
             <a
               href="/Miles_Goodman_Resume.pdf"
               download
-              className="px-5 py-2.5 text-sm font-medium rounded border transition-colors hover:bg-black/5"
-              style={{ borderColor: "var(--border)", color: "var(--ink)" }}
+              className="btn-line px-5 py-2.5 text-sm font-medium rounded border transition-colors"
             >
               Download Resume
             </a>

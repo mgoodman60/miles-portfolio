@@ -76,15 +76,13 @@ export default function MyReportsPage() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/contact"
-                className="inline-flex min-h-11 items-center rounded px-6 py-3.5 text-sm font-medium"
-                style={{ background: "var(--ink)", color: "var(--paper)" }}
+                className="btn-solid inline-flex min-h-11 items-center rounded px-6 py-3.5 text-sm font-medium"
               >
                 Contact
               </Link>
               <Link
                 href="/projects/one-senior-care-morehead"
-                className="inline-flex min-h-11 items-center rounded border px-6 py-3.5 text-sm font-medium hover:bg-black/5"
-                style={{ borderColor: "var(--border)", color: "var(--ink)" }}
+                className="btn-line inline-flex min-h-11 items-center rounded border px-6 py-3.5 text-sm font-medium"
               >
                 See it on the Morehead project →
               </Link>
@@ -118,7 +116,7 @@ export default function MyReportsPage() {
               >
                 <span
                   className="mb-4 inline-block rounded px-2.5 py-1 font-mono text-xs uppercase tracking-[0.18em]"
-                  style={{ background: "var(--paper-warm)", color: "var(--muted)" }}
+                  style={{ background: "var(--surface)", color: "var(--muted)", border: "1px solid var(--border)" }}
                 >
                   {tag}
                 </span>
@@ -144,8 +142,8 @@ export default function MyReportsPage() {
               variant="bare"
               value={value}
               label={label}
-              valueClassName="text-2xl md:text-3xl text-white"
-              labelClassName="text-white"
+              valueClassName="text-2xl md:text-3xl text-[var(--text)]"
+              labelClassName="text-[var(--muted)]"
               className="text-center md:text-left"
             />
           ))}
@@ -161,7 +159,7 @@ export default function MyReportsPage() {
               <BlurFade key={title} inView delay={i * 0.1}>
                 <div
                   className="rounded p-8 border"
-                  style={{ borderColor: "var(--border)", background: "var(--paper-warm)" }}
+                  style={{ borderColor: "var(--border)", background: "var(--surface)" }}
                 >
                   <h3 className="serif font-light text-xl mb-3" style={{ color: "var(--ink)" }}>{title}</h3>
                   <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>{body}</p>

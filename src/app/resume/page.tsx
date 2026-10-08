@@ -17,7 +17,7 @@ export const metadata = withCanonical("/resume", {
 */
 
 const listClass = "list-disc space-y-1.5 pl-5 text-sm text-[var(--muted)] marker:text-[var(--muted)]"
-const contactLinkClass = "underline underline-offset-2 hover:text-[var(--accent)] transition-colors"
+const contactLinkClass = "text-[var(--accent)] underline underline-offset-2 transition-colors"
 
 export default function ResumePage() {
   return (
@@ -49,7 +49,7 @@ export default function ResumePage() {
             <a
               href="/Miles_Goodman_Resume.pdf"
               download
-              className="inline-flex min-h-11 items-center gap-2 self-start px-5 py-3 bg-[var(--ink)] text-[var(--paper)] text-sm font-medium rounded hover:bg-[var(--accent)] transition-colors md:self-auto"
+              className="btn-solid inline-flex min-h-11 items-center gap-2 self-start px-5 py-3 text-sm font-medium rounded transition-colors md:self-auto"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +100,7 @@ export default function ResumePage() {
                     <div key={project.href} className="pl-4 border-l-2 border-[var(--border)]">
                       <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
                         <h4 className="font-medium text-[var(--ink)]">
-                          <Link href={project.href} className="underline underline-offset-2 hover:text-[var(--accent)]">
+                          <Link href={project.href} className="text-[var(--accent)] underline underline-offset-2">
                             {project.name}
                           </Link>
                         </h4>
@@ -199,7 +199,7 @@ export default function ResumePage() {
                   <ul className="list-disc space-y-1.5 pl-5 text-sm text-[var(--ink)] marker:text-[var(--muted)]">
                     <li>Claude API</li>
                     <li>
-                      <Link href="/my-reports" className="underline underline-offset-2 hover:text-[var(--accent)]">
+                      <Link href="/my-reports" className="text-[var(--accent)] underline underline-offset-2">
                         My Reports
                       </Link>
                       {" "}— custom-built daily reporting app
@@ -209,7 +209,7 @@ export default function ResumePage() {
                         href="https://github.com/mgoodman60/foreman-os-plugin"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="underline underline-offset-2 hover:text-[var(--accent)]"
+                        className="text-[var(--accent)] underline underline-offset-2"
                       >
                         ForemanOS
                         <span className="sr-only"> (opens in a new tab)</span>
