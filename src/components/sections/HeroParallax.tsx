@@ -63,8 +63,7 @@ export function HeroParallax() {
           <div className="hero-rise hero-rise-3 flex flex-wrap gap-4">
             <Link
               href="/projects"
-              className="px-6 py-3 text-sm font-medium rounded transition-colors"
-              style={{ background: "var(--ink)", color: "var(--paper)" }}
+              className="btn-solid px-6 py-3 text-sm font-medium rounded transition-colors"
             >
               View Projects
             </Link>
@@ -81,7 +80,7 @@ export function HeroParallax() {
 
       <p
         className="absolute bottom-4 left-6 md:left-12 text-xs text-white tracking-wide rounded px-2.5 py-1"
-        style={{ background: "rgba(12,16,22,0.8)" }}
+        style={{ background: "var(--surface)", color: "var(--text)", border: "1px solid var(--border)" }}
       >
         Camp Taylor Memorial Park Pool · Louisville, KY · W Principles, LLC
       </p>

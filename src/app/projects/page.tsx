@@ -99,7 +99,7 @@ export default function ProjectsPage() {
               <Link
                 key={p.slug}
                 href={`/projects/${p.slug}`}
-                className="card-link group block rounded overflow-hidden bg-white shadow-sm hover:shadow-lg transition-shadow"
+                className="card-link group block rounded overflow-hidden border border-[var(--border)] bg-[var(--surface)] shadow-[0_12px_32px_rgba(0,0,0,0.28)]"
               >
                 <div className="relative overflow-hidden" style={{ aspectRatio: "4/3" }}>
                   <Image
@@ -110,8 +110,8 @@ export default function ProjectsPage() {
                     sizes="(max-width:768px) 100vw, 33vw"
                   />
                   <span
-                    className="absolute top-4 left-4 text-xs uppercase tracking-[0.14em] px-2.5 py-1 rounded-full font-medium text-white"
-                    style={{ background: "var(--accent)" }}
+                    className="absolute top-4 left-4 text-xs uppercase tracking-[0.14em] px-2.5 py-1 rounded-full font-medium"
+                    style={{ background: "var(--surface)", color: "var(--text)", border: "1px solid var(--border)" }}
                   >
                     {p.tag}
                   </span>
@@ -144,7 +144,7 @@ export default function ProjectsPage() {
               <div
                 key={p.name}
                 className="rounded p-6 border"
-                style={{ borderColor: "var(--border)", background: "var(--paper-warm)" }}
+                style={{ borderColor: "var(--border)", background: "var(--surface)" }}
               >
                 <p className="text-xs uppercase tracking-[0.18em] mb-2" style={{ color: "var(--muted)" }}>
                   {p.location} · {p.value}

@@ -87,13 +87,13 @@ export default function Home() {
               value={
                 <>
                   {prefix}
-                  <NumberTicker value={value} className="text-white" />
+                  <NumberTicker value={value} className="text-[var(--text)]" />
                   {suffix}
                 </>
               }
               label={label}
-              valueClassName="text-3xl md:text-4xl tracking-tight text-white"
-              labelClassName="text-xs text-white text-center md:text-left"
+              valueClassName="text-3xl md:text-4xl tracking-tight text-[var(--text)]"
+              labelClassName="text-xs text-[var(--muted)] text-center md:text-left"
               className="flex flex-col items-center md:items-start"
             />
           ))}
@@ -135,7 +135,7 @@ export default function Home() {
       >
         <div className="mx-auto max-w-[1480px] grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div
-            className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded order-last md:order-first md:mx-0"
+            className="photo-frame relative mx-auto w-full max-w-[420px] overflow-hidden rounded order-last md:order-first md:mx-0"
             style={{ aspectRatio: "3/4" }}
           >
             <Image
@@ -160,11 +160,11 @@ export default function Home() {
             <p className="text-base leading-relaxed mb-8" style={{ color: "var(--muted)" }}>
               I manage commercial construction in Kentucky — aquatic facilities, senior care, concrete
               self-perform — and I build AI field tools on the same jobs I run.{" "}
-              <Link href="/projects/one-senior-care-morehead" className="font-medium text-[var(--ink)] underline underline-offset-4">
+              <Link href="/projects/one-senior-care-morehead" className="font-medium text-[var(--accent)] underline underline-offset-4">
                 One Senior Care - Morehead
               </Link>{" "}
               is complete, with{" "}
-              <Link href="/my-reports" className="font-medium text-[var(--ink)] underline underline-offset-4">
+              <Link href="/my-reports" className="font-medium text-[var(--accent)] underline underline-offset-4">
                 My Reports
               </Link>{" "}
               running daily.
@@ -206,7 +206,7 @@ export default function Home() {
                   <li
                     key={item.label}
                     className={chip}
-                    style={{ borderColor: "var(--border)", color: "var(--muted)", background: "var(--paper)" }}
+                    style={{ borderColor: "var(--border)", color: "var(--muted)", background: "var(--surface)" }}
                   >
                     {mark}
                     {item.label}
@@ -220,7 +220,7 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`${chip} underline decoration-[var(--border)] underline-offset-4 hover:decoration-[var(--ink)] focus-visible:decoration-[var(--ink)]`}
-                    style={{ borderColor: "var(--border)", color: "var(--ink)", background: "var(--paper)" }}
+                    style={{ borderColor: "var(--border)", color: "var(--text)", background: "var(--surface)" }}
                   >
                     {mark}
                     {item.label}

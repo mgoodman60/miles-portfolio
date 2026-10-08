@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 const linkClass =
-  "inline-flex items-center min-h-11 text-sm font-medium text-[var(--ink)] hover:text-[var(--accent)] transition-colors"
+  "inline-flex items-center min-h-11 text-sm font-medium text-[var(--accent)] underline-offset-4 hover:underline transition-colors"
 
 export function ProjectBackLink() {
   return (

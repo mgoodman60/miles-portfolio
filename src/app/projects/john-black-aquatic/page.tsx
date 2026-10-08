@@ -172,7 +172,7 @@ export default function JohnBlackPage() {
               <p className="text-xs text-[var(--muted)] mt-4">Drone photography by Miles Goodman · 2024</p>
             </div>
 
-            <div className="rounded p-8 md:p-12" style={{ background: "var(--paper-warm)" }}>
+            <div className="rounded border p-8 md:p-12" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
               <h2 className="serif font-light text-2xl mb-4" style={{ color: "var(--ink)" }}>Outcome</h2>
               <p className="text-base leading-relaxed" style={{ color: "var(--ink)" }}>
                 The center reopened for the 2024 swim season on May 25. Oldham County Parks lists the address as 1551 N. Highway 393, La Grange.
@@ -184,8 +184,8 @@ export default function JohnBlackPage() {
 
       <section
         data-footer-cta=""
-        className="border-t py-24 px-6 md:px-12 text-center"
-        style={{ borderColor: "var(--border)", background: "var(--paper-warm)" }}
+        className="py-24 px-6 md:px-12 text-center"
+        style={{ background: "var(--cta)", borderTop: "1px solid var(--accent)" }}
       >
         <div className="mx-auto max-w-[800px]">
           <h2 className="serif font-light text-3xl md:text-4xl tracking-tight mb-6" style={{ color: "var(--ink)" }}>
@@ -194,16 +194,14 @@ export default function JohnBlackPage() {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/contact"
-              className="px-5 py-2.5 text-sm font-medium rounded transition-colors"
-              style={{ background: "var(--ink)", color: "var(--paper)" }}
+              className="btn-solid px-5 py-2.5 text-sm font-medium rounded transition-colors"
             >
               Contact
             </Link>
             <a
               href="/Miles_Goodman_Resume.pdf"
               download
-              className="px-5 py-2.5 text-sm font-medium rounded border transition-colors hover:bg-black/5"
-              style={{ borderColor: "var(--border)", color: "var(--ink)" }}
+              className="btn-line px-5 py-2.5 text-sm font-medium rounded border transition-colors"
             >
               Download Resume
             </a>

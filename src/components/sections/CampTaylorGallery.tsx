@@ -56,7 +56,7 @@ export function CampTaylorGallery({
                   className="block w-full rounded text-left"
                   onClick={() => setIndex(photoIndex)}
                 >
-                  <span className="block overflow-hidden rounded">
+                  <span className="photo-frame block overflow-hidden rounded">
                     <Image
                       src={photo.src}
                       alt={photo.alt}
@@ -65,7 +65,6 @@ export function CampTaylorGallery({
                       loading={eager && photoIndex === 0 ? "eager" : "lazy"}
                       sizes="(max-width: 1024px) 100vw, 960px"
                       className="h-auto w-full"
-                      style={{ background: "var(--paper-warm)" }}
                     />
                   </span>
                 </button>
@@ -99,7 +98,7 @@ export function CampTaylorGallery({
             className="block w-full rounded text-left"
             onClick={() => setIndex(photos.findIndex((item) => item.src === photo.src))}
           >
-            <span className="block overflow-hidden rounded">
+            <span className="photo-frame block overflow-hidden rounded">
               <Image
                 src={photo.src}
                 alt={photo.alt}
@@ -108,7 +107,7 @@ export function CampTaylorGallery({
                 loading={eager ? "eager" : "lazy"}
                 sizes="(max-width: 640px) 50vw, 25vw"
                 className="h-auto w-full object-cover"
-                style={{ background: "var(--paper-warm)", aspectRatio: `${photo.width} / ${photo.height}` }}
+                style={{ aspectRatio: `${photo.width} / ${photo.height}` }}
               />
             </span>
           </button>
@@ -147,7 +146,7 @@ export function CampTaylorGallery({
           captions
             ? {
                 captionsDescription: { color: "#fff", fontSize: "15px", lineHeight: 1.45 },
-                captionsDescriptionContainer: { background: "rgba(12,16,22,0.92)" },
+                captionsDescriptionContainer: { background: "rgba(10,12,15,0.92)" },
               }
             : undefined
         }

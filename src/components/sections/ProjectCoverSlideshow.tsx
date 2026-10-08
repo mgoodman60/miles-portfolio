@@ -103,7 +103,7 @@ export function ProjectCoverSlideshow({
         className="pointer-events-none absolute inset-x-0 bottom-0 h-36"
         style={{
           zIndex: 2,
-          background: "linear-gradient(180deg, rgba(12,16,22,0) 0%, rgba(12,16,22,0.72) 100%)",
+          background: "linear-gradient(180deg, rgba(10,12,15,0) 0%, rgba(10,12,15,0.72) 100%)",
         }}
       />
 
@@ -116,7 +116,7 @@ export function ProjectCoverSlideshow({
           style={{
             bottom: 92,
             zIndex: 4,
-            background: "rgba(12,16,22,0.88)",
+            background: "rgba(30,34,39,0.92)",
             padding: "6px 10px",
             borderRadius: 4,
           }}
@@ -172,7 +172,7 @@ export function ProjectCoverSlideshow({
                 minHeight: 44,
                 padding: "0 10px",
                 marginLeft: 4,
-                background: "rgba(12,16,22,0.8)",
+                background: "rgba(30,34,39,0.92)",
                 border: "1px solid rgba(255,255,255,0.7)",
                 borderRadius: 4,
                 color: "#fff",

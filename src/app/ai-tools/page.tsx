@@ -97,22 +97,20 @@ export default function AIToolsPage() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/my-reports"
-                className="inline-flex min-h-11 items-center rounded px-6 py-3 text-sm font-medium"
-                style={{ background: "var(--ink)", color: "var(--paper)" }}
+                className="btn-solid inline-flex min-h-11 items-center rounded px-6 py-3 text-sm font-medium"
               >
                 See My Reports
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex min-h-11 items-center rounded border px-6 py-3 text-sm font-medium hover:bg-black/5"
-                style={{ borderColor: "var(--border)", color: "var(--ink)" }}
+                className="btn-line inline-flex min-h-11 items-center rounded border px-6 py-3 text-sm font-medium"
               >
                 Contact
               </Link>
             </div>
           </div>
           <figure className="order-last">
-            <div className="relative aspect-video overflow-hidden rounded">
+            <div className="photo-frame relative aspect-video overflow-hidden rounded">
               <Image
                 src="/projects/camp-taylor/night-pour-hero.jpg"
                 alt="Night concrete pour at Camp Taylor Memorial Park Pool"
@@ -146,7 +144,7 @@ export default function AIToolsPage() {
               {/* Content */}
               <div className="md:col-span-7">
                 {live && (
-                  <span className="mb-3 inline-block rounded-full px-2.5 py-1 text-xs font-medium uppercase tracking-[0.18em]" style={{ background: "var(--accent)", color: "var(--paper)" }}>
+                  <span className="mb-3 inline-block rounded-full px-2.5 py-1 text-xs font-medium uppercase tracking-[0.18em]" style={{ background: "var(--surface)", color: "var(--text)", border: "1px solid var(--border)" }}>
                     Live
                   </span>
                 )}
@@ -193,8 +191,9 @@ export default function AIToolsPage() {
 
       {/* CTA */}
       <section
-        className="border-t py-24 px-6 md:px-12 text-center"
-        style={{ borderColor: "var(--border)", background: "var(--paper-warm)" }}
+        data-footer-cta=""
+        className="py-24 px-6 md:px-12 text-center"
+        style={{ background: "var(--cta)", borderTop: "1px solid var(--accent)" }}
       >
         <div className="mx-auto max-w-2xl">
           <h2 className="serif font-light text-3xl mb-4" style={{ color: "var(--ink)" }}>
@@ -205,8 +204,7 @@ export default function AIToolsPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex min-h-11 items-center rounded px-8 py-4 text-sm font-medium"
-            style={{ background: "var(--ink)", color: "var(--paper)" }}
+            className="btn-solid inline-flex min-h-11 items-center rounded px-8 py-4 text-sm font-medium"
           >
             Contact
           </Link>

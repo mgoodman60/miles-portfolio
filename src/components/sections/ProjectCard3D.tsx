@@ -57,7 +57,7 @@ export function ProjectCard3D({ project }: { project: Project }) {
       onMouseMove={tiltDisabled ? undefined : handleMouseMove}
       onMouseLeave={tiltDisabled ? undefined : handleMouseLeave}
       style={tiltDisabled ? undefined : { transition: "transform 0.15s ease" }}
-      className="group overflow-hidden rounded bg-white shadow-sm hover:shadow-lg"
+      className="group overflow-hidden rounded border border-[var(--border)] bg-[var(--surface)] shadow-[0_12px_32px_rgba(0,0,0,0.28)]"
     >
       <Link
         href={`/projects/${project.slug}`}
@@ -75,7 +75,7 @@ export function ProjectCard3D({ project }: { project: Project }) {
             <span
               aria-hidden="true"
               className="rounded px-2.5 py-1 text-xs font-medium tracking-wide text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100"
-              style={{ background: "#131820" }}
+              style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
             >
               View project →
             </span>
@@ -83,7 +83,7 @@ export function ProjectCard3D({ project }: { project: Project }) {
           {project.tag && (
             <span
               className="absolute top-4 left-4 text-xs uppercase tracking-[0.14em] px-2.5 py-1 rounded-full font-medium"
-              style={{ background: "var(--accent)", color: "#fff" }}
+              style={{ background: "var(--surface)", color: "var(--text)", border: "1px solid var(--border)" }}
             >
               {project.tag}
             </span>
