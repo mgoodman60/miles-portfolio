@@ -43,7 +43,7 @@ const timeline: { year: string; event: string; detail: string; href?: string }[]
   {
     year: "2023",
     event: `Joined ${profile.company} as Site Superintendent`,
-    detail: `${profile.location} · AGC Member`,
+    detail: `${profile.location} · AGC member company`,
   },
   {
     year: profile.bsYear,
@@ -79,7 +79,7 @@ export default function AboutPage() {
                 <Link href="/my-reports" className={linkClass}>My Reports</Link>
                 , the daily reporting app I built on the Claude API, came out of that work.{" "}
                 <a
-                  href="https://github.com/mgoodman60/foreman-os-plugin"
+                  href="https://github.com/mgoodman60/ForemanOS"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={linkClass}
@@ -87,7 +87,7 @@ export default function AboutPage() {
                   ForemanOS
                   <span className="sr-only"> (opens in a new tab)</span>
                 </a>
-                , a Claude Code plugin I&rsquo;m building alongside it, is where the rest of those tools live.
+                , a toolkit I&rsquo;m building for superintendent field work, provides more context for those workflows.
               </p>
             </BlurFade>
             <BlurFade inView delay={0.2}>

@@ -334,8 +334,14 @@ export function Nav() {
   const isHome = pathname === "/"
 
   const hamburgerRef = useRef<HTMLButtonElement>(null)
+  const homeLinkRef = useRef<HTMLAnchorElement>(null)
   const menuRef = useRef<HTMLDivElement>(null)
   const wasOpenRef = useRef(false)
+  const closeReasonRef = useRef<"dismiss" | "navigation" | "breakpoint" | "same-page">("dismiss")
+  const closeMobileMenu = (reason: "dismiss" | "navigation", destination?: string) => {
+    closeReasonRef.current = reason === "navigation" && destination === pathname ? "same-page" : reason
+    setMenuOpen(false)
+  }
 
   const onProject = pathname === "/projects" || pathname.startsWith("/projects/")
   const aiActive = pathname === "/ai-tools" || pathname.startsWith("/ai-tools/")
@@ -371,10 +377,23 @@ export function Nav() {
   }, [pathname])
 
   useEffect(() => {
+    closeReasonRef.current = "navigation"
     setMenuOpen(false)
     setDesktopMenu(null)
     setConstructionOpen(onProject)
   }, [pathname, onProject])
+
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 768px)")
+    const closeAtDesktop = () => {
+      if (!desktop.matches) return
+      closeReasonRef.current = "breakpoint"
+      setMenuOpen(false)
+    }
+    desktop.addEventListener("change", closeAtDesktop)
+    closeAtDesktop()
+    return () => desktop.removeEventListener("change", closeAtDesktop)
+  }, [])
 
   useEffect(() => {
     if (menuOpen) {
@@ -388,7 +407,17 @@ export function Nav() {
       }
     } else if (wasOpenRef.current) {
       wasOpenRef.current = false
-      hamburgerRef.current?.focus()
+      if (closeReasonRef.current === "breakpoint") {
+        const home = homeLinkRef.current
+        const target = home && home.getClientRects().length > 0 && !home.closest("[inert]")
+          ? home
+          : document.getElementById("main-content")
+        target?.focus({ preventScroll: true })
+      } else if (closeReasonRef.current === "same-page") {
+        document.getElementById("main-content")?.focus({ preventScroll: true })
+      } else if (closeReasonRef.current === "dismiss" && hamburgerRef.current?.getClientRects().length) {
+        hamburgerRef.current.focus({ preventScroll: true })
+      }
     }
   }, [menuOpen])
 
@@ -398,7 +427,7 @@ export function Nav() {
     const handleKeyDown = (event: globalThis.KeyboardEvent) => {
       if (event.key === "Escape") {
         event.preventDefault()
-        setMenuOpen(false)
+        closeMobileMenu("dismiss")
         return
       }
 
@@ -459,14 +488,16 @@ export function Nav() {
       <div className="nav-bar mx-auto max-w-[1480px] px-6 md:px-12 h-20 flex items-center justify-between gap-6">
         <div className="flex items-center gap-6 min-w-0">
           <Link
+            ref={homeLinkRef}
             href="/"
             aria-current={pathname === "/" ? "page" : undefined}
             className={cn(
-              "serif text-[22px] font-normal tracking-tight transition-colors whitespace-nowrap",
+              "serif flex flex-col text-[20px] leading-tight font-normal tracking-tight transition-colors whitespace-nowrap",
               overHero ? "text-white hover:underline hover:underline-offset-4" : "text-[var(--ink)] hover:text-[var(--accent)]"
             )}
           >
-            Miles Goodman
+            <span>Milestone</span>
+            <span>Solutions</span>
           </Link>
           <div className="hidden md:block">
             <AboutCluster
@@ -512,7 +543,13 @@ export function Nav() {
         <button
           ref={hamburgerRef}
           className="md:hidden inline-flex min-h-11 min-w-11 items-center justify-center p-3"
-          onClick={() => setMenuOpen(!menuOpen)}
+          onClick={() => {
+            if (menuOpen) closeMobileMenu("dismiss")
+            else {
+              closeReasonRef.current = "dismiss"
+              setMenuOpen(true)
+            }
+          }}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
           aria-controls={menuId}
@@ -547,7 +584,7 @@ export function Nav() {
         className="md:hidden nav-solid max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-[var(--border)]"
       >
           <nav aria-label="Primary" className="flex flex-col px-6 py-4">
-            <Link href="/ai-tools" aria-current={aiActive ? "page" : undefined} className={mobileLinkClass(aiActive)} onClick={() => setMenuOpen(false)}>
+            <Link href="/ai-tools" aria-current={aiActive ? "page" : undefined} className={mobileLinkClass(aiActive)} onClick={() => closeMobileMenu("navigation", "/ai-tools")}>
               AI
             </Link>
 
@@ -571,7 +608,7 @@ export function Nav() {
                         <Link
                           href={link.href}
                           aria-current={current ? "page" : undefined}
-                          onClick={() => setMenuOpen(false)}
+                          onClick={() => closeMobileMenu("navigation", link.href)}
                           className={cn(
                             "block py-3 text-sm transition-colors",
                             current ? "text-[var(--accent)]" : "text-[var(--ink)]"
@@ -591,10 +628,10 @@ export function Nav() {
               </div>
             </div>
 
-            <Link href="/blog" aria-current={blogActive ? "page" : undefined} className={mobileLinkClass(blogActive)} onClick={() => setMenuOpen(false)}>
+            <Link href="/blog" aria-current={blogActive ? "page" : undefined} className={mobileLinkClass(blogActive)} onClick={() => closeMobileMenu("navigation", "/blog")}>
               Blog
             </Link>
-            <Link href="/contact" aria-current={contactActive ? "page" : undefined} className={mobileLinkClass(contactActive)} onClick={() => setMenuOpen(false)}>
+            <Link href="/contact" aria-current={contactActive ? "page" : undefined} className={mobileLinkClass(contactActive)} onClick={() => closeMobileMenu("navigation", "/contact")}>
               Contact
             </Link>
           </nav>
@@ -604,7 +641,7 @@ export function Nav() {
               href="/about"
               aria-current={linkIsCurrent(pathname, aboutLinks[0]) ? "page" : undefined}
               className={mobileLinkClass(linkIsCurrent(pathname, aboutLinks[0]))}
-              onClick={() => setMenuOpen(false)}
+              onClick={() => closeMobileMenu("navigation", "/about")}
             >
               About
             </Link>
@@ -612,7 +649,7 @@ export function Nav() {
               href="/resume"
               aria-current={linkIsCurrent(pathname, aboutLinks[1]) ? "page" : undefined}
               className={cn(mobileLinkClass(linkIsCurrent(pathname, aboutLinks[1])), "pl-4")}
-              onClick={() => setMenuOpen(false)}
+              onClick={() => closeMobileMenu("navigation", "/resume")}
             >
               Resume
             </Link>

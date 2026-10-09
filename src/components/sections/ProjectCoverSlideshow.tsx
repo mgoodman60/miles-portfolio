@@ -25,6 +25,7 @@ export function ProjectCoverSlideshow({
   const [userPaused, setUserPaused] = useState(false)
   const [holdPaused, setHoldPaused] = useState(false)
   const [cycle, setCycle] = useState(0)
+  const [announcement, setAnnouncement] = useState("")
   const prefersReduced = useReducedMotion()
   const paused = userPaused || holdPaused
 
@@ -39,12 +40,11 @@ export function ProjectCoverSlideshow({
   const goTo = (i: number) => {
     setCurrent(i)
     setCycle((n) => n + 1)
+    const slide = slides[i]
+    setAnnouncement(`Slide ${i + 1} of ${slides.length}: ${slide.caption ?? slide.alt}`)
   }
 
   const currentSlide = slides[current]
-  const liveText = currentSlide
-    ? `Slide ${current + 1} of ${slides.length}: ${currentSlide.caption ?? currentSlide.alt}`
-    : ""
 
   return (
     <div
@@ -94,7 +94,7 @@ export function ProjectCoverSlideshow({
             border: 0,
           }}
         >
-          {liveText}
+          {announcement}
         </div>
       )}
 

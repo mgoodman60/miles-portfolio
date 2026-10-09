@@ -7,7 +7,7 @@ import { withCanonical } from "@/lib/site"
 
 export const metadata = withCanonical("/ai-tools", {
   title: "AI Tools — Miles Goodman",
-  description: "AI tools built and actively used in the field — daily reporting, plan review, and bid estimation.",
+  description: "AI field tools and workflows built by Miles Goodman for reporting, plan review and document work.",
 })
 
 type Tool = {
@@ -20,7 +20,6 @@ type Tool = {
   link: string
   linkLabel: string
   external?: boolean
-  live?: boolean
   featured?: boolean
 }
 
@@ -29,19 +28,18 @@ const tools: Tool[] = [
     num: "01",
     tag: "My Reports · Daily Reporting",
     title: "Site photos → owner-ready reports",
-    body: "I built My Reports on the Claude API to turn daily site photos and voice notes into structured daily progress reports. Live on One Senior Care - Morehead — runs every workday. Roughly 80% faster than writing reports manually. The owner-ready PDF goes out around 6pm ET.",
-    stat: "~80% faster",
-    statLabel: "vs. manual reporting",
+    body: "I built My Reports on the Claude API to turn site photos and voice notes into structured progress reports. The Morehead case study shows the field context behind this reporting workflow.",
+    stat: "Photos + notes",
+    statLabel: "Structured progress reports",
     link: "/my-reports",
     linkLabel: "See how it works",
-    live: true,
     featured: true,
   },
   {
     num: "02",
     tag: "Claude API · Plan Review",
     title: "Plan review and concrete quantity takeoffs",
-    body: "I use Claude to read construction drawings and calculate concrete quantities for bid and self-perform scopes. Upload a PDF plan set, describe the scope, and get a structured takeoff to check against manual calculations. Useful for footings, slabs, walls, and pool shells.",
+    body: "This workflow uses a PDF plan set and a defined concrete scope to draft a takeoff for comparison with manual calculations. Footings, slabs, walls and pool shells are examples of the scope being reviewed.",
     stat: "MBA Focus",
     statLabel: "Project Management & AI — NKU",
     link: "/about",
@@ -61,10 +59,10 @@ const tools: Tool[] = [
     num: "04",
     tag: "ForemanOS · Superintendent Field OS",
     title: "A working super's operating system, public on GitHub",
-    body: "ForemanOS is a separate platform I'm building, public on GitHub as seven construction plugins with 42 skills and 39 commands. It covers daily reporting, scheduling, and document work. The broader toolkit My Reports grew out of.",
-    stat: "42 skills",
-    statLabel: "39 commands · public on GitHub",
-    link: "https://github.com/mgoodman60/foreman-os-plugin",
+    body: "ForemanOS is a separate toolkit I’m building for superintendent field work, including reporting, scheduling and document workflows. The linked public repository provides context for this work.",
+    stat: "Field workflows",
+    statLabel: "Reporting, scheduling & documents",
+    link: "https://github.com/mgoodman60/ForemanOS",
     linkLabel: "View on GitHub",
     external: true,
   },
@@ -92,7 +90,7 @@ export default function AIToolsPage() {
               <span aria-hidden="true" style={{ color: "var(--muted)" }}>·</span>
               <span>Built on Claude API</span>
               <span aria-hidden="true" style={{ color: "var(--muted)" }}>·</span>
-              <span>My Reports runs on workdays</span>
+              <span>Construction workflow examples</span>
             </div>
             <div className="flex flex-wrap gap-4">
               <Link
@@ -132,7 +130,7 @@ export default function AIToolsPage() {
       {/* Tools — alternating rows */}
       <section className="py-24 px-6 md:px-12">
         <div className="mx-auto max-w-[1480px] space-y-0">
-          {tools.map(({ num, tag, title, body, stat, statLabel, link, linkLabel, external, live, featured }, i) => (
+          {tools.map(({ num, tag, title, body, stat, statLabel, link, linkLabel, external, featured }, i) => (
             <BlurFade key={num} inView delay={i * 0.15}>
             <div
               className="py-16 border-t grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16"
@@ -145,11 +143,6 @@ export default function AIToolsPage() {
 
               {/* Content */}
               <div className="md:col-span-7">
-                {live && (
-                  <span className="mb-3 inline-block rounded-full px-2.5 py-1 text-xs font-medium uppercase tracking-[0.18em]" style={{ background: "var(--accent)", color: "var(--paper)" }}>
-                    Live
-                  </span>
-                )}
                 <span className="mb-4 block text-xs uppercase tracking-[0.18em] text-[var(--muted)]">{tag}</span>
                 <h2 className="serif font-light text-3xl mb-4 leading-snug" style={{ color: "var(--ink)" }}>{title}</h2>
                 <p className="text-base leading-relaxed mb-6" style={{ color: "var(--muted)" }}>{body}</p>

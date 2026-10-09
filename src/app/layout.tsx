@@ -20,15 +20,15 @@ const fraunces = Fraunces({
 
 export const metadata: Metadata = {
   metadataBase: new URL(CANONICAL_ORIGIN),
-  title: "Miles Goodman — Site Superintendent",
+  title: "Milestone Solutions | Miles Goodman",
   description:
-    "Portfolio of Miles Goodman, Site Superintendent at W Principles, LLC. Commercial construction in Kentucky — $13M directly managed, ~$22M contributed-to.",
+    "Commercial construction experience and AI field tools by Miles Goodman, a site superintendent at W Principles, LLC in Kentucky.",
   alternates: {
     canonical: `${CANONICAL_ORIGIN}/`,
   },
   openGraph: {
-    title: "Miles Goodman — Site Superintendent",
-    description: "Commercial construction portfolio — $13M directly managed, ~$22M contributed-to across Kentucky.",
+    title: "Milestone Solutions | Miles Goodman",
+    description: "Commercial construction experience and AI field tools by Miles Goodman in Kentucky.",
     url: `${CANONICAL_ORIGIN}/`,
     images: [
       {
@@ -43,7 +43,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${inter.variable} ${fraunces.variable}`}>
       <body className="antialiased">
         <a href="#main-content" className="skip-link">
           Skip to main content

@@ -11,8 +11,9 @@ export function Footer() {
     <footer data-surface="dark" style={{ background: "var(--footer-bg)", color: "var(--footer-fg)" }}>
       <div className="mx-auto max-w-[1480px] px-6 md:px-12 py-16 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
         <div>
-          <p className="serif text-xl font-light text-white mb-3">Miles Goodman</p>
+          <p className="serif text-xl font-light text-white mb-3">Milestone Solutions</p>
           <p className="text-sm leading-relaxed" style={{ color: "var(--footer-fg)" }}>
+            Construction experience &amp; AI field tools by Miles Goodman.<br />
             Site Superintendent · W Principles, LLC<br />
             MBA Candidate — Project Management &amp; AI<br />
             Northern Kentucky University

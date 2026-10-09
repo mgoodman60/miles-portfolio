@@ -1,6 +1,5 @@
 import Image from "next/image"
 import Link from "next/link"
-import { NumberTicker } from "@/components/magicui/number-ticker"
 import { HeroSlideshow } from "@/components/sections/HeroSlideshow"
 import { ProjectCard3D } from "@/components/sections/ProjectCard3D"
 import { Stat } from "@/components/ui/Stat"
@@ -8,15 +7,15 @@ import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 import { withCanonical } from "@/lib/site"
 
 export const metadata = withCanonical("/", {
-  title: "Miles Goodman — Site Superintendent",
+  title: "Milestone Solutions | Construction experience & AI field tools",
   description:
-    "Portfolio of Miles Goodman, Site Superintendent at W Principles, LLC. Commercial construction in Kentucky — $13M directly managed, ~$22M contributed-to.",
+    "Construction project experience and AI field tools by Miles Goodman, a site superintendent at W Principles, LLC in Kentucky. Explore the work or discuss a project.",
 })
 
 const stats = [
-  { prefix: "$", value: 22, suffix: "M+", label: "Contributed-to Project Value" },
-  { value: 5, suffix: "", label: "Commercial Projects" },
-  { value: 3, suffix: " yrs", label: "As Site Superintendent" },
+  { value: "Kentucky", label: "Miles’s construction experience" },
+  { value: "3", label: "Detailed project case studies" },
+  { value: "AI", label: "Field reporting & document workflows" },
 ]
 
 const projects = [
@@ -51,19 +50,17 @@ const projects = [
   },
 ]
 
-// WDRB's Camp Taylor story URL now redirects to the station homepage, so that name stays text.
 const pressItems: { label: string; href?: string }[] = [
   {
-    label: "WAVE 3 News — Louisville",
+    label: "WAVE 3 — Camp Taylor reopening timeline (2025)",
     href: "https://www.wave3.com/video/2025/04/22/camp-taylor-pool-wont-reopen-till-summer-2026-mayor-greenberg-says/",
   },
-  { label: "WDRB — Fox Louisville" },
   {
-    label: "Glasgow News 1",
+    label: "Glasgow News 1 — American Legion project update (2025)",
     href: "https://glasgownews1.com/2025/02/04/american-legion-overhaul-progresses/",
   },
   {
-    label: "Owensboro Times",
+    label: "Owensboro Times — Cravens Pool construction delays (2024)",
     href: "https://www.owensborotimes.com/news/2024/05/cravens-pool-not-opening-next-weekend-due-to-construction-delays/",
   },
 ]
@@ -80,17 +77,11 @@ export default function Home() {
           Experience
         </h2>
         <div className="mx-auto grid max-w-[1480px] grid-cols-1 gap-8 md:grid-cols-3 md:gap-8">
-          {stats.map(({ prefix, value, suffix, label }) => (
+          {stats.map(({ value, label }) => (
             <Stat
               key={label}
               variant="bare"
-              value={
-                <>
-                  {prefix}
-                  <NumberTicker value={value} className="text-white" />
-                  {suffix}
-                </>
-              }
+              value={value}
               label={label}
               valueClassName="text-3xl md:text-4xl tracking-tight text-white"
               labelClassName="text-xs text-white text-center md:text-left"
@@ -109,7 +100,7 @@ export default function Home() {
               className="serif font-light tracking-tight text-[var(--ink)]"
               style={{ fontSize: "clamp(28px, 3.6vw, 44px)" }}
             >
-              Featured Projects
+              Miles’s construction experience
             </h2>
             <Link
               href="/projects"
@@ -119,6 +110,9 @@ export default function Home() {
             </Link>
           </div>
 
+          <p className="max-w-3xl text-sm leading-relaxed text-[var(--muted)] mb-8">
+            Projects Miles worked on with W Principles, LLC. Each case study identifies the contractor, employer and Miles’s role.
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {projects.map((p) => (
               <ProjectCard3D key={p.slug} project={p} />
@@ -163,11 +157,11 @@ export default function Home() {
               <Link href="/projects/one-senior-care-morehead" className="font-medium text-[var(--ink)] underline underline-offset-4">
                 One Senior Care - Morehead
               </Link>{" "}
-              is complete, with{" "}
+              is complete.{" "}
               <Link href="/my-reports" className="font-medium text-[var(--ink)] underline underline-offset-4">
                 My Reports
               </Link>{" "}
-              running daily.
+              shows how site photos and voice notes become structured progress reports.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="/about" className="btn-solid inline-flex min-h-11 items-center px-5 py-3 text-sm font-medium rounded transition-colors">
@@ -193,7 +187,7 @@ export default function Home() {
       >
         <div className="mx-auto max-w-[1480px]">
           <h2 id="press-heading" className="mb-6 text-center text-xs uppercase tracking-[0.18em] text-[var(--muted)]">
-            Press coverage
+            Coverage of projects Miles worked on
           </h2>
           <ul className="flex flex-wrap justify-center gap-3">
             {pressItems.map((item) => {

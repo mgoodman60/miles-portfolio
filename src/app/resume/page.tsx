@@ -206,7 +206,7 @@ export default function ResumePage() {
                     </li>
                     <li>
                       <a
-                        href="https://github.com/mgoodman60/foreman-os-plugin"
+                        href="https://github.com/mgoodman60/ForemanOS"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="underline underline-offset-2 hover:text-[var(--accent)]"
@@ -214,7 +214,7 @@ export default function ResumePage() {
                         ForemanOS
                         <span className="sr-only"> (opens in a new tab)</span>
                       </a>
-                      {" "}— Claude Code plugin for superintendent field work
+                      {" "}— toolkit for superintendent field work
                     </li>
                   </ul>
                 </div>

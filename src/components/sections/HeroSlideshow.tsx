@@ -120,29 +120,31 @@ export function HeroSlideshow() {
         <div className="mx-auto flex w-full max-w-[1480px] flex-col gap-6">
           <div>
             <p className="hero-rise hero-rise-1 text-xs uppercase tracking-[0.22em] text-white mb-4">
-              Site Superintendent · MBA Candidate, Project Management &amp; AI
+              Milestone Solutions · Miles Goodman
             </p>
 
             <h1
-              className="hero-rise hero-rise-2 serif font-light text-white leading-none tracking-tight mb-8"
-              style={{ fontSize: "clamp(40px, 5.5vw, 80px)", textShadow: "0 2px 16px rgba(0,0,0,0.45)" }}
+              className="hero-rise hero-rise-2 serif max-w-3xl font-light text-white leading-[1.08] tracking-tight mb-5"
+              style={{ fontSize: "clamp(38px, 5.5vw, 72px)", textShadow: "0 2px 16px rgba(0,0,0,0.45)" }}
             >
-              Miles
-              <br />
-              Goodman
+              Construction experience &amp; AI field tools
             </h1>
 
+            <p className="max-w-xl text-sm leading-relaxed text-white mb-6 md:text-base">
+              I’m Miles Goodman, a site superintendent at W Principles, LLC in Kentucky.
+              Explore my commercial construction experience and the tools I build for field reporting and document work.
+            </p>
+
             <div className="hero-rise hero-rise-3 flex flex-wrap gap-4">
-              <Link href="/projects" className="btn-solid inline-flex min-h-11 items-center px-6 py-3 text-sm font-medium rounded transition-colors">
-                Construction
+              <Link href="/contact" className="btn-solid inline-flex min-h-11 items-center px-6 py-3 text-sm font-medium rounded transition-colors">
+                Discuss a project
               </Link>
-              <a
-                href="/Miles_Goodman_Resume.pdf"
-                download
+              <Link
+                href="/projects"
                 className="btn-on-photo inline-flex min-h-11 items-center rounded border px-6 py-3 text-sm font-medium transition-colors"
               >
-                Download Resume (PDF)
-              </a>
+                Explore the work
+              </Link>
             </div>
           </div>
 
