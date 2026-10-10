@@ -3,7 +3,7 @@ import { Inter, Fraunces } from "next/font/google"
 import "./globals.css"
 import { Nav } from "@/components/layout/Nav"
 import { Footer } from "@/components/layout/Footer"
-import { CANONICAL_ORIGIN, ogImageUrl } from "@/lib/site"
+import { CANONICAL_ORIGIN, OG_IMAGE_ALT, ogImageUrl } from "@/lib/site"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,22 +20,33 @@ const fraunces = Fraunces({
 
 export const metadata: Metadata = {
   metadataBase: new URL(CANONICAL_ORIGIN),
-  title: "Miles Goodman — Site Superintendent",
+  title: "Miles Goodman | Construction & field reporting",
   description:
-    "Portfolio of Miles Goodman, Site Superintendent at W Principles, LLC. Commercial construction in Kentucky — $13M directly managed, ~$22M contributed-to.",
+    "Commercial construction experience and AI field tools by Miles Goodman, a site superintendent at W Principles, LLC in Kentucky.",
   alternates: {
     canonical: `${CANONICAL_ORIGIN}/`,
   },
   openGraph: {
-    title: "Miles Goodman — Site Superintendent",
-    description: "Commercial construction portfolio — $13M directly managed, ~$22M contributed-to across Kentucky.",
+    type: "website",
+    siteName: "Miles Goodman",
+    locale: "en_US",
+    title: "Miles Goodman | Construction & field reporting",
+    description: "Commercial construction experience and AI field tools by Miles Goodman in Kentucky.",
     url: `${CANONICAL_ORIGIN}/`,
     images: [
       {
         url: ogImageUrl(),
-        alt: "Night concrete pour at Camp Taylor Memorial Park Pool",
+        width: 1200,
+        height: 630,
+        alt: OG_IMAGE_ALT,
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Miles Goodman | Construction & field reporting",
+    description: "Construction experience and field tools by Miles Goodman in Kentucky.",
+    images: [{ url: ogImageUrl(), alt: OG_IMAGE_ALT }],
   },
 }
 
@@ -43,7 +54,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${inter.variable} ${fraunces.variable}`}>
       <body className="antialiased">
         <a href="#main-content" className="skip-link">
           Skip to main content

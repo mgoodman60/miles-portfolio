@@ -6,53 +6,53 @@ import { withCanonical } from "@/lib/site"
 
 export const metadata = withCanonical("/my-reports", {
   title: "My Reports — Miles Goodman",
-  description: "My Reports: AI daily construction reporting app built by Miles Goodman. iPhone photos and voice notes become owner-ready PDFs in under 5 minutes.",
+  description: "My Reports is Miles Goodman’s AI construction reporting workflow: site photos and voice notes become structured progress reports for review.",
 })
 
 const steps = [
   {
-    tag: "~3 min · iPhone",
+    tag: "iPhone · Photos + notes",
     num: "01",
     title: "Capture on site",
     body: "Take photos throughout the day. Add a voice note describing what happened — crew count, progress made, weather, issues flagged.",
   },
   {
-    tag: "~30 sec · Claude API",
+    tag: "Claude API · Draft report",
     num: "02",
     title: "AI compiles the report",
     body: "My Reports sends photos and voice notes to the Claude API. It structures the day into a daily progress report — narrative, photo captions, trade log, weather, and open items.",
   },
   {
-    tag: "~1 min · PDF + email",
+    tag: "Review · PDF + email",
     num: "03",
-    title: "Owner receives the PDF",
-    body: "A formatted, owner-ready PDF goes out around 6pm ET on workdays, with the day's photos embedded.",
+    title: "Review and share the PDF",
+    body: "Review the structured report and share a formatted PDF with the day’s photos embedded.",
   },
 ]
 
 const stats = [
-  { value: "~80%", label: "Faster than manual reporting" },
-  { value: "Live", label: "One Senior Care - Morehead" },
-  { value: "164", label: "Project documents indexed" },
-  { value: "< 5 min", label: "Photo to structured report" },
+  { value: "Site", label: "Morehead project example" },
+  { value: "Photos", label: "Site progress captured" },
+  { value: "Notes", label: "Voice context included" },
+  { value: "PDF", label: "Report format" },
 ]
 
 const features = [
   {
     title: "Owner visibility",
-    body: "Owners get a PDF around 6pm ET on workdays — photos, progress summary, open items — without having to call for an update.",
+    body: "A PDF brings together photos, progress summaries and open items for owner review.",
   },
   {
     title: "Subcontractor tracking",
-    body: "Trade log captures who was on site, what they completed, and what's pending — referenced automatically in each report.",
+    body: "Trade notes record who was on site, what they completed, and what is pending for review alongside the day's photos.",
   },
   {
-    title: "Searchable history",
-    body: "Every report and photo is indexed. Pull up what happened on any date in seconds — useful for RFIs, disputes, and close-out.",
+    title: "Project history",
+    body: "Dated reports and photos bring together a record of project progress for later reference.",
   },
   {
-    title: "Audit-ready documentation",
-    body: "ARPA-funded and government projects require daily compliance documentation. My Reports generates it as a byproduct of normal field work.",
+    title: "Daily project documentation",
+    body: "Reports bring together site photos, progress notes, trade logs and open items to support project documentation and review.",
   },
 ]
 
@@ -67,11 +67,11 @@ export default function MyReportsPage() {
               My Reports · Daily Reporting · Built by Miles Goodman
             </SectionEyebrow>
             <h1 className="serif font-light tracking-tight mb-4" style={{ fontSize: "clamp(32px, 4vw, 56px)", lineHeight: 1.08, color: "var(--ink)" }}>
-              My Reports<br />
-              <em className="font-light" style={{ color: "var(--accent)", fontStyle: "italic" }}>knows what happened.</em>
+              From field notes<br />
+              <em className="font-light" style={{ color: "var(--accent)", fontStyle: "italic" }}>to progress reports.</em>
             </h1>
             <p className="text-base leading-relaxed mb-6" style={{ color: "var(--muted)" }}>
-              A superintendent takes 20–40 job site photos a day. Most stay on the phone. My Reports turns them into owner-ready daily progress reports around 6pm ET on workdays.
+              My Reports turns site photos and voice notes into structured daily progress reports. The Morehead case study shows the construction context behind the workflow.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
@@ -86,7 +86,7 @@ export default function MyReportsPage() {
                 className="inline-flex min-h-11 items-center rounded border px-6 py-3.5 text-sm font-medium hover:bg-black/5"
                 style={{ borderColor: "var(--border)", color: "var(--ink)" }}
               >
-                See it on the Morehead project →
+                View the Morehead project →
               </Link>
             </div>
           </div>
@@ -94,7 +94,7 @@ export default function MyReportsPage() {
           {/* Stats */}
           <div className="grid grid-cols-2 gap-6">
             {stats.map(({ value, label }) => (
-              <Stat key={label} value={value} label={label} />
+              <Stat key={label} value={value} label={label} className="min-w-0 !p-4 sm:!p-6" valueClassName="!text-xl sm:!text-3xl" />
             ))}
           </div>
         </div>
@@ -135,9 +135,9 @@ export default function MyReportsPage() {
       <section className="py-12 px-6 md:px-12 stat-strip">
         <div className="mx-auto max-w-[1480px] grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {[
-            { value: "6pm ET", label: "Owner PDF on workdays" },
+            { value: "PDF", label: "Structured progress report" },
             { value: "iPhone", label: "Photos and a voice note" },
-            { value: "Daily", label: "ARPA compliance log" },
+            { value: "Review", label: "Project documentation" },
           ].map(({ value, label }) => (
             <Stat
               key={label}

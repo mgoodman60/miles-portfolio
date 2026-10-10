@@ -205,16 +205,13 @@ export default function ResumePage() {
                       {" "}— custom-built daily reporting app
                     </li>
                     <li>
-                      <a
-                        href="https://github.com/mgoodman60/foreman-os-plugin"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <Link
+                        href="/ai-tools"
                         className="underline underline-offset-2 hover:text-[var(--accent)]"
                       >
                         ForemanOS
-                        <span className="sr-only"> (opens in a new tab)</span>
-                      </a>
-                      {" "}— Claude Code plugin for superintendent field work
+                      </Link>
+                      {" "}- private-source field toolkit in development
                     </li>
                   </ul>
                 </div>

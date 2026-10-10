@@ -8,11 +8,9 @@ import Captions from "yet-another-react-lightbox/plugins/captions"
 import "yet-another-react-lightbox/plugins/captions.css"
 import Zoom from "yet-another-react-lightbox/plugins/zoom"
 import Image from "next/image"
-import { useEffect, useRef, useState } from "react"
+import { useState } from "react"
 
 type Photo = { src: string; width: number; height: number; alt: string; caption?: string }
-
-const FIRST_ROW = 4
 
 export function CampTaylorGallery({
   photos,
@@ -27,22 +25,6 @@ export function CampTaylorGallery({
   captions?: boolean
 }) {
   const [index, setIndex] = useState(-1)
-  const [albumReady, setAlbumReady] = useState(false)
-  const albumRef = useRef<HTMLDivElement>(null)
-  const preview = photos.slice(0, FIRST_ROW)
-
-  useEffect(() => {
-    const node = albumRef.current
-    if (!node) return
-
-    const mark = () => {
-      if (node.querySelector("img")) setAlbumReady(true)
-    }
-    mark()
-    const observer = new MutationObserver(mark)
-    observer.observe(node, { childList: true, subtree: true })
-    return () => observer.disconnect()
-  }, [])
 
   if (variant === "stack") {
     return (
@@ -91,45 +73,28 @@ export function CampTaylorGallery({
 
   return (
     <div className="relative">
-      <div className={albumReady ? "hidden" : "grid grid-cols-2 gap-2 sm:grid-cols-4"}>
-        {preview.map((photo) => (
-          <button
-            key={photo.src}
-            type="button"
-            className="block w-full rounded text-left"
-            onClick={() => setIndex(photos.findIndex((item) => item.src === photo.src))}
-          >
-            <span className="block overflow-hidden rounded">
-              <Image
-                src={photo.src}
-                alt={photo.alt}
-                width={photo.width}
-                height={photo.height}
-                loading={eager ? "eager" : "lazy"}
-                sizes="(max-width: 640px) 50vw, 25vw"
-                className="h-auto w-full object-cover"
-                style={{ background: "var(--paper-warm)", aspectRatio: `${photo.width} / ${photo.height}` }}
-              />
-            </span>
-          </button>
-        ))}
-      </div>
-      {!albumReady && photos.length > FIRST_ROW ? (
-        <p className="mt-2 text-xs" style={{ color: "var(--muted)" }}>
-          {photos.length} photos
-        </p>
-      ) : null}
-      <div
-        ref={albumRef}
-        className={albumReady ? "relative" : "pointer-events-none absolute w-full opacity-0"}
-        aria-hidden={!albumReady}
-      >
         <RowsPhotoAlbum
           photos={photos}
           targetRowHeight={180}
+          defaultContainerWidth={960}
+          sizes={{ size: "calc(100vw - 48px)", sizes: [{ viewport: "(min-width: 1024px)", size: "min(1000px, calc(100vw - 480px))" }] }}
+          render={{
+            image: ({ alt, title, sizes, className, style }, { photo, index: photoIndex }) => (
+              <Image
+                src={photo.src}
+                alt={alt ?? photo.alt}
+                title={title}
+                width={photo.width}
+                height={photo.height}
+                sizes={sizes}
+                className={className}
+                style={style}
+                loading={eager && photoIndex === 0 ? "eager" : "lazy"}
+              />
+            ),
+          }}
           onClick={({ index: photoIndex }) => setIndex(photoIndex)}
         />
-      </div>
       <Lightbox
         open={index >= 0}
         index={index}
@@ -149,7 +114,7 @@ export function CampTaylorGallery({
                 captionsDescription: { color: "#fff", fontSize: "15px", lineHeight: 1.45 },
                 captionsDescriptionContainer: { background: "rgba(12,16,22,0.92)" },
               }
-            : undefined
+            : {}
         }
       />
     </div>

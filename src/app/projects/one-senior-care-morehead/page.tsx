@@ -89,7 +89,7 @@ export default function MoreheadPage() {
                 The photographs follow the work from the slab and anchor bolts through steel, sheathing, and roof, then interior framing, MEP rough-in, and finishes.
               </p>
               <p className="text-base leading-relaxed" style={{ color: "var(--muted)" }}>
-                This project is also the live deployment environment for my AI daily reporting app — My Reports processes site photos and voice notes into structured owner reports around 6pm ET.
+                This project provided the field context for my AI daily reporting app. My Reports processes site photos and voice notes into structured progress reports for review.
               </p>
             </div>
 
@@ -100,10 +100,10 @@ export default function MoreheadPage() {
             >
               <p className="text-xs uppercase tracking-[0.18em] text-[var(--accent)] mb-2">AI Field Tools</p>
               <h2 className="serif font-light text-xl mb-3" style={{ color: "var(--ink)" }}>
-                My Reports deployed on this project
+              Field context for My Reports
               </h2>
               <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
-                Daily reports generated from iPhone photos and voice notes via the Claude API. 164 project documents indexed. Owner-ready PDF on workdays, around 6pm ET. Roughly 80% faster than writing reports by hand.
+                My Reports brings together iPhone photos and voice notes via the Claude API to create structured progress reports. The workflow supports review and sharing of a formatted PDF.
               </p>
               <Link
                 href="/my-reports"
@@ -118,7 +118,7 @@ export default function MoreheadPage() {
             {dronePhotos.length > 0 && (
               <div className="mb-16">
                 <h2 className="serif font-light text-3xl mb-6" style={{ color: "var(--ink)" }}>Drone Photography</h2>
-                <CampTaylorGallery photos={dronePhotos} eager captions />
+                <CampTaylorGallery photos={dronePhotos} captions />
               </div>
             )}
 

@@ -11,7 +11,7 @@ const photos = [
     src: "/projects/camp-taylor/pool-progress-1.jpg",
     width: 1920,
     height: 1080,
-    alt: "Pool shell subgrade with rebar and gravel at Camp Taylor",
+    alt: "Aerial of the Camp Taylor waterpark and pool house beside the surrounding park",
   },
   {
     src: "/projects/camp-taylor/construction-3.jpg",

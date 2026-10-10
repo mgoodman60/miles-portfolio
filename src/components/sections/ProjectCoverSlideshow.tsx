@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react"
 import Image from "next/image"
-import { useReducedMotion } from "motion/react"
 
 type Slide = { src: string; alt: string; caption?: string }
 
@@ -25,11 +24,22 @@ export function ProjectCoverSlideshow({
   const [userPaused, setUserPaused] = useState(false)
   const [holdPaused, setHoldPaused] = useState(false)
   const [cycle, setCycle] = useState(0)
-  const prefersReduced = useReducedMotion()
+  const [announcement, setAnnouncement] = useState("")
+  // Keep server HTML and the first client render identical. Read and subscribe
+  // to the browser preference only after hydration; null never starts autoplay.
+  const [prefersReduced, setPrefersReduced] = useState<boolean | null>(null)
   const paused = userPaused || holdPaused
 
   useEffect(() => {
-    if (paused || prefersReduced || slides.length <= 1) return
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const updatePreference = () => setPrefersReduced(preference.matches)
+    updatePreference()
+    preference.addEventListener("change", updatePreference)
+    return () => preference.removeEventListener("change", updatePreference)
+  }, [])
+
+  useEffect(() => {
+    if (paused || prefersReduced !== false || slides.length <= 1) return
     const intervalId = setInterval(() => {
       setCurrent((p) => (p + 1) % slides.length)
     }, intervalMs)
@@ -39,12 +49,11 @@ export function ProjectCoverSlideshow({
   const goTo = (i: number) => {
     setCurrent(i)
     setCycle((n) => n + 1)
+    const slide = slides[i]
+    setAnnouncement(`Slide ${i + 1} of ${slides.length}: ${slide.caption ?? slide.alt}`)
   }
 
   const currentSlide = slides[current]
-  const liveText = currentSlide
-    ? `Slide ${current + 1} of ${slides.length}: ${currentSlide.caption ?? currentSlide.alt}`
-    : ""
 
   return (
     <div
@@ -94,7 +103,7 @@ export function ProjectCoverSlideshow({
             border: 0,
           }}
         >
-          {liveText}
+          {announcement}
         </div>
       )}
 
@@ -161,7 +170,7 @@ export function ProjectCoverSlideshow({
               />
             </button>
           ))}
-          {!prefersReduced && (
+          {prefersReduced === false && (
             <button
               type="button"
               onClick={() => setUserPaused((p) => !p)}
