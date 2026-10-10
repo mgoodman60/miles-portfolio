@@ -1,9 +1,9 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, type ReactNode } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { useReducedMotion } from "motion/react"
+import { useMotionPreference } from "@/lib/use-motion-preference"
 
 const slides = [
   {
@@ -28,7 +28,8 @@ const slides = [
   },
 ]
 
-export function HeroSlideshow() {
+export function HeroSlideshow({ identity = "personal", children }: { identity?: "personal" | "business"; children?: ReactNode }) {
+  const isBusiness = identity === "business"
   const [current, setCurrent] = useState(0)
   const [userPaused, setUserPaused] = useState(false)
   const [hovered, setHovered] = useState(false)
@@ -37,7 +38,7 @@ export function HeroSlideshow() {
     `Slide 1 of ${slides.length}: ${slides[0].caption}`
   )
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
-  const prefersReduced = useReducedMotion()
+  const prefersReduced = useMotionPreference()
   const autoplay = prefersReduced === false && !userPaused && !hovered && !focused
 
   useEffect(() => {
@@ -62,7 +63,9 @@ export function HeroSlideshow() {
   return (
     <section
       id="hero-photos"
-      className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden bg-[#131820]"
+      className="project-hero relative flex min-h-[100svh] flex-col justify-end overflow-hidden bg-[#131820]"
+      data-autoplay={autoplay}
+      data-surface="dark"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onFocusCapture={() => setFocused(true)}
@@ -70,7 +73,7 @@ export function HeroSlideshow() {
         if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setFocused(false)
       }}
       aria-roledescription="carousel"
-      aria-label="Project photos"
+      aria-label="Miles's construction project photos"
     >
       {/* All slides rendered simultaneously — no flash on transition */}
       {slides.map((slide, i) => (
@@ -79,6 +82,7 @@ export function HeroSlideshow() {
           className="absolute inset-0 transition-opacity duration-[1200ms] ease-in-out"
           style={{ opacity: i === current ? 1 : 0, zIndex: i === current ? 1 : 0 }}
           aria-hidden={i !== current}
+          data-active={i === current}
         >
           <Image
             src={slide.src}
@@ -86,7 +90,7 @@ export function HeroSlideshow() {
             fill
             priority={i === 0}
             quality={i === 0 ? 60 : 75}
-            className="object-cover object-center"
+            className="hero-photo object-cover object-center"
             sizes="100vw"
           />
         </div>
@@ -118,34 +122,36 @@ export function HeroSlideshow() {
           Controls and caption share one column so they cannot overlap on a phone. */}
       <div className="on-photo relative z-[3] flex flex-col justify-end px-6 pt-24 pb-6 md:px-12 md:pb-8">
         <div className="mx-auto flex w-full max-w-[1480px] flex-col gap-6">
+          <div className={isBusiness ? "grid items-center gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-16" : ""}>
           <div>
             <p className="hero-rise hero-rise-1 text-xs uppercase tracking-[0.22em] text-white mb-4">
-              Milestone Solutions · Miles Goodman
+              {isBusiness ? "AI automation & consulting" : "Site Superintendent · Kentucky"}
             </p>
 
             <h1
-              className="hero-rise hero-rise-2 serif max-w-3xl font-light text-white leading-[1.08] tracking-tight mb-5"
-              style={{ fontSize: "clamp(38px, 5.5vw, 72px)", textShadow: "0 2px 16px rgba(0,0,0,0.45)" }}
+              className="hero-rise hero-rise-2 serif max-w-3xl font-light text-white leading-[1.05] tracking-tight mb-6"
+              style={{ fontSize: "clamp(46px, 6vw, 88px)", textShadow: "0 2px 16px rgba(0,0,0,0.45)" }}
             >
-              Construction experience &amp; AI field tools
+              {isBusiness ? <>Practical AI.<br />Less busywork.</> : <>Miles<br />Goodman.</>}
             </h1>
 
-            <p className="max-w-xl text-sm leading-relaxed text-white mb-6 md:text-base">
-              I’m Miles Goodman, a site superintendent at W Principles, LLC in Kentucky.
-              Explore my commercial construction experience and the tools I build for field reporting and document work.
+            <p className="hero-rise hero-rise-3 mb-7 max-w-xl text-base leading-relaxed text-white md:text-lg">
+              {isBusiness ? "For small businesses and construction teams exploring better ways to handle paperwork, reporting and project coordination." : "I manage commercial construction with W Principles, LLC in Kentucky — aquatic facilities, senior care and concrete self-perform."}
             </p>
-
             <div className="hero-rise hero-rise-3 flex flex-wrap gap-4">
-              <Link href="/contact" className="btn-solid inline-flex min-h-11 items-center px-6 py-3 text-sm font-medium rounded transition-colors">
-                Discuss a project
+              <Link href={isBusiness ? "/contact" : "/projects"} className="hero-primary btn-solid inline-flex min-h-11 items-center px-6 py-3 text-sm font-medium rounded transition-colors">
+                {isBusiness ? "Discuss your workflow" : "Explore the work"}
               </Link>
-              <Link
-                href="/projects"
-                className="btn-on-photo inline-flex min-h-11 items-center rounded border px-6 py-3 text-sm font-medium transition-colors"
-              >
-                Explore the work
-              </Link>
+              {isBusiness ? (
+                <Link href="#focus-areas" className="btn-on-photo inline-flex min-h-11 items-center rounded border px-6 py-3 text-sm font-medium transition-colors">Explore focus areas</Link>
+              ) : (
+                <a href="/Miles_Goodman_Resume.pdf" download className="btn-on-photo inline-flex min-h-11 items-center rounded border px-6 py-3 text-sm font-medium transition-colors">Download Resume (PDF)</a>
+              )}
+              {!isBusiness && <Link href="/contact" className="inline-flex min-h-11 items-center rounded px-2 text-sm font-medium text-white underline underline-offset-4">Contact Miles</Link>}
             </div>
+            <p className="mt-6 max-w-xl text-sm leading-relaxed text-white">{isBusiness ? "Start with one recurring task, the tools you use today, and what you want to improve." : "MBA candidate at Northern Kentucky University. Explore my construction experience and the field tools I build."}</p>
+          </div>
+          {children && <div className="hero-rise hero-rise-3 min-w-0">{children}</div>}
           </div>
 
           <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -196,7 +202,7 @@ export function HeroSlideshow() {
               className="min-w-0 max-w-full text-xs text-white tracking-wide rounded px-2.5 py-1 sm:text-right"
               style={{ background: "#131820" }}
             >
-              {slides[current].caption}
+              {slides[current].caption} · Miles’s field work with W Principles, LLC
             </p>
           </div>
         </div>

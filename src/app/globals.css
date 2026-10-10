@@ -310,3 +310,28 @@ main:focus {
   .personal-hero { padding-top: 128px; padding-bottom: 56px; }
   .personal-section { padding-top: 56px; padding-bottom: 56px; }
 }
+
+
+/* Restore the original photographic entrance and crossfade; static HTML stays readable. */
+.project-hero .on-photo { padding-top: 136px; padding-bottom: 32px; }
+.project-hero .photo-scrim {
+  background: linear-gradient(90deg,rgba(12,16,22,.82),rgba(12,16,22,.36)),linear-gradient(0deg,rgba(12,16,22,.86),transparent 60%);
+}
+.project-hero .hero-primary { background: var(--paper); color: var(--ink); }
+.project-hero .hero-primary:hover { background: #fff; }
+.project-hero .workflow-board { background: rgba(19,24,32,.87); }
+.workflow-step { border-radius: 3px; transition: background-color .6s, box-shadow .6s; }
+.workflow-step[data-active="true"] { background: #dce6e8; box-shadow: inset 3px 0 var(--accent); }
+@keyframes workflow-stroke { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes workflow-arrow { from { transform: translateY(-3px); opacity: .3; } to { transform: translateY(2px); opacity: 1; } }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  [data-motion-running="true"] .workflow-step[data-active="true"] path { stroke-dasharray: 1; stroke-dashoffset: 0; animation: workflow-stroke 1.1s ease both; }
+  [data-motion-running="true"] .workflow-step[data-active="true"] .workflow-arrow { animation: workflow-arrow 1s ease-in-out 2 alternate; }
+}
+.project-menu summary { list-style: none; cursor: pointer; }
+.project-menu summary::-webkit-details-marker { display: none; }
+.project-menu-panel { background: var(--paper); color: var(--ink); box-shadow: 0 12px 32px rgba(0,0,0,.12); }
+@media (max-width: 767px) {
+  .project-hero .on-photo { padding-top: 128px; padding-bottom: 24px; }
+  .project-hero .workflow-board { padding: 20px; }
+}

@@ -2,12 +2,13 @@
 
 import { useEffect, useId, useRef, useState } from "react"
 import Link from "next/link"
+import { ProjectMenu } from "./ProjectMenu"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { personalLinks, linkIsCurrent } from "@/lib/site-nav"
 
 function visibleFocusables(root: HTMLElement) {
-  return [...root.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')].filter((el) => el.getClientRects().length > 0)
+  return [...root.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), summary, [tabindex]:not([tabindex="-1"])')].filter((el) => el.getClientRects().length > 0)
 }
 
 export function Nav() {
@@ -104,7 +105,8 @@ export function Nav() {
           <span>Miles</span><span>Goodman</span>
         </Link>
         <nav aria-label="Primary" className="hidden items-center gap-4 md:flex lg:gap-7">
-          {personalLinks.map((link) => {
+          <ProjectMenu pathname={pathname} label="Construction" />
+          {personalLinks.filter((link) => link.href !== "/projects").map((link) => {
             const current = linkIsCurrent(pathname, link)
             return <Link key={link.href} href={link.href} aria-current={current ? "page" : undefined} className={cn("inline-flex min-h-11 items-center px-2 py-2 text-sm font-medium transition-colors hover:underline hover:underline-offset-4", overHero ? "text-white" : "text-[var(--ink)]", current && "underline underline-offset-4")}>{link.label}</Link>
           })}
@@ -119,7 +121,8 @@ export function Nav() {
       </div>
       <div ref={menuRef} id={menuId} hidden={!menuOpen} className="nav-solid max-h-[calc(100dvh-5rem)] overflow-y-auto border-t border-[var(--border)] md:hidden">
         <nav aria-label="Primary" className="flex flex-col px-6 py-4">
-          {personalLinks.map((link) => {
+          <ProjectMenu pathname={pathname} mobile label="Construction" onNavigate={closeMobileMenu} />
+          {personalLinks.filter((link) => link.href !== "/projects").map((link) => {
             const current = linkIsCurrent(pathname, link)
             return <Link key={link.href} href={link.href} aria-current={current ? "page" : undefined} onClick={() => closeMobileMenu(link.href)} className={cn("inline-flex min-h-11 items-center py-4 text-base font-medium text-[var(--ink)] hover:underline hover:underline-offset-4", current && "underline underline-offset-4")}>{link.label}</Link>
           })}

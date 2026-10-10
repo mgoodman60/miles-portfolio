@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { PersonalHero } from "@/components/sections/PersonalHero"
 import { ProjectCard3D } from "@/components/sections/ProjectCard3D"
+import { BlurFade } from "@/components/magicui/blur-fade"
 import { Stat } from "@/components/ui/Stat"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 import { withCanonical } from "@/lib/site"
@@ -13,9 +14,9 @@ export const metadata = withCanonical("/", {
 })
 
 const stats = [
-  { value: "Kentucky", label: "Miles’s construction experience" },
-  { value: "3", label: "Detailed project case studies" },
-  { value: "AI", label: "Field reporting & document workflows" },
+  { value: "$22M+", label: "Contributed-to project value" },
+  { value: "5", label: "Commercial projects" },
+  { value: "3 yrs", label: "As site superintendent" },
 ]
 
 const projects = [
@@ -51,6 +52,7 @@ const projects = [
 ]
 
 const pressItems: { label: string; href?: string }[] = [
+  { label: "WDRB - Fox Louisville (coverage archive)" },
   {
     label: "WAVE 3 — Camp Taylor reopening timeline (2025)",
     href: "https://www.wave3.com/video/2025/04/22/camp-taylor-pool-wont-reopen-till-summer-2026-mayor-greenberg-says/",
@@ -89,6 +91,7 @@ export default function Home() {
             />
           ))}
         </div>
+        <p className="mx-auto mt-6 max-w-[1480px] text-center text-xs text-white md:text-left">Miles’s construction experience through 2026 with W Principles, LLC. Project value reflects contribution, not sole management.</p>
       </section>
 
       {/* ── Featured Projects ─────────────────────────── */}
@@ -115,7 +118,7 @@ export default function Home() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {projects.map((p) => (
-              <ProjectCard3D key={p.slug} project={p} />
+              <BlurFade key={p.slug} inView delay={projects.indexOf(p) * 0.12}><ProjectCard3D project={p} /></BlurFade>
             ))}
           </div>
         </div>
