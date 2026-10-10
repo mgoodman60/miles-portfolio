@@ -100,7 +100,7 @@ export default function MoreheadPage() {
             >
               <p className="text-xs uppercase tracking-[0.18em] text-[var(--accent)] mb-2">AI Field Tools</p>
               <h2 className="serif font-light text-xl mb-3" style={{ color: "var(--ink)" }}>
-                My Reports deployed on this project
+              Field context for My Reports
               </h2>
               <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
                 My Reports brings together iPhone photos and voice notes via the Claude API to create structured progress reports. The workflow supports review and sharing of a formatted PDF.

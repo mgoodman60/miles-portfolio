@@ -58,13 +58,12 @@ const tools: Tool[] = [
   {
     num: "04",
     tag: "ForemanOS · Superintendent Field OS",
-    title: "A working super's operating system, public on GitHub",
-    body: "ForemanOS is a separate toolkit I’m building for superintendent field work, including reporting, scheduling and document workflows. The linked public repository provides context for this work.",
+    title: "A superintendent's field toolkit, in development",
+    body: "ForemanOS is a separate private-source project I'm building for superintendent field work, including reporting, scheduling and document workflows. Contact me to discuss its development and field context.",
     stat: "Field workflows",
     statLabel: "Reporting, scheduling & documents",
-    link: "https://github.com/mgoodman60/ForemanOS",
-    linkLabel: "View on GitHub",
-    external: true,
+    link: "/contact",
+    linkLabel: "Discuss ForemanOS",
   },
 ]
 

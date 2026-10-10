@@ -5,7 +5,7 @@ import { profile } from "@/lib/profile"
 import { LIVE_ORIGIN, withCanonical } from "@/lib/site"
 
 export const metadata = withCanonical("/contact", {
-  title: "Contact | Milestone Solutions — Miles Goodman",
+  title: "Contact | Miles Goodman",
   description: "Discuss a construction project or field reporting question with Miles Goodman in Kentucky.",
 })
 
@@ -49,7 +49,7 @@ export default function ContactPage() {
           <div>
             <h2 id="send-a-message" className="serif font-light text-2xl mb-3" style={{ color: "var(--ink)" }}>Send a message</h2>
             <p id="contact-form-help" className="text-sm leading-relaxed mb-8" style={{ color: "var(--muted)" }}>
-              This form emails {profile.email}. Include the project or question and how you want to hear back.
+              This form submits your message to FormSubmit for processing. This page cannot confirm email delivery. You can also email or call Miles directly above.
             </p>
             <form
               action={`https://formsubmit.co/${profile.email}`}
@@ -58,7 +58,7 @@ export default function ContactPage() {
               aria-describedby="contact-form-help"
               className="space-y-6"
             >
-              <input type="hidden" name="_subject" value="Milestone Solutions inquiry — Miles Goodman" />
+              <input type="hidden" name="_subject" value="Miles Goodman portfolio inquiry" />
               <input type="hidden" name="_next" value={`${LIVE_ORIGIN}/contact?sent=true`} />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react"
 import Image from "next/image"
-import { useReducedMotion } from "motion/react"
 
 type Slide = { src: string; alt: string; caption?: string }
 
@@ -26,11 +25,21 @@ export function ProjectCoverSlideshow({
   const [holdPaused, setHoldPaused] = useState(false)
   const [cycle, setCycle] = useState(0)
   const [announcement, setAnnouncement] = useState("")
-  const prefersReduced = useReducedMotion()
+  // Keep server HTML and the first client render identical. Read and subscribe
+  // to the browser preference only after hydration; null never starts autoplay.
+  const [prefersReduced, setPrefersReduced] = useState<boolean | null>(null)
   const paused = userPaused || holdPaused
 
   useEffect(() => {
-    if (paused || prefersReduced || slides.length <= 1) return
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const updatePreference = () => setPrefersReduced(preference.matches)
+    updatePreference()
+    preference.addEventListener("change", updatePreference)
+    return () => preference.removeEventListener("change", updatePreference)
+  }, [])
+
+  useEffect(() => {
+    if (paused || prefersReduced !== false || slides.length <= 1) return
     const intervalId = setInterval(() => {
       setCurrent((p) => (p + 1) % slides.length)
     }, intervalMs)
@@ -161,7 +170,7 @@ export function ProjectCoverSlideshow({
               />
             </button>
           ))}
-          {!prefersReduced && (
+          {prefersReduced === false && (
             <button
               type="button"
               onClick={() => setUserPaused((p) => !p)}

@@ -36,6 +36,8 @@ export function withCanonical(path: string, metadata: Metadata): Metadata {
       canonical,
     },
     openGraph: {
+      type: "website",
+      siteName: "Miles Goodman",
       title,
       description,
       url: canonical,
@@ -45,6 +47,12 @@ export function withCanonical(path: string, metadata: Metadata): Metadata {
           alt: "Night concrete pour at Camp Taylor Memorial Park Pool",
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [{ url: ogImageUrl(), alt: "Night concrete pour at Camp Taylor Memorial Park Pool" }],
     },
   }
 }

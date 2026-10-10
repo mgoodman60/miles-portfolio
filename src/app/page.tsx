@@ -1,15 +1,15 @@
 import Image from "next/image"
 import Link from "next/link"
-import { HeroSlideshow } from "@/components/sections/HeroSlideshow"
+import { PersonalHero } from "@/components/sections/PersonalHero"
 import { ProjectCard3D } from "@/components/sections/ProjectCard3D"
 import { Stat } from "@/components/ui/Stat"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 import { withCanonical } from "@/lib/site"
 
 export const metadata = withCanonical("/", {
-  title: "Milestone Solutions | Construction experience & AI field tools",
+  title: "Miles Goodman | Construction & field reporting",
   description:
-    "Construction project experience and AI field tools by Miles Goodman, a site superintendent at W Principles, LLC in Kentucky. Explore the work or discuss a project.",
+    "Construction experience and field tools by Miles Goodman, a site superintendent at W Principles, LLC in Kentucky and an MBA candidate at Northern Kentucky University.",
 })
 
 const stats = [
@@ -69,7 +69,7 @@ export default function Home() {
   return (
     <>
       {/* ── Hero ──────────────────────────────────────── */}
-      <HeroSlideshow />
+      <PersonalHero />
 
       {/* ── Stat strip ────────────────────────────────── */}
       <section aria-labelledby="home-stats" className="stat-strip py-12 px-6 md:px-12">
@@ -92,7 +92,7 @@ export default function Home() {
       </section>
 
       {/* ── Featured Projects ─────────────────────────── */}
-      <section aria-labelledby="featured-heading" className="py-24 px-6 md:px-12">
+      <section aria-labelledby="featured-heading" className="personal-section px-6 md:px-12">
         <div className="mx-auto max-w-[1480px]">
           <div className="mb-12 flex flex-col items-start gap-3 sm:flex-row sm:items-baseline sm:justify-between">
             <h2
@@ -124,7 +124,7 @@ export default function Home() {
       {/* ── About strip ───────────────────────────────── */}
       <section
         aria-labelledby="home-about-heading"
-        className="border-t px-6 md:px-12 py-24"
+        className="personal-section border-t px-6 md:px-12"
         style={{ borderColor: "var(--border)" }}
       >
         <div className="mx-auto max-w-[1480px] grid grid-cols-1 md:grid-cols-2 gap-16 items-center">

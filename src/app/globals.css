@@ -291,3 +291,22 @@ main:focus {
     transform: none !important;
   }
 }
+
+/* Personal homepage: static editorial introduction with an attributed field photo. */
+.personal-hero {
+  background: var(--footer-bg);
+  display: flex;
+  align-items: center;
+  padding-top: 140px;
+  padding-bottom: 72px;
+}
+.personal-action {
+  background: var(--paper);
+  color: var(--ink);
+}
+.personal-action:hover { background: #fff; }
+.personal-section { padding-top: 88px; padding-bottom: 88px; }
+@media (max-width: 767px) {
+  .personal-hero { padding-top: 128px; padding-bottom: 56px; }
+  .personal-section { padding-top: 56px; padding-bottom: 56px; }
+}

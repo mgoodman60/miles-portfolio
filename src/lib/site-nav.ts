@@ -43,15 +43,29 @@ export const aboutLinks: readonly NavLink[] = [
   { href: "/resume", label: "Resume" },
 ]
 
-export const footerLinks: readonly NavLink[] = [
-  { href: "/ai-tools", label: "AI" },
+export const personalLinks: readonly NavLink[] = [
   { href: "/projects", label: "Construction" },
-  { href: "/blog", label: "Blog" },
+  { href: "/ai-tools", label: "AI & reporting" },
   { href: "/about", label: "About" },
   { href: "/resume", label: "Resume" },
   { href: "/contact", label: "Contact" },
-  { href: "/my-reports", label: "My Reports" },
 ]
+
+export const footerGroups: readonly { label: string; links: readonly NavLink[] }[] = [
+  { label: "Experience", links: [
+    { href: "/projects", label: "Construction projects", exact: true },
+    { href: "/ai-tools", label: "AI & reporting" },
+    { href: "/my-reports", label: "My Reports" },
+  ] },
+  { label: "Miles", links: [
+    { href: "/about", label: "About" },
+    { href: "/resume", label: "Resume" },
+    { href: "/blog", label: "Writing" },
+    { href: "/contact", label: "Contact" },
+  ] },
+]
+
+export const footerLinks: readonly NavLink[] = footerGroups.flatMap((group) => group.links)
 
 export function linkIsCurrent(pathname: string, link: NavLink): boolean {
   if (link.exact) return pathname === link.href

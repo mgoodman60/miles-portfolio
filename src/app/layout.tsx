@@ -20,14 +20,16 @@ const fraunces = Fraunces({
 
 export const metadata: Metadata = {
   metadataBase: new URL(CANONICAL_ORIGIN),
-  title: "Milestone Solutions | Miles Goodman",
+  title: "Miles Goodman | Construction & field reporting",
   description:
     "Commercial construction experience and AI field tools by Miles Goodman, a site superintendent at W Principles, LLC in Kentucky.",
   alternates: {
     canonical: `${CANONICAL_ORIGIN}/`,
   },
   openGraph: {
-    title: "Milestone Solutions | Miles Goodman",
+    type: "website",
+    siteName: "Miles Goodman",
+    title: "Miles Goodman | Construction & field reporting",
     description: "Commercial construction experience and AI field tools by Miles Goodman in Kentucky.",
     url: `${CANONICAL_ORIGIN}/`,
     images: [
@@ -36,6 +38,12 @@ export const metadata: Metadata = {
         alt: "Night concrete pour at Camp Taylor Memorial Park Pool",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Miles Goodman | Construction & field reporting",
+    description: "Construction experience and field tools by Miles Goodman in Kentucky.",
+    images: [{ url: ogImageUrl(), alt: "Night concrete pour at Camp Taylor Memorial Park Pool" }],
   },
 }
 
