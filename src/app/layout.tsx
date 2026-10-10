@@ -3,7 +3,7 @@ import { Inter, Fraunces } from "next/font/google"
 import "./globals.css"
 import { Nav } from "@/components/layout/Nav"
 import { Footer } from "@/components/layout/Footer"
-import { CANONICAL_ORIGIN, ogImageUrl } from "@/lib/site"
+import { CANONICAL_ORIGIN, OG_IMAGE_ALT, ogImageUrl } from "@/lib/site"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -29,13 +29,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Miles Goodman",
+    locale: "en_US",
     title: "Miles Goodman | Construction & field reporting",
     description: "Commercial construction experience and AI field tools by Miles Goodman in Kentucky.",
     url: `${CANONICAL_ORIGIN}/`,
     images: [
       {
         url: ogImageUrl(),
-        alt: "Night concrete pour at Camp Taylor Memorial Park Pool",
+        width: 1200,
+        height: 630,
+        alt: OG_IMAGE_ALT,
       },
     ],
   },
@@ -43,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Miles Goodman | Construction & field reporting",
     description: "Construction experience and field tools by Miles Goodman in Kentucky.",
-    images: [{ url: ogImageUrl(), alt: "Night concrete pour at Camp Taylor Memorial Park Pool" }],
+    images: [{ url: ogImageUrl(), alt: OG_IMAGE_ALT }],
   },
 }
 

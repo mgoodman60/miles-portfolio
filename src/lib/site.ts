@@ -11,7 +11,8 @@ export const LIVE_ORIGIN = (
 
 export const CANONICAL_ORIGIN = LIVE_ORIGIN
 
-export const OG_IMAGE_PATH = "/projects/camp-taylor/night-pour-hero.jpg"
+export const OG_IMAGE_PATH = "/social-preview"
+export const OG_IMAGE_ALT = "Miles Goodman: construction experience and field reporting in Kentucky"
 
 export function canonicalUrl(path: string) {
   if (path === "/" || path === "") return `${CANONICAL_ORIGIN}/`
@@ -38,13 +39,16 @@ export function withCanonical(path: string, metadata: Metadata): Metadata {
     openGraph: {
       type: "website",
       siteName: "Miles Goodman",
+      locale: "en_US",
       title,
       description,
       url: canonical,
       images: [
         {
           url: ogImageUrl(),
-          alt: "Night concrete pour at Camp Taylor Memorial Park Pool",
+          width: 1200,
+          height: 630,
+          alt: OG_IMAGE_ALT,
         },
       ],
     },
@@ -52,7 +56,7 @@ export function withCanonical(path: string, metadata: Metadata): Metadata {
       card: "summary_large_image",
       title,
       description,
-      images: [{ url: ogImageUrl(), alt: "Night concrete pour at Camp Taylor Memorial Park Pool" }],
+      images: [{ url: ogImageUrl(), alt: OG_IMAGE_ALT }],
     },
   }
 }

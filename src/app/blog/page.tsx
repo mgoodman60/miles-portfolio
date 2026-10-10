@@ -11,6 +11,7 @@ const SUBSTACK_URL: string | null = null
 export const metadata = withCanonical("/blog", {
   title: "Blog — Miles Goodman",
   description: "Writing from Miles Goodman. Posts will be published on Substack.",
+  robots: { index: false, follow: true },
 })
 
 export default function BlogPage() {
