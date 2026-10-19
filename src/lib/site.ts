@@ -2,11 +2,11 @@ import type { Metadata } from "next"
 
 /**
  * One public origin for pages, social images and contact returns.
- * Railway is the verified working deployment. Set NEXT_PUBLIC_SITE_URL
+ * Cloudflare Pages is the public deployment. Set NEXT_PUBLIC_SITE_URL
  * when a replacement public domain serves this app; this value is built in.
  */
 export const LIVE_ORIGIN = (
-  process.env.NEXT_PUBLIC_SITE_URL || "https://miles-portfolio-production.up.railway.app"
+  process.env.NEXT_PUBLIC_SITE_URL || "https://miles-portfolio.pages.dev"
 ).replace(/\/$/, "")
 
 export const CANONICAL_ORIGIN = LIVE_ORIGIN
