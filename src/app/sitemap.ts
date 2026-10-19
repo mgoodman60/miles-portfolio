@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next"
 import { canonicalUrl } from "@/lib/site"
 
+export const dynamic = "force-static"
+
 // Keep stable personal pages discoverable; omit the empty writing index and query states.
 const paths = [
   "/", "/projects", "/projects/camp-taylor-pool", "/projects/john-black-aquatic",
