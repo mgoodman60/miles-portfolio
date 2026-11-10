@@ -30,8 +30,8 @@ export const fieldProjects = [
     timelineDetail: "Site Superintendent · PACE senior care facility",
     when: "Completed Aug 2026",
     points: [
-      "$3M PACE facility · 10,060 SF PEMB",
-      "Concrete self-perform under Walker Company of Kentucky",
+      "PACE facility · 10,060 SF PEMB",
+      "Concrete self-perform",
     ],
   },
   {
