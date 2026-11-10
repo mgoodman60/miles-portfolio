@@ -17,7 +17,7 @@ const fraunces = Fraunces({
   subsets: ["latin"],
   variable: "--font-fraunces",
   display: "swap",
-  axes: ["SOFT", "WONK", "opsz"],
+  axes: ["opsz"], // SOFT and WONK were never set in CSS (defaults render the same); dropping them shrinks the preloaded font
 })
 
 export const metadata: Metadata = {
