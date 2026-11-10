@@ -5,7 +5,7 @@ import { withCanonical } from "@/lib/site"
 import { OSC_TITLE } from "@/lib/projects-copy"
 
 export const metadata = withCanonical("/projects", {
-  title: "Projects — Miles Goodman",
+  title: "Projects | Miles Goodman",
   description: "Commercial projects I worked on as a site superintendent in Kentucky.",
 })
 

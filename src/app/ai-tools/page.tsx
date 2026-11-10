@@ -7,7 +7,7 @@ import { withCanonical } from "@/lib/site"
 import { OSC_TITLE } from "@/lib/projects-copy"
 
 export const metadata = withCanonical("/ai-tools", {
-  title: "AI Tools — Miles Goodman",
+  title: "AI Tools | Miles Goodman",
   description: "AI field tools and workflows built by Miles Goodman for reporting, plan review and document work.",
 })
 

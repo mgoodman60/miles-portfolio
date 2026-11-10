@@ -4,7 +4,7 @@ import { fieldProjects, profile } from "@/lib/profile"
 import { withCanonical } from "@/lib/site"
 
 export const metadata = withCanonical("/resume", {
-  title: "Resume — Miles Goodman",
+  title: "Resume | Miles Goodman",
   description:
     "Site Superintendent at W Principles, LLC. BS, Engineering Technology Management, Morehead State. MBA candidate at Northern Kentucky University.",
 })

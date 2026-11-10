@@ -35,7 +35,7 @@ export default function ContactPage() {
           <SectionEyebrow className="mb-4">Direct contact</SectionEyebrow>
           <h1 className="serif font-light leading-[0.95] tracking-tight" style={{ fontSize: "clamp(40px,5.5vw,80px)", color: "var(--ink)" }}>Contact</h1>
           <p className="max-w-xl mt-5 text-sm leading-relaxed text-[var(--muted)]">
-            Discuss a construction project or field reporting question with Miles Goodman.
+            Discuss a construction project or field reporting question with me.
             Include the project location, what you need help with, and how you prefer to hear back.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
@@ -51,7 +51,7 @@ export default function ContactPage() {
           <div>
             <h2 id="send-a-message" className="serif font-light text-2xl mb-3" style={{ color: "var(--ink)" }}>Send a message</h2>
             <p id="contact-form-help" className="text-sm leading-relaxed mb-8" style={{ color: "var(--muted)" }}>
-              This form submits your message to FormSubmit for processing. This page cannot confirm email delivery. You can also email or call Miles directly above.
+              This form submits your message to FormSubmit for processing. This page cannot confirm email delivery. You can also email or call me directly above.
             </p>
             <form
               action={`https://formsubmit.co/${EMAIL}`}

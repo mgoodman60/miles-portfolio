@@ -2,7 +2,7 @@ import Link from "next/link"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 
 export const metadata = {
-  title: "Not found — Miles Goodman",
+  title: "Not found | Miles Goodman",
   robots: { index: false, follow: false },
   alternates: { canonical: null },
 }

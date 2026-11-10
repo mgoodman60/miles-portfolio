@@ -74,7 +74,7 @@ export function HeroSlideshow({ identity = "personal", children }: { identity?: 
         if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setFocused(false)
       }}
       aria-roledescription="carousel"
-      aria-label="Miles's construction project photos"
+      aria-label="My construction project photos"
     >
       {/* All slides rendered simultaneously — no flash on transition */}
       {slides.map((slide, i) => (
@@ -149,7 +149,7 @@ export function HeroSlideshow({ identity = "personal", children }: { identity?: 
               ) : (
                 <a href="/Miles_Goodman_Resume.pdf" download className="btn-on-photo inline-flex min-h-11 items-center rounded border px-6 py-3 text-sm font-medium transition-colors">Download Resume (PDF)</a>
               )}
-              {!isBusiness && <Link href="/contact" className="inline-flex min-h-11 items-center rounded px-2 text-sm font-medium text-white underline underline-offset-4">Contact Miles</Link>}
+              {!isBusiness && <Link href="/contact" className="inline-flex min-h-11 items-center rounded px-2 text-sm font-medium text-white underline underline-offset-4">Contact me</Link>}
             </div>
             <p className="mt-6 max-w-xl text-sm leading-relaxed text-white">{isBusiness ? "Start with one recurring task, the tools you use today, and what you want to improve." : "MBA candidate at Northern Kentucky University. Explore my construction experience and the field tools I build."}</p>
           </div>

@@ -8,7 +8,7 @@ import { withCanonical } from "@/lib/site"
 const MILESTONE_BLOG_URL = "https://milestone-solutions.pages.dev/blog"
 
 export const metadata = withCanonical("/blog", {
-  title: "Blog — Miles Goodman",
+  title: "Blog | Miles Goodman",
   description: "Writing by Miles Goodman is published on Milestone.",
   robots: { index: false, follow: true },
 })
