@@ -110,6 +110,9 @@ export function Nav() {
             const current = linkIsCurrent(pathname, link)
             return <Link key={link.href} href={link.href} aria-current={current ? "page" : undefined} className={cn("inline-flex min-h-11 items-center px-2 py-2 text-sm font-medium transition-colors hover:underline hover:underline-offset-4", overHero ? "text-white" : "text-[var(--ink)]", current && "underline underline-offset-4")}>{link.label}</Link>
           })}
+          <a href="https://www.linkedin.com/in/miles-goodman-cm" target="_blank" rel="noopener noreferrer" aria-label="Miles Goodman on LinkedIn (opens in a new tab)" className={cn("inline-flex min-h-11 min-w-11 items-center justify-center rounded p-2 transition-colors hover:underline", overHero ? "text-white" : "text-[var(--ink)]")}>
+            <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.67H9.33V8.99h3.42v1.57h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.27 2.38 4.27 5.48v6.26ZM5.31 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14Zm1.78 13.02H3.53V8.99h3.56v11.46Z" /></svg>
+          </a>
         </nav>
         <button ref={hamburgerRef} type="button" className="inline-flex min-h-11 min-w-11 items-center justify-center p-3 md:hidden" onClick={() => { if (menuOpen) closeMobileMenu(); else { closeReasonRef.current = "dismiss"; setMenuOpen(true) } }} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} aria-controls={menuId}>
           <span aria-hidden="true" className={cn("relative inline-block h-4 w-6", overHero ? "text-white" : "text-[var(--ink)]")}>

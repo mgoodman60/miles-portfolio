@@ -1,41 +1,33 @@
+import { COPY } from "@/lib/copy-todo"
+
 /**
- * Facts for About, Resume, and Contact.
- * Education, dates, the firm name, and the Top 5% line match public/Miles_Goodman_Resume.pdf.
- * Job-search lines from that file (relocation) stay off the site.
+ * Public-safe facts used outside the resume route.
+ * Resume-only employer and undergraduate-school facts live beside the resume page.
  */
 
 export const profile = {
   name: "Miles Goodman",
   role: "Site Superintendent",
-  company: "W Principles, LLC",
-  location: "Mount Sterling, KY",
+  location: "Central Kentucky",
   email: "msgoodman1997@gmail.com",
   phoneDisplay: "(606) 226-5231",
   phoneHref: "tel:+16062265231",
   mbaSchool: "Northern Kentucky University",
   mbaProgram: "Project Management & AI",
   mbaExpected: "Expected 2026",
-  bsSchool: "Morehead State University",
-  bsDegree: "BS, Engineering Technology Management",
-  bsYear: "2022",
   ctm: "Certified Technology Manager (CTM)",
-  realtorOrg: "Keller Williams / National Real Estate",
-  realtorTitle: "Realtor",
-  realtorDates: "Oct 2021 – Nov 2025",
-  realtorHighlight: "Top 5% nationwide producer, 2022",
 } as const
 
 export const fieldProjects = [
   {
-    href: "/projects/one-senior-care-morehead",
-    name: "One Senior Care - Morehead, KY",
-    timeline: "One Senior Care - Morehead — Complete",
+    href: "/projects/one-senior-care",
+    name: "One Senior Care",
+    timeline: "One Senior Care — Complete",
     year: "2026",
-    timelineDetail: "Site Superintendent · $3M PACE facility",
+    timelineDetail: COPY.oneSeniorCareRole,
     when: "Completed Aug 2026",
     points: [
-      "$3M PACE facility · 10,060 SF PEMB",
-      "Concrete self-perform under Walker Company of Kentucky",
+      COPY.oneSeniorCareSummary,
     ],
   },
   {
@@ -48,7 +40,7 @@ export const fieldProjects = [
     points: [
       "$6.2M ARPA-funded waterpark",
       "Zero-depth entry, lap lanes, slide, and play area",
-      "W Principles lists construction complete in November 2025",
+      "Construction complete November 2025",
     ],
   },
   {

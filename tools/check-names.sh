@@ -12,12 +12,13 @@ OUT="${1:-out}"
 [[ -d "$OUT" ]] || { echo "check-names: no such dir: $OUT (run npm run build first)" >&2; exit 2; }
 
 RESUME_ONLY='W Principles|Morehead|\$22M'
-ALWAYS_CI='MOSC|Hopkinsville|Cost Cockpit|AI renderings|Walker Company|Walker Co\.|Jon Cheatham|Andrew Eberle|Stave|Etsy|vercel\.app'
-ALWAYS_CS='\bCUI\b'
+ALWAYS_CI='MOSC|Hopkinsville|Cost Cockpit|AI renderings|Walker Company|Walker Co\.|Jon Cheatham|Andrew Eberle|Stave|vercel\.app'
+ALWAYS_CS='\bCUI\b|\bEtsy\b'   # case-sensitive: minified JS has random "etSy"-like runs
 
 is_resume() {  # path relative to OUT
   case "$1" in
     resume.html|resume.txt|resume/*|Miles_Goodman_Resume.pdf) return 0 ;;
+    _redirects) return 0 ;;   # carries the old one-senior-care-morehead slug on purpose (301 source)
     *) return 1 ;;
   esac
 }

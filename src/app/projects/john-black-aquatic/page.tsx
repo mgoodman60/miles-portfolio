@@ -4,6 +4,7 @@ import { CampTaylorGallery } from "@/components/sections/CampTaylorGallery"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 import { ProjectBackLink, ProjectPager } from "@/components/sections/ProjectChrome"
 import { withCanonical } from "@/lib/site"
+import { COPY } from "@/lib/copy-todo"
 
 const photos = [
   {
@@ -71,7 +72,7 @@ const photos = [
 export const metadata = withCanonical("/projects/john-black-aquatic", {
   title: "John W. Black Aquatic Center — Miles Goodman",
   description:
-    "Renovation of the John W. Black Aquatic Center at Wendell Moore Park in La Grange, Kentucky. Reopened May 25, 2024. Site superintendent: Miles Goodman, W Principles.",
+    COPY.johnBlackDescription,
 })
 
 export default function JohnBlackPage() {
@@ -111,7 +112,6 @@ export default function JohnBlackPage() {
                   ["Project", "John W. Black Aquatic Center"],
                   ["Park", "Wendell Moore Park"],
                   ["Owner", "Oldham County Parks and Recreation"],
-                  ["General Contractor", "W Principles, LLC"],
                   ["My Role", "Site Superintendent"],
                   ["Location", "1551 N. Highway 393, La Grange, KY"],
                   ["Reopened", "May 25, 2024"],
@@ -132,7 +132,7 @@ export default function JohnBlackPage() {
                 The John W. Black Aquatic Center at Wendell Moore Park closed in 2022 after structural and mechanical problems. Oldham County reopened it on May 25, 2024, the Saturday before Memorial Day weekend.
               </p>
               <p className="text-base leading-relaxed" style={{ color: "var(--muted)" }}>
-                I was the site superintendent for W Principles, LLC. Published descriptions of the renovation include two pools — one for laps and one for recreation — plus a water slide, splash pad, climbing wall, new deck, updated locker rooms, and new piping and mechanical systems. W Principles also lists diving boards. The photos below are aerials of the finished center. This set does not include a before view.
+                {COPY.johnBlackRoleContext}
               </p>
             </div>
 
@@ -149,7 +149,7 @@ export default function JohnBlackPage() {
                     Closed in 2022, open again in May 2024
                   </h3>
                   <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
-                    WDRB reported that the center reopened briefly in 2021, closed again in 2022, and was expected back for Memorial Day weekend 2024. WLKY covered the grand reopening on Saturday, May 25. W Principles lists completion in May 2024.
+                    {COPY.johnBlackSourceAttribution}
                   </p>
                 </div>
                 <div className="border-l-2 pl-6" style={{ borderColor: "var(--accent)" }}>
@@ -213,7 +213,7 @@ export default function JohnBlackPage() {
 
       <ProjectPager
         previous={{ href: "/projects/camp-taylor-pool", label: "Camp Taylor" }}
-        next={{ href: "/projects/one-senior-care-morehead", label: "One Senior Care - Morehead" }}
+        next={{ href: "/projects/one-senior-care", label: "One Senior Care" }}
       />
     </>
   )

@@ -21,8 +21,8 @@ export function BeforeAfterSlider({
         role="group"
         aria-label={`Before and after. Before: ${beforeAlt}. After: ${afterAlt}.`}
       >
-        <span className="absolute top-3 left-3 z-10 text-xs uppercase tracking-widest text-white px-2.5 py-1 rounded pointer-events-none select-none" style={{ background: "#131820" }}>Before</span>
-        <span className="absolute top-3 right-3 z-10 text-xs uppercase tracking-widest text-white px-2.5 py-1 rounded pointer-events-none select-none" style={{ background: "#131820" }}>After</span>
+        <span className="absolute top-3 left-3 z-10 rounded px-2.5 py-1 text-xs tracking-widest text-white pointer-events-none select-none" style={{ background: "var(--band)" }}>Before</span>
+        <span className="absolute top-3 right-3 z-10 rounded px-2.5 py-1 text-xs tracking-widest text-white pointer-events-none select-none" style={{ background: "var(--band)" }}>After</span>
         <ReactCompareSlider
           style={{ width: "100%", height: "100%" }}
           itemOne={

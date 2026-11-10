@@ -23,9 +23,9 @@ export const constructionProjects: readonly NavLink[] = [
     meta: "La Grange, KY",
   },
   {
-    href: "/projects/one-senior-care-morehead",
-    label: "One Senior Care - Morehead",
-    meta: "Morehead, KY",
+    href: "/projects/one-senior-care",
+    label: "One Senior Care",
+    meta: "Complete",
   },
 ]
 
@@ -45,6 +45,7 @@ export const aboutLinks: readonly NavLink[] = [
 
 export const personalLinks: readonly NavLink[] = [
   { href: "/projects", label: "Construction" },
+  { href: "/portfolio", label: "Portfolio" },
   { href: "/ai-tools", label: "AI & reporting" },
   { href: "/about", label: "About" },
   { href: "/resume", label: "Resume" },
@@ -56,11 +57,11 @@ export const footerGroups: readonly { label: string; links: readonly NavLink[] }
     { href: "/projects", label: "Construction projects", exact: true },
     { href: "/ai-tools", label: "AI & reporting" },
     { href: "/my-reports", label: "My Reports" },
+    { href: "/portfolio", label: "Portfolio" },
   ] },
   { label: "Miles", links: [
     { href: "/about", label: "About" },
     { href: "/resume", label: "Resume" },
-    { href: "/blog", label: "Writing" },
     { href: "/contact", label: "Contact" },
   ] },
 ]

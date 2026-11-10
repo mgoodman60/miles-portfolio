@@ -1,9 +1,10 @@
-import Image from "next/image"
 import Link from "next/link"
 import { CampTaylorGallery } from "@/components/sections/CampTaylorGallery"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 import { ProjectBackLink, ProjectPager } from "@/components/sections/ProjectChrome"
 import { withCanonical } from "@/lib/site"
+import { COPY } from "@/lib/copy-todo"
+import { ResponsivePicture } from "@/components/ui/ResponsivePicture"
 import { timelinePhotos } from "./timeline-photos"
 
 const photos = [
@@ -78,13 +79,14 @@ export default function CampTaylorPage() {
   return (
     <>
       <div className="relative mt-20 overflow-hidden" style={{ height: "60svh", minHeight: 400 }}>
-        <Image
+        <ResponsivePicture
           src="/projects/camp-taylor/drone-wide.jpg"
           alt="Aerial of the finished Camp Taylor Memorial Park waterpark"
-          fill
           priority
-          quality={60}
-          className="object-cover object-center"
+          responsive
+          width={1920}
+          height={1080}
+          className="absolute inset-0 h-full w-full object-cover object-center"
           sizes="100vw"
         />
       </div>
@@ -97,7 +99,7 @@ export default function CampTaylorPage() {
             Camp Taylor Memorial Park Pool
           </h1>
           <p className="text-lg text-[var(--muted)]">
-            $6.2 million ARPA-funded waterpark. W Principles lists construction complete in November 2025. The pool opened to the public on May 23, 2026.
+            $6.2 million ARPA-funded waterpark. Construction was complete in November 2025. The pool opened to the public on May 23, 2026.
           </p>
         </div>
       </div>
@@ -110,11 +112,10 @@ export default function CampTaylorPage() {
                 {[
                   ["Project", "Camp Taylor Memorial Park Pool"],
                   ["Owner", "Louisville Metro Parks and Recreation"],
-                  ["General Contractor", "W Principles, LLC"],
                   ["My Role", "Site Superintendent"],
                   ["Location", "Camp Taylor Park, 4201 Lee Avenue, Louisville, KY"],
                   ["Cost", "$6.2 million (ARPA)"],
-                  ["Construction completion", "November 2025 (W Principles)"],
+                  ["Construction completion", "November 2025"],
                   ["Public opening", "May 23, 2026"],
                   ["Scope", "New waterpark — ADA zero-depth entry, lap lanes, water slide, children’s play area, shaded seating, and a pool house"],
                 ].map(([label, value]) => (
@@ -152,7 +153,7 @@ export default function CampTaylorPage() {
                 Camp Taylor Memorial Park’s pool had been closed since 2019. Louisville replaced it with a new waterpark at 4201 Lee Avenue: an ADA zero-depth entry, lap lanes, a water slide, a children’s play area, shaded seating, and a pool house with restrooms, showers, and lockers. The project was funded with $6.2 million in ARPA money.
               </p>
               <p className="text-base leading-relaxed" style={{ color: "var(--muted)" }}>
-                I was the site superintendent for W Principles, LLC. The city had planned to open for the 2025 season. Severe weather delayed the work, and the waterpark opened to the public on May 23, 2026. W Principles lists construction complete in November 2025.
+                {COPY.campTaylorRoleContext} The waterpark opened to the public on May 23, 2026. Construction was complete in November 2025.
               </p>
             </div>
 
@@ -170,7 +171,7 @@ export default function CampTaylorPage() {
                   {
                     num: "02",
                     title: "A new outdoor waterpark",
-                    body: "The finished facility is an outdoor pool, not a renovation of the old basin in place. City descriptions of the opening list the zero-depth entry, lap lanes, slide, play area with a small slide and dump bucket, a water basketball hoop, and a climbing wall. W Principles also lists shaded seating and a renovated pool house.",
+                    body: COPY.campTaylorSourceAttribution,
                   },
                   {
                     num: "03",
@@ -195,12 +196,13 @@ export default function CampTaylorPage() {
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <figure>
-                  <Image
+                  <ResponsivePicture
                     src="/projects/camp-taylor/early-1.jpg"
                     alt="Early excavation and pool layout at Camp Taylor Memorial Park"
                     width={1920}
                     height={1080}
-                    className="h-auto w-full rounded"
+                    className="photo-frame h-auto w-full rounded"
+                    responsive
                     sizes="(max-width: 768px) 100vw, 480px"
                   />
                   <figcaption className="mt-2 text-sm" style={{ color: "var(--muted)" }}>
@@ -208,12 +210,13 @@ export default function CampTaylorPage() {
                   </figcaption>
                 </figure>
                 <figure>
-                  <Image
+                  <ResponsivePicture
                     src="/projects/camp-taylor/finished-pool.jpg"
                     alt="Finished Camp Taylor waterpark with slide, lap lanes, and zero-depth entry"
                     width={1920}
                     height={1080}
-                    className="h-auto w-full rounded"
+                    className="photo-frame h-auto w-full rounded"
+                    responsive
                     sizes="(max-width: 768px) 100vw, 480px"
                   />
                   <figcaption className="mt-2 text-sm" style={{ color: "var(--muted)" }}>

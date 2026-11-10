@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
-import { fieldProjects, profile } from "@/lib/profile"
+import { profile } from "@/lib/profile"
+import { resumeData } from "./resume-data"
 import { withCanonical } from "@/lib/site"
 
 export const metadata = withCanonical("/resume", {
@@ -49,7 +50,7 @@ export default function ResumePage() {
             <a
               href="/Miles_Goodman_Resume.pdf"
               download
-              className="inline-flex min-h-11 items-center gap-2 self-start px-5 py-3 bg-[var(--ink)] text-[var(--paper)] text-sm font-medium rounded hover:bg-[var(--accent)] transition-colors md:self-auto"
+              className="btn-solid inline-flex min-h-11 items-center gap-2 self-start rounded px-5 py-3 text-sm font-medium transition-colors md:self-auto"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -89,14 +90,14 @@ export default function ResumePage() {
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-6">
                   <div>
-                    <h3 className="text-lg font-semibold text-[var(--ink)]">{profile.company}</h3>
+                    <h3 className="text-lg font-semibold text-[var(--ink)]">{resumeData.company}</h3>
                     <p className="text-sm text-[var(--muted)] mt-0.5">Site Superintendent · {profile.location}</p>
                   </div>
                   <span className="text-sm text-[var(--muted)] shrink-0">2023 – Present</span>
                 </div>
 
                 <div className="space-y-8">
-                  {fieldProjects.map((project) => (
+                  {resumeData.fieldProjects.map((project) => (
                     <div key={project.href} className="pl-4 border-l-2 border-[var(--border)]">
                       <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
                         <h4 className="font-medium text-[var(--ink)]">
@@ -119,14 +120,14 @@ export default function ResumePage() {
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-4">
                   <div>
-                    <h3 className="text-lg font-semibold text-[var(--ink)]">{profile.realtorOrg}</h3>
-                    <p className="text-sm text-[var(--muted)] mt-0.5">{profile.realtorTitle}</p>
+                    <h3 className="text-lg font-semibold text-[var(--ink)]">{resumeData.realtorOrg}</h3>
+                    <p className="text-sm text-[var(--muted)] mt-0.5">{resumeData.realtorTitle}</p>
                   </div>
-                  <span className="text-sm text-[var(--muted)] shrink-0">{profile.realtorDates}</span>
+                  <span className="text-sm text-[var(--muted)] shrink-0">{resumeData.realtorDates}</span>
                 </div>
                 <div className="pl-4 border-l-2 border-[var(--border)]">
                   <ul className={listClass}>
-                    <li>{profile.realtorHighlight}</li>
+                    <li>{resumeData.realtorHighlight}</li>
                     <li>Licensed sales, negotiation, and client communication</li>
                   </ul>
                 </div>
@@ -158,10 +159,10 @@ export default function ResumePage() {
 
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
-                  <h3 className="text-lg font-semibold text-[var(--ink)]">{profile.bsSchool}</h3>
-                  <span className="text-sm text-[var(--muted)] shrink-0">{profile.bsYear}</span>
+                  <h3 className="text-lg font-semibold text-[var(--ink)]">{resumeData.bsSchool}</h3>
+                  <span className="text-sm text-[var(--muted)] shrink-0">{resumeData.bsYear}</span>
                 </div>
-                <p className="text-sm text-[var(--muted)]">{profile.bsDegree}</p>
+                <p className="text-sm text-[var(--muted)]">{resumeData.bsDegree}</p>
               </div>
             </div>
           </div>
@@ -241,10 +242,6 @@ export default function ResumePage() {
                   <li className="flex items-start gap-3">
                     <span aria-hidden="true" className="mt-1.5 block w-1.5 h-1.5 rounded-full bg-[var(--accent)] shrink-0" />
                     <span>MBA candidate — {profile.mbaSchool}, expected 2026</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span aria-hidden="true" className="mt-1.5 block w-1.5 h-1.5 rounded-full bg-[var(--accent)] shrink-0" />
-                    <span>AGC member company ({profile.company}, est. 1933)</span>
                   </li>
                 </ul>
               </div>

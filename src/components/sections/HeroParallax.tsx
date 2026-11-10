@@ -83,7 +83,7 @@ export function HeroParallax() {
         className="absolute bottom-4 left-6 md:left-12 text-xs text-white tracking-wide rounded px-2.5 py-1"
         style={{ background: "rgba(12,16,22,0.8)" }}
       >
-        Camp Taylor Memorial Park Pool · Louisville, KY · W Principles, LLC
+        Camp Taylor Memorial Park Pool · Louisville, KY
       </p>
     </section>
   )

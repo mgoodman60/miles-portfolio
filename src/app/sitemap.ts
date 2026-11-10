@@ -6,7 +6,7 @@ export const dynamic = "force-static"
 // Keep stable personal pages discoverable; omit the empty writing index and query states.
 const paths = [
   "/", "/projects", "/projects/camp-taylor-pool", "/projects/john-black-aquatic",
-  "/projects/one-senior-care-morehead", "/ai-tools", "/my-reports", "/about",
+  "/projects/one-senior-care", "/ai-tools", "/my-reports", "/portfolio", "/about",
   "/resume", "/contact",
 ] as const
 

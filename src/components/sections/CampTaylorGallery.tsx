@@ -7,7 +7,7 @@ import "yet-another-react-lightbox/styles.css"
 import Captions from "yet-another-react-lightbox/plugins/captions"
 import "yet-another-react-lightbox/plugins/captions.css"
 import Zoom from "yet-another-react-lightbox/plugins/zoom"
-import Image from "next/image"
+import { ResponsivePicture } from "@/components/ui/ResponsivePicture"
 import { useState } from "react"
 
 type Photo = { src: string; width: number; height: number; alt: string; caption?: string }
@@ -38,13 +38,14 @@ export function CampTaylorGallery({
                   className="block w-full rounded text-left"
                   onClick={() => setIndex(photoIndex)}
                 >
-                  <span className="block overflow-hidden rounded">
-                    <Image
+                  <span className="photo-frame block overflow-hidden rounded">
+                    <ResponsivePicture
                       src={photo.src}
                       alt={photo.alt}
                       width={photo.width}
                       height={photo.height}
                       loading={eager && photoIndex === 0 ? "eager" : "lazy"}
+                      responsive={photo.src.includes("/camp-taylor/")}
                       sizes="(max-width: 1024px) 100vw, 960px"
                       className="h-auto w-full"
                       style={{ background: "var(--paper-warm)" }}
@@ -80,7 +81,7 @@ export function CampTaylorGallery({
           sizes={{ size: "calc(100vw - 48px)", sizes: [{ viewport: "(min-width: 1024px)", size: "min(1000px, calc(100vw - 480px))" }] }}
           render={{
             image: ({ alt, title, sizes, className, style }, { photo, index: photoIndex }) => (
-              <Image
+              <ResponsivePicture
                 src={photo.src}
                 alt={alt ?? photo.alt}
                 title={title}
@@ -90,6 +91,7 @@ export function CampTaylorGallery({
                 className={className}
                 style={style}
                 loading={eager && photoIndex === 0 ? "eager" : "lazy"}
+                responsive={photo.src.includes("/camp-taylor/")}
               />
             ),
           }}

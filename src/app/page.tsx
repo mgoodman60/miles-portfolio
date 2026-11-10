@@ -6,15 +6,14 @@ import { BlurFade } from "@/components/magicui/blur-fade"
 import { Stat } from "@/components/ui/Stat"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 import { withCanonical } from "@/lib/site"
+import { COPY } from "@/lib/copy-todo"
 
 export const metadata = withCanonical("/", {
   title: "Miles Goodman | Construction & field reporting",
-  description:
-    "Construction experience and field tools by Miles Goodman, a site superintendent at W Principles, LLC in Kentucky and an MBA candidate at Northern Kentucky University.",
+  description: COPY.homeDescription,
 })
 
 const stats = [
-  { value: "$22M+", label: "Contributed-to project value" },
   { value: "5", label: "Commercial projects" },
   { value: "3 yrs", label: "As site superintendent" },
 ]
@@ -40,13 +39,12 @@ const projects = [
     tag: "Reopened 2024",
   },
   {
-    slug: "one-senior-care-morehead",
-    name: "One Senior Care - Morehead",
-    location: "Morehead, KY",
+    slug: "one-senior-care",
+    name: "One Senior Care",
+    location: "Kentucky",
     year: "2026",
-    cost: "$3M",
-    scope: "10,060 SF PACE senior care facility — PEMB + concrete",
-    cover: "/projects/morehead/aerial-2026-07-14-overhead.jpg",
+    scope: COPY.oneSeniorCareCardScope,
+    cover: "/projects/one-senior-care/aerial-2026-07-14-overhead.jpg",
     tag: "Complete",
   },
 ]
@@ -91,7 +89,7 @@ export default function Home() {
             />
           ))}
         </div>
-        <p className="mx-auto mt-6 max-w-[1480px] text-center text-xs text-white md:text-left">Miles’s construction experience through 2026 with W Principles, LLC. Project value reflects contribution, not sole management.</p>
+        <p className="mx-auto mt-6 max-w-[1480px] text-center text-xs text-white md:text-left">{COPY.homeStatNote}</p>
       </section>
 
       {/* ── Featured Projects ─────────────────────────── */}
@@ -114,7 +112,7 @@ export default function Home() {
           </div>
 
           <p className="max-w-3xl text-sm leading-relaxed text-[var(--muted)] mb-8">
-            Projects Miles worked on with W Principles, LLC. Each case study identifies the contractor, employer and Miles’s role.
+            {COPY.homeFeaturedProjects}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {projects.map((p) => (
@@ -145,22 +143,18 @@ export default function Home() {
           </div>
           <div>
             <SectionEyebrow size="section" className="mb-5">
-              Site Superintendent · W Principles, LLC
+              Site Superintendent · Kentucky
             </SectionEyebrow>
             <h2
               id="home-about-heading"
               className="serif font-light leading-snug tracking-tight mb-6"
               style={{ fontSize: "clamp(28px,3.6vw,44px)", color: "var(--ink)" }}
             >
-              Site superintendent in Kentucky. MBA candidate at Northern Kentucky University.
+              {COPY.homeAboutHeading}
             </h2>
             <p className="text-base leading-relaxed mb-8" style={{ color: "var(--muted)" }}>
-              I manage commercial construction in Kentucky — aquatic facilities, senior care, concrete
-              self-perform — and I build AI field tools on the same jobs I run.{" "}
-              <Link href="/projects/one-senior-care-morehead" className="font-medium text-[var(--ink)] underline underline-offset-4">
-                One Senior Care - Morehead
-              </Link>{" "}
-              is complete.{" "}
+              {COPY.homeDescription}{" "}
+              <Link href="/projects/one-senior-care" className="font-medium text-[var(--ink)] underline underline-offset-4">One Senior Care</Link>{" "}
               <Link href="/my-reports" className="font-medium text-[var(--ink)] underline underline-offset-4">
                 My Reports
               </Link>{" "}

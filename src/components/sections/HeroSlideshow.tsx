@@ -1,9 +1,10 @@
 "use client"
 
 import { useEffect, useRef, useState, type ReactNode } from "react"
-import Image from "next/image"
+import { ResponsivePicture } from "@/components/ui/ResponsivePicture"
 import Link from "next/link"
 import { useMotionPreference } from "@/lib/use-motion-preference"
+import { COPY } from "@/lib/copy-todo"
 
 const slides = [
   {
@@ -22,9 +23,9 @@ const slides = [
     caption: "John W. Black Aquatic Center · La Grange, KY",
   },
   {
-    src: "/projects/morehead/aerial-2026-07-14-overhead.jpg",
-    alt: "Overhead aerial of the enclosed One Senior Care - Morehead building",
-    caption: "One Senior Care - Morehead — Complete",
+    src: "/projects/one-senior-care/aerial-2026-07-14-overhead.jpg",
+    alt: "Overhead aerial of the enclosed One Senior Care building",
+    caption: "One Senior Care — Complete",
   },
 ]
 
@@ -63,7 +64,7 @@ export function HeroSlideshow({ identity = "personal", children }: { identity?: 
   return (
     <section
       id="hero-photos"
-      className="project-hero relative flex min-h-[100svh] flex-col justify-end overflow-hidden bg-[#131820]"
+      className="project-hero relative flex min-h-[100svh] flex-col justify-end overflow-hidden bg-[var(--band)]"
       data-autoplay={autoplay}
       data-surface="dark"
       onMouseEnter={() => setHovered(true)}
@@ -84,13 +85,14 @@ export function HeroSlideshow({ identity = "personal", children }: { identity?: 
           aria-hidden={i !== current}
           data-active={i === current}
         >
-          <Image
+          <ResponsivePicture
             src={slide.src}
             alt={slide.alt}
-            fill
+            width={1920}
+            height={1080}
             priority={i === 0}
-            quality={i === 0 ? 60 : 75}
-            className="hero-photo object-cover object-center"
+            responsive
+            className="hero-photo absolute inset-0 h-full w-full object-cover object-center"
             sizes="100vw"
           />
         </div>
@@ -136,7 +138,7 @@ export function HeroSlideshow({ identity = "personal", children }: { identity?: 
             </h1>
 
             <p className="hero-rise hero-rise-3 mb-7 max-w-xl text-base leading-relaxed text-white md:text-lg">
-              {isBusiness ? "For small businesses and construction teams exploring better ways to handle paperwork, reporting and project coordination." : "I manage commercial construction with W Principles, LLC in Kentucky — aquatic facilities, senior care and concrete self-perform."}
+              {isBusiness ? "For small businesses and construction teams exploring better ways to handle paperwork, reporting and project coordination." : COPY.heroConstructionIntro}
             </p>
             <div className="hero-rise hero-rise-3 flex flex-wrap gap-4">
               <Link href={isBusiness ? "/contact" : "/projects"} className="hero-primary btn-solid inline-flex min-h-11 items-center px-6 py-3 text-sm font-medium rounded transition-colors">
@@ -200,9 +202,9 @@ export function HeroSlideshow({ identity = "personal", children }: { identity?: 
             </div>
             <p
               className="min-w-0 max-w-full text-xs text-white tracking-wide rounded px-2.5 py-1 sm:text-right"
-              style={{ background: "#131820" }}
+              style={{ background: "var(--band)" }}
             >
-              {slides[current].caption} · Miles’s field work with W Principles, LLC
+              {slides[current].caption} · {COPY.heroFieldWorkCaption}
             </p>
           </div>
         </div>

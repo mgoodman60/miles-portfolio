@@ -4,6 +4,7 @@ import { BlurFade } from "@/components/magicui/blur-fade"
 import { Stat } from "@/components/ui/Stat"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 import { withCanonical } from "@/lib/site"
+import { COPY } from "@/lib/copy-todo"
 
 export const metadata = withCanonical("/ai-tools", {
   title: "AI Tools — Miles Goodman",
@@ -28,7 +29,7 @@ const tools: Tool[] = [
     num: "01",
     tag: "My Reports · Daily Reporting",
     title: "Site photos → owner-ready reports",
-    body: "I built My Reports on the Claude API to turn site photos and voice notes into structured progress reports. The Morehead case study shows the field context behind this reporting workflow.",
+    body: `I built My Reports on the Claude API to turn site photos and voice notes into structured progress reports. ${COPY.aiToolsOneSeniorCareReference}`,
     stat: "Photos + notes",
     statLabel: "Structured progress reports",
     link: "/my-reports",
@@ -94,8 +95,7 @@ export default function AIToolsPage() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/my-reports"
-                className="inline-flex min-h-11 items-center rounded px-6 py-3 text-sm font-medium"
-                style={{ background: "var(--ink)", color: "var(--paper)" }}
+                className="btn-solid inline-flex min-h-11 items-center rounded px-6 py-3 text-sm font-medium"
               >
                 See My Reports
               </Link>
@@ -197,8 +197,7 @@ export default function AIToolsPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex min-h-11 items-center rounded px-8 py-4 text-sm font-medium"
-            style={{ background: "var(--ink)", color: "var(--paper)" }}
+            className="btn-solid inline-flex min-h-11 items-center rounded px-8 py-4 text-sm font-medium"
           >
             Contact
           </Link>

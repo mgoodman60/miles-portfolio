@@ -4,11 +4,11 @@ import { BlurFade } from "@/components/magicui/blur-fade"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 import { fieldProjects, profile } from "@/lib/profile"
 import { withCanonical } from "@/lib/site"
+import { COPY } from "@/lib/copy-todo"
 
 export const metadata = withCanonical("/about", {
   title: "About — Miles Goodman",
-  description:
-    "Site Superintendent at W Principles, LLC in Mount Sterling, KY. BS, Engineering Technology Management, Morehead State. MBA candidate at NKU.",
+  description: COPY.aboutDescription,
 })
 
 const timeline: { year: string; event: string; detail: string; href?: string }[] = [
@@ -26,8 +26,8 @@ const timeline: { year: string; event: string; detail: string; href?: string }[]
   },
   {
     year: "2021–2025",
-    event: `${profile.realtorOrg} — ${profile.realtorTitle}`,
-    detail: profile.realtorHighlight,
+    event: "Real estate experience",
+    detail: COPY.aboutCareerTimeline,
   },
   {
     year: fieldProjects[2].year,
@@ -42,13 +42,13 @@ const timeline: { year: string; event: string; detail: string; href?: string }[]
   },
   {
     year: "2023",
-    event: `Joined ${profile.company} as Site Superintendent`,
-    detail: `${profile.location} · AGC member company`,
+    event: "Site Superintendent",
+    detail: COPY.aboutCareerTimeline,
   },
   {
-    year: profile.bsYear,
-    event: profile.bsDegree,
-    detail: profile.bsSchool,
+    year: "2022",
+    event: "Bachelor’s degree",
+    detail: COPY.aboutBachelorCredential,
   },
 ]
 
@@ -70,7 +70,7 @@ export default function AboutPage() {
           <div>
             <BlurFade inView delay={0}>
               <p className="text-lg leading-relaxed mb-6" style={{ color: "var(--ink)" }}>
-                I&rsquo;m a Site Superintendent at {profile.company} — a commercial general contractor based in {profile.location}, AGC member, established 1933. My work spans concrete self-perform scopes, aquatic facility construction, and PEMB structures across Kentucky.
+                {COPY.aboutIntro}
               </p>
             </BlurFade>
             <BlurFade inView delay={0.1}>
@@ -86,14 +86,14 @@ export default function AboutPage() {
             </BlurFade>
             <BlurFade inView delay={0.2}>
               <p className="text-base leading-relaxed mb-8" style={{ color: "var(--muted)" }}>
-                I also worked as a realtor with {profile.realtorOrg}. That&rsquo;s where I learned to read owners and communicate clearly. I use those skills every day on site.
+                I also worked in real estate. That&rsquo;s where I learned to read owners and communicate clearly. I use those skills every day on site.
               </p>
             </BlurFade>
             <BlurFade inView delay={0.3}>
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/resume"
-                  className="inline-flex min-h-11 items-center px-6 py-3 text-sm font-medium rounded bg-[var(--ink)] text-[var(--paper)] transition-colors hover:bg-[var(--accent)]"
+                  className="btn-solid inline-flex min-h-11 items-center rounded px-6 py-3 text-sm font-medium transition-colors"
                 >
                   Resume
                 </Link>
@@ -112,6 +112,7 @@ export default function AboutPage() {
                 >
                   Contact
                 </Link>
+              <a href="https://www.linkedin.com/in/miles-goodman-cm" target="_blank" rel="noopener noreferrer" className="btn-line inline-flex min-h-11 items-center rounded border px-6 py-3 text-sm font-medium">LinkedIn<span className="sr-only"> (opens in a new tab)</span></a>
               </div>
             </BlurFade>
           </div>
@@ -139,7 +140,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { label: "MBA (active)", detail: `${profile.mbaProgram}\n${profile.mbaSchool}` },
-              { label: "BS", detail: `Engineering Technology Management\n${profile.bsSchool} · ${profile.bsYear}` },
+              { label: "Bachelor’s degree", detail: COPY.aboutBachelorCredential },
               { label: "CTM", detail: "Certified Technology Manager" },
               { label: "Bluebeam · AutoCAD · Excel", detail: "Field takeoffs, plan review,\nbid estimation" },
             ].map(({ label, detail }) => (

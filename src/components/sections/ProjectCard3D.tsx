@@ -57,7 +57,7 @@ export function ProjectCard3D({ project }: { project: Project }) {
       onMouseMove={tiltDisabled ? undefined : handleMouseMove}
       onMouseLeave={tiltDisabled ? undefined : handleMouseLeave}
       style={tiltDisabled ? undefined : { transition: "transform 0.15s ease" }}
-      className="group overflow-hidden rounded bg-white shadow-sm hover:shadow-lg"
+      className="group overflow-hidden rounded bg-[var(--card)] shadow-sm hover:shadow-lg"
     >
       <Link
         href={`/projects/${project.slug}`}
@@ -75,7 +75,7 @@ export function ProjectCard3D({ project }: { project: Project }) {
             <span
               aria-hidden="true"
               className="rounded px-2.5 py-1 text-xs font-medium tracking-wide text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100"
-              style={{ background: "#131820" }}
+              style={{ background: "var(--band)" }}
             >
               View project →
             </span>

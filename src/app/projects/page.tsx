@@ -2,11 +2,11 @@ import Image from "next/image"
 import Link from "next/link"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 import { withCanonical } from "@/lib/site"
+import { COPY } from "@/lib/copy-todo"
 
 export const metadata = withCanonical("/projects", {
   title: "Projects — Miles Goodman",
-  description:
-    "Commercial projects Miles Goodman worked as site superintendent for W Principles, LLC, in Kentucky.",
+  description: COPY.projectsDescription,
 })
 
 type ProjectCard = {
@@ -47,14 +47,13 @@ const projects: ProjectCard[] = [
     role: "Site Superintendent",
   },
   {
-    slug: "one-senior-care-morehead",
-    name: "One Senior Care - Morehead",
-    location: "Morehead, KY",
+    slug: "one-senior-care",
+    name: "One Senior Care",
+    location: "Kentucky",
     year: "2026",
-    cost: "$3M",
-    scope: "10,060 SF PACE senior care facility — Pre-engineered metal building + concrete self-perform",
-    cover: "/projects/morehead/aerial-2026-07-14-overhead.jpg",
-    coverAlt: "Overhead aerial of the enclosed One Senior Care - Morehead building",
+    scope: COPY.oneSeniorCareCardScope,
+    cover: "/projects/one-senior-care/aerial-2026-07-14-overhead.jpg",
+    coverAlt: COPY.oneSeniorCareAerialAlt,
     tag: "Complete",
     role: "Site Superintendent",
   },
@@ -62,7 +61,6 @@ const projects: ProjectCard[] = [
 
 const contributedProjects = [
   {
-    // W Principles lists American Legion Park, Glasgow, at $9M (October 2025), including the pool.
     // The Joyce Driver Aquatic Center name is from the Glasgow council resolution. Role stays punch list.
     name: "American Legion Park",
     location: "Glasgow, KY",
@@ -70,7 +68,6 @@ const contributedProjects = [
     value: "$9M",
   },
   {
-    // Owensboro awarded the Cravens Pool renovation to W Principles for $1,985,000.
     name: "Cravens Pool",
     location: "Owensboro, KY",
     scope: "Community pool renovation — punch list and close-out",
@@ -99,7 +96,7 @@ export default function ProjectsPage() {
               <Link
                 key={p.slug}
                 href={`/projects/${p.slug}`}
-                className="card-link group block rounded overflow-hidden bg-white shadow-sm hover:shadow-lg transition-shadow"
+                className="card-link group block overflow-hidden rounded bg-[var(--card)] shadow-sm transition-shadow hover:shadow-lg"
               >
                 <div className="relative overflow-hidden" style={{ aspectRatio: "4/3" }}>
                   <Image
@@ -111,7 +108,7 @@ export default function ProjectsPage() {
                   />
                   <span
                     className="absolute top-4 left-4 text-xs uppercase tracking-[0.14em] px-2.5 py-1 rounded-full font-medium text-white"
-                    style={{ background: "var(--accent)" }}
+                    style={{ background: "var(--orange)", color: "var(--on-orange)" }}
                   >
                     {p.tag}
                   </span>

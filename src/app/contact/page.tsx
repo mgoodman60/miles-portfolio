@@ -16,7 +16,6 @@ const direct = [
   { label: "Email", value: profile.email, href: `mailto:${profile.email}` },
   { label: "Phone", value: profile.phoneDisplay, href: profile.phoneHref },
   { label: "Location", value: profile.location, href: null },
-  { label: "Employer", value: profile.company, href: null },
   { label: "Role", value: profile.role, href: null },
   {
     label: "MBA",
@@ -119,7 +118,7 @@ export default function ContactPage() {
 
               <button
                 type="submit"
-                className="inline-flex min-h-11 w-full items-center justify-center rounded bg-[var(--ink)] px-8 py-3 text-sm font-medium text-[var(--paper)] transition-colors hover:bg-[var(--accent)] sm:w-auto"
+                className="btn-solid inline-flex min-h-11 w-full items-center justify-center rounded px-8 py-3 text-sm font-medium transition-colors sm:w-auto"
               >
                 Send Message
               </button>
@@ -158,7 +157,7 @@ export default function ContactPage() {
               </Link>
               <Link
                 href="/resume"
-                className="inline-flex min-h-11 items-center px-4 py-2.5 text-sm font-medium rounded bg-[var(--ink)] text-[var(--paper)] transition-colors hover:bg-[var(--accent)]"
+                className="btn-solid inline-flex min-h-11 items-center px-4 py-2.5 text-sm font-medium rounded transition-colors"
               >
                 Resume
               </Link>

@@ -3,14 +3,13 @@ import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 import { withCanonical } from "@/lib/site"
 
 /**
- * Public Substack URL. Leave null until Miles creates the publication.
- * Do not guess a URL or embed a feed here.
+ * The local route stays available for older links; posts now live on Milestone.
  */
-const SUBSTACK_URL: string | null = null
+const MILESTONE_BLOG_URL = "https://milestone-solutions.pages.dev/blog"
 
 export const metadata = withCanonical("/blog", {
   title: "Blog — Miles Goodman",
-  description: "Writing from Miles Goodman. Posts will be published on Substack.",
+  description: "Writing by Miles Goodman is published on Milestone.",
   robots: { index: false, follow: true },
 })
 
@@ -33,25 +32,22 @@ export default function BlogPage() {
         <div className="mx-auto max-w-[1480px]">
           <div className="max-w-2xl rounded border p-8 md:p-10" style={{ borderColor: "var(--border)", background: "var(--paper-warm)" }}>
             <h2 className="serif font-light text-2xl mb-4" style={{ color: "var(--ink)" }}>
-              On Substack
+              Writing on Milestone
             </h2>
             <p className="text-base leading-relaxed mb-6" style={{ color: "var(--muted)" }}>
-              No posts yet. Writing will be published on Substack, and the link will go here once that publication exists.
+              Posts are published on Milestone.
             </p>
-            {SUBSTACK_URL ? (
               <a
-                href={SUBSTACK_URL}
+                href={MILESTONE_BLOG_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mb-8 inline-flex min-h-11 items-center rounded px-6 py-3 text-sm font-medium"
-                style={{ background: "var(--ink)", color: "var(--paper)" }}
+                className="btn-solid mb-8 inline-flex min-h-11 items-center rounded px-6 py-3 text-sm font-medium"
               >
-                Read on Substack
+                Read on Milestone
                 <span className="sr-only"> (opens in a new tab)</span>
               </a>
-            ) : null}
             <p className="text-sm font-medium mb-3" style={{ color: "var(--ink)" }}>
-              Until then
+              Explore the site
             </p>
             <ul className="mb-8 list-disc space-y-2 pl-5 text-sm marker:text-[var(--accent)]" style={{ color: "var(--muted)" }}>
               <li>
@@ -72,8 +68,7 @@ export default function BlogPage() {
             </ul>
             <Link
               href="/contact"
-              className="inline-flex min-h-11 items-center rounded px-6 py-3 text-sm font-medium"
-              style={{ background: "var(--ink)", color: "var(--paper)" }}
+              className="btn-solid inline-flex min-h-11 items-center rounded px-6 py-3 text-sm font-medium"
             >
               Contact
             </Link>
