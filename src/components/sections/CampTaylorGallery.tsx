@@ -63,7 +63,7 @@ export function CampTaylorGallery({
                       height={photo.height}
                       loading={eager && photoIndex === 0 ? "eager" : "lazy"}
                       responsive
-                      sizes="(max-width: 1024px) 100vw, 960px"
+                      sizes="(max-width: 1024px) calc(100vw - 48px), 960px"
                       className="h-auto w-full"
                       style={{ background: "var(--paper-warm)" }}
                     />

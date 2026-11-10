@@ -203,7 +203,7 @@ export default function CampTaylorPage() {
                     height={1080}
                     className="photo-frame h-auto w-full rounded"
                     responsive
-                    sizes="(max-width: 768px) 100vw, 480px"
+                    sizes="(max-width: 768px) calc(100vw - 48px), 480px"
                   />
                   <figcaption className="mt-2 text-sm" style={{ color: "var(--muted)" }}>
                     Early site work
@@ -217,7 +217,7 @@ export default function CampTaylorPage() {
                     height={1080}
                     className="photo-frame h-auto w-full rounded"
                     responsive
-                    sizes="(max-width: 768px) 100vw, 480px"
+                    sizes="(max-width: 768px) calc(100vw - 48px), 480px"
                   />
                   <figcaption className="mt-2 text-sm" style={{ color: "var(--muted)" }}>
                     Finished waterpark
