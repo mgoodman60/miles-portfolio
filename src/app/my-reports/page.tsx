@@ -144,8 +144,8 @@ export default function MyReportsPage() {
               variant="bare"
               value={value}
               label={label}
-              valueClassName="text-2xl md:text-3xl text-white"
-              labelClassName="text-white"
+              valueClassName="text-2xl md:text-3xl text-[var(--text)]"
+              labelClassName="text-[var(--muted)]"
               className="text-center md:text-left"
             />
           ))}

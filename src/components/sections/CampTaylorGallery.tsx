@@ -12,6 +12,23 @@ import { useState } from "react"
 
 type Photo = { src: string; width: number; height: number; alt: string; caption?: string }
 
+function lightboxSlides(photos: Photo[]) {
+  return photos.map((photo) => {
+    const base = photo.src.replace(/\.[^.]+$/, "")
+    return {
+      src: photo.src,
+      alt: photo.alt,
+      width: photo.width,
+      height: photo.height,
+      srcSet: [640, 1080, 1600].map((width) => ({
+        src: `${base}-${width}.webp`,
+        width,
+        height: Math.round((photo.height / photo.width) * width),
+      })),
+    }
+  })
+}
+
 export function CampTaylorGallery({
   photos,
   eager = false,
@@ -45,7 +62,7 @@ export function CampTaylorGallery({
                       width={photo.width}
                       height={photo.height}
                       loading={eager && photoIndex === 0 ? "eager" : "lazy"}
-                      responsive={photo.src.includes("/camp-taylor/")}
+                      responsive
                       sizes="(max-width: 1024px) 100vw, 960px"
                       className="h-auto w-full"
                       style={{ background: "var(--paper-warm)" }}
@@ -65,7 +82,7 @@ export function CampTaylorGallery({
           open={index >= 0}
           index={index}
           close={() => setIndex(-1)}
-          slides={photos.map((p) => ({ src: p.src, alt: p.alt, width: p.width, height: p.height }))}
+          slides={lightboxSlides(photos)}
           plugins={[Zoom]}
         />
       </div>
@@ -91,7 +108,7 @@ export function CampTaylorGallery({
                 className={className}
                 style={style}
                 loading={eager && photoIndex === 0 ? "eager" : "lazy"}
-                responsive={photo.src.includes("/camp-taylor/")}
+                responsive
               />
             ),
           }}
@@ -101,13 +118,7 @@ export function CampTaylorGallery({
         open={index >= 0}
         index={index}
         close={() => setIndex(-1)}
-        slides={photos.map((p) => ({
-          src: p.src,
-          alt: p.alt,
-          width: p.width,
-          height: p.height,
-          description: captions ? p.alt : undefined,
-        }))}
+        slides={lightboxSlides(photos).map((photo) => ({ ...photo, description: captions ? photo.alt : undefined }))}
         plugins={captions ? [Zoom, Captions] : [Zoom]}
         captions={captions ? { descriptionTextAlign: "start", descriptionMaxLines: 3, showToggle: false } : undefined}
         styles={

@@ -125,11 +125,13 @@ body {
 
 /* ── Stat strip ────────────────────────────────────── */
 .stat-strip {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--band);
+  color: var(--text);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 .stat-strip :focus-visible {
-  outline-color: var(--paper);
+  outline-color: var(--text);
 }
 
 /* ── Photo placeholder (dev only) ──────────────────── */

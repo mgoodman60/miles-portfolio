@@ -13,3 +13,5 @@
 | `--solutions` | `#6EC6F0` | solutions labels | 9.90:1 on page |
 
 Inter is used for interface and body copy; Fraunces remains the editorial display face. Orange is the only button fill. Creative and solutions colors are paired with text labels rather than used as the sole indicator.
+
+Stat strips use `--band` with `--text` values and `--muted` labels, bounded by `--border`; this keeps their contrast within the charcoal surface system.

@@ -83,13 +83,13 @@ export default function Home() {
               variant="bare"
               value={value}
               label={label}
-              valueClassName="text-3xl md:text-4xl tracking-tight text-white"
-              labelClassName="text-xs text-white text-center md:text-left"
+              valueClassName="text-3xl md:text-4xl tracking-tight text-[var(--text)]"
+              labelClassName="text-xs text-[var(--muted)] text-center md:text-left"
               className="flex flex-col items-center md:items-start"
             />
           ))}
         </div>
-        <p className="mx-auto mt-6 max-w-[1480px] text-center text-xs text-white md:text-left">My construction experience as a site superintendent through 2026.</p>
+        <p className="mx-auto mt-6 max-w-[1480px] text-center text-xs text-[var(--muted)] md:text-left">My construction experience as a site superintendent through 2026.</p>
       </section>
 
       {/* ── Featured Projects ─────────────────────────── */}
@@ -116,7 +116,7 @@ export default function Home() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {projects.map((p) => (
-              <BlurFade key={p.slug} inView delay={projects.indexOf(p) * 0.12}><ProjectCard3D project={p} /></BlurFade>
+              <BlurFade key={p.slug} inView delay={projects.indexOf(p) * 0.12}><ProjectCard3D project={p} priority={projects.indexOf(p) === 0} /></BlurFade>
             ))}
           </div>
         </div>

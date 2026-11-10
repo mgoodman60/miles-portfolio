@@ -1,9 +1,9 @@
 "use client"
 
 import { useEffect, useRef, useState, MouseEvent } from "react"
-import Image from "next/image"
 import Link from "next/link"
 import { useReducedMotion } from "motion/react"
+import { ResponsivePicture } from "@/components/ui/ResponsivePicture"
 
 type Project = {
   slug: string
@@ -16,7 +16,7 @@ type Project = {
   tag?: string
 }
 
-export function ProjectCard3D({ project }: { project: Project }) {
+export function ProjectCard3D({ project, priority = false }: { project: Project; priority?: boolean }) {
   const cardRef = useRef<HTMLDivElement>(null)
   const prefersReduced = useReducedMotion()
   const [isTouch, setIsTouch] = useState(false)
@@ -64,11 +64,14 @@ export function ProjectCard3D({ project }: { project: Project }) {
         className="card-link block"
       >
         <div className="relative overflow-hidden" style={{ aspectRatio: "4/3" }}>
-          <Image
+          <ResponsivePicture
             src={project.cover}
             alt=""
-            fill
-            className="object-cover object-center transition-transform duration-500 group-hover:scale-105 group-focus-within:scale-105 motion-reduce:transform-none"
+            width={1600}
+            height={1200}
+            priority={priority}
+            responsive
+            className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105 group-focus-within:scale-105 motion-reduce:transform-none"
             sizes="(max-width:768px) 100vw, (max-width:1480px) 33vw, 472px"
           />
           <div className="absolute inset-0 flex items-end justify-end bg-black/0 p-4 transition-colors duration-300 group-hover:bg-black/35 group-focus-within:bg-black/35">
@@ -83,7 +86,7 @@ export function ProjectCard3D({ project }: { project: Project }) {
           {project.tag && (
             <span
               className="absolute top-4 left-4 text-xs uppercase tracking-[0.14em] px-2.5 py-1 rounded-full font-medium"
-              style={{ background: "var(--accent)", color: "#fff" }}
+              style={{ background: "var(--accent)", color: "var(--on-orange)" }}
             >
               {project.tag}
             </span>

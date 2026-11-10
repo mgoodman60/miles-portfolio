@@ -1,10 +1,10 @@
-import Image from "next/image"
 import Link from "next/link"
 import { CampTaylorGallery } from "@/components/sections/CampTaylorGallery"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 import { ProjectBackLink, ProjectPager } from "@/components/sections/ProjectChrome"
 import { withCanonical } from "@/lib/site"
 import { OSC_TITLE } from "@/lib/projects-copy"
+import { ResponsivePicture } from "@/components/ui/ResponsivePicture"
 
 const photos = [
   {
@@ -78,13 +78,14 @@ export default function JohnBlackPage() {
   return (
     <>
       <div className="relative mt-20 overflow-hidden" style={{ height: "60svh", minHeight: 400 }}>
-        <Image
+        <ResponsivePicture
           src="/projects/john-black/drone-01.jpg"
           alt="Wide aerial of the finished John W. Black Aquatic Center"
-          fill
+          width={1920}
+          height={1080}
           priority
-          quality={60}
-          className="object-cover object-center"
+          responsive
+          className="absolute inset-0 h-full w-full object-cover object-center"
           sizes="100vw"
         />
       </div>

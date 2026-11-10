@@ -1,6 +1,6 @@
-import Image from "next/image"
 import Link from "next/link"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
+import { ResponsivePicture } from "@/components/ui/ResponsivePicture"
 import { withCanonical } from "@/lib/site"
 import { OSC_TITLE } from "@/lib/projects-copy"
 
@@ -94,19 +94,22 @@ export default function ProjectsPage() {
       <section className="py-24 px-6 md:px-12">
         <div className="mx-auto max-w-[1480px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {projects.map((p) => (
+            {projects.map((p, index) => (
               <Link
                 key={p.slug}
                 href={`/projects/${p.slug}`}
                 className="card-link group block overflow-hidden rounded bg-[var(--card)] shadow-sm transition-shadow hover:shadow-lg"
               >
                 <div className="relative overflow-hidden" style={{ aspectRatio: "4/3" }}>
-                  <Image
+                  <ResponsivePicture
                     src={p.cover}
                     alt={p.coverAlt}
-                    fill
-                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width:768px) 100vw, 33vw"
+                    width={1600}
+                    height={1200}
+                    priority={index === 0}
+                    responsive
+                    className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width:768px) 100vw, (max-width:1480px) 33vw, 472px"
                   />
                   <span
                     className="absolute top-4 left-4 text-xs uppercase tracking-[0.14em] px-2.5 py-1 rounded-full font-medium text-white"
