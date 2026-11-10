@@ -1,7 +1,6 @@
 import Link from "next/link"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 import { ContactSentNotice } from "@/components/sections/ContactSentNotice"
-import { profile } from "@/lib/profile"
 import { LIVE_ORIGIN, withCanonical } from "@/lib/site"
 
 export const metadata = withCanonical("/contact", {
@@ -12,14 +11,18 @@ export const metadata = withCanonical("/contact", {
 const fieldClass =
   "w-full rounded border border-[var(--border)] bg-[var(--paper)] px-4 py-3 text-base text-[var(--ink)]"
 
+const EMAIL = "msgoodman1997@gmail.com"
+const PHONE_DISPLAY = "(606) 226-5231"
+const PHONE_HREF = "tel:+16062265231"
+
 const direct = [
-  { label: "Email", value: profile.email, href: `mailto:${profile.email}` },
-  { label: "Phone", value: profile.phoneDisplay, href: profile.phoneHref },
-  { label: "Location", value: profile.location, href: null },
-  { label: "Role", value: profile.role, href: null },
+  { label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
+  { label: "Phone", value: PHONE_DISPLAY, href: PHONE_HREF },
+  { label: "Location", value: "Kentucky", href: null },
+  { label: "Role", value: "Site Superintendent", href: null },
   {
     label: "MBA",
-    value: `Candidate · ${profile.mbaSchool} · ${profile.mbaExpected}`,
+    value: "Candidate · Northern Kentucky University · Expected 2026",
     href: null,
   },
 ] as const
@@ -36,8 +39,8 @@ export default function ContactPage() {
             Include the project location, what you need help with, and how you prefer to hear back.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
-            <a href={`mailto:${profile.email}`} className="btn-solid inline-flex min-h-11 items-center rounded px-5 py-3 text-sm font-medium">Email Miles</a>
-            <a href={profile.phoneHref} className="btn-line inline-flex min-h-11 items-center rounded border px-5 py-3 text-sm font-medium">Call {profile.phoneDisplay}</a>
+            <a href={`mailto:${EMAIL}`} className="btn-solid inline-flex min-h-11 items-center rounded px-5 py-3 text-sm font-medium">Email me</a>
+            <a href={PHONE_HREF} className="btn-line inline-flex min-h-11 items-center rounded border px-5 py-3 text-sm font-medium">Call {PHONE_DISPLAY}</a>
           </div>
           <ContactSentNotice />
         </div>
@@ -51,7 +54,7 @@ export default function ContactPage() {
               This form submits your message to FormSubmit for processing. This page cannot confirm email delivery. You can also email or call Miles directly above.
             </p>
             <form
-              action={`https://formsubmit.co/${profile.email}`}
+              action={`https://formsubmit.co/${EMAIL}`}
               method="POST"
               aria-labelledby="send-a-message"
               aria-describedby="contact-form-help"

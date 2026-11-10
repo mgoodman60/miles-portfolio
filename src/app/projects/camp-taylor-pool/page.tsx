@@ -3,7 +3,6 @@ import { CampTaylorGallery } from "@/components/sections/CampTaylorGallery"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 import { ProjectBackLink, ProjectPager } from "@/components/sections/ProjectChrome"
 import { withCanonical } from "@/lib/site"
-import { COPY } from "@/lib/copy-todo"
 import { ResponsivePicture } from "@/components/ui/ResponsivePicture"
 import { timelinePhotos } from "./timeline-photos"
 
@@ -48,29 +47,29 @@ const photos = [
 
 const press = [
   {
-    label: "Louisville Metro — opening announcement",
+    label: "Louisville Metro · opening announcement",
     href: "https://louisvilleky.gov/news/mayor-craig-greenberg-opens-camp-taylor-waterpark-bringing-summer-fun-back-neighborhood",
   },
   {
-    label: "Courier Journal — reopening",
+    label: "Courier Journal · reopening",
     href: "https://www.courier-journal.com/story/news/local/2026/05/19/camp-taylor-pool-reopens-louisville-waterpark/90160539007/",
   },
   {
-    label: "WLKY — reopening",
+    label: "WLKY · reopening",
     href: "https://www.wlky.com/article/louisville-camp-taylor-water-park-years-long-closure-unveil/71351845",
   },
   {
-    label: "WDRB — November 2025 community meeting",
+    label: "WDRB · November 2025 community meeting",
     href: "https://www.wdrb.com/news/community-shares-parking-safety-concerns-for-new-camp-taylor-pool-set-to-open-in-2026/article_14eac5a6-ddba-4f4f-b9fd-34e699f05496.html",
   },
   {
-    label: "WAVE 3 — April 2025 delay to 2026",
+    label: "WAVE 3 · April 2025 delay to 2026",
     href: "https://www.wave3.com/video/2025/04/22/camp-taylor-pool-wont-reopen-till-summer-2026-mayor-greenberg-says/",
   },
 ]
 
 export const metadata = withCanonical("/projects/camp-taylor-pool", {
-  title: "Camp Taylor Memorial Park Pool — Miles Goodman",
+  title: "Camp Taylor Memorial Park Pool | Miles Goodman",
   description:
     "Camp Taylor Memorial Park waterpark in Louisville. $6.2 million ARPA project. Site superintendent: Miles Goodman. Opened to the public May 23, 2026.",
 })
@@ -99,7 +98,7 @@ export default function CampTaylorPage() {
             Camp Taylor Memorial Park Pool
           </h1>
           <p className="text-lg text-[var(--muted)]">
-            $6.2 million ARPA-funded waterpark. Construction was complete in November 2025. The pool opened to the public on May 23, 2026.
+            $6.2 million ARPA-funded waterpark. My employer lists construction complete in November 2025. The pool opened to the public on May 23, 2026.
           </p>
         </div>
       </div>
@@ -112,12 +111,13 @@ export default function CampTaylorPage() {
                 {[
                   ["Project", "Camp Taylor Memorial Park Pool"],
                   ["Owner", "Louisville Metro Parks and Recreation"],
+                  ["General Contractor", "My employer"],
                   ["My Role", "Site Superintendent"],
                   ["Location", "Camp Taylor Park, 4201 Lee Avenue, Louisville, KY"],
                   ["Cost", "$6.2 million (ARPA)"],
-                  ["Construction completion", "November 2025"],
+                  ["Construction completion", "November 2025 (per my employer)"],
                   ["Public opening", "May 23, 2026"],
-                  ["Scope", "New waterpark — ADA zero-depth entry, lap lanes, water slide, children’s play area, shaded seating, and a pool house"],
+                  ["Scope", "New waterpark, ADA zero-depth entry, lap lanes, water slide, children’s play area, shaded seating, and a pool house"],
                 ].map(([label, value]) => (
                   <div key={label} className="border-b pb-4" style={{ borderColor: "var(--border)" }}>
                     <dt className="text-xs uppercase tracking-[0.18em] text-[var(--muted)] mb-1">{label}</dt>
@@ -153,7 +153,7 @@ export default function CampTaylorPage() {
                 Camp Taylor Memorial Park’s pool had been closed since 2019. Louisville replaced it with a new waterpark at 4201 Lee Avenue: an ADA zero-depth entry, lap lanes, a water slide, a children’s play area, shaded seating, and a pool house with restrooms, showers, and lockers. The project was funded with $6.2 million in ARPA money.
               </p>
               <p className="text-base leading-relaxed" style={{ color: "var(--muted)" }}>
-                {COPY.campTaylorRoleContext} The waterpark opened to the public on May 23, 2026. Construction was complete in November 2025.
+                I was the site superintendent for my employer, the general contractor. The city had planned to open for the 2025 season. Severe weather delayed the work, and the waterpark opened to the public on May 23, 2026. My employer lists construction complete in November 2025.
               </p>
             </div>
 
@@ -171,7 +171,7 @@ export default function CampTaylorPage() {
                   {
                     num: "02",
                     title: "A new outdoor waterpark",
-                    body: COPY.campTaylorSourceAttribution,
+                    body: "The finished facility is an outdoor pool, not a renovation of the old basin in place. City descriptions of the opening list the zero-depth entry, lap lanes, slide, play area with a small slide and dump bucket, a water basketball hoop, and a climbing wall. My employer also lists shaded seating and a renovated pool house.",
                   },
                   {
                     num: "03",

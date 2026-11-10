@@ -1,3 +1,5 @@
+import { OSC_TITLE } from "@/lib/projects-copy"
+
 /** Header and footer destinations. Case-study labels match each project page H1. */
 
 export type NavLink = {
@@ -24,8 +26,8 @@ export const constructionProjects: readonly NavLink[] = [
   },
   {
     href: "/projects/one-senior-care",
-    label: "One Senior Care",
-    meta: "Complete",
+    label: OSC_TITLE,
+    meta: "Kentucky",
   },
 ]
 

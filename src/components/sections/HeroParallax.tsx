@@ -21,7 +21,7 @@ export function HeroParallax() {
         <div className="absolute inset-0">
           <Image
             src="/projects/camp-taylor/night-pour-hero.jpg"
-            alt="Night concrete pour — Camp Taylor Memorial Park Pool, Louisville KY"
+            alt="Night concrete pour, Camp Taylor Memorial Park Pool, Louisville KY"
             fill
             priority
             quality={60}
@@ -33,7 +33,7 @@ export function HeroParallax() {
         <motion.div className="absolute inset-0 scale-110" style={{ y }}>
           <Image
             src="/projects/camp-taylor/night-pour-hero.jpg"
-            alt="Night concrete pour — Camp Taylor Memorial Park Pool, Louisville KY"
+            alt="Night concrete pour, Camp Taylor Memorial Park Pool, Louisville KY"
             fill
             priority
             quality={60}

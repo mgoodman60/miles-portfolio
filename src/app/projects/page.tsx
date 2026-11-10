@@ -2,11 +2,11 @@ import Image from "next/image"
 import Link from "next/link"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 import { withCanonical } from "@/lib/site"
-import { COPY } from "@/lib/copy-todo"
+import { OSC_TITLE } from "@/lib/projects-copy"
 
 export const metadata = withCanonical("/projects", {
   title: "Projects — Miles Goodman",
-  description: COPY.projectsDescription,
+  description: "Commercial projects I worked on as a site superintendent in Kentucky.",
 })
 
 type ProjectCard = {
@@ -29,7 +29,7 @@ const projects: ProjectCard[] = [
     location: "Louisville, KY",
     year: "2026",
     cost: "$6.2M",
-    scope: "New waterpark — zero-depth entry, lap lanes, slide, and play area",
+    scope: "New waterpark, zero-depth entry, lap lanes, slide, and play area",
     cover: "/projects/camp-taylor/drone-wide.jpg",
     coverAlt: "Aerial of the finished Camp Taylor Memorial Park waterpark in Louisville",
     tag: "Opened 2026",
@@ -40,7 +40,7 @@ const projects: ProjectCard[] = [
     name: "John W. Black Aquatic Center",
     location: "La Grange, KY",
     year: "2024",
-    scope: "Renovation — lap pool, recreation pool, slide, and mechanical systems",
+    scope: "Renovation, lap pool, recreation pool, slide, and mechanical systems",
     cover: "/projects/john-black/drone-01.jpg",
     coverAlt: "Aerial of the finished John W. Black Aquatic Center in La Grange",
     tag: "Reopened 2024",
@@ -48,12 +48,12 @@ const projects: ProjectCard[] = [
   },
   {
     slug: "one-senior-care",
-    name: "One Senior Care",
+    name: OSC_TITLE,
     location: "Kentucky",
     year: "2026",
-    scope: COPY.oneSeniorCareCardScope,
-    cover: "/projects/one-senior-care/aerial-2026-07-14-overhead.jpg",
-    coverAlt: COPY.oneSeniorCareAerialAlt,
+    scope: "New PACE senior care facility, pre-engineered metal building",
+    cover: "/projects/one-senior-care/facility-interior.jpg",
+    coverAlt: "Painted room with exposed steel and ductwork inside the senior care building",
     tag: "Complete",
     role: "Site Superintendent",
   },
@@ -61,16 +61,18 @@ const projects: ProjectCard[] = [
 
 const contributedProjects = [
   {
+    // Employer lists American Legion Park, Glasgow, at $9M (October 2025), including the pool.
     // The Joyce Driver Aquatic Center name is from the Glasgow council resolution. Role stays punch list.
     name: "American Legion Park",
     location: "Glasgow, KY",
-    scope: "Park and pool redevelopment — punch list and close-out",
+    scope: "Park and pool redevelopment, punch list and close-out",
     value: "$9M",
   },
   {
+    // Owensboro awarded the Cravens Pool renovation to my employer for $1,985,000.
     name: "Cravens Pool",
     location: "Owensboro, KY",
-    scope: "Community pool renovation — punch list and close-out",
+    scope: "Community pool renovation, punch list and close-out",
     value: "~$2M",
   },
 ]
@@ -81,7 +83,7 @@ export default function ProjectsPage() {
       <div className="pt-40 pb-16 px-6 md:px-12" style={{ background: "var(--paper-warm)" }}>
         <div className="mx-auto max-w-[1480px]">
           <SectionEyebrow className="mb-4">
-            Site Superintendent · Kentucky · 2022–Present
+            Site Superintendent · Kentucky · Aug 2023–Present
           </SectionEyebrow>
           <h1 className="serif font-light tracking-tight" style={{ fontSize: "clamp(40px,5.5vw,80px)", color: "var(--ink)" }}>
             Projects

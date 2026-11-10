@@ -3,7 +3,7 @@ import { BlurFade } from "@/components/magicui/blur-fade"
 import { Stat } from "@/components/ui/Stat"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 import { withCanonical } from "@/lib/site"
-import { COPY } from "@/lib/copy-todo"
+import { OSC_TITLE } from "@/lib/projects-copy"
 
 export const metadata = withCanonical("/my-reports", {
   title: "My Reports — Miles Goodman",
@@ -15,13 +15,13 @@ const steps = [
     tag: "iPhone · Photos + notes",
     num: "01",
     title: "Capture on site",
-    body: "Take photos throughout the day. Add a voice note describing what happened — crew count, progress made, weather, issues flagged.",
+    body: "Take photos throughout the day. Add a voice note describing what happened: crew count, progress made, weather, issues flagged.",
   },
   {
     tag: "Claude API · Draft report",
     num: "02",
     title: "AI compiles the report",
-    body: "My Reports sends photos and voice notes to the Claude API. It structures the day into a daily progress report — narrative, photo captions, trade log, weather, and open items.",
+    body: "My Reports sends photos and voice notes to the Claude API. It structures the day into a daily progress report: narrative, photo captions, trade log, weather, and open items.",
   },
   {
     tag: "Review · PDF + email",
@@ -32,7 +32,7 @@ const steps = [
 ]
 
 const stats = [
-  { value: "Site", label: COPY.myReportsOneSeniorCareStat },
+  { value: "Site", label: "Senior care project example" },
   { value: "Photos", label: "Site progress captured" },
   { value: "Notes", label: "Voice context included" },
   { value: "PDF", label: "Report format" },
@@ -65,14 +65,14 @@ export default function MyReportsPage() {
         <div className="mx-auto max-w-[1480px] grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
           <div>
             <SectionEyebrow className="mb-4">
-              My Reports · Daily Reporting · Built by Miles Goodman
+              My Reports · Daily Reporting · Built by me
             </SectionEyebrow>
             <h1 className="serif font-light tracking-tight mb-4" style={{ fontSize: "clamp(32px, 4vw, 56px)", lineHeight: 1.08, color: "var(--ink)" }}>
               From field notes<br />
               <em className="font-light" style={{ color: "var(--accent)", fontStyle: "italic" }}>to progress reports.</em>
             </h1>
             <p className="text-base leading-relaxed mb-6" style={{ color: "var(--muted)" }}>
-              My Reports turns site photos and voice notes into structured daily progress reports. {COPY.myReportsOneSeniorCareReference}
+              My Reports turns site photos and voice notes into structured daily progress reports. The {OSC_TITLE} case study shows the construction context behind it.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
@@ -86,7 +86,7 @@ export default function MyReportsPage() {
                 className="inline-flex min-h-11 items-center rounded border px-6 py-3.5 text-sm font-medium hover:bg-black/5"
                 style={{ borderColor: "var(--border)", color: "var(--ink)" }}
               >
-                View One Senior Care →
+                View {OSC_TITLE} →
               </Link>
             </div>
           </div>

@@ -6,11 +6,11 @@ import { BlurFade } from "@/components/magicui/blur-fade"
 import { Stat } from "@/components/ui/Stat"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 import { withCanonical } from "@/lib/site"
-import { COPY } from "@/lib/copy-todo"
+import { OSC_TITLE } from "@/lib/projects-copy"
 
 export const metadata = withCanonical("/", {
   title: "Miles Goodman | Construction & field reporting",
-  description: COPY.homeDescription,
+  description: "Construction experience and field tools by Miles Goodman, a site superintendent in Kentucky and an MBA candidate at Northern Kentucky University.",
 })
 
 const stats = [
@@ -25,7 +25,7 @@ const projects = [
     location: "Louisville, KY",
     year: "2026",
     cost: "$6.2M",
-    scope: "New waterpark — zero-depth entry, lap lanes, slide, and play area",
+    scope: "New waterpark, zero-depth entry, lap lanes, slide, and play area",
     cover: "/projects/camp-taylor/drone-wide.jpg",
     tag: "Opened 2026",
   },
@@ -34,17 +34,17 @@ const projects = [
     name: "John W. Black Aquatic Center",
     location: "La Grange, KY",
     year: "2024",
-    scope: "Renovation — lap pool, recreation pool, slide, and mechanical systems",
+    scope: "Renovation, lap pool, recreation pool, slide, and mechanical systems",
     cover: "/projects/john-black/drone-01.jpg",
     tag: "Reopened 2024",
   },
   {
     slug: "one-senior-care",
-    name: "One Senior Care",
+    name: OSC_TITLE,
     location: "Kentucky",
     year: "2026",
-    scope: COPY.oneSeniorCareCardScope,
-    cover: "/projects/one-senior-care/aerial-2026-07-14-overhead.jpg",
+    scope: "New PACE senior care facility, pre-engineered metal building",
+    cover: "/projects/one-senior-care/facility-interior.jpg",
     tag: "Complete",
   },
 ]
@@ -52,15 +52,15 @@ const projects = [
 const pressItems: { label: string; href?: string }[] = [
   { label: "WDRB - Fox Louisville (coverage archive)" },
   {
-    label: "WAVE 3 — Camp Taylor reopening timeline (2025)",
+    label: "WAVE 3 · Camp Taylor reopening timeline (2025)",
     href: "https://www.wave3.com/video/2025/04/22/camp-taylor-pool-wont-reopen-till-summer-2026-mayor-greenberg-says/",
   },
   {
-    label: "Glasgow News 1 — American Legion project update (2025)",
+    label: "Glasgow News 1 · American Legion project update (2025)",
     href: "https://glasgownews1.com/2025/02/04/american-legion-overhaul-progresses/",
   },
   {
-    label: "Owensboro Times — Cravens Pool construction delays (2024)",
+    label: "Owensboro Times · Cravens Pool construction delays (2024)",
     href: "https://www.owensborotimes.com/news/2024/05/cravens-pool-not-opening-next-weekend-due-to-construction-delays/",
   },
 ]
@@ -76,7 +76,7 @@ export default function Home() {
         <h2 id="home-stats" className="sr-only">
           Experience
         </h2>
-        <div className="mx-auto grid max-w-[1480px] grid-cols-1 gap-8 md:grid-cols-3 md:gap-8">
+        <div className="mx-auto grid max-w-[1480px] grid-cols-1 gap-8 md:grid-cols-2 md:gap-8">
           {stats.map(({ value, label }) => (
             <Stat
               key={label}
@@ -89,7 +89,7 @@ export default function Home() {
             />
           ))}
         </div>
-        <p className="mx-auto mt-6 max-w-[1480px] text-center text-xs text-white md:text-left">{COPY.homeStatNote}</p>
+        <p className="mx-auto mt-6 max-w-[1480px] text-center text-xs text-white md:text-left">My construction experience as a site superintendent through 2026.</p>
       </section>
 
       {/* ── Featured Projects ─────────────────────────── */}
@@ -101,7 +101,7 @@ export default function Home() {
               className="serif font-light tracking-tight text-[var(--ink)]"
               style={{ fontSize: "clamp(28px, 3.6vw, 44px)" }}
             >
-              Miles’s construction experience
+              My construction experience
             </h2>
             <Link
               href="/projects"
@@ -112,7 +112,7 @@ export default function Home() {
           </div>
 
           <p className="max-w-3xl text-sm leading-relaxed text-[var(--muted)] mb-8">
-            {COPY.homeFeaturedProjects}
+            Projects I worked on as a site superintendent in Kentucky. Each case study covers the job and my role on it.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {projects.map((p) => (
@@ -150,11 +150,10 @@ export default function Home() {
               className="serif font-light leading-snug tracking-tight mb-6"
               style={{ fontSize: "clamp(28px,3.6vw,44px)", color: "var(--ink)" }}
             >
-              {COPY.homeAboutHeading}
+              About me
             </h2>
             <p className="text-base leading-relaxed mb-8" style={{ color: "var(--muted)" }}>
-              {COPY.homeDescription}{" "}
-              <Link href="/projects/one-senior-care" className="font-medium text-[var(--ink)] underline underline-offset-4">One Senior Care</Link>{" "}
+              I manage commercial construction in Kentucky: aquatic facilities, senior care and concrete self-perform. I build AI field tools on the same jobs I run. <Link href="/projects/one-senior-care" className="font-medium text-[var(--ink)] underline underline-offset-4">{OSC_TITLE}</Link> is complete. {" "}
               <Link href="/my-reports" className="font-medium text-[var(--ink)] underline underline-offset-4">
                 My Reports
               </Link>{" "}
@@ -184,7 +183,7 @@ export default function Home() {
       >
         <div className="mx-auto max-w-[1480px]">
           <h2 id="press-heading" className="mb-6 text-center text-xs uppercase tracking-[0.18em] text-[var(--muted)]">
-            Coverage of projects Miles worked on
+            Coverage of projects I worked on
           </h2>
           <ul className="flex flex-wrap justify-center gap-3">
             {pressItems.map((item) => {

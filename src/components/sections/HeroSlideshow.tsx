@@ -4,12 +4,12 @@ import { useEffect, useRef, useState, type ReactNode } from "react"
 import { ResponsivePicture } from "@/components/ui/ResponsivePicture"
 import Link from "next/link"
 import { useMotionPreference } from "@/lib/use-motion-preference"
-import { COPY } from "@/lib/copy-todo"
+import { OSC_TITLE } from "@/lib/projects-copy"
 
 const slides = [
   {
     src: "/projects/camp-taylor/night-pour-hero.jpg",
-    alt: "Night concrete pour — Camp Taylor Memorial Park Pool, Louisville KY",
+    alt: "Night concrete pour, Camp Taylor Memorial Park Pool, Louisville KY",
     caption: "Camp Taylor Memorial Park Pool · Louisville, KY",
   },
   {
@@ -23,9 +23,9 @@ const slides = [
     caption: "John W. Black Aquatic Center · La Grange, KY",
   },
   {
-    src: "/projects/one-senior-care/aerial-2026-07-14-overhead.jpg",
-    alt: "Overhead aerial of the enclosed One Senior Care building",
-    caption: "One Senior Care — Complete",
+    src: "/projects/one-senior-care/facility-interior.jpg",
+    alt: "Painted room with exposed steel and ductwork inside the senior care building",
+    caption: `${OSC_TITLE} · Complete`,
   },
 ]
 
@@ -138,7 +138,7 @@ export function HeroSlideshow({ identity = "personal", children }: { identity?: 
             </h1>
 
             <p className="hero-rise hero-rise-3 mb-7 max-w-xl text-base leading-relaxed text-white md:text-lg">
-              {isBusiness ? "For small businesses and construction teams exploring better ways to handle paperwork, reporting and project coordination." : COPY.heroConstructionIntro}
+              {isBusiness ? "For small businesses and construction teams exploring better ways to handle paperwork, reporting and project coordination." : "I manage commercial construction in Kentucky: aquatic facilities, senior care and concrete self-perform."}
             </p>
             <div className="hero-rise hero-rise-3 flex flex-wrap gap-4">
               <Link href={isBusiness ? "/contact" : "/projects"} className="hero-primary btn-solid inline-flex min-h-11 items-center px-6 py-3 text-sm font-medium rounded transition-colors">
@@ -204,7 +204,7 @@ export function HeroSlideshow({ identity = "personal", children }: { identity?: 
               className="min-w-0 max-w-full text-xs text-white tracking-wide rounded px-2.5 py-1 sm:text-right"
               style={{ background: "var(--band)" }}
             >
-              {slides[current].caption} · {COPY.heroFieldWorkCaption}
+              {slides[current].caption} · My field work as a site superintendent
             </p>
           </div>
         </div>

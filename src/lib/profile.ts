@@ -1,33 +1,37 @@
-import { COPY } from "@/lib/copy-todo"
-
-/**
- * Public-safe facts used outside the resume route.
- * Resume-only employer and undergraduate-school facts live beside the resume page.
- */
+import { OSC_TITLE } from "@/lib/projects-copy"
 
 export const profile = {
   name: "Miles Goodman",
   role: "Site Superintendent",
-  location: "Central Kentucky",
+  company: "W Principles, LLC",
+  location: "Mount Sterling, KY",
   email: "msgoodman1997@gmail.com",
   phoneDisplay: "(606) 226-5231",
   phoneHref: "tel:+16062265231",
   mbaSchool: "Northern Kentucky University",
   mbaProgram: "Project Management & AI",
   mbaExpected: "Expected 2026",
+  bsSchool: "Morehead State University",
+  bsDegree: "BS, Engineering Technology Management",
+  bsYear: "2022",
   ctm: "Certified Technology Manager (CTM)",
+  realtorOrg: "Keller Williams / National Real Estate",
+  realtorTitle: "Realtor",
+  realtorDates: "Oct 2021 to Dec 2025",
+  realtorHighlight: "Top 5% nationwide producer, 2022",
 } as const
 
 export const fieldProjects = [
   {
     href: "/projects/one-senior-care",
-    name: "One Senior Care",
-    timeline: "One Senior Care — Complete",
+    name: "One Senior Care - Morehead, KY",
+    timeline: `${OSC_TITLE} · Complete`,
     year: "2026",
-    timelineDetail: COPY.oneSeniorCareRole,
+    timelineDetail: "Site Superintendent · PACE senior care facility",
     when: "Completed Aug 2026",
     points: [
-      COPY.oneSeniorCareSummary,
+      "$3M PACE facility · 10,060 SF PEMB",
+      "Concrete self-perform under Walker Company of Kentucky",
     ],
   },
   {
@@ -40,7 +44,7 @@ export const fieldProjects = [
     points: [
       "$6.2M ARPA-funded waterpark",
       "Zero-depth entry, lap lanes, slide, and play area",
-      "Construction complete November 2025",
+      "W Principles lists construction complete in November 2025",
     ],
   },
   {

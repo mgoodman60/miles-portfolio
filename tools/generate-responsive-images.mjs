@@ -7,7 +7,7 @@ const root = path.resolve(import.meta.dirname, "..")
 const camp = path.join(root, "public/projects/camp-taylor")
 const extra = [
   path.join(root, "public/projects/john-black/drone-01.jpg"),
-  path.join(root, "public/projects/one-senior-care/aerial-2026-07-14-overhead.jpg"),
+  path.join(root, "public/projects/one-senior-care/facility-interior.jpg"),
 ]
 const widths = [640, 1080, 1600]
 const campFiles = (await fs.readdir(camp)).filter((file) => /\.jpe?g$/i.test(file)).map((file) => path.join(camp, file))
