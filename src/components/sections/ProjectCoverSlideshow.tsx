@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { ResponsivePicture } from "@/components/ui/ResponsivePicture"
+import { useAfterLoad } from "@/lib/use-after-load"
 
 type Slide = { src: string; alt: string; width?: number; height?: number; caption?: string }
 
@@ -21,6 +22,7 @@ export function ProjectCoverSlideshow({
   children?: React.ReactNode
 }) {
   const [current, setCurrent] = useState(0)
+  const restReady = useAfterLoad()
   const [userPaused, setUserPaused] = useState(false)
   const [holdPaused, setHoldPaused] = useState(false)
   const [cycle, setCycle] = useState(0)
@@ -75,7 +77,7 @@ export function ProjectCoverSlideshow({
           style={{ opacity: i === current ? 1 : 0, zIndex: i === current ? 1 : 0 }}
           aria-hidden={i !== current}
         >
-          <ResponsivePicture
+          {(i === 0 || restReady || i === current) && <ResponsivePicture
             src={slide.src}
             alt={slide.alt}
             width={slide.width ?? 1920}
@@ -84,7 +86,7 @@ export function ProjectCoverSlideshow({
             responsive
             className="absolute inset-0 h-full w-full object-cover object-center"
             sizes="100vw"
-          />
+          />}
         </div>
       ))}
 

@@ -1,4 +1,3 @@
-import Image from "next/image"
 import Link from "next/link"
 import { PersonalHero } from "@/components/sections/PersonalHero"
 import { ProjectCard3D } from "@/components/sections/ProjectCard3D"
@@ -119,7 +118,7 @@ export default function Home() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {projects.map((p) => (
-              <BlurFade key={p.slug} inView delay={projects.indexOf(p) * 0.12}><ProjectCard3D project={p} priority={projects.indexOf(p) === 0} /></BlurFade>
+              <BlurFade key={p.slug} inView delay={projects.indexOf(p) * 0.12}><ProjectCard3D project={p} /></BlurFade>
             ))}
           </div>
         </div>
@@ -163,19 +162,7 @@ export default function Home() {
         className="personal-section border-t px-6 md:px-12"
         style={{ borderColor: "var(--border)" }}
       >
-        <div className="mx-auto max-w-[1480px] grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <div
-            className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded order-last md:order-first md:mx-0"
-            style={{ aspectRatio: "3/4" }}
-          >
-            <Image
-              src="/headshot.jpg"
-              alt="Miles Goodman"
-              fill
-              className="object-cover object-center"
-              sizes="(max-width:768px) 100vw, 420px"
-            />
-          </div>
+        <div className="mx-auto max-w-3xl text-center">
           <div>
             <SectionEyebrow size="section" className="mb-5">
               Site Superintendent · Kentucky
@@ -194,7 +181,7 @@ export default function Home() {
               </Link>{" "}
               shows how site photos and voice notes become structured progress reports.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap justify-center gap-4">
               <Link href="/about" className="btn-solid inline-flex min-h-11 items-center px-5 py-3 text-sm font-medium rounded transition-colors">
                 About me
               </Link>

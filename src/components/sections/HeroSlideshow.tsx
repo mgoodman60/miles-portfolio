@@ -5,6 +5,7 @@ import { ResponsivePicture } from "@/components/ui/ResponsivePicture"
 import Link from "next/link"
 import { useMotionPreference } from "@/lib/use-motion-preference"
 import { OSC_TITLE } from "@/lib/projects-copy"
+import { useAfterLoad } from "@/lib/use-after-load"
 
 const slides = [
   {
@@ -32,6 +33,8 @@ const slides = [
 export function HeroSlideshow({ identity = "personal", children }: { identity?: "personal" | "business"; children?: ReactNode }) {
   const isBusiness = identity === "business"
   const [current, setCurrent] = useState(0)
+  // Only the first slide is in the server HTML. The rest mount after window load so they don't compete with the first paint.
+  const restReady = useAfterLoad()
   const [userPaused, setUserPaused] = useState(false)
   const [hovered, setHovered] = useState(false)
   const [focused, setFocused] = useState(false)
@@ -85,7 +88,7 @@ export function HeroSlideshow({ identity = "personal", children }: { identity?: 
           aria-hidden={i !== current}
           data-active={i === current}
         >
-          <ResponsivePicture
+          {(i === 0 || restReady || i === current) && <ResponsivePicture
             src={slide.src}
             alt={slide.alt}
             width={1920}
@@ -94,7 +97,7 @@ export function HeroSlideshow({ identity = "personal", children }: { identity?: 
             responsive
             className="hero-photo absolute inset-0 h-full w-full object-cover object-center"
             sizes="100vw"
-          />
+          />}
         </div>
       ))}
 
