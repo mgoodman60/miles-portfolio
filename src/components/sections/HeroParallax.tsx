@@ -1,9 +1,9 @@
 "use client"
 
 import { useRef } from "react"
-import Image from "next/image"
 import Link from "next/link"
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
+import { ResponsivePicture } from "@/components/ui/ResponsivePicture"
 
 export function HeroParallax() {
   const ref = useRef<HTMLDivElement>(null)
@@ -19,25 +19,27 @@ export function HeroParallax() {
     >
       {prefersReduced ? (
         <div className="absolute inset-0">
-          <Image
+          <ResponsivePicture
             src="/projects/camp-taylor/night-pour-hero.jpg"
-            alt="Night concrete pour — Camp Taylor Memorial Park Pool, Louisville KY"
-            fill
+            alt="Night concrete pour, Camp Taylor Memorial Park Pool, Louisville KY"
+            width={1920}
+            height={1080}
             priority
-            quality={60}
-            className="object-cover object-center"
+            responsive
+            className="absolute inset-0 h-full w-full object-cover object-center"
             sizes="100vw"
           />
         </div>
       ) : (
         <motion.div className="absolute inset-0 scale-110" style={{ y }}>
-          <Image
+          <ResponsivePicture
             src="/projects/camp-taylor/night-pour-hero.jpg"
-            alt="Night concrete pour — Camp Taylor Memorial Park Pool, Louisville KY"
-            fill
+            alt="Night concrete pour, Camp Taylor Memorial Park Pool, Louisville KY"
+            width={1920}
+            height={1080}
             priority
-            quality={60}
-            className="object-cover object-center"
+            responsive
+            className="absolute inset-0 h-full w-full object-cover object-center"
             sizes="100vw"
           />
         </motion.div>
@@ -83,7 +85,7 @@ export function HeroParallax() {
         className="absolute bottom-4 left-6 md:left-12 text-xs text-white tracking-wide rounded px-2.5 py-1"
         style={{ background: "rgba(12,16,22,0.8)" }}
       >
-        Camp Taylor Memorial Park Pool · Louisville, KY · W Principles, LLC
+        Camp Taylor Memorial Park Pool · Louisville, KY
       </p>
     </section>
   )

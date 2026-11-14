@@ -1,9 +1,9 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import Image from "next/image"
+import { ResponsivePicture } from "@/components/ui/ResponsivePicture"
 
-type Slide = { src: string; alt: string; caption?: string }
+type Slide = { src: string; alt: string; width?: number; height?: number; caption?: string }
 
 export function ProjectCoverSlideshow({
   slides,
@@ -75,13 +75,14 @@ export function ProjectCoverSlideshow({
           style={{ opacity: i === current ? 1 : 0, zIndex: i === current ? 1 : 0 }}
           aria-hidden={i !== current}
         >
-          <Image
+          <ResponsivePicture
             src={slide.src}
             alt={slide.alt}
-            fill
+            width={slide.width ?? 1920}
+            height={slide.height ?? 1080}
             priority={i === 0}
-            quality={i === 0 ? 60 : 75}
-            className="object-cover object-center"
+            responsive
+            className="absolute inset-0 h-full w-full object-cover object-center"
             sizes="100vw"
           />
         </div>

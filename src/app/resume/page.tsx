@@ -4,7 +4,7 @@ import { fieldProjects, profile } from "@/lib/profile"
 import { withCanonical } from "@/lib/site"
 
 export const metadata = withCanonical("/resume", {
-  title: "Resume — Miles Goodman",
+  title: "Resume | Miles Goodman",
   description:
     "Site Superintendent at W Principles, LLC. BS, Engineering Technology Management, Morehead State. MBA candidate at Northern Kentucky University.",
 })
@@ -49,7 +49,7 @@ export default function ResumePage() {
             <a
               href="/Miles_Goodman_Resume.pdf"
               download
-              className="inline-flex min-h-11 items-center gap-2 self-start px-5 py-3 bg-[var(--ink)] text-[var(--paper)] text-sm font-medium rounded hover:bg-[var(--accent)] transition-colors md:self-auto"
+              className="btn-solid inline-flex min-h-11 items-center gap-2 self-start rounded px-5 py-3 text-sm font-medium transition-colors md:self-auto"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
