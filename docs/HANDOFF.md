@@ -4,6 +4,18 @@ Branch `feat/milestone-rebrand-portfolio` from `28e84ce` (master). Preview only;
 PRD: docs/prd/personal-site-rebrand-portfolio.md · Plan: docs/plans/personal-site-rebrand-portfolio.md
 Scope this run: plan steps 3-7 in full plus the mechanical parts of step 2. Copywriter copy applied in commit 4 (source: /workspace/milestone/copy/personal-site-2026-11-10/).
 
+## Run locally
+
+- **Node:** the repo doesn't pin a version. There's no `.nvmrc`, no `.node-version`, no `engines` field in `package.json`, and no CI config. Next.js 16.2.4 requires Node `>=20.9.0` (its own `engines` field). These steps were checked with Node v24.22.1 and npm 11.21.1 on 2026-11-14.
+- **Package manager:** npm, with `package-lock.json` as the lockfile. Use `npm ci`, not yarn/pnpm/bun.
+- **Install:** `npm ci`
+- **Dev server:** `npm run dev` (http://localhost:3000)
+- **Type check:** `npx tsc --noEmit`
+- **Build:** `npm run build` (static export to `out/`, because `next.config.ts` sets `output: "export"`). The build fetches Inter and Fraunces from Google Fonts, so it needs network access.
+- **Name-rule check:** `tools/check-names.sh out` (run it before every push)
+- **Preview the built site:** `npx serve@14 out` (serves clean URLs, e.g. `/projects`, at http://localhost:3000). `npm start` won't work with a static export. Cloudflare-only files in `out/` (`_redirects`, `_headers`) aren't applied by `serve`, so check the old-slug 301 on the CF preview instead.
+- **Env vars (names only):** `NEXT_PUBLIC_SITE_URL` (optional; read in `src/lib/site.ts`; it falls back to the production origin built into the code). There's no `.env`, `.env.example` or other `process.env` use in `src/`, `tools/` or `next.config.ts`. You don't need any env vars to run locally.
+
 ## Log (newest last)
 - **Commit 1** — PRD and plan copied into docs/. Added `tools/check-names.sh` (name-rule guard for `out/`).
   Baseline on 28e84ce: `check-names.sh out` = FAIL (51 files with resume-only terms outside /resume, 9 with banned terms incl. "Walker Company" on /resume, 30 banned paths).
@@ -23,3 +35,4 @@ Scope this run: plan steps 3-7 in full plus the mechanical parts of step 2. Copy
 - **Commit 8 (84c5e49), operator tweak (no Codex)** — Fraunces loads only the `opsz` axis. `SOFT` and `WONK` were requested but never set anywhere in CSS, so text renders at their defaults either way; the preloaded Fraunces woff2 drops from 121 KB to 67 KB. Camp Taylor Perf was 94 (3 runs) on ad7c616.
 - **Commit 9, operator copy pass (no Codex)** — Remaining third-person "Miles" in body text made first person (Contact intro and form note, contact-sent notice, hero "Contact me" link, hero slideshow aria-label). Page titles "X — Miles Goodman" changed to "X | Miles Goodman" (dash rule). Meta descriptions and credits that use the full name as the brand are unchanged. "Aug 2023–Present" stays as Miles specified.
 - **Commit 10, operator edit (no Codex)** — Miles's call (via Grok): the One Senior Care resume bullet in `src/lib/profile.ts` changed from "Concrete self-perform under Walker Company of Kentucky" to "Concrete self-perform", and "$3M PACE facility · 10,060 SF PEMB" to "PACE facility · 10,060 SF PEMB" (Miles: "Remove Walker Company and $3M from the resume"). Walker was the last `check-names.sh` failure (Walker Company on /resume), so the guard now passes.
+- **Commit 11** — Added a "Run locally" section here and in README.md (Node/npm, install, dev, build, serve `out/`, env var names). No site code changed.
