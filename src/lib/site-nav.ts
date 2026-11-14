@@ -48,6 +48,7 @@ export const aboutLinks: readonly NavLink[] = [
 export const personalLinks: readonly NavLink[] = [
   { href: "/projects", label: "Construction" },
   { href: "/portfolio", label: "Portfolio" },
+  { href: "/renderings", label: "Renderings" },
   { href: "/ai-tools", label: "AI & reporting" },
   { href: "/about", label: "About" },
   { href: "/resume", label: "Resume" },
@@ -60,6 +61,7 @@ export const footerGroups: readonly { label: string; links: readonly NavLink[] }
     { href: "/ai-tools", label: "AI & reporting" },
     { href: "/my-reports", label: "My Reports" },
     { href: "/portfolio", label: "Portfolio" },
+    { href: "/renderings", label: "Architectural Renderings" },
   ] },
   { label: "Miles", links: [
     { href: "/about", label: "About" },
