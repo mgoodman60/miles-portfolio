@@ -81,7 +81,7 @@ export function RenderingsGallery({ title, items, eagerFirst = false }: { title:
           startX.current = null
           if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1)
         }}
-        className="m-0 h-full max-h-none w-full max-w-none bg-[rgba(12,16,22,0.96)] p-0 text-white backdrop:bg-black/70"
+        className="m-0 h-full max-h-none w-full max-w-none bg-[#0c1016] p-0 text-white backdrop:bg-black"
         style={{ touchAction: "pan-y" }}
       >
         {item && (
