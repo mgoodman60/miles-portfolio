@@ -4,9 +4,10 @@ import { BlurFade } from "@/components/magicui/blur-fade"
 import { Stat } from "@/components/ui/Stat"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 import { withCanonical } from "@/lib/site"
+import { OSC_TITLE } from "@/lib/projects-copy"
 
 export const metadata = withCanonical("/ai-tools", {
-  title: "AI Tools — Miles Goodman",
+  title: "AI Tools | Miles Goodman",
   description: "AI field tools and workflows built by Miles Goodman for reporting, plan review and document work.",
 })
 
@@ -28,7 +29,7 @@ const tools: Tool[] = [
     num: "01",
     tag: "My Reports · Daily Reporting",
     title: "Site photos → owner-ready reports",
-    body: "I built My Reports on the Claude API to turn site photos and voice notes into structured progress reports. The Morehead case study shows the field context behind this reporting workflow.",
+    body: `I built My Reports on the Claude API to turn site photos and voice notes into structured progress reports. The ${OSC_TITLE} case study shows the field context behind it.`,
     stat: "Photos + notes",
     statLabel: "Structured progress reports",
     link: "/my-reports",
@@ -41,7 +42,7 @@ const tools: Tool[] = [
     title: "Plan review and concrete quantity takeoffs",
     body: "This workflow uses a PDF plan set and a defined concrete scope to draft a takeoff for comparison with manual calculations. Footings, slabs, walls and pool shells are examples of the scope being reviewed.",
     stat: "MBA Focus",
-    statLabel: "Project Management & AI — NKU",
+    statLabel: "Project Management & AI, NKU",
     link: "/about",
     linkLabel: "About my MBA work",
   },
@@ -49,7 +50,7 @@ const tools: Tool[] = [
     num: "03",
     tag: "Claude API · Submittals",
     title: "Submittal tracking and shop drawing review",
-    body: "A superintendent manages dozens of active submittals — materials, shop drawings, product data. I use Claude to organize submittal packages, identify missing items, and draft transmittal summaries. Keeps the review log moving without losing track of what's sitting with the engineer or architect.",
+    body: "A superintendent manages dozens of active submittals: materials, shop drawings, product data. I use Claude to organize submittal packages, identify missing items, and draft transmittal summaries. Keeps the review log moving without losing track of what's sitting with the engineer or architect.",
     stat: "Submittal log",
     statLabel: "Shop drawings and product data",
     link: "/contact",
@@ -75,7 +76,7 @@ export default function AIToolsPage() {
         <div className="mx-auto max-w-[1480px] grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
           <div>
             <SectionEyebrow className="mb-4">
-              MBA Candidate — Project Management &amp; AI · Northern Kentucky University
+              MBA Candidate · Project Management &amp; AI · Northern Kentucky University
             </SectionEyebrow>
             <h1 className="serif font-light tracking-tight mb-5" style={{ fontSize: "clamp(32px, 4vw, 56px)", lineHeight: 1.12, color: "var(--ink)" }}>
               AI doesn&rsquo;t replace field judgment.{" "}
@@ -94,8 +95,7 @@ export default function AIToolsPage() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/my-reports"
-                className="inline-flex min-h-11 items-center rounded px-6 py-3 text-sm font-medium"
-                style={{ background: "var(--ink)", color: "var(--paper)" }}
+                className="btn-solid inline-flex min-h-11 items-center rounded px-6 py-3 text-sm font-medium"
               >
                 See My Reports
               </Link>
@@ -120,7 +120,7 @@ export default function AIToolsPage() {
               />
             </div>
             <figcaption className="mt-3 text-sm" style={{ color: "var(--muted)" }}>
-              Camp Taylor Memorial Park Pool, Louisville — night concrete pour.
+              Camp Taylor Memorial Park Pool, Louisville, night concrete pour.
             </figcaption>
           </figure>
         </div>
@@ -193,12 +193,11 @@ export default function AIToolsPage() {
             Interested in how this works in the field?
           </h2>
           <p className="text-base mb-8" style={{ color: "var(--muted)" }}>
-            If you&rsquo;re building something in this space or want to talk through how AI applies to field ops — reach out.
+            If you&rsquo;re building something in this space or want to talk through how AI applies to field ops, reach out.
           </p>
           <Link
             href="/contact"
-            className="inline-flex min-h-11 items-center rounded px-8 py-4 text-sm font-medium"
-            style={{ background: "var(--ink)", color: "var(--paper)" }}
+            className="btn-solid inline-flex min-h-11 items-center rounded px-8 py-4 text-sm font-medium"
           >
             Contact
           </Link>

@@ -1,8 +1,4 @@
-/**
- * Facts for About, Resume, and Contact.
- * Education, dates, the firm name, and the Top 5% line match public/Miles_Goodman_Resume.pdf.
- * Job-search lines from that file (relocation) stay off the site.
- */
+import { OSC_TITLE } from "@/lib/projects-copy"
 
 export const profile = {
   name: "Miles Goodman",
@@ -21,21 +17,21 @@ export const profile = {
   ctm: "Certified Technology Manager (CTM)",
   realtorOrg: "Keller Williams / National Real Estate",
   realtorTitle: "Realtor",
-  realtorDates: "Oct 2021 – Nov 2025",
+  realtorDates: "Oct 2021 to Dec 2025",
   realtorHighlight: "Top 5% nationwide producer, 2022",
 } as const
 
 export const fieldProjects = [
   {
-    href: "/projects/one-senior-care-morehead",
+    href: "/projects/one-senior-care",
     name: "One Senior Care - Morehead, KY",
-    timeline: "One Senior Care - Morehead — Complete",
+    timeline: `${OSC_TITLE} · Complete`,
     year: "2026",
-    timelineDetail: "Site Superintendent · $3M PACE facility",
+    timelineDetail: "Site Superintendent · PACE senior care facility",
     when: "Completed Aug 2026",
     points: [
-      "$3M PACE facility · 10,060 SF PEMB",
-      "Concrete self-perform under Walker Company of Kentucky",
+      "PACE facility · 10,060 SF PEMB",
+      "Concrete self-perform",
     ],
   },
   {

@@ -2,7 +2,7 @@
 
 import { Suspense, useEffect, useRef } from "react"
 import { useSearchParams } from "next/navigation"
-import { profile } from "@/lib/profile"
+const EMAIL = "msgoodman1997@gmail.com"
 
 function Notice() {
   const sent = useSearchParams().get("sent") === "true"
@@ -23,7 +23,7 @@ function Notice() {
       style={{ background: "var(--paper)", borderColor: "var(--border)", color: "var(--ink)" }}
     >
       This page cannot confirm email delivery. If you submitted a message and need to follow up,{" "}
-      <a href={`mailto:${profile.email}`} className="underline underline-offset-4">email Miles directly</a>.
+      <a href={`mailto:${EMAIL}`} className="underline underline-offset-4">email me directly</a>.
     </p>
   )
 }

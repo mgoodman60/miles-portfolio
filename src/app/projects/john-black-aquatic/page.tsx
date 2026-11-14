@@ -1,9 +1,10 @@
-import Image from "next/image"
 import Link from "next/link"
 import { CampTaylorGallery } from "@/components/sections/CampTaylorGallery"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 import { ProjectBackLink, ProjectPager } from "@/components/sections/ProjectChrome"
 import { withCanonical } from "@/lib/site"
+import { OSC_TITLE } from "@/lib/projects-copy"
+import { ResponsivePicture } from "@/components/ui/ResponsivePicture"
 
 const photos = [
   {
@@ -69,22 +70,22 @@ const photos = [
 ].map((photo) => ({ ...photo, width: 1920, height: 1080 }))
 
 export const metadata = withCanonical("/projects/john-black-aquatic", {
-  title: "John W. Black Aquatic Center — Miles Goodman",
-  description:
-    "Renovation of the John W. Black Aquatic Center at Wendell Moore Park in La Grange, Kentucky. Reopened May 25, 2024. Site superintendent: Miles Goodman, W Principles.",
+  title: "John W. Black Aquatic Center | Miles Goodman",
+  description: "Renovation of the John W. Black Aquatic Center at Wendell Moore Park in La Grange, Kentucky. Reopened May 25, 2024. Site superintendent: Miles Goodman.",
 })
 
 export default function JohnBlackPage() {
   return (
     <>
       <div className="relative mt-20 overflow-hidden" style={{ height: "60svh", minHeight: 400 }}>
-        <Image
+        <ResponsivePicture
           src="/projects/john-black/drone-01.jpg"
           alt="Wide aerial of the finished John W. Black Aquatic Center"
-          fill
+          width={1920}
+          height={1080}
           priority
-          quality={60}
-          className="object-cover object-center"
+          responsive
+          className="absolute inset-0 h-full w-full object-cover object-center"
           sizes="100vw"
         />
       </div>
@@ -111,11 +112,11 @@ export default function JohnBlackPage() {
                   ["Project", "John W. Black Aquatic Center"],
                   ["Park", "Wendell Moore Park"],
                   ["Owner", "Oldham County Parks and Recreation"],
-                  ["General Contractor", "W Principles, LLC"],
+                  ["General Contractor", "My employer"],
                   ["My Role", "Site Superintendent"],
                   ["Location", "1551 N. Highway 393, La Grange, KY"],
                   ["Reopened", "May 25, 2024"],
-                  ["Scope", "Renovation after a 2022 closure — lap pool and recreation pool, water slide, splash pad, climbing wall, deck, locker rooms, and mechanical and piping work"],
+                  ["Scope", "Renovation after a 2022 closure, lap pool and recreation pool, water slide, splash pad, climbing wall, deck, locker rooms, and mechanical and piping work"],
                 ].map(([label, value]) => (
                   <div key={label} className="border-b pb-4" style={{ borderColor: "var(--border)" }}>
                     <dt className="text-xs uppercase tracking-[0.18em] text-[var(--muted)] mb-1">{label}</dt>
@@ -132,7 +133,7 @@ export default function JohnBlackPage() {
                 The John W. Black Aquatic Center at Wendell Moore Park closed in 2022 after structural and mechanical problems. Oldham County reopened it on May 25, 2024, the Saturday before Memorial Day weekend.
               </p>
               <p className="text-base leading-relaxed" style={{ color: "var(--muted)" }}>
-                I was the site superintendent for W Principles, LLC. Published descriptions of the renovation include two pools — one for laps and one for recreation — plus a water slide, splash pad, climbing wall, new deck, updated locker rooms, and new piping and mechanical systems. W Principles also lists diving boards. The photos below are aerials of the finished center. This set does not include a before view.
+                I was the site superintendent for my employer, the general contractor. Published descriptions of the renovation include two pools (one for laps and one for recreation) plus a water slide, splash pad, climbing wall, new deck, updated locker rooms, and new piping and mechanical systems. My employer also lists diving boards. The photos below are aerials of the finished center. This set does not include a before view.
               </p>
             </div>
 
@@ -149,7 +150,7 @@ export default function JohnBlackPage() {
                     Closed in 2022, open again in May 2024
                   </h3>
                   <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
-                    WDRB reported that the center reopened briefly in 2021, closed again in 2022, and was expected back for Memorial Day weekend 2024. WLKY covered the grand reopening on Saturday, May 25. W Principles lists completion in May 2024.
+                    County coverage describes the reopening after a 2022 closure. My employer lists completion in May 2024.
                   </p>
                 </div>
                 <div className="border-l-2 pl-6" style={{ borderColor: "var(--accent)" }}>
@@ -213,7 +214,7 @@ export default function JohnBlackPage() {
 
       <ProjectPager
         previous={{ href: "/projects/camp-taylor-pool", label: "Camp Taylor" }}
-        next={{ href: "/projects/one-senior-care-morehead", label: "One Senior Care - Morehead" }}
+        next={{ href: "/projects/one-senior-care", label: OSC_TITLE }}
       />
     </>
   )

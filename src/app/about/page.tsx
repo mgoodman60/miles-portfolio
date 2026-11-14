@@ -2,53 +2,52 @@ import Image from "next/image"
 import Link from "next/link"
 import { BlurFade } from "@/components/magicui/blur-fade"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
-import { fieldProjects, profile } from "@/lib/profile"
+import { OSC_TITLE } from "@/lib/projects-copy"
 import { withCanonical } from "@/lib/site"
 
 export const metadata = withCanonical("/about", {
-  title: "About — Miles Goodman",
-  description:
-    "Site Superintendent at W Principles, LLC in Mount Sterling, KY. BS, Engineering Technology Management, Morehead State. MBA candidate at NKU.",
+  title: "About | Miles Goodman",
+  description: "Site Superintendent at a commercial general contractor in Kentucky. BS, Engineering Technology Management. MBA candidate at NKU.",
 })
 
 const timeline: { year: string; event: string; detail: string; href?: string }[] = [
   {
-    year: fieldProjects[0].year,
-    event: fieldProjects[0].timeline,
-    detail: fieldProjects[0].timelineDetail,
-    href: fieldProjects[0].href,
+    year: "2026",
+    event: `${OSC_TITLE} · Complete`,
+    detail: "Site Superintendent · PACE senior care facility",
+    href: "/projects/one-senior-care",
   },
   {
-    year: fieldProjects[1].year,
-    event: fieldProjects[1].timeline,
-    detail: fieldProjects[1].timelineDetail,
-    href: fieldProjects[1].href,
+    year: "2026",
+    event: "Camp Taylor Memorial Park Pool · Opened May 2026",
+    detail: "Site Superintendent · $6.2M ARPA · public opening May 23, 2026",
+    href: "/projects/camp-taylor-pool",
   },
   {
-    year: "2021–2025",
-    event: `${profile.realtorOrg} — ${profile.realtorTitle}`,
-    detail: profile.realtorHighlight,
-  },
-  {
-    year: fieldProjects[2].year,
-    event: fieldProjects[2].timeline,
-    detail: fieldProjects[2].timelineDetail,
-    href: fieldProjects[2].href,
+    year: "2021 to 2025",
+    event: "Keller Williams / National Real Estate · Realtor",
+    detail: "Top 5% nationwide producer, 2022",
   },
   {
     year: "2024",
-    event: `MBA — ${profile.mbaSchool} (Active)`,
-    detail: `${profile.mbaProgram} · ${profile.mbaExpected}`,
+    event: "John W. Black Aquatic Center · Reopened May 2024",
+    detail: "Site Superintendent · Reopened May 25, 2024",
+    href: "/projects/john-black-aquatic",
+  },
+  {
+    year: "2024",
+    event: "MBA · Northern Kentucky University (Active)",
+    detail: "Project Management & AI · Expected 2026",
   },
   {
     year: "2023",
-    event: `Joined ${profile.company} as Site Superintendent`,
-    detail: `${profile.location} · AGC member company`,
+    event: "Joined a commercial general contractor as Site Superintendent",
+    detail: "Kentucky · Commercial general contractor",
   },
   {
-    year: profile.bsYear,
-    event: profile.bsDegree,
-    detail: profile.bsSchool,
+    year: "2022",
+    event: "BS, Engineering Technology Management",
+    detail: "Bachelor's degree",
   },
 ]
 
@@ -70,12 +69,12 @@ export default function AboutPage() {
           <div>
             <BlurFade inView delay={0}>
               <p className="text-lg leading-relaxed mb-6" style={{ color: "var(--ink)" }}>
-                I&rsquo;m a Site Superintendent at {profile.company} — a commercial general contractor based in {profile.location}, AGC member, established 1933. My work spans concrete self-perform scopes, aquatic facility construction, and PEMB structures across Kentucky.
+                I&rsquo;m a Site Superintendent at a commercial general contractor in Kentucky. My work spans concrete self-perform scopes, aquatic facility construction, and PEMB structures across the state.
               </p>
             </BlurFade>
             <BlurFade inView delay={0.1}>
               <p className="text-base leading-relaxed mb-6" style={{ color: "var(--muted)" }}>
-                I&rsquo;m also an MBA candidate at {profile.mbaSchool} ({profile.mbaProgram}, expected 2026).{" "}
+                I&rsquo;m also an MBA candidate at Northern Kentucky University (Project Management &amp; AI, expected 2026).{" "}
                 <Link href="/my-reports" className={linkClass}>My Reports</Link>
                 , the daily reporting app I built on the Claude API, came out of that work.{" "}
                 <Link href="/ai-tools" className={linkClass}>
@@ -86,14 +85,14 @@ export default function AboutPage() {
             </BlurFade>
             <BlurFade inView delay={0.2}>
               <p className="text-base leading-relaxed mb-8" style={{ color: "var(--muted)" }}>
-                I also worked as a realtor with {profile.realtorOrg}. That&rsquo;s where I learned to read owners and communicate clearly. I use those skills every day on site.
+                I also worked as a realtor with Keller Williams / National Real Estate. That&rsquo;s where I learned to read owners and communicate clearly. I use those skills every day on site.
               </p>
             </BlurFade>
             <BlurFade inView delay={0.3}>
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/resume"
-                  className="inline-flex min-h-11 items-center px-6 py-3 text-sm font-medium rounded bg-[var(--ink)] text-[var(--paper)] transition-colors hover:bg-[var(--accent)]"
+                  className="btn-solid inline-flex min-h-11 items-center rounded px-6 py-3 text-sm font-medium transition-colors"
                 >
                   Resume
                 </Link>
@@ -112,6 +111,7 @@ export default function AboutPage() {
                 >
                   Contact
                 </Link>
+              <a href="https://www.linkedin.com/in/miles-goodman-cm" target="_blank" rel="noopener noreferrer" className="btn-line inline-flex min-h-11 items-center rounded border px-6 py-3 text-sm font-medium">LinkedIn<span className="sr-only"> (opens in a new tab)</span></a>
               </div>
             </BlurFade>
           </div>
@@ -138,8 +138,8 @@ export default function AboutPage() {
           <BlurFade inView delay={0.1}>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { label: "MBA (active)", detail: `${profile.mbaProgram}\n${profile.mbaSchool}` },
-              { label: "BS", detail: `Engineering Technology Management\n${profile.bsSchool} · ${profile.bsYear}` },
+              { label: "MBA (active)", detail: "Project Management & AI\nNorthern Kentucky University" },
+              { label: "Bachelor’s degree", detail: "Engineering Technology Management\n2022" },
               { label: "CTM", detail: "Certified Technology Manager" },
               { label: "Bluebeam · AutoCAD · Excel", detail: "Field takeoffs, plan review,\nbid estimation" },
             ].map(({ label, detail }) => (

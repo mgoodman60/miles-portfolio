@@ -7,10 +7,27 @@ import "yet-another-react-lightbox/styles.css"
 import Captions from "yet-another-react-lightbox/plugins/captions"
 import "yet-another-react-lightbox/plugins/captions.css"
 import Zoom from "yet-another-react-lightbox/plugins/zoom"
-import Image from "next/image"
+import { ResponsivePicture } from "@/components/ui/ResponsivePicture"
 import { useState } from "react"
 
 type Photo = { src: string; width: number; height: number; alt: string; caption?: string }
+
+function lightboxSlides(photos: Photo[]) {
+  return photos.map((photo) => {
+    const base = photo.src.replace(/\.[^.]+$/, "")
+    return {
+      src: photo.src,
+      alt: photo.alt,
+      width: photo.width,
+      height: photo.height,
+      srcSet: [640, 1080, 1600].map((width) => ({
+        src: `${base}-${width}.webp`,
+        width,
+        height: Math.round((photo.height / photo.width) * width),
+      })),
+    }
+  })
+}
 
 export function CampTaylorGallery({
   photos,
@@ -38,14 +55,15 @@ export function CampTaylorGallery({
                   className="block w-full rounded text-left"
                   onClick={() => setIndex(photoIndex)}
                 >
-                  <span className="block overflow-hidden rounded">
-                    <Image
+                  <span className="photo-frame block overflow-hidden rounded">
+                    <ResponsivePicture
                       src={photo.src}
                       alt={photo.alt}
                       width={photo.width}
                       height={photo.height}
                       loading={eager && photoIndex === 0 ? "eager" : "lazy"}
-                      sizes="(max-width: 1024px) 100vw, 960px"
+                      responsive
+                      sizes="(max-width: 1024px) calc(100vw - 48px), 960px"
                       className="h-auto w-full"
                       style={{ background: "var(--paper-warm)" }}
                     />
@@ -64,7 +82,7 @@ export function CampTaylorGallery({
           open={index >= 0}
           index={index}
           close={() => setIndex(-1)}
-          slides={photos.map((p) => ({ src: p.src, alt: p.alt, width: p.width, height: p.height }))}
+          slides={lightboxSlides(photos)}
           plugins={[Zoom]}
         />
       </div>
@@ -80,7 +98,7 @@ export function CampTaylorGallery({
           sizes={{ size: "calc(100vw - 48px)", sizes: [{ viewport: "(min-width: 1024px)", size: "min(1000px, calc(100vw - 480px))" }] }}
           render={{
             image: ({ alt, title, sizes, className, style }, { photo, index: photoIndex }) => (
-              <Image
+              <ResponsivePicture
                 src={photo.src}
                 alt={alt ?? photo.alt}
                 title={title}
@@ -90,6 +108,7 @@ export function CampTaylorGallery({
                 className={className}
                 style={style}
                 loading={eager && photoIndex === 0 ? "eager" : "lazy"}
+                responsive
               />
             ),
           }}
@@ -99,13 +118,7 @@ export function CampTaylorGallery({
         open={index >= 0}
         index={index}
         close={() => setIndex(-1)}
-        slides={photos.map((p) => ({
-          src: p.src,
-          alt: p.alt,
-          width: p.width,
-          height: p.height,
-          description: captions ? p.alt : undefined,
-        }))}
+        slides={lightboxSlides(photos).map((photo) => ({ ...photo, description: captions ? photo.alt : undefined }))}
         plugins={captions ? [Zoom, Captions] : [Zoom]}
         captions={captions ? { descriptionTextAlign: "start", descriptionMaxLines: 3, showToggle: false } : undefined}
         styles={

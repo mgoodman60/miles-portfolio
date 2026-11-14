@@ -1,0 +1,11 @@
+import Link from "next/link"
+import { portfolioPieces, type PortfolioImage } from "@/lib/portfolio"
+
+function Screenshot({ image, frame }: { image: PortfolioImage; frame: "browser" | "phone" }) {
+  const sizes = frame === "browser" ? "(max-width: 768px) 100vw, 72vw" : "(max-width: 768px) 42vw, 23vw"
+  return <div className={`portfolio-${frame} photo-frame`}><picture><source type="image/avif" srcSet={`${image.base}-sm.avif ${image.width / 2}w, ${image.base}.avif ${image.width}w`} sizes={sizes} /><source type="image/webp" srcSet={`${image.base}-sm.webp ${image.width / 2}w, ${image.base}.webp ${image.width}w`} sizes={sizes} /><img src={`${image.base}.png`} srcSet={`${image.base}-sm.png ${image.width / 2}w, ${image.base}.png ${image.width}w`} sizes={sizes} alt={image.alt} width={image.width} height={image.height} loading="lazy" decoding="async" /></picture></div>
+}
+
+export function PortfolioMockups() {
+  return <div className="space-y-20">{portfolioPieces.filter((piece) => piece.type !== "concept").map((piece) => <article key={piece.slug} className="rounded border p-5 md:p-8" style={{ borderColor: "var(--border)", background: "var(--card)" }}><div className="mb-7 flex flex-wrap items-baseline justify-between gap-4"><div><p className="mb-2 text-xs uppercase tracking-[0.18em] text-[var(--creative)]">Real project · {piece.type === "real" ? "screenshots" : "site"}</p><h2 className="serif text-3xl font-light text-[var(--ink)]">{piece.title}</h2><p className="mt-3 text-sm leading-relaxed text-[var(--muted)]">{piece.line}</p></div>{piece.type === "real" && piece.href ? <a href={piece.href} target="_blank" rel="noopener noreferrer" className="btn-solid inline-flex min-h-11 items-center rounded px-5 py-3 text-sm font-medium">Visit Milestone Solutions<span className="sr-only"> (opens in a new tab)</span></a> : null}{piece.type === "text" ? <Link href={piece.href} className="btn-solid inline-flex min-h-11 items-center rounded px-5 py-3 text-sm font-medium">Visit this site</Link> : null}</div>{piece.type === "real" ? <div className="grid items-start gap-5 md:grid-cols-[minmax(0,1fr)_minmax(150px,0.3fr)]"><Screenshot image={piece.browser} frame="browser" /><Screenshot image={piece.phone} frame="phone" /></div> : null}</article>)}</div>
+}

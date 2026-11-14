@@ -3,7 +3,12 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { footerGroups, linkIsCurrent } from "@/lib/site-nav"
-import { profile } from "@/lib/profile"
+
+const LINKEDIN_URL = "https://www.linkedin.com/in/miles-goodman-cm"
+const MILESTONE_URL = "https://milestone-solutions.pages.dev"
+const EMAIL = "msgoodman1997@gmail.com"
+const PHONE_DISPLAY = "(606) 226-5231"
+const PHONE_HREF = "tel:+16062265231"
 
 export function Footer() {
   const pathname = usePathname()
@@ -14,10 +19,15 @@ export function Footer() {
         <div>
           <p className="serif text-xl font-light text-white mb-3">Miles Goodman</p>
           <p className="text-sm leading-relaxed" style={{ color: "var(--footer-fg)" }}>
-            Site Superintendent at W Principles, LLC.<br />
+            Site superintendent in Kentucky.<br />
             Construction, field reporting and document workflows.<br />
             MBA candidate at Northern Kentucky University.
           </p>
+          <div className="mt-5 flex flex-wrap gap-4 text-sm">
+            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">LinkedIn<span className="sr-only"> (opens in a new tab)</span></a>
+            <a href={MILESTONE_URL} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Milestone Solutions<span className="sr-only"> (opens in a new tab)</span></a>
+            <a href={`${MILESTONE_URL}/blog`} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Writing<span className="sr-only"> (opens in a new tab)</span></a>
+          </div>
         </div>
 
         {footerGroups.map((group) => (
@@ -48,13 +58,13 @@ export function Footer() {
           </p>
           <div className="text-sm flex flex-col gap-0" style={{ color: "var(--footer-fg)" }}>
             <a
-              href={`mailto:${profile.email}`}
+              href={`mailto:${EMAIL}`}
               className="inline-flex min-h-11 items-center py-2 hover:text-white hover:underline underline-offset-4 transition-colors break-all"
             >
-              {profile.email}
+              {EMAIL}
             </a>
-            <a href={profile.phoneHref} className="inline-flex min-h-11 items-center py-2 hover:text-white hover:underline underline-offset-4">{profile.phoneDisplay}</a>
-            <span className="py-2">{profile.location}</span>
+            <a href={PHONE_HREF} className="inline-flex min-h-11 items-center py-2 hover:text-white hover:underline underline-offset-4">{PHONE_DISPLAY}</a>
+            <span className="py-2">Kentucky</span>
           </div>
         </div>
       </div>
@@ -64,7 +74,7 @@ export function Footer() {
         style={{ borderColor: "rgba(207,205,199,0.12)", color: "var(--footer-fg-faint)" }}
       >
         <span>&copy; {new Date().getFullYear()} Miles Goodman. All rights reserved.</span>
-        <span>Mount Sterling, KY</span>
+        <span>Based in Kentucky</span>
       </div>
     </footer>
   )
