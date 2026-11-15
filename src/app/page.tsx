@@ -1,4 +1,3 @@
-import Image from "next/image"
 import Link from "next/link"
 import { PersonalHero } from "@/components/sections/PersonalHero"
 import { ProjectCard3D } from "@/components/sections/ProjectCard3D"
@@ -7,6 +6,7 @@ import { Stat } from "@/components/ui/Stat"
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow"
 import { withCanonical } from "@/lib/site"
 import { OSC_TITLE } from "@/lib/projects-copy"
+import { RENDER_H, RENDER_W, renderingProjects, renderingSrc } from "@/lib/renderings"
 
 export const metadata = withCanonical("/", {
   title: "Miles Goodman | Construction & field reporting",
@@ -65,6 +65,8 @@ const pressItems: { label: string; href?: string }[] = [
   },
 ]
 
+const renderTeaser = [renderingProjects[0].items[2], renderingProjects[0].items[0], renderingProjects[1].items[0]]
+
 export default function Home() {
   return (
     <>
@@ -116,9 +118,41 @@ export default function Home() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {projects.map((p) => (
-              <BlurFade key={p.slug} inView delay={projects.indexOf(p) * 0.12}><ProjectCard3D project={p} priority={projects.indexOf(p) === 0} /></BlurFade>
+              <BlurFade key={p.slug} inView delay={projects.indexOf(p) * 0.12}><ProjectCard3D project={p} /></BlurFade>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── Renderings teaser ──────────────────────────── */}
+      <section aria-labelledby="home-renderings-heading" className="personal-section border-t px-6 md:px-12" style={{ borderColor: "var(--border)" }}>
+        <div className="mx-auto max-w-[1480px]">
+          <div className="mb-8 flex flex-col items-start gap-3 sm:flex-row sm:items-baseline sm:justify-between">
+            <h2 id="home-renderings-heading" className="serif font-light tracking-tight text-[var(--ink)]" style={{ fontSize: "clamp(28px, 3.6vw, 44px)" }}>
+              Architectural Renderings
+            </h2>
+            <Link href="/renderings" className="inline-flex min-h-11 items-center text-sm font-medium text-[var(--accent)] underline-offset-4 hover:underline">
+              See all renderings →
+            </Link>
+          </div>
+          <p className="mb-8 max-w-3xl text-sm leading-relaxed text-[var(--muted)]">A warehouse concept and PACE center interiors, rendered before construction.</p>
+          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {renderTeaser.map((r) => {
+              const src = renderingSrc(r.file)
+              const sizes = "(min-width: 640px) 33vw, 100vw"
+              return (
+                <li key={r.file}>
+                  <Link href="/renderings" className="block overflow-hidden rounded border" style={{ borderColor: "var(--border)" }}>
+                    <picture>
+                      <source type="image/avif" srcSet={src.avif} sizes={sizes} />
+                      <source type="image/webp" srcSet={src.webp} sizes={sizes} />
+                      <img src={src.jpg} alt={r.alt} width={RENDER_W} height={RENDER_H} loading="lazy" decoding="async" className="block aspect-[16/9] h-auto w-full object-cover" />
+                    </picture>
+                  </Link>
+                </li>
+              )
+            })}
+          </ul>
         </div>
       </section>
 
@@ -128,19 +162,7 @@ export default function Home() {
         className="personal-section border-t px-6 md:px-12"
         style={{ borderColor: "var(--border)" }}
       >
-        <div className="mx-auto max-w-[1480px] grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <div
-            className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded order-last md:order-first md:mx-0"
-            style={{ aspectRatio: "3/4" }}
-          >
-            <Image
-              src="/headshot.jpg"
-              alt="Miles Goodman"
-              fill
-              className="object-cover object-center"
-              sizes="(max-width:768px) 100vw, 420px"
-            />
-          </div>
+        <div className="mx-auto max-w-3xl text-center">
           <div>
             <SectionEyebrow size="section" className="mb-5">
               Site Superintendent · Kentucky
@@ -159,7 +181,7 @@ export default function Home() {
               </Link>{" "}
               shows how site photos and voice notes become structured progress reports.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap justify-center gap-4">
               <Link href="/about" className="btn-solid inline-flex min-h-11 items-center px-5 py-3 text-sm font-medium rounded transition-colors">
                 About me
               </Link>

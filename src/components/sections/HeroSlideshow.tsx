@@ -5,6 +5,7 @@ import { ResponsivePicture } from "@/components/ui/ResponsivePicture"
 import Link from "next/link"
 import { useMotionPreference } from "@/lib/use-motion-preference"
 import { OSC_TITLE } from "@/lib/projects-copy"
+import { useAfterLoad } from "@/lib/use-after-load"
 
 const slides = [
   {
@@ -32,6 +33,8 @@ const slides = [
 export function HeroSlideshow({ identity = "personal", children }: { identity?: "personal" | "business"; children?: ReactNode }) {
   const isBusiness = identity === "business"
   const [current, setCurrent] = useState(0)
+  // Only the first slide is in the server HTML. The rest mount after window load so they don't compete with the first paint.
+  const restReady = useAfterLoad()
   const [userPaused, setUserPaused] = useState(false)
   const [hovered, setHovered] = useState(false)
   const [focused, setFocused] = useState(false)
@@ -85,7 +88,7 @@ export function HeroSlideshow({ identity = "personal", children }: { identity?: 
           aria-hidden={i !== current}
           data-active={i === current}
         >
-          <ResponsivePicture
+          {(i === 0 || restReady || i === current) && <ResponsivePicture
             src={slide.src}
             alt={slide.alt}
             width={1920}
@@ -94,7 +97,7 @@ export function HeroSlideshow({ identity = "personal", children }: { identity?: 
             responsive
             className="hero-photo absolute inset-0 h-full w-full object-cover object-center"
             sizes="100vw"
-          />
+          />}
         </div>
       ))}
 
@@ -124,7 +127,7 @@ export function HeroSlideshow({ identity = "personal", children }: { identity?: 
           Controls and caption share one column so they cannot overlap on a phone. */}
       <div className="on-photo relative z-[3] flex flex-col justify-end px-6 pt-24 pb-6 md:px-12 md:pb-8">
         <div className="mx-auto flex w-full max-w-[1480px] flex-col gap-6">
-          <div className={isBusiness ? "grid items-center gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-16" : ""}>
+          <div className={isBusiness ? "grid items-center gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-16" : children ? "grid items-end gap-6 lg:grid-cols-[1.4fr_1fr] lg:gap-16" : ""}>
           <div>
             <p className="hero-rise hero-rise-1 text-xs uppercase tracking-[0.22em] text-white mb-4">
               {isBusiness ? "AI automation & consulting" : "Site Superintendent · Kentucky"}
@@ -153,7 +156,7 @@ export function HeroSlideshow({ identity = "personal", children }: { identity?: 
             </div>
             <p className="mt-6 max-w-xl text-sm leading-relaxed text-white">{isBusiness ? "Start with one recurring task, the tools you use today, and what you want to improve." : "MBA candidate at Northern Kentucky University. Explore my construction experience and the field tools I build."}</p>
           </div>
-          {children && <div className="hero-rise hero-rise-3 min-w-0">{children}</div>}
+          {children && <div className={isBusiness ? "hero-rise hero-rise-3 min-w-0" : "hero-rise hero-rise-1 order-first min-w-0 lg:order-none"}>{children}</div>}
           </div>
 
           <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
